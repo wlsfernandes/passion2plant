@@ -13,4 +13,4 @@
             </div>
         </div>
     </div>
-</footer><?php /**PATH /var/www/html/passion2plant/resources/views/admin/layouts/footer.blade.php ENDPATH**/ ?>
+</footer><?php /**PATH /var/www/html/complete_template_laravel_admin/resources/views/admin/layouts/footer.blade.php ENDPATH**/ ?>

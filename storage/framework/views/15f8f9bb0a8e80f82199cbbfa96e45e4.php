@@ -12,4 +12,4 @@
 <!-- App js -->
 <script src="<?php echo e(asset('/assets/admin/js/app.min.js')); ?>"></script>
 
-<?php echo $__env->yieldContent('script-bottom'); ?><?php /**PATH /var/www/html/passion2plant/resources/views/admin/layouts/vendor-scripts.blade.php ENDPATH**/ ?>
+<?php echo $__env->yieldContent('script-bottom'); ?><?php /**PATH /var/www/html/complete_template_laravel_admin/resources/views/admin/layouts/vendor-scripts.blade.php ENDPATH**/ ?>

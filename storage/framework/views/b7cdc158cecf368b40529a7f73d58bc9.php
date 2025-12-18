@@ -13,4 +13,4 @@
 
     <!-- App Css-->
     <link href="<?php echo e(asset('/assets/admin/css/app.css')); ?>" id="app-style" rel="stylesheet" type="text/css" />
-</head><?php /**PATH /var/www/html/passion2plant/resources/views/admin/layouts/head.blade.php ENDPATH**/ ?>
+</head><?php /**PATH /var/www/html/complete_template_laravel_admin/resources/views/admin/layouts/head.blade.php ENDPATH**/ ?>

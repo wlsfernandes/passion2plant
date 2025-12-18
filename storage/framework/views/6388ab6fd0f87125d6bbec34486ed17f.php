@@ -14,4 +14,4 @@
     <?php echo $__env->make('admin.layouts.vendor-scripts', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 </body>
 
-</html><?php /**PATH /var/www/html/passion2plant/resources/views/admin/layouts/master-without-nav.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /var/www/html/complete_template_laravel_admin/resources/views/admin/layouts/master-without-nav.blade.php ENDPATH**/ ?>

@@ -52,6 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::resource('users', UserController::class)->except(['show']);
+
     Route::get('system-logs', [SystemLogController::class, 'index'])->name('system-logs.index');
     Route::get('audits', [AuditController::class, 'index'])->name('audits.index');
     Route::resource('roles', RoleController::class)->except(['show']);

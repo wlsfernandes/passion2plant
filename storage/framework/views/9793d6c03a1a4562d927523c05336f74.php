@@ -728,4 +728,4 @@
 
     <script src="<?php echo e(asset('/assets/admin/js/pages/dashboard.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin.layouts.master', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /var/www/html/passion2plant/resources/views/admin/dashboard.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.master', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /var/www/html/complete_template_laravel_admin/resources/views/admin/dashboard.blade.php ENDPATH**/ ?>

@@ -275,4 +275,4 @@
         <?php endif; ?>
     </body>
 </html>
-<?php /**PATH /var/www/html/passion2plant/resources/views/welcome.blade.php ENDPATH**/ ?>
+<?php /**PATH /var/www/html/complete_template_laravel_admin/resources/views/welcome.blade.php ENDPATH**/ ?>

@@ -105,4 +105,4 @@
 
 <!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
-<?php /**PATH /var/www/html/passion2plant/resources/views/admin/layouts/right-sidebar.blade.php ENDPATH**/ ?>
+<?php /**PATH /var/www/html/complete_template_laravel_admin/resources/views/admin/layouts/right-sidebar.blade.php ENDPATH**/ ?>

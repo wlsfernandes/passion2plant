@@ -4,4 +4,4 @@
 <meta content="devpromaster Administration Tool" name="description" />
 <meta content="devpromaster" name="author" />
 <!-- App favicon -->
-<link rel="shortcut icon" href="<?php echo e(asset('assets/admin/images/devpromaster_ico.png')); ?>"><?php /**PATH /var/www/html/passion2plant/resources/views/admin/layouts/title-meta.blade.php ENDPATH**/ ?>
+<link rel="shortcut icon" href="<?php echo e(asset('assets/admin/images/devpromaster_ico.png')); ?>"><?php /**PATH /var/www/html/complete_template_laravel_admin/resources/views/admin/layouts/title-meta.blade.php ENDPATH**/ ?>
