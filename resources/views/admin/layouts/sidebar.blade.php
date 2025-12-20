@@ -45,7 +45,7 @@
                         </li>
 
                         <li>
-                            <a href="">
+                            <a href="{{ route('blogs.index') }}">
                                 <i class="uil-blogger-alt"></i>Blog
                             </a>
                         </li>

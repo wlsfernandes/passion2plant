@@ -44,14 +44,10 @@ class RoleController extends BaseController
         }
     }
 
-<<<<<<< HEAD
     public function edit(Role $role)
     {
         return view('admin.roles.form', compact('role'));
     }
-=======
-
->>>>>>> fbecd8d (add file mangement s3)
 
     public function update(Request $request, Role $role)
     {

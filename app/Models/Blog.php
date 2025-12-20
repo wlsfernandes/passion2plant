@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\Auditable;
 use Illuminate\Support\Str;
 
-class Event extends Model
+class Blog extends Model
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Auditable;
 
     protected $fillable = [
@@ -18,7 +17,6 @@ class Event extends Model
         'slug',
         'content_en',
         'content_es',
-        'event_date',
         'publish_start_at',
         'publish_end_at',
         'is_published',
@@ -29,7 +27,6 @@ class Event extends Model
     ];
 
     protected $casts = [
-        'event_date' => 'datetime',
         'publish_start_at' => 'datetime',
         'publish_end_at' => 'datetime',
         'is_published' => 'boolean',
@@ -42,22 +39,23 @@ class Event extends Model
     {
         parent::boot();
 
-        static::creating(function (Event $event) {
-            $event->slug = static::generateUniqueSlug($event->title_en);
+        static::creating(function (Blog $blog) {
+            $blog->slug = static::generateUniqueSlug($blog->title_en);
         });
 
-        static::updating(function (Event $event) {
-            if ($event->isDirty('title_en')) {
-                $event->slug = static::generateUniqueSlug(
-                    $event->title_en,
-                    $event->id
+        static::updating(function (Blog $blog) {
+            if ($blog->isDirty('title_en')) {
+                $blog->slug = static::generateUniqueSlug(
+                    $blog->title_en,
+                    $blog->id
                 );
             }
         });
     }
+
     protected static function booted()
     {
-        static::updated(fn() => \Log::info('EVENT updated fired'));
+        static::updated(fn() => \Log::info('BLOG updated fired'));
     }
 
     /**
@@ -82,7 +80,7 @@ class Event extends Model
     }
 
     /**
-     * Scope: only currently visible events.
+     * Scope: only currently visible blogs.
      */
     public function scopeVisible($query)
     {

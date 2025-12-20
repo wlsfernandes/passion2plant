@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 class ImageUploadController extends BaseController
 {
     protected array $models = [
-        'event' => \App\Models\Event::class,
-        'post' => \App\Models\Post::class,
+        'events' => \App\Models\Event::class,
+        'blogs' => \App\Models\Blog::class,
         // add more models here
     ];
 
@@ -63,8 +63,10 @@ class ImageUploadController extends BaseController
             'image' => 'required|image|max:5120', // 5MB
         ]);
 
-        // Delete old image
-        S3::delete($instance->image_url);
+        // Delete old image if exists
+        if (!empty($instance->image_url)) {
+            S3::delete($instance->image_url);
+        }
 
         // Upload new image (WebP)
         $path = S3::uploadImageAsWebp(
@@ -76,8 +78,11 @@ class ImageUploadController extends BaseController
             'image_url' => $path,
         ]);
 
-        return redirect()->back()->with('success', 'Image uploaded successfully.');
+        return redirect()
+            ->route("{$model}.index")
+            ->with('success', 'Image uploaded successfully.');
     }
+
 
     protected function resolveModel(string $model, int $id): Model
     {

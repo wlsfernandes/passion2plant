@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
-class EventController extends BaseController
+class BlogController extends BaseController
 {
     /**
-     * List all events (published + drafts).
+     * List all blogs (published + drafts).
      */
     public function index()
     {
-        $events = Event::orderByDesc('event_date')
-            ->orderByDesc('created_at')
-            ->get();
+        $blogs = Blog::orderByDesc('created_at')->get();
 
-        return view('admin.events.index', compact('events'));
+        return view('admin.blogs.index', compact('blogs'));
     }
 
     /**
@@ -26,11 +24,11 @@ class EventController extends BaseController
      */
     public function create()
     {
-        return view('admin.events.form');
+        return view('admin.blogs.form');
     }
 
     /**
-     * Store new event.
+     * Store new blog.
      */
     public function store(Request $request)
     {
@@ -39,7 +37,6 @@ class EventController extends BaseController
             'title_es' => 'nullable|string|max:255',
             'content_en' => 'nullable|string',
             'content_es' => 'nullable|string',
-            'event_date' => 'nullable|date',
             'publish_start_at' => 'nullable|date',
             'publish_end_at' => 'nullable|date|after_or_equal:publish_start_at',
             'is_published' => 'nullable|boolean',
@@ -51,12 +48,11 @@ class EventController extends BaseController
 
         try {
             DB::transaction(function () use ($request) {
-                Event::create([
+                Blog::create([
                     'title_en' => $request->title_en,
                     'title_es' => $request->title_es,
                     'content_en' => $request->content_en,
                     'content_es' => $request->content_es,
-                    'event_date' => $request->event_date,
                     'publish_start_at' => $request->publish_start_at,
                     'publish_end_at' => $request->publish_end_at,
                     'is_published' => (bool) $request->is_published,
@@ -68,35 +64,34 @@ class EventController extends BaseController
             });
 
             return redirect()
-                ->route('events.index')
-                ->with('success', 'Event created successfully.');
+                ->route('blogs.index')
+                ->with('success', 'Blog created successfully.');
 
         } catch (Throwable $e) {
             return back()
                 ->withInput()
-                ->with('error', 'Failed to create event.');
+                ->with('error', 'Failed to create blog.');
         }
     }
 
     /**
      * Show edit form.
      */
-    public function edit(Event $event)
+    public function edit(Blog $blog)
     {
-        return view('admin.events.form', compact('event'));
+        return view('admin.blogs.form', compact('blog'));
     }
 
     /**
-     * Update event.
+     * Update blog.
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, Blog $blog)
     {
         $request->validate([
             'title_en' => 'required|string|max:255',
             'title_es' => 'nullable|string|max:255',
             'content_en' => 'nullable|string',
             'content_es' => 'nullable|string',
-            'event_date' => 'nullable|date',
             'publish_start_at' => 'nullable|date',
             'publish_end_at' => 'nullable|date|after_or_equal:publish_start_at',
             'is_published' => 'nullable|boolean',
@@ -107,13 +102,12 @@ class EventController extends BaseController
         ]);
 
         try {
-            DB::transaction(function () use ($request, $event) {
-                $event->update($request->only([
+            DB::transaction(function () use ($request, $blog) {
+                $blog->update($request->only([
                     'title_en',
                     'title_es',
                     'content_en',
                     'content_es',
-                    'event_date',
                     'publish_start_at',
                     'publish_end_at',
                     'is_published',
@@ -125,29 +119,29 @@ class EventController extends BaseController
             });
 
             return redirect()
-                ->route('events.index')
-                ->with('success', 'Event updated successfully.');
+                ->route('blogs.index')
+                ->with('success', 'Blog updated successfully.');
 
         } catch (Throwable $e) {
             return back()
-                ->with('error', 'Failed to update event.');
+                ->with('error', 'Failed to update blog.');
         }
     }
 
     /**
-     * Delete event.
+     * Delete blog.
      */
-    public function destroy(Event $event)
+    public function destroy(Blog $blog)
     {
         try {
-            $event->delete();
+            $blog->delete();
 
             return redirect()
-                ->route('events.index')
-                ->with('success', 'Event deleted successfully.');
+                ->route('blogs.index')
+                ->with('success', 'Blog deleted successfully.');
 
         } catch (Throwable $e) {
-            return back()->with('error', 'Failed to delete event.');
+            return back()->with('error', 'Failed to delete blog.');
         }
     }
 }

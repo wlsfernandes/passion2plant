@@ -16,9 +16,8 @@ class FileUploadController extends BaseController
      * Allowed models for file uploads
      */
     protected array $models = [
-        'event' => \App\Models\Event::class,
-        'post' => \App\Models\Post::class,
-        // add more here
+        'events' => \App\Models\Event::class,
+        'blogs' => \App\Models\Blog::class,
     ];
 
 
@@ -72,8 +71,10 @@ class FileUploadController extends BaseController
             'file' => 'required|file|max:10240',
         ]);
 
-        // Delete old file
-        S3::delete($instance->$column);
+        // Delete old file if exists
+        if (!empty($instance->$column)) {
+            S3::delete($instance->$column);
+        }
 
         // Upload new file
         $path = S3::uploadFile(
@@ -85,8 +86,11 @@ class FileUploadController extends BaseController
             $column => $path,
         ]);
 
-        return redirect()->back()->with('success', 'File uploaded successfully.');
+        return redirect()
+            ->route("{$model}.index")
+            ->with('success', 'File uploaded successfully.');
     }
+
 
     /**
      * Resolve model safely

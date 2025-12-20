@@ -49,21 +49,32 @@ class S3
             throw new Exception('Invalid image upload.');
         }
 
+        // ✅ Extra safety: ensure it's an image (not just extension-based)
+        if (!str_starts_with($file->getMimeType(), 'image/')) {
+            throw new Exception('Uploaded file is not a valid image.');
+        }
+
         $filename = Str::uuid() . '.webp';
         $path = trim($directory, '/') . '/' . $filename;
 
-        // ✅ Create ImageManager (v3 way)
+        // ✅ Intervention Image v3
         $manager = new ImageManager(new Driver());
 
-        $image = $manager
-            ->read($file->getRealPath())
-            ->toWebp($quality);
+        try {
+            $image = $manager
+                ->read($file->getRealPath())
+                ->orient()          // ✅ Fix rotation (EXIF)
+                ->toWebp($quality); // ✅ Convert ANY format → WebP
+        } catch (\Throwable $e) {
+            throw new Exception('Unable to process image file.');
+        }
 
         Storage::disk($disk)->put(
             $path,
             (string) $image,
             [
                 'ContentType' => 'image/webp',
+                'Visibility' => 'public', // optional but common for images
             ]
         );
 

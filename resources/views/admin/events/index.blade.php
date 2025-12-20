@@ -41,7 +41,7 @@
                                 {{ $event->event_date?->format('M d, Y') ?? '-' }}
                             </td>
                             <td class="text-center"><a
-                                    href="{{ route('admin.images.edit', ['model' => 'event', 'id' => $event->id]) }}"
+                                    href="{{ route('admin.images.edit', ['model' => 'events', 'id' => $event->id]) }}"
                                     title="Upload / Edit image" class="me-2">
                                     <i class="uil-image font-size-22 {{ $event->image_url ? 'text-primary' : 'text-muted' }}">
                                     </i>
@@ -56,26 +56,26 @@
                                 @endif
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('admin.files.edit', ['model' => 'event', 'id' => $event->id, 'lang' => 'en']) }}"
+                                <a href="{{ route('admin.files.edit', ['model' => 'events', 'id' => $event->id, 'lang' => 'en']) }}"
                                     title="Upload / Edit English file" class="me-2">
                                     <i class="uil-file font-size-22 {{ $event->file_url_en ? 'text-primary' : 'text-muted' }}">
                                     </i>
                                 </a>
                                 @if($event->file_url_en)
-                                    <a href="{{ route('admin.files.download', ['model' => 'event', 'id' => $event->id, 'lang' => 'en']) }}"
+                                    <a href="{{ route('admin.files.download', ['model' => 'events', 'id' => $event->id, 'lang' => 'en']) }}"
                                 title="Download English file"><i class="fas fa-eye font-size-6 text-primary"></i></a>@else
                                         <i class="fas fa-eye font-size-6 text-muted"></i>
 
                                     @endif
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('admin.files.edit', ['model' => 'event', 'id' => $event->id, 'lang' => 'es']) }}"
+                                <a href="{{ route('admin.files.edit', ['model' => 'events', 'id' => $event->id, 'lang' => 'es']) }}"
                                     title="Upload Spanish file">
                                     <i class="uil-file font-size-22 {{ $event->file_url_es ? 'text-primary' : 'text-muted' }}">
                                     </i>
                                 </a>
                                 @if($event->file_url_es)<a
-                                    href="{{ route('admin.files.download', ['model' => 'event', 'id' => $event->id, 'lang' => 'es']) }}"
+                                    href="{{ route('admin.files.download', ['model' => 'events', 'id' => $event->id, 'lang' => 'es']) }}"
                                     title="Download Spanish file">
                                     <i class="fas fa-eye font-size-6 text-primary"></i>
                                 </a>@else
@@ -83,11 +83,16 @@
                                 @endif
                             </td>
                             <td class="text-center">
-                                @if($event->is_published)
-                                    <span class="badge bg-success">Yes</span>
-                                @else
-                                    <span class="badge bg-secondary">No</span>
-                                @endif
+                                <form method="POST"
+                                    action="{{ route('admin.publish.toggle', ['model' => Str::snake(class_basename($event)), 'id' => $event->id]) }}">
+                                    @csrf
+                                    @method('PATCH')
+
+                                    <button type="submit"
+                                        class="badge border-0 {{ $event->is_published ? 'bg-success' : 'bg-secondary' }}">
+                                        {{ $event->is_published ? __('Yes') : __('No') }}
+                                    </button>
+                                </form>
                             </td>
 
                             <td>
