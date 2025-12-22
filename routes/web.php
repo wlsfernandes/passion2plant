@@ -6,21 +6,27 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AuditController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\AuditController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PublishController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\PartnerController;
-use App\Http\Controllers\PositionController;
-use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\TeamController;
-use App\Http\Controllers\SystemLogController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\MenuItemController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\PositionController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublishController;
+use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SocialLinkController;
+use App\Http\Controllers\SystemLogController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\UserController;
+
 
 
 
@@ -79,6 +85,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/images/{model}/{id}', [ImageUploadController::class, 'update'])->name('admin.images.update');
     Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
     Route::patch('/publish/{model}/{id}', [PublishController::class, 'toggle'])->name('admin.publish.toggle');
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
+    Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+
+
+
+
 
     /***  ADMIN RESOURCES */
     Route::resource('users', UserController::class)->except(['show']);
@@ -94,6 +107,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('positions', PositionController::class);
     Route::resource('testimonials', TestimonialController::class);
     Route::resource('teams', TeamController::class);
+    Route::resource('pages', PageController::class);
+    Route::resource('resources', ResourceController::class);
+    Route::resource('social-links', SocialLinkController::class);
+    Route::resource('menu-items', MenuItemController::class);
 
 });
 

@@ -19,6 +19,9 @@ class ImageUploadController extends BaseController
         'positions' => \App\Models\Position::class,
         'testimonials' => \App\Models\Testimonial::class,
         'teams' => \App\Models\Team::class,
+        'pages' => \App\Models\Page::class,
+        'resources' => \App\Models\Resource::class,
+        'settings' => \App\Models\Setting::class,
         // add more models here
     ];
 

@@ -19,6 +19,7 @@ class FileUploadController extends BaseController
         'events' => \App\Models\Event::class,
         'blogs' => \App\Models\Blog::class,
         'positions' => \App\Models\Position::class,
+        'resources' => \App\Models\Resource::class,
     ];
 
 

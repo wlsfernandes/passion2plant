@@ -37,46 +37,92 @@
                         <i class="dripicons-browser"></i>
                         <span>Website</span>
                     </a>
+
                     <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="{{ route('about.index') }}">
-                                <i class="fas fa-info-circle"></i>About Us
-                            </a>
-                        </li>
+                        {{-- =======================
+                        CONTENT
+                        ======================== --}}
+                        <li class="menu-title">Content</li>
+
                         <li>
                             <a href="{{ route('banners.index') }}">
-                                <i class="fas fa-image"></i>Banners
+                                <i class="fas fa-image"></i> Banners
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('blogs.index') }}">
-                                <i class="uil-blogger-alt"></i>Blog
+                                <i class="uil-blogger-alt"></i> Blog
                             </a>
                         </li>
+
                         <li>
                             <a href="{{ route('events.index') }}">
-                                <i class="uil uil-ticket"></i>Events
+                                <i class="uil uil-ticket"></i> Events
                             </a>
                         </li>
+
+                        <li>
+                            <a href="{{ route('pages.index') }}">
+                                <i class="fas fa-file-alt"></i> Pages
+                            </a>
+                        </li>
+
                         <li>
                             <a href="{{ route('partners.index') }}">
-                                <i class="fas fa-handshake"></i> Our Partners
+                                <i class="fas fa-handshake"></i> Partners
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('positions.index') }}">
+                                <i class="uil uil-briefcase"></i> Open Positions
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('resources.index') }}">
+                                <i class="fas fa-folder-open"></i> Resources
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('teams.index') }}">
+                                <i class="fas fa-users"></i> Team
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('testimonials.index') }}">
+                                <i class="uil-feedback"></i> Testimonials
+                            </a>
+                        </li>
+
+                        {{-- =======================
+                        CONFIGURATION
+                        ======================== --}}
+                        <li class="menu-title">Configuration</li>
+
+                        <li>
+                            <a href="{{ route('menu-items.index') }}">
+                                <i class="fas fa-bars"></i> Menus
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('positions.index') }}"> <i class="uil uil-briefcase"></i> Open Positions
+                            <a href="{{ route('settings.index') }}">
+                                <i class="fas fa-cog"></i> Site Settings
                             </a>
                         </li>
+
                         <li>
-                            <a href="{{ route('teams.index') }}"> <i class="fas fa-users"></i> Team
+                            <a href="{{ route('social-links.index') }}">
+                                <i class="fas fa-share-alt"></i> Social Media
                             </a>
                         </li>
-                        <li>
-                            <a href="{{ route('testimonials.index') }}"><i class="uil-feedback"></i>Testimonial</a>
-                        </li>
+
                     </ul>
                 </li>
+
 
                 </li>
                 @can('access-admin')
