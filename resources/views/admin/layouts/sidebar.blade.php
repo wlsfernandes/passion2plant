@@ -39,6 +39,11 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
+                            <a href="{{ route('about.index') }}">
+                                <i class="fas fa-info-circle"></i>About Us
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('banners.index') }}">
                                 <i class="fas fa-image"></i>Banners
                             </a>
@@ -55,8 +60,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="uil uil-layer-group"></i> Our Partners
+                            <a href="{{ route('partners.index') }}">
+                                <i class="fas fa-handshake"></i> Our Partners
                             </a>
                         </li>
                         <li>

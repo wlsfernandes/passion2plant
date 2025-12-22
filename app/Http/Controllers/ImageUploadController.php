@@ -11,9 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 class ImageUploadController extends BaseController
 {
     protected array $models = [
+        'about' => \App\Models\About::class,
         'events' => \App\Models\Event::class,
         'blogs' => \App\Models\Blog::class,
         'banners' => \App\Models\Banner::class,
+        'partners' => \App\Models\Partner::class,
         // add more models here
     ];
 
