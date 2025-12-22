@@ -23,6 +23,7 @@ class Setting extends Model
 
         'default_seo_title',
         'default_seo_description',
+
     ];
 
     /**

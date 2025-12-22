@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Services\RuntimeConfigService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,8 +21,38 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        /*
+   |--------------------------------------------------------------------------
+   | Runtime S3 Configuration (DB-driven)
+   |--------------------------------------------------------------------------
+   | 
+   */
+        if (Schema::hasTable('developer_settings')) {
+            RuntimeConfigService::applyS3Config();
+            RuntimeConfigService::applyStripeConfig();
+            RuntimeConfigService::applyPaypalConfig();
+            RuntimeConfigService::applyMailConfig();
+            RuntimeConfigService::applyQueueConfig();
+        }
+
         Gate::define('access-admin', function ($user) {
             return $user->roles()->where('name', 'Admin')->exists();
         });
+
+        Gate::define('access-website-admin', function ($user) {
+            return $user->roles()->where('name', 'Website-admin')->exists();
+        });
+
+        Gate::define('access-developer', function ($user) {
+            return $user->roles()->where('name', 'Developer')->exists();
+        });
+
+        Gate::define('access-admin-or-webadmin', function ($user) {
+            return $user->roles()
+                ->whereIn('name', ['Admin', 'Website-admin'])
+                ->exists();
+        });
+
     }
 }

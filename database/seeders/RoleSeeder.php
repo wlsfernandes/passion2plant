@@ -14,20 +14,32 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // ✅ Create Admin role
+        // ✅ Create roles
         $adminRole = Role::updateOrCreate(
             ['name' => 'Admin']
         );
 
-        // ✅ Emails of initial admins
-        $adminEmails = [
-            'wlsfernandes@gmail.com',
-            'drlizrios@gmail.com',
+        $websiteAdminRole = Role::updateOrCreate(
+            ['name' => 'Website-admin']
+        );
+
+        $developerRole = Role::updateOrCreate(
+            ['name' => 'Developer']
+        );
+
+        // ✅ Users and their roles
+        $usersWithRoles = [
+            'wlsfernandes@gmail.com' => [$adminRole->id, $developerRole->id],
+            'drlizrios@gmail.com' => [$adminRole->id],
         ];
 
-        // ✅ Attach role to users
-        User::whereIn('email', $adminEmails)->get()->each(function ($user) use ($adminRole) {
-            $user->roles()->syncWithoutDetaching([$adminRole->id]);
-        });
+        foreach ($usersWithRoles as $email => $roleIds) {
+            $user = User::where('email', $email)->first();
+
+            if ($user) {
+                $user->roles()->syncWithoutDetaching($roleIds);
+            }
+        }
     }
+
 }
