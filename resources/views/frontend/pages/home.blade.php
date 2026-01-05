@@ -5,72 +5,10 @@
 
 @section('content')
 
-    <!--Banner Section Here-->
     @include('frontend.partials.banner')
-    <!--Banner Section End-->
+    @include('frontend.partials.about')
 
-    <!--About Section Here-->
-    <section class="about__section pt-130 pb-130 overhid">
-        <div class="container">
-            <div class="row g-4 align-items-center justify-content-between">
-                <div class="col-xxl-6 col-xl-6 col-lg-6 wow fadeInLeft" data-wow-duration="3s">
-                    <div class="about__thumb">
-                        <img src="{{ asset('assets/frontend/img/about/about.jpg') }}" alt="about__image">
-                        <div class="small__about__one">
-                            <img src="{{ asset('assets/frontend/img/about/about-small1.jpg') }}" alt="about__img">
-                        </div>
-                        <div class="small__about">
-                            <img src="{{ asset('assets/frontend/img/about/about-small.jpg') }}" alt="about__img">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-6 col-xl-6 col-lg-6 wow fadeInRight" data-wow-duration="5s">
-                    <div class="about__content">
-                        <div class="about__header">
-                            <h6>
-                                About Us
-                            </h6>
-                        </div>
-                        <h2 class="mb-4">
-                            Building a greener future together Forever
-                        </h2>
-                        <p>
-                            Throughout human history, our relationship with the soil has affected our ability to cultivate
-                            crops and influenced the success of civilizations. This relationship between humans, the earth,
-                            and food sources affirms soil as the foundation of agriculture.
-                        </p>
-                        <ul class="check__list mt-4">
-                            <li class="list d-flex align-items-center mb-2">
-                                <i class="fa-solid fa-check"></i>
-                                <p>Mistakes To Avoid to the dummy printing has bees ind.</p>
-                            </li>
-                            <li class="list d-flex align-items-center mb-2">
-                                <i class="fa-solid fa-check"></i>
-                                <p>Your Startup industry standard loream saum.</p>
-                            </li>
-                            <li class="list d-flex align-items-center">
-                                <i class="fa-solid fa-check"></i>
-                                <p>Knew About Fonts text the printing and something do.</p>
-                            </li>
-                        </ul>
-                        <div class="profile__item d-flex align-items-center mt-5">
-                            <div class="profile d-flex align-items-center">
-                                <div class="profile__thumb">
-                                    <img src="{{ asset('assets/frontend/img/about/profile/p.jpg') }}" alt="profile__image">
-                                </div>
-                                <div class="text">
-                                    <p>GreenEarthnomist</p>
-                                    <h6>devid miller</h6>
-                                </div>
-                            </div>
-                            <a href="#" class="cmn--btn">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--About Section End-->
+  
 
     <!--Service Section Here-->
     <section class="service__section section__bg pt-130 pb-130 overhid">

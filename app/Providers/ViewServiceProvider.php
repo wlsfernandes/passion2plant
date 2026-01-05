@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\About;
 use App\Models\Banner;
 use App\Models\Setting;
 use App\Models\SocialLink;
@@ -37,11 +38,14 @@ class ViewServiceProvider extends ServiceProvider
                 ->orderBy('sort_order')
                 ->get();
 
+            $aboutSections = About::visible()->get()->keyBy('section');
+
 
             $view->with([
                 'settings' => $settings,
                 'socialLinks' => $socialLinks,
                 'banners' => $banners,
+                'aboutSections' => $aboutSections,
             ]);
         });
     }

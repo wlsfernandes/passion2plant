@@ -18,6 +18,9 @@ class AboutController extends BaseController
     protected function validatedData(Request $request): array
     {
         return $request->validate([
+
+            'section' => ['required', 'string', 'max:255'],
+            'sort_order' => ['nullable', 'integer'],
             'title_en' => ['required', 'string', 'max:255'],
             'title_es' => ['nullable', 'string', 'max:255'],
 

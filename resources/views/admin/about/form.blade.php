@@ -61,7 +61,38 @@
                 </div>
 
                 <hr>
+<div class="mb-3">
+    <label for="section" class="form-label fw-semibold">
+        About Section
+    </label>
 
+    <select name="section" id="section" class="form-select" required>
+        <option value="">-- Select section --</option>
+
+        @php
+            $sections = [
+                'vision' => 'Our Vision',
+                'mission' => 'Our Mission',
+                'values' => 'Our Values',
+                'who_we_are' => 'Who We Are',
+                'problem' => 'The Problem We Address',
+                'approach' => 'Our Approach',
+                'legacy' => 'Our Legacy',
+            ];
+        @endphp
+
+        @foreach($sections as $key => $label)
+            <option value="{{ $key }}"
+                {{ old('section', $about->section ?? '') === $key ? 'selected' : '' }}>
+                {{ $label }}
+            </option>
+        @endforeach
+    </select>
+
+    <small class="text-muted">
+        Each section appears as a distinct block on the About page.
+    </small>
+</div>
                 {{-- =======================
                 Titles & Subtitles
                 ======================== --}}

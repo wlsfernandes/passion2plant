@@ -43,7 +43,7 @@
 
                         <ul class="sub-menu" aria-expanded="false">
                             <li class="menu-title">Content</li>
-
+                            <li><a href="{{ route('abouts.index') }}"><i class="fas fa-info"></i> About</a></li>
                             <li><a href="{{ route('banners.index') }}"><i class="fas fa-image"></i> Banners</a></li>
                             <li><a href="{{ route('blogs.index') }}"><i class="uil-blogger-alt"></i> Blog</a></li>
                             <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a></li>

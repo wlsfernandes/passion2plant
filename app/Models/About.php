@@ -11,6 +11,8 @@ class About extends Model
     use HasFactory, Auditable;
     protected $table = 'abouts';
     protected $fillable = [
+        'section',
+        'sort_order',
         'title_en',
         'title_es',
         'subtitle_en',

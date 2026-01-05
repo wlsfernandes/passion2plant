@@ -122,6 +122,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
 
     // Content
+    Route::resource('abouts', AboutController::class);
     Route::resource('banners', BannerController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('events', EventController::class);
