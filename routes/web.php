@@ -9,20 +9,22 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\DeveloperSettingController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublishController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialLinkController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\SystemLogController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
@@ -30,10 +32,8 @@ use App\Http\Controllers\UserController;
 
 
 
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // Locale Language 
 Route::get('lang/{locale}', function ($locale) {
@@ -130,6 +130,8 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('resources', ResourceController::class);
+    Route::resource('stores', StoreController::class);
+    Route::resource('products', ProductController::class);
     Route::resource('teams', TeamController::class);
     Route::resource('testimonials', TestimonialController::class);
 
@@ -138,22 +140,6 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('social-links', SocialLinkController::class);
 
 });
-/*
-|--------------------------------------------------------------------------
-| Developer
-|--------------------------------------------------------------------------
-*/
-
-Route::middleware(['auth', 'verified', 'can:access-developer'])->group(function () {
-
-    Route::get('/developer-settings', [DeveloperSettingController::class, 'index'])->name('developer-settings.index');
-    Route::get('/developer-settings/edit', [DeveloperSettingController::class, 'edit'])->name('developer-settings.edit');
-    Route::put('/developer-settings', [DeveloperSettingController::class, 'update'])->name('developer-settings.update');
-    Route::post('/developer-settings/test-stripe', [DeveloperSettingController::class, 'testStripe'])->name('developer-settings.test-stripe');
-
-});
-
-
 /*
 |--------------------------------------------------------------------------
 | Profile

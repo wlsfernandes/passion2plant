@@ -5,19 +5,19 @@
     <div class="navbar-brand-box">
         <a href="{{ url('index') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="40">
+                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="80">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="40">
+                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="80">
             </span>
         </a>
 
         <a href="{{ url('index') }}" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="40">
+                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="80">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('/assets/admin/images/logo-light.png') }}" alt="" height="40">
+                <img src="{{ asset('/assets/admin/images/logo-light.png') }}" alt="" height="80">
             </span>
         </a>
     </div>
@@ -65,6 +65,42 @@
                                     Media</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#" class="has-arrow waves-effect" onclick="return false;">
+                            <i class="uil uil-store"></i>
+                            <span>Store</span>
+                        </a>
+
+                        <ul class="sub-menu" aria-expanded="false">
+
+                            <li class="menu-title">Catalog</li>
+
+                            <li>
+                                <a href="{{ route('stores.index') }}">
+                                    <i class="uil uil-store-alt"></i> Stores
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('products.index') }}">
+                                    <i class="uil uil-box"></i> Products
+                                </a>
+                            </li>
+
+                            <li class="menu-title">Sales</li>
+
+                            {{-- Future-ready placeholders --}}
+                            <li class="text-muted ps-4 small">
+                                Orders (coming soon)
+                            </li>
+
+                            <li class="text-muted ps-4 small">
+                                Payments (coming soon)
+                            </li>
+
+                        </ul>
+                    </li>
+
                 @endcan
                 @can('access-admin')
                     <li>
@@ -81,23 +117,6 @@
                         </ul>
                     </li>
                 @endcan
-                @can('access-developer')
-                    <li>
-                        <a href="#" class="has-arrow waves-effect" onclick="return false;">
-                            <i class="fas fa-tools"></i>
-                            <span>Developer</span>
-                        </a>
-
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li>
-                                <a href="{{ route('developer-settings.index') }}">
-                                    <i class="fas fa-exclamation-triangle text-danger"></i> Developer Settings
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endcan
-
 
             </ul>
         </div>

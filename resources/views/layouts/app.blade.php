@@ -4,36 +4,51 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Wilson Fernandes Junior">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', config('app.name'))</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    {{-- Favicon --}}
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/img/logo/favicon.png') }}">
 
-    <!-- Scripts -->
+    {{-- CSS --}}
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.theme.default.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
 
+    @stack('styles')
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+<body>
 
-        <!-- Page Heading -->
-        @isset($header)
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
+    {{-- Header --}}
+    @includeIf('frontend.partials.header')
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-    </div>
+    {{-- Page Content --}}
+    <main>
+        @yield('content')
+    </main>
+
+    {{-- Footer --}}
+    @includeIf('frontend.partials.footer')
+
+    {{-- JS --}}
+    <script src="{{ asset('assets/frontend/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+
+    @stack('scripts')
 </body>
-
 </html>

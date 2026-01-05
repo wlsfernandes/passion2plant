@@ -22,20 +22,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        /*
-   |--------------------------------------------------------------------------
-   | Runtime S3 Configuration (DB-driven)
-   |--------------------------------------------------------------------------
-   | 
-   */
-        if (Schema::hasTable('developer_settings')) {
-            RuntimeConfigService::applyS3Config();
-            RuntimeConfigService::applyStripeConfig();
-            RuntimeConfigService::applyPaypalConfig();
-            RuntimeConfigService::applyMailConfig();
-            RuntimeConfigService::applyQueueConfig();
-        }
-
         Gate::define('access-admin', function ($user) {
             return $user->roles()->where('name', 'Admin')->exists();
         });

@@ -23,13 +23,9 @@ class RoleSeeder extends Seeder
             ['name' => 'Website-admin']
         );
 
-        $developerRole = Role::updateOrCreate(
-            ['name' => 'Developer']
-        );
-
         // ✅ Users and their roles
         $usersWithRoles = [
-            'wlsfernandes@gmail.com' => [$adminRole->id, $developerRole->id],
+            'wlsfernandes@gmail.com' => [$adminRole->id, $websiteAdminRole->id],
             'drlizrios@gmail.com' => [$adminRole->id],
         ];
 
