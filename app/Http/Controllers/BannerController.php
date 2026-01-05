@@ -203,7 +203,7 @@ class BannerController extends BaseController
             );
 
             return redirect()
-                ->route('banner.index')
+                ->route('banners.index')
                 ->with('success', 'Banner deleted successfully.');
 
         } catch (Throwable $e) {
