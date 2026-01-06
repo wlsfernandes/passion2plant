@@ -22,7 +22,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Role</th>
-                        <th>Slug</th>
+                        <th>Sector</th>
                         <th>Image</th>
                         <th>Published</th>
                         <th width="140">Actions</th>
@@ -46,7 +46,7 @@
 
                             {{-- Slug --}}
                             <td>
-                                <code>{{ $team->slug }}</code>
+                                <code>{{ $team->sector }}</code>
                             </td>
 
                             {{-- Image --}}

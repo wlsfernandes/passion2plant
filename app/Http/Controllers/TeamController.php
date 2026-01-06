@@ -19,7 +19,7 @@ class TeamController extends BaseController
         return $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'role' => ['nullable', 'string', 'max:255'],
-
+            'sector' => ['required', 'string', 'max:255'],
             'content_en' => ['nullable', 'string'],
             'content_es' => ['nullable', 'string'],
 
@@ -27,6 +27,15 @@ class TeamController extends BaseController
 
             'is_published' => ['nullable', 'boolean'],
         ]);
+    }
+
+    public function profile(string $slug)
+    {
+        $team = Team::visible()
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return view('frontend.team.profile', compact('team'));
     }
 
     /**

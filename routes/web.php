@@ -33,6 +33,8 @@ use App\Http\Controllers\UserController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
+Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
 
 
 // Locale Language 
@@ -89,7 +91,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Images
     Route::get('/images/{model}/{id}', [ImageUploadController::class, 'edit'])->name('admin.images.edit');
     Route::post('/images/{model}/{id}', [ImageUploadController::class, 'update'])->name('admin.images.update');
-    Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
+
 
     // Publish toggle
     Route::patch('/publish/{model}/{id}', [PublishController::class, 'toggle'])->name('admin.publish.toggle');

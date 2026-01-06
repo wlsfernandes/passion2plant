@@ -7,6 +7,9 @@ use App\Models\About;
 use App\Models\Banner;
 use App\Models\Setting;
 use App\Models\SocialLink;
+use App\Models\Team;
+use App\Models\Testimonial;
+use PHPUnit\Event\Code\Test;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -39,13 +42,15 @@ class ViewServiceProvider extends ServiceProvider
                 ->get();
 
             $aboutSections = About::visible()->get()->keyBy('section');
-
-
+            $testimonials = Testimonial::visible()->get();
+            $teams = Team::visible()->inRandomOrder()->limit(4)->get();
             $view->with([
                 'settings' => $settings,
                 'socialLinks' => $socialLinks,
                 'banners' => $banners,
                 'aboutSections' => $aboutSections,
+                'teams' => $teams,
+                'testimonials' => $testimonials,
             ]);
         });
     }

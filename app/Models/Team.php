@@ -15,6 +15,7 @@ class Team extends Model
         'name',
         'slug',
         'role',
+        'sector',
         'content_en',
         'content_es',
         'image_url',
@@ -23,6 +24,13 @@ class Team extends Model
 
     protected $casts = [
         'is_published' => 'boolean',
+    ];
+
+    public const SECTORS = [
+        'founders' => 'Founders Strategic Council',
+        'board' => 'Board of Advisors',
+        'faculty' => 'Faculty',
+        'staff' => 'Our Staff',
     ];
 
     /**

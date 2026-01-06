@@ -54,6 +54,37 @@
                 Identity
                 ======================== --}}
                 <div class="mb-3">
+    <select
+        name="sector"
+        class="form-control @error('sector') is-invalid @enderror"
+        required
+    >
+        <option value="" disabled {{ old('sector', $team->sector ?? '') ? '' : 'selected' }}>
+            Select sector
+        </option>
+
+        @foreach(\App\Models\Team::SECTORS as $key => $label)
+            <option
+                value="{{ $key }}"
+                {{ old('sector', $team->sector ?? '') === $key ? 'selected' : '' }}
+            >
+                {{ $label }}
+            </option>
+        @endforeach
+    </select>
+
+    <small class="text-muted">
+        Required. Determines where this person appears on the public team page.
+    </small>
+
+    @error('sector')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
+
+                <div class="mb-3">
                     <input type="text"
                            name="name"
                            class="form-control @error('name') is-invalid @enderror"

@@ -4,7 +4,7 @@
         <div class="top__wrap d-flex align-items-center justify-content-between">
             <div class="logo"><a href="{{ url('/') }}" class="logo site-logo"><img
         src="{{ route('admin.images.preview', ['model' => 'settings', 'id' => $settings->id]) }}"
-        alt="{{ $settings->site_name ?? config('app.name') }}"></a></div>
+        alt="{{ $settings->site_name ?? 'Passion2Plant' }}"></a></div>
             
         <ul class="info d-flex align-items-center">
     @if(!empty($settings->address))
