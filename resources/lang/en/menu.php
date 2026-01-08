@@ -11,5 +11,6 @@ return [
     'donate' => 'Donate',
     'contact' => 'Contact Us',
     'blog' => 'Blog',
-    'events' => 'Events'
+    'events' => 'Events',
+    'our_team' => 'Our Team',
 ];

@@ -68,9 +68,42 @@
             {{-- Main Menu --}}
             <ul class="main-menu">
                 <li><a href="{{ url('/') }}">{{ __('menu.home') }}</a></li>
-                <li><a href="#">{{ __('menu.about') }}</a></li>
-                <li><a href="{{ route('blogs.index.public') }}">{{ __('menu.blog') }}</a></li>
-                <li><a href="{{ route('events.index.public') }}">{{ __('menu.events') }}</a></li>
+                <ul class="main-menu">
+
+    <li>
+        <a href="#">
+            {{ __('menu.about') }}
+            <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <ul class="sub-menu">
+            <li>
+                <a href="}">
+                    {{ __('menu.about') }}
+                </a>
+            </li>
+
+            
+             <li>
+        <a href="{{ route('blogs.index.public') }}">
+            {{ __('menu.blog') }}
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ route('events.index.public') }}">
+            {{ __('menu.events') }}
+        </a>
+    </li>
+    <li>
+                <a href="{{ route('teams.index.public') }}">
+                    {{ __('menu.our_team') }}
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+
                 <li><a href="#">{{ __('menu.cohorts') }}</a></li>
                 <li><a href="#">{{ __('menu.partnerships') }}</a></li>
                 <li><a href="{{ route('services.index.public') }}">{{ __('menu.services') }}</a></li>

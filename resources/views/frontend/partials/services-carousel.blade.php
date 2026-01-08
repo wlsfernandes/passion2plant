@@ -11,7 +11,7 @@
         </div>
 
         <div class="row g-4">
-            <p class=" wow fadeInUp" data-wow-duration="1.3s">@lang('pages.services_description')</p>
+            <h3 class=" wow fadeInUp" data-wow-duration="1.3s"> @lang('pages.services_subtitle')</h3>
             @forelse($featuredServices as $service)
                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
                     data-wow-duration="{{ 3 + ($loop->index * 2) }}s">
