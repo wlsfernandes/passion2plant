@@ -11,6 +11,32 @@ use Throwable;
 
 class EventController extends BaseController
 {
+
+    /**
+     * Public: list all published events
+     * URL: /our-events
+     */
+    public function indexPublic()
+    {
+        $events = Event::visible()
+            ->orderBy('event_date')
+            ->get();
+
+        return view('frontend.events.index', compact('events'));
+    }
+
+    /**
+     * Public: display a single event by slug
+     * URL: /event/{slug}
+     */
+    public function display(Event $event)
+    {
+        abort_unless($event->is_published, 404);
+
+        return view('frontend.events.show', compact('event'));
+    }
+
+
     /**
      * List all events (published + drafts).
      */

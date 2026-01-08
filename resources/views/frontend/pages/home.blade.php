@@ -11,9 +11,11 @@
     @include('frontend.partials.team-carousel')
     @include('frontend.partials.partners')  
     @include('frontend.partials.services-carousel')
+@include('frontend.partials.blog-carousel')
+@include('frontend.partials.event-carousel')
 
 
-    <!--Work Section Here-->
+<!--Work Section Here-->
     <section class="work__section pt-130 pb-130 overhid">
         <div class="container">
             <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">

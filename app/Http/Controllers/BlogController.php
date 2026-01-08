@@ -12,6 +12,31 @@ use App\Helpers\S3;
 
 class BlogController extends BaseController
 {
+
+    /**
+     * Public: list all published blogs
+     * URL: /our-blogs
+     */
+    public function indexPublic()
+    {
+        $blogs = Blog::visible()
+            ->orderByDesc('created_at')
+            ->get();
+
+        return view('frontend.blogs.index', compact('blogs'));
+    }
+
+    /**
+     * Public: display a single blog by slug
+     * URL: /blog/{slug}
+     */
+    public function display(Blog $blog)
+    {
+        abort_unless($blog->is_published, 404);
+
+        return view('frontend.blogs.show', compact('blog'));
+    }
+
     /**
      * List all blogs (published + drafts).
      */

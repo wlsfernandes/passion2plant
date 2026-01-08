@@ -10,4 +10,6 @@ return [
     'resources' => 'Resources',
     'donate' => 'Donate',
     'contact' => 'Contact Us',
+    'blog' => 'Blog',
+    'events' => 'Events'
 ];

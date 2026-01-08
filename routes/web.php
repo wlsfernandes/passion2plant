@@ -32,17 +32,12 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 
 
-/* |--------------------------------------------------------------------------
-Public web routes
-|-------------------------------------------------------------------------- */
-Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
-Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
-Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
-Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
 
-// Locale Language 
+
+
+/* |--------------------------------------------------------------------------
+Language Switcher
+|-------------------------------------------------------------------------- */
 Route::get('lang/{locale}', function ($locale) {
     if (in_array($locale, ['en', 'es'])) {
         Session::put('locale', $locale);
@@ -50,6 +45,26 @@ Route::get('lang/{locale}', function ($locale) {
     }
     return redirect()->back();
 })->name('lang.switch');
+
+
+
+
+/* |--------------------------------------------------------------------------
+Public web routes
+|-------------------------------------------------------------------------- */
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
+Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
+Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
+Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
+Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
+Route::get('/our-blogs', [BlogController::class, 'indexPublic'])->name('blogs.index.public');
+Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs.display');
+Route::get('/our-events', [EventController::class, 'indexPublic'])->name('events.index.public');
+Route::get('/event/{event:slug}', [EventController::class, 'display'])->name('events.display');
+Route::get('/our-team', [TeamController::class, 'indexPublic'])->name('teams.index.public');
+
 
 
 // 🧱 ADMIN SECTION
@@ -91,7 +106,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Files
     Route::get('/files/{model}/{id}/{lang}', [FileUploadController::class, 'edit'])->name('admin.files.edit');
     Route::post('/files/{model}/{id}/{lang}', [FileUploadController::class, 'update'])->name('admin.files.update');
-    Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
+
 
     // Images
     Route::get('/images/{model}/{id}', [ImageUploadController::class, 'edit'])->name('admin.images.edit');

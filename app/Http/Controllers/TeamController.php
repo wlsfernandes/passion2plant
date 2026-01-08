@@ -29,6 +29,17 @@ class TeamController extends BaseController
         ]);
     }
 
+
+    public function indexPublic()
+    {
+        $teams = Team::visible()
+            ->orderBy('sector')
+            ->orderBy('name')
+            ->get();
+
+        return view('frontend.team.index', compact('teams'));
+    }
+
     public function profile(string $slug)
     {
         $team = Team::visible()

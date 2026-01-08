@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Concerns\HasTextLimits;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Auditable;
 use Illuminate\Support\Str;
 
 class Team extends Model
 {
-    use HasFactory, Auditable;
+    use HasFactory, Auditable, HasTextLimits;
 
     protected $fillable = [
         'name',

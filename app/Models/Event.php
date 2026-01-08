@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasTextLimits;
 use App\Traits\Auditable;
 use Illuminate\Support\Str;
 
 class Event extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Auditable;
+    use HasFactory, Auditable, HasTextLimits;
 
     protected $fillable = [
         'title_en',
@@ -35,6 +36,19 @@ class Event extends Model
         'is_published' => 'boolean',
     ];
 
+    public function getTitle(): string
+    {
+        return app()->getLocale() === 'es'
+            ? ($this->title_es ?: $this->title_en)
+            : $this->title_en;
+    }
+
+    public function getContent(): string
+    {
+        return app()->getLocale() === 'es'
+            ? ($this->content_es ?: $this->content_en)
+            : $this->content_en;
+    }
     /**
      * Boot method to handle slug generation.
      */
@@ -96,5 +110,17 @@ class Event extends Model
                 $q->whereNull('publish_end_at')
                     ->orWhere('publish_end_at', '>=', now());
             });
+    }
+
+    public function hasDownloadFile(): bool
+    {
+        return !empty($this->getFileUrl());
+    }
+
+    public function getFileUrl(): ?string
+    {
+        return app()->getLocale() === 'es'
+            ? ($this->file_url_es ?: $this->file_url_en)
+            : ($this->file_url_en ?: $this->file_url_es);
     }
 }

@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Partner;
 use Illuminate\Support\ServiceProvider;
 use App\Models\About;
+use App\Models\Blog;
+use App\Models\Event;
 use App\Models\Banner;
 use App\Models\Setting;
 use App\Models\SocialLink;
@@ -56,6 +58,16 @@ class ViewServiceProvider extends ServiceProvider
                 ->inRandomOrder()
                 ->limit(3)
                 ->get();
+            $featuredBlogs = Blog::visible()
+                ->inRandomOrder()
+                ->limit(3)
+                ->get();
+
+            $featuredEvents = Event::visible()
+                ->inRandomOrder()
+                ->limit(3)
+                ->get();
+
 
             $view->with([
                 'settings' => $settings,
@@ -68,6 +80,8 @@ class ViewServiceProvider extends ServiceProvider
                 'featuredTestimonials' => $featuredTestimonials,
                 'partnerLogos' => $partnerLogos,
                 'featuredServices' => $featuredServices,
+                'featuredBlogs' => $featuredBlogs,
+                'featuredEvents' => $featuredEvents,
             ]);
         });
     }
