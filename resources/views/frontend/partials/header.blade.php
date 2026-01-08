@@ -71,9 +71,9 @@
                 <li><a href="#">{{ __('menu.about') }}</a></li>
                 <li><a href="#">{{ __('menu.cohorts') }}</a></li>
                 <li><a href="#">{{ __('menu.partnerships') }}</a></li>
-                <li><a href="#">{{ __('menu.services') }}</a></li>
+                <li><a href="{{ route('services.index.public') }}">{{ __('menu.services') }}</a></li>
                 <li><a href="#">{{ __('menu.opportunities') }}</a></li>
-                <li><a href="#">{{ __('menu.resources') }}</a></li>
+                <li><a href="">{{ __('menu.resources') }}</a></li>
                 <li><a href="#">{{ __('menu.donate') }}</a></li>
                 <li><a href="#">{{ __('menu.contact') }}</a></li>
             </ul>

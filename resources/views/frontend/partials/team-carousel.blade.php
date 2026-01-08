@@ -12,7 +12,7 @@
 
         <div class="row g-4">
 
-            @foreach($teams as $team)
+            @foreach($featuredTeams as $team)
                 <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 wow fadeInUp"
                      data-wow-duration="{{ 3 + ($loop->index * 2) }}s">
 

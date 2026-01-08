@@ -315,6 +315,62 @@ section {
     position: relative;
 }
 
+
+.partners__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    align-items: center;
+}
+
+/* Small tablets */
+@media (min-width: 576px) {
+    .partners__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .partners__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .partners__grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .partners__grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+.partner__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner__item img {
+    max-height: 70px;
+    max-width: 160px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+.partner__item img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+
 /* =====================================================
    RESPONSIVE
    ===================================================== */

@@ -7,84 +7,11 @@
 
     @include('frontend.partials.banner')
     @include('frontend.partials.about')
+    @include('frontend.partials.testimonial')
+    @include('frontend.partials.team-carousel')
+    @include('frontend.partials.partners')  
+    @include('frontend.partials.services-carousel')
 
-  
-
-    <!--Service Section Here-->
-    <section class="service__section section__bg pt-130 pb-130 overhid">
-        <div class="container">
-            <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
-                <h6>services</h6>
-                <h2>Preserving The Earth For Future Generations</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="3s">
-                    <div class="service__items center">
-                        <div class="thumb">
-                            <a href="service-details.html">
-                                <img src="{{ asset('assets/frontend/img/service/s5.jpg') }}" alt="service__image">
-                            </a>
-                        </div>
-                        <div class="content">
-                            <h5>
-                                <a href="service-details.html">
-                                    Carbon Offsetting
-                                </a>
-                            </h5>
-                            <p>
-                                Agriculture is the art and science of cultivating the soil cultivating cultivating growing
-                                crops.
-                            </p>
-                            <a href="service-details.html" class="btns">read more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="5s">
-                    <div class="service__items center">
-                        <div class="thumb">
-                            <a href="service-details.html">
-                                <img src="{{ asset('assets/frontend/img/service/s6.jpg') }}" alt="service__image">
-                            </a>
-                        </div>
-                        <div class="content">
-                            <h5>
-                                <a href="service-details.html">
-                                    Energy Consulting
-                                </a>
-                            </h5>
-                            <p>
-                                Agriculture is the art and science of cultivating the soil cultivating cultivating growing
-                                crops.
-                            </p>
-                            <a href="service-details.html" class="btns">read more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="7s">
-                    <div class="service__items center">
-                        <div class="thumb">
-                            <a href="service-details.html">
-                                <img src="{{ asset('assets/frontend/img/service/s7.jpg') }}" alt="service__image">
-                            </a>
-                        </div>
-                        <div class="content">
-                            <h5>
-                                <a href="service-details.html">
-                                    Climate Adaptation
-                                </a>
-                            </h5>
-                            <p>
-                                Agriculture is the art and science of cultivating the soil cultivating cultivating growing
-                                crops.
-                            </p>
-                            <a href="service-details.html" class="btns">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Service Section End-->
 
     <!--Work Section Here-->
     <section class="work__section pt-130 pb-130 overhid">

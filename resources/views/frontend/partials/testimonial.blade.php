@@ -15,7 +15,7 @@
         <div class="swiper testimonial__wrapper">
             <div class="swiper-wrapper">
 
-                @foreach($testimonials as $testimonial)
+                @foreach($featuredTestimonials as $testimonial)
                     <div class="swiper-slide">
                         <div class="testi__items">
                             <div class="testi__wrap">

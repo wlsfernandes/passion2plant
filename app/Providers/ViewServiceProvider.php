@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Partner;
 use Illuminate\Support\ServiceProvider;
 use App\Models\About;
 use App\Models\Banner;
@@ -9,7 +10,7 @@ use App\Models\Setting;
 use App\Models\SocialLink;
 use App\Models\Team;
 use App\Models\Testimonial;
-use PHPUnit\Event\Code\Test;
+use App\Models\Service;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -42,15 +43,31 @@ class ViewServiceProvider extends ServiceProvider
                 ->get();
 
             $aboutSections = About::visible()->get()->keyBy('section');
-            $testimonials = Testimonial::visible()->get();
-            $teams = Team::visible()->inRandomOrder()->limit(4)->get();
+            $featuredTestimonials = Testimonial::visible()->get();
+
+            $featuredTeams = Team::visible()
+                ->inRandomOrder()
+                ->limit(4)
+                ->get();
+
+            $partnerLogos = Partner::visible()->get();
+
+            $featuredServices = Service::visible()
+                ->inRandomOrder()
+                ->limit(3)
+                ->get();
+
             $view->with([
                 'settings' => $settings,
                 'socialLinks' => $socialLinks,
                 'banners' => $banners,
+
                 'aboutSections' => $aboutSections,
-                'teams' => $teams,
-                'testimonials' => $testimonials,
+
+                'featuredTeams' => $featuredTeams,
+                'featuredTestimonials' => $featuredTestimonials,
+                'partnerLogos' => $partnerLogos,
+                'featuredServices' => $featuredServices,
             ]);
         });
     }

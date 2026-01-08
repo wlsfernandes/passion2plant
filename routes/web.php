@@ -22,6 +22,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublishController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\StoreController;
@@ -31,11 +32,15 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 
 
-
+/* |--------------------------------------------------------------------------
+Public web routes
+|-------------------------------------------------------------------------- */
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
 Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
-
+Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
+Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
 
 // Locale Language 
 Route::get('lang/{locale}', function ($locale) {
@@ -133,6 +138,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('resources', ResourceController::class);
+    Route::resource('services', ServiceController::class);
     Route::resource('stores', StoreController::class);
     Route::resource('products', ProductController::class);
     Route::resource('teams', TeamController::class);
