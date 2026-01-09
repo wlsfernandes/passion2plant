@@ -111,6 +111,7 @@
                 <li><a href="">{{ __('menu.resources') }}</a></li>
                 <li><a href="#">{{ __('menu.donate') }}</a></li>
                 <li><a href="#">{{ __('menu.contact') }}</a></li>
+               <li class="nav-signin"><a href="{{ url('/login') }}">{{ __('menu.sign_in') }}</a></li>
             </ul>
 
             {{-- Right Menu Icons --}}

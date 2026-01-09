@@ -2,22 +2,22 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
-            <div class="navbar-brand-box">
+            <div class="navbar-brand-box" style="margin-top:25px;">
                 <a href="{{url('index')}}" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="40">
+                       <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" alt="" height="60">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="40">
+                           <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" alt="" height="60">
                     </span>
                 </a>
 
                 <a href="{{url('index')}}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="40">
+                          <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" alt="" height="60">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('/assets/admin/images/logo-light.png') }}" alt="" height="40">
+                          <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" alt="" height="60">
                     </span>
                 </a>
             </div>

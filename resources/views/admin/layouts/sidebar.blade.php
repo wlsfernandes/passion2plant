@@ -5,19 +5,19 @@
     <div class="navbar-brand-box">
         <a href="{{ url('index') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="80">
+                <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" alt="" height="60">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="80">
+                <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" alt="" height="60">
             </span>
         </a>
 
         <a href="{{ url('index') }}" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="80">
+                <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" alt="" height="60">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('/assets/admin/images/logo-light.png') }}" alt="" height="80">
+                <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" alt="" height="60">
             </span>
         </a>
     </div>

@@ -13,4 +13,6 @@ return [
     'blog' => 'Blog',
     'events' => 'Eventos',
     'our_team' => 'Nuestro Equipo',
+    'sign_in' => 'Acceder',
+
 ];

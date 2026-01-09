@@ -336,6 +336,22 @@ section {
     text-overflow: ellipsis;
 }
 
+/* Highlight Sign In menu item */
+.nav-signin>a {
+    background: #ffffff;
+    color: #23ad75 !important;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.nav-signin>a:hover {
+    background: #1e8f61;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 .partners__grid {
     display: grid;
