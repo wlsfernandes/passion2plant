@@ -1,7 +1,9 @@
 @extends('admin.layouts.master')
 
 @section('title', 'Roles')
-
+@section('css')
+    <link href="{{ asset('/assets/admin/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
     <div class="card border border-primary">
         <div class="card-header d-flex justify-content-between">
@@ -14,7 +16,7 @@
         <div class="card-body">
             <x-alert />
 
-            <table class="table table-bordered">
+            <table class="table table-bordered datatable-buttons">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -47,4 +49,10 @@
             </table>
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="{{ asset('/assets/admin/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/js/pages/datatables.init.js') }}"></script>
 @endsection

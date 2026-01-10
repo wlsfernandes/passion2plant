@@ -17,7 +17,7 @@
         <div class="card-body">
             <x-alert />
 
-            <table class="table table-bordered">
+            <table class="table table-bordered datatable-buttons">
                 <thead>
                     <tr>
                         <th>Label (EN)</th>

@@ -27,7 +27,7 @@
                         Attention: Temporary System Password: admin2030
                     </small>
 
-                    <table id="datatable-users" class="table table-striped table-bordered dt-responsive nowrap w-100">
+                    <table class="table table-bordered datatable-buttons">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -73,15 +73,8 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('/assets/libs/datatables/datatables.min.js') }}"></script>
-    <script>
-        $(function () {
-            $('#datatable-users').DataTable({
-                pageLength: 10,
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                dom: 'Bfrtip',
-                buttons: ['excel', 'print']
-            });
-        });
-    </script>
+    <script src="{{ asset('/assets/admin/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/js/pages/datatables.init.js') }}"></script>
 @endsection

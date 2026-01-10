@@ -17,7 +17,7 @@
         <div class="card-body">
             <x-alert />
 
-            <table class="table table-bordered">
+            <table class="table table-bordered datatable-buttons">
                 <thead>
                     <tr>
                         <th>Title (EN)</th>
@@ -28,7 +28,7 @@
                 </thead>
 
                 <tbody>
-                    @forelse($services as $service)
+                    @foreach($services as $service)
                         <tr>
                             {{-- Title --}}
                             <td>
@@ -87,15 +87,15 @@
                                 </form>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="4" class="text-center text-muted">
-                                No services found.
-                            </td>
-                        </tr>
-                    @endforelse
+                   @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="{{ asset('/assets/admin/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/js/pages/datatables.init.js') }}"></script>
 @endsection

@@ -1,7 +1,9 @@
 @extends('admin.layouts.master')
 
 @section('title', 'Upload Image')
-
+@section('css')
+  <link href="{{ asset('/assets/admin/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
     <div class="card border border-primary">
         <div class="card-header">
