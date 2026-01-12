@@ -80,6 +80,11 @@
                                     <i class="uil uil-store-alt"></i> Stores
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('donations.index') }}">
+                                    <i class="uil uil-heart"></i> Donations
+                                </a>
+                            </li>
 
                             <li>
                                 <a href="{{ route('products.index') }}">

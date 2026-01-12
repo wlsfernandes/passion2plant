@@ -9,6 +9,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ImageUploadController;
@@ -150,6 +151,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('events', EventController::class);
     Route::resource('pages', PageController::class);
     Route::resource('about', AboutController::class);
+    Route::resource('donations', DonationController::class);
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('resources', ResourceController::class);
