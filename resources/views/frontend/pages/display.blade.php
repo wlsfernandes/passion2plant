@@ -28,10 +28,6 @@
 
             {{-- Page Content --}}
             <div class="details__content">
-              <h3>
-                {{ $page->title }}
-              </h3>
-
               <div class="page__content">
                 {!! $page->content !!}
               </div>
