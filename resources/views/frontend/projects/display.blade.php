@@ -17,6 +17,20 @@
             {{-- Project Title --}}
             <div class="details__content mb-40">
               <h3>{{ $project->title }}</h3>
+              {{-- Optional Dates --}}
+              @if ($project->start_date || $project->end_date)
+                <div>
+                  <p class="text-muted">
+                    @if ($project->start_date)
+                      <strong>Start:</strong> {{ $project->start_date->format('F Y') }}
+                    @endif
+                    @if ($project->end_date)
+                      &nbsp;|&nbsp;
+                      <strong>End:</strong> {{ $project->end_date->format('F Y') }}
+                    @endif
+                  </p>
+                </div>
+              @endif
             </div>
 
             {{-- Project Description --}}
@@ -55,21 +69,18 @@
               </div>
             @endif
 
-            {{-- Optional Dates --}}
-            @if ($project->start_date || $project->end_date)
-              <div class="details__content mt-40">
-                <p class="text-muted">
-                  @if ($project->start_date)
-                    <strong>Start:</strong> {{ $project->start_date->format('F Y') }}
-                  @endif
-                  @if ($project->end_date)
-                    &nbsp;|&nbsp;
-                    <strong>End:</strong> {{ $project->end_date->format('F Y') }}
-                  @endif
-                </p>
-              </div>
-            @endif
 
+            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+
+              @if (!empty($project->external_link))
+                <a href="{{ $project->external_link }}" class="cmn--btn cmn--btn-outline" target="_blank"
+                  rel="noopener noreferrer">
+                  <i class="uil uil-external-link-alt"></i>
+                  @lang('pages.apply_now')
+                </a>
+              @endif
+
+            </div>
           </div>
 
         </div>

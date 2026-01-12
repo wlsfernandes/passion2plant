@@ -23,5 +23,7 @@ return [
   'blogs_description' => 'Reflexiones e historias de nuestra comunidad',
   'cohorts' => 'Nuestras Cohortes',
   'cohorts_description' => 'Únase a nuestras comunidades de aprendizaje transformadoras',
-
+  'download_file' => 'Descargar Archivo',
+  'apply_now' => 'Aplica Ahora',
+  'learn_more' => 'Aprende Más',
 ];

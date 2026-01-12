@@ -23,4 +23,7 @@ return [
   'blogs_description' => 'Insights and stories from our community',
   'cohorts' => 'Our Cohorts',
   'cohorts_description' => 'Join our transformative learning communities',
+  'download_file' => 'Download File',
+  'apply_now' => 'Apply Now',
+  'learn_more' => 'Learn More',
 ];
