@@ -109,7 +109,7 @@
         <li class="has-submenu">
           <a href="#">
             {{ __('menu.cohorts') }}
-            <i class="fas fa-chevron-right"></i>
+            <i class="fas fa-chevron-down"></i>
           </a>
 
           <ul class="sub-menu">
