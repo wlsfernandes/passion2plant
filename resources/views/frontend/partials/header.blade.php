@@ -122,7 +122,6 @@
             @endforeach
           </ul>
         </li>
-        <li><a href="#">{{ __('menu.cohorts') }}</a></li>
         <li><a href="#">{{ __('menu.partnerships') }}</a></li>
         <li><a href="{{ route('services.index.public') }}">{{ __('menu.services') }}</a></li>
 
