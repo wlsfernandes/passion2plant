@@ -6,7 +6,22 @@
   <section class="details__section event__section overhid pt-130 pb-130">
     <div class="container">
       <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
-        <h6>@lang('pages.cohorts')</h6>
+        <h6>{{ $project->title }}</h6>
+        @if ($project->start_date || $project->end_date)
+          <div>
+            <p class="text-muted">
+              @if ($project->start_date)
+                <strong>Start:</strong>
+                <h3>{{ $project->start_date->format('F Y') }}</h3>
+              @endif
+              @if ($project->end_date)
+                &nbsp;|&nbsp;
+                <strong>End:</strong>
+                <h3>{{ $project->end_date->format('F Y') }}</h3>
+              @endif
+            </p>
+          </div>
+        @endif
         <h3>@lang('pages.cohorts_description')</h3>
       </div>
       <div class="row g-4">
@@ -16,21 +31,9 @@
 
             {{-- Project Title --}}
             <div class="details__content mb-40">
-              <h3>{{ $project->title }}</h3>
+              <h3></h3>
               {{-- Optional Dates --}}
-              @if ($project->start_date || $project->end_date)
-                <div>
-                  <p class="text-muted">
-                    @if ($project->start_date)
-                      <strong>Start:</strong> {{ $project->start_date->format('F Y') }}
-                    @endif
-                    @if ($project->end_date)
-                      &nbsp;|&nbsp;
-                      <strong>End:</strong> {{ $project->end_date->format('F Y') }}
-                    @endif
-                  </p>
-                </div>
-              @endif
+
             </div>
 
             {{-- Project Description --}}

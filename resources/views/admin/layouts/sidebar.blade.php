@@ -60,7 +60,6 @@
 
               <li class="menu-title">Configuration</li>
 
-              <li><a href="{{ route('menu-items.index') }}"><i class="fas fa-bars"></i> Menus</a></li>
               <li><a href="{{ route('settings.index') }}"><i class="fas fa-cog"></i> Site Settings</a></li>
               <li><a href="{{ route('social-links.index') }}"><i class="fas fa-share-alt"></i> Social
                   Media</a></li>
