@@ -6,7 +6,7 @@
   <section class="details__section event__section overhid pt-130 pb-130">
     <div class="container">
       <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
-        <h3>{{ $project->title }}</h3>
+        <h3>{{ $project->getDescriptionTitle() }}</h3>
         @if ($project->start_date || $project->end_date)
           <div class="text-center mt-3">
             <h6 class="text-muted mb-0">
@@ -44,7 +44,7 @@
 
             {{-- Project Description --}}
             <div class="details__content mb-20">
-              {!! $project->description !!}
+              {!! $project->getDescriptionAttribute() !!}
             </div>
 
             {{-- Project Images --}}
