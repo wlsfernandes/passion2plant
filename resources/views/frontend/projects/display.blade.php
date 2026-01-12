@@ -8,19 +8,27 @@
       <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
         <h3>{{ $project->title }}</h3>
         @if ($project->start_date || $project->end_date)
-          <div>
-            <p class="text-muted">
+          <div class="text-center mt-3">
+            <h6 class="text-muted mb-0">
               @if ($project->start_date)
-                <strong></strong>
-                <h6>Start: {{ $project->start_date->format('F Y') }}</h6>
+                <span>
+                  <strong>Start:</strong> {{ $project->start_date->format('F Y') }}
+                </span>
               @endif
+
+              @if ($project->start_date && $project->end_date)
+                <span class="mx-2">|</span>
+              @endif
+
               @if ($project->end_date)
-                &nbsp;|&nbsp;
-                <h6>End:{{ $project->end_date->format('F Y') }}</h6>
+                <span>
+                  <strong>End:</strong> {{ $project->end_date->format('F Y') }}
+                </span>
               @endif
-            </p>
+            </h6>
           </div>
         @endif
+
       </div>
       <div class="row">
         <div class="col-lg-12">
