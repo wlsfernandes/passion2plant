@@ -6,18 +6,18 @@
   <section class="details__section event__section overhid pt-130 pb-130">
     <div class="container">
       <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
-        <h6>{{ $project->title }}</h6>
+        <h3>{{ $project->title }}</h3>
         @if ($project->start_date || $project->end_date)
           <div>
             <p class="text-muted">
               @if ($project->start_date)
                 <strong>Start:</strong>
-                <h3>{{ $project->start_date->format('F Y') }}</h3>
+                <h6>{{ $project->start_date->format('F Y') }}</h6>
               @endif
               @if ($project->end_date)
                 &nbsp;|&nbsp;
                 <strong>End:</strong>
-                <h3>{{ $project->end_date->format('F Y') }}</h3>
+                <h6>{{ $project->end_date->format('F Y') }}</h6>
               @endif
             </p>
           </div>
