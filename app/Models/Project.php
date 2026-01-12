@@ -96,6 +96,7 @@ class Project extends Model
   {
     $locale = app()->getLocale();
 
+
     return $this->{'description_' . $locale}
       ?? $this->description_en;
   }
