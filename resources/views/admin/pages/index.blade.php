@@ -68,7 +68,10 @@
 
               {{-- Slug --}}
               <td>
-                <code>{{ $page->slug }}</code>
+                <a href="{{ config('app.url') . '/our-pages/' . $page->slug }}" target="_blank"
+                  class="text-decoration-none">
+                  <code>{{ config('app.url') . '/pages/' . $page->slug }}</code>
+                </a>
               </td>
 
 
@@ -80,7 +83,8 @@
                   @csrf
                   @method('PATCH')
 
-                  <button type="submit" class="badge border-0 {{ $page->is_published ? 'bg-success' : 'bg-secondary' }}">
+                  <button type="submit"
+                    class="badge border-0 {{ $page->is_published ? 'bg-success' : 'bg-secondary' }}">
                     {{ $page->is_published ? __('Yes') : __('No') }}
                   </button>
                 </form>

@@ -20,6 +20,8 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectImageController;
 use App\Http\Controllers\PublishController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\RoleController;
@@ -40,11 +42,11 @@ use App\Http\Controllers\UserController;
 Language Switcher
 |-------------------------------------------------------------------------- */
 Route::get('lang/{locale}', function ($locale) {
-    if (in_array($locale, ['en', 'es'])) {
-        Session::put('locale', $locale);
-        App::setLocale($locale);
-    }
-    return redirect()->back();
+  if (in_array($locale, ['en', 'es'])) {
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+  }
+  return redirect()->back();
 })->name('lang.switch');
 
 
@@ -56,6 +58,7 @@ Public web routes
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
+Route::get('/our-pages/{slug}', [PageController::class, 'display'])->name('pages.display');
 Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
 Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
 Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
@@ -65,6 +68,7 @@ Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs
 Route::get('/our-events', [EventController::class, 'indexPublic'])->name('events.index.public');
 Route::get('/event/{event:slug}', [EventController::class, 'display'])->name('events.display');
 Route::get('/our-team', [TeamController::class, 'indexPublic'])->name('teams.index.public');
+
 
 
 
@@ -82,8 +86,8 @@ require __DIR__ . '/auth.php';
 |--------------------------------------------------------------------------
 */
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->middleware('auth')
-    ->name('logout');
+  ->middleware('auth')
+  ->name('logout');
 
 /*
 |--------------------------------------------------------------------------
@@ -92,30 +96,30 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 */
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('/admin', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+  Route::get('/admin', function () {
+    return view('admin.dashboard');
+  })->name('admin.dashboard');
 
-    // Breeze compatibility
-    Route::get('/dashboard', function () {
-        return redirect()->route('admin.dashboard');
-    })->name('dashboard');
+  // Breeze compatibility
+  Route::get('/dashboard', function () {
+    return redirect()->route('admin.dashboard');
+  })->name('dashboard');
 
 });
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // Files
-    Route::get('/files/{model}/{id}/{lang}', [FileUploadController::class, 'edit'])->name('admin.files.edit');
-    Route::post('/files/{model}/{id}/{lang}', [FileUploadController::class, 'update'])->name('admin.files.update');
+  // Files
+  Route::get('/files/{model}/{id}/{lang}', [FileUploadController::class, 'edit'])->name('admin.files.edit');
+  Route::post('/files/{model}/{id}/{lang}', [FileUploadController::class, 'update'])->name('admin.files.update');
 
 
-    // Images
-    Route::get('/images/{model}/{id}', [ImageUploadController::class, 'edit'])->name('admin.images.edit');
-    Route::post('/images/{model}/{id}', [ImageUploadController::class, 'update'])->name('admin.images.update');
+  // Images
+  Route::get('/images/{model}/{id}', [ImageUploadController::class, 'edit'])->name('admin.images.edit');
+  Route::post('/images/{model}/{id}', [ImageUploadController::class, 'update'])->name('admin.images.update');
 
 
-    // Publish toggle
-    Route::patch('/publish/{model}/{id}', [PublishController::class, 'toggle'])->name('admin.publish.toggle');
+  // Publish toggle
+  Route::patch('/publish/{model}/{id}', [PublishController::class, 'toggle'])->name('admin.publish.toggle');
 
 });
 /*
@@ -125,11 +129,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 */
 Route::middleware(['auth', 'verified', 'can:access-admin'])->group(function () {
 
-    Route::resource('users', UserController::class)->except(['show']);
-    Route::resource('roles', RoleController::class)->except(['show']);
+  Route::resource('users', UserController::class)->except(['show']);
+  Route::resource('roles', RoleController::class)->except(['show']);
 
-    Route::get('audits', [AuditController::class, 'index'])->name('audits.index');
-    Route::get('system-logs', [SystemLogController::class, 'index'])->name('system-logs.index');
+  Route::get('audits', [AuditController::class, 'index'])->name('audits.index');
+  Route::get('system-logs', [SystemLogController::class, 'index'])->name('system-logs.index');
 
 });
 /*
@@ -139,31 +143,34 @@ Route::middleware(['auth', 'verified', 'can:access-admin'])->group(function () {
 */
 Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(function () {
 
-    // Site Settings
-    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
-    Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+  // Site Settings
+  Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+  Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
+  Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
 
-    // Content
-    Route::resource('abouts', AboutController::class);
-    Route::resource('banners', BannerController::class);
-    Route::resource('blogs', BlogController::class);
-    Route::resource('events', EventController::class);
-    Route::resource('pages', PageController::class);
-    Route::resource('about', AboutController::class);
-    Route::resource('donations', DonationController::class);
-    Route::resource('partners', PartnerController::class);
-    Route::resource('positions', PositionController::class);
-    Route::resource('resources', ResourceController::class);
-    Route::resource('services', ServiceController::class);
-    Route::resource('stores', StoreController::class);
-    Route::resource('products', ProductController::class);
-    Route::resource('teams', TeamController::class);
-    Route::resource('testimonials', TestimonialController::class);
+  // Content
+  Route::resource('abouts', AboutController::class);
+  Route::resource('banners', BannerController::class);
+  Route::resource('blogs', BlogController::class);
+  Route::resource('events', EventController::class);
+  Route::resource('pages', PageController::class);
+  Route::resource('about', AboutController::class);
+  Route::resource('donations', DonationController::class);
+  Route::resource('partners', PartnerController::class);
+  Route::resource('positions', PositionController::class);
+  Route::resource('projects', ProjectController::class);
+  Route::resource('projects.images', ProjectImageController::class);
 
-    // Navigation & Social
-    Route::resource('menu-items', MenuItemController::class);
-    Route::resource('social-links', SocialLinkController::class);
+  Route::resource('resources', ResourceController::class);
+  Route::resource('services', ServiceController::class);
+  Route::resource('stores', StoreController::class);
+  Route::resource('products', ProductController::class);
+  Route::resource('teams', TeamController::class);
+  Route::resource('testimonials', TestimonialController::class);
+
+  // Navigation & Social
+  Route::resource('menu-items', MenuItemController::class);
+  Route::resource('social-links', SocialLinkController::class);
 
 });
 /*
@@ -172,7 +179,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
 |--------------------------------------------------------------------------
 */
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
