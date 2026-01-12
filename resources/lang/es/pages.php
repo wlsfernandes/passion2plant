@@ -1,6 +1,27 @@
 <?php
 
 return [
-    'testimonial' => 'Testimonios',
-    'testimonial_description' => 'Lo que nuestros participantes dicen sobre nosotros',
+  'all_services' => 'Todos los Servicios',
+  'service_details' => 'Detalles del Servicio',
+  'back_to_services' => 'Volver a los Servicios',
+  'need_help' => '¿Necesita ayuda?',
+  'contact_us' => 'Contáctenos',
+  'contact_us_description' => 'Si tiene alguna pregunta o necesita asistencia, no dude en comunicarse con nosotros. Estamos aquí para acompañarle en su camino.',
+  'testimonial' => 'Testimonios',
+  'testimonial_description' => 'Lo que las personas participantes dicen sobre nosotros',
+  'our_team' => 'Nuestro Equipo',
+  'our_team_description' => 'Conozca a las personas dedicadas que están detrás de nuestra misión',
+  'partners' => 'Nuestros Aliados',
+  'partners_description' => 'Organizaciones que nos apoyan y colaboran con nosotros',
+  'read_more' => 'Leer más',
+  'services' => 'Nuestros Servicios',
+  'services_subtitle' => 'Consultoría guiada por el Espíritu que capacita a pastores para la plantación de iglesias centrada en la justicia.',
+  'services_description' => 'En Passion2Plant creemos que cada pastor y denominación merece orientación fundamentada en la justicia, la conciencia cultural y una estrategia guiada por el Espíritu. Nuestros servicios de consultoría están diseñados para equipar, empoderar y ampliar el impacto de líderes comprometidos con plantar y nutrir comunidades de fe en el mundo complejo de hoy. Liderados por nuestra fundadora, la Rev. Dra. Liz Rios —líder experimentada, plantadora de iglesias, defensora de la justicia y referente nacional en innovación teológica— junto con un diverso equipo de profesorado seleccionado con amplia experiencia, ofrecemos consultoría personalizada para personas, redes y denominaciones que buscan fortalecer su misión, liderazgo y compromiso comunitario.',
+  'events' => 'Nuestros Eventos',
+  'featured_events' => 'Explore los próximos eventos y talleres',
+  'blogs' => 'Nuestros Blogs',
+  'blogs_description' => 'Reflexiones e historias de nuestra comunidad',
+  'cohorts' => 'Nuestras Cohortes',
+  'cohorts_description' => 'Únase a nuestras comunidades de aprendizaje transformadoras',
+
 ];

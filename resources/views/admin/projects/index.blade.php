@@ -6,10 +6,10 @@
   <div class="card border border-primary">
     <div class="card-header d-flex justify-content-between">
       <h5>
-        <i class="uil-briefcase"></i> Projects
+        <i class="uil-briefcase"></i> Cohorts
       </h5>
       <a href="{{ route('projects.create') }}" class="btn btn-success">
-        <i class="uil-plus"></i> Add Project
+        <i class="uil-plus"></i> Add Cohort
       </a>
     </div>
 
@@ -19,9 +19,9 @@
       <table class="table table-bordered datatable-buttons">
         <thead>
           <tr>
+            <th></th>
             <th>Title</th>
             <th>Period</th>
-            <th>Images</th>
             <th>Published</th>
             <th width="140">Actions</th>
           </tr>
@@ -33,9 +33,33 @@
             @endphp
 
             <tr>
+              {{-- Gallery preview (cover image) --}}
+              <td class="align-middle text-center">
+                <a href="{{ route('projects.images.index', $project) }}" class="btn btn-outline-primary btn-sm"
+                  title="View project images">
+                  <i class="uil uil-images"></i>
+                </a>
+
+                <div class="small text-muted mt-1">
+                  {{ $project->images->count() }}
+                  image{{ $project->images->count() === 1 ? '' : 's' }}
+                </div>
+              </td>
               {{-- Title (localized) --}}
               <td>
-                <strong>{{ $project->title }}</strong>
+
+                <strong>
+                  <a href="{{ route('projects.display', $project->slug) }}" target="_blank" class="text-decoration-none">
+                    {{ $project->title }}
+                  </a>
+                </strong>
+
+                <div class="small text-muted mt-1">
+                  <i class="uil uil-link"></i>
+                  <a href="{{ route('projects.display', $project->slug) }}" target="_blank" class="text-decoration-none">
+                    {{ route('projects.display', $project->slug) }}
+                  </a>
+                </div>
               </td>
 
               {{-- Period --}}
@@ -49,20 +73,12 @@
                 @else
                   <span class="text-muted">—</span>
                 @endif
+                <br />
+                <small><a href="{{ $project->external_link }}" target="_blank" class="text-decoration-none">
+                    {{ $project->external_link }} </a></small>
               </td>
 
-              {{-- Gallery preview (cover image) --}}
-              <td class="align-middle text-center">
-                <a href="{{ route('projects.images.index', $project) }}" class="btn btn-outline-primary btn-sm"
-                  title="View project images">
-                  <i class="uil uil-images"></i>
-                </a>
 
-                <div class="small text-muted mt-1">
-                  {{ $project->images->count() }}
-                  image{{ $project->images->count() === 1 ? '' : 's' }}
-                </div>
-              </td>
 
               {{-- Publish toggle --}}
               <td class="text-center">

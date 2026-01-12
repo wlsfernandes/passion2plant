@@ -22,12 +22,26 @@ class ProjectController extends BaseController
 
       'description_en' => ['nullable', 'string'],
       'description_es' => ['nullable', 'string'],
+      'external_link' => ['nullable', 'url', 'max:255'],
 
       'start_date' => ['nullable', 'date'],
       'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
 
       'is_published' => ['required', 'boolean'],
     ]);
+  }
+
+  /**
+   * Display the specified project.
+   */
+  public function display(string $slug)
+  {
+    $project = Project::visible()
+      ->with('images') // eager load ordered images
+      ->where('slug', $slug)
+      ->firstOrFail();
+
+    return view('frontend.projects.display', compact('project'));
   }
 
   /**
@@ -70,7 +84,7 @@ class ProjectController extends BaseController
       );
 
       return redirect()
-        ->route('projects.edit', $project)
+        ->route('projects.index', $project)
         ->with('success', 'Project created successfully. You can now add images.');
 
     } catch (Exception $e) {
@@ -121,7 +135,7 @@ class ProjectController extends BaseController
       );
 
       return redirect()
-        ->route('projects.edit', $project)
+        ->route('projects.index', $project)
         ->with('success', 'Project updated successfully.');
 
     } catch (Exception $e) {

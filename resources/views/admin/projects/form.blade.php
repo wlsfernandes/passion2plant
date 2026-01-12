@@ -42,18 +42,26 @@
         </div>
         {{-- Dates --}}
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-2 mb-2">
             <label class="form-label">Start Date</label>
             <input type="date" name="start_date" class="form-control"
               value="{{ old('start_date', isset($project->start_date) ? $project->start_date->format('Y-m-d') : '') }}">
           </div>
 
-          <div class="col-md-6 mb-3">
+          <div class="col-md-2 mb-2">
             <label class="form-label">End Date</label>
             <input type="date" name="end_date" class="form-control"
               value="{{ old('end_date', isset($project->end_date) ? $project->end_date->format('Y-m-d') : '') }}">
           </div>
+          <div class="col-md-8 mb-2">
+            <label class="form-label">External Link</label>
+            <input type="url" name="external_link" class="form-control" placeholder="https://example.com"
+              value="{{ old('external_link', $project->external_link ?? '') }}">
+
+          </div>
+
         </div>
+
 
         <hr>
         {{-- Title EN --}}

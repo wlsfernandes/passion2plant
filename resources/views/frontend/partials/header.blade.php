@@ -105,7 +105,23 @@
 
           </li>
         </ul>
+        {{-- COHORTS --}}
+        <li class="has-submenu">
+          <a href="#">
+            {{ __('menu.cohorts') }}
+            <i class="fas fa-chevron-right"></i>
+          </a>
 
+          <ul class="sub-menu">
+            @foreach ($projects as $project)
+              <li>
+                <a href="{{ route('projects.display', $project->slug) }}">
+                  {{ $project->title }}
+                </a>
+              </li>
+            @endforeach
+          </ul>
+        </li>
         <li><a href="#">{{ __('menu.cohorts') }}</a></li>
         <li><a href="#">{{ __('menu.partnerships') }}</a></li>
         <li><a href="{{ route('services.index.public') }}">{{ __('menu.services') }}</a></li>

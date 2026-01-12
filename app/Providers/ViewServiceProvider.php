@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Partner;
+use App\Models\Project;
 use Illuminate\Support\ServiceProvider;
 use App\Models\About;
 use App\Models\Blog;
@@ -70,6 +71,8 @@ class ViewServiceProvider extends ServiceProvider
         ->get();
       $pages = Page::visible()->get();
 
+      $projects = Project::visible()->orderByDesc('start_date')->get();
+
       $view->with([
         'settings' => $settings,
         'socialLinks' => $socialLinks,
@@ -84,6 +87,7 @@ class ViewServiceProvider extends ServiceProvider
         'featuredBlogs' => $featuredBlogs,
         'featuredEvents' => $featuredEvents,
         'pages' => $pages,
+        'projects' => $projects,
       ]);
     });
   }

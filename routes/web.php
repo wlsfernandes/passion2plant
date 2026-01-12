@@ -59,6 +59,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
 Route::get('/our-pages/{slug}', [PageController::class, 'display'])->name('pages.display');
+Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
 Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
 Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
 Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
