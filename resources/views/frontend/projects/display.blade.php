@@ -6,7 +6,7 @@
   <section class="details__section event__section overhid pt-130 pb-130">
     <div class="container">
       <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
-        <h3 class="heading-gradient-green-black">{{ $project->title }}</h3>
+        <h3>{{ $project->title }}</h3>
         @if ($project->start_date || $project->end_date)
           <div>
             <p class="text-muted">
@@ -22,7 +22,7 @@
           </div>
         @endif
       </div>
-      <div class="row g-4">
+      <div class="row">
         <div class="col-lg-12">
 
           <div class="details__items">
