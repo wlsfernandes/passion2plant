@@ -525,3 +525,14 @@ section {
   font-size: 48px;
   color: #999;
 }
+
+
+.section-spacing {
+  margin: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .section-spacing {
+    margin: 50px 0;
+  }
+}

@@ -58,10 +58,8 @@
 
               {{-- Title --}}
               <td>
-                <strong>{{ $about->title_en }}</strong><br>
-                <small class="text-muted">
-                  {{ $about->subtitle_en ?? '-' }}
-                </small>
+                <strong>Section: {{ $about->section }}</strong> <br>
+                {{ $about->title_en }}
               </td>
 
 

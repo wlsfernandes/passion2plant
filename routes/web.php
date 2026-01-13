@@ -60,6 +60,9 @@ Public web routes
 |-------------------------------------------------------------------------- */
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
+/* About */
+Route::get('/about-us', [AboutController::class, 'indexPublic'])->name('about.index.public');
+
 /* Blogs */
 Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs.display');
 Route::get('/our-blogs', [BlogController::class, 'indexPublic'])->name('blogs.index.public');

@@ -39,5 +39,6 @@ return [
   'home' => 'Inicio',
   'book_recommendations' => 'Recomendaciones de Libros',
   'learning_resources' => 'Recursos de Aprendizaje',
+  'about_us' => 'Sobre Nosotros',
 
 ];

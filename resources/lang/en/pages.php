@@ -39,6 +39,7 @@ return [
   'home' => 'Home',
   'book_recommendations' => 'Book Recommendations',
   'learning_resources' => 'Learning Resources',
+  'about_us' => 'About Us',
 
 
 ];
