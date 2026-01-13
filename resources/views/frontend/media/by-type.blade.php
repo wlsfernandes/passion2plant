@@ -33,10 +33,6 @@
                   {{ $item->title }}
                 </span>
 
-                <h5 class="mt-2">
-                  {{ $item->title }}
-                </h5>
-
                 @if ($item->description)
                   <small class="text-muted">
                     {{ \Illuminate\Support\Str::limit(strip_tags($item->description), 120) }}
