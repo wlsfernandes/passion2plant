@@ -473,3 +473,38 @@ section {
   height: 100%;
   object-fit: cover;
 }
+
+.media-title {
+  font-size: 1rem;
+  /* smaller, cleaner */
+  line-height: 1.35;
+  font-weight: 600;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  /* limit to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.service__items {
+  height: 100%;
+}
+
+.service__items .content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.media-meta {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.media-actions {
+  margin-top: auto;
+  padding-top: 16px;
+  text-align: center;
+}

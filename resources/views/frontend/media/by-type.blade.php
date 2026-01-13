@@ -30,9 +30,10 @@
               <div class="content d-flex flex-column h-100">
 
                 {{-- Title --}}
-                <h5 class="media-title mb-2">
-                  {{ $item->title }}
-                </h5>
+                <div class="media-meta text-muted small mb-3">
+                  <i class="uil uil-link"></i>
+                  {{ parse_url($item->external_link, PHP_URL_HOST) }}
+                </div>
 
                 {{-- Description --}}
                 @if ($item->description)
