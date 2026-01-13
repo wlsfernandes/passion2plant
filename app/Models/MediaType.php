@@ -8,6 +8,9 @@ class MediaType extends Model
 {
   protected $fillable = [
     'name',
+    'image_url',
+    'description_en',
+    'description_es',
     'slug',
     'is_active',
   ];
@@ -22,5 +25,12 @@ class MediaType extends Model
   public function media()
   {
     return $this->hasMany(Media::class);
+  }
+  public function getDescriptionAttribute(): ?string
+  {
+    $locale = app()->getLocale();
+
+    return $this->{'description_' . $locale}
+      ?? $this->description_en;
   }
 }

@@ -17,6 +17,8 @@ class MediaTypeController extends BaseController
   {
     return $request->validate([
       'name' => ['required', 'string', 'max:255'],
+      'description_en' => ['nullable', 'string'],
+      'description_es' => ['nullable', 'string'],
       'is_active' => ['required', 'boolean'],
     ]);
   }

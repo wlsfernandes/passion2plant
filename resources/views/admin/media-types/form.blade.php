@@ -45,6 +45,22 @@
           <input type="text" name="name" class="form-control" placeholder="e.g. Video, Article, Podcast"
             value="{{ old('name', $mediaType->name ?? '') }}" required>
         </div>
+        {{-- Description EN --}}
+        <div class="mb-3">
+          <label class="form-label">Description (English)</label>
+          <textarea name="description_en" class="form-control" rows="3" placeholder="Short description for this media type">
+    {{ old('description_en', $mediaType->description_en ?? '') }}
+  </textarea>
+        </div>
+
+        {{-- Description ES --}}
+        <div class="mb-3">
+          <label class="form-label">Description (Spanish)</label>
+          <textarea name="description_es" class="form-control" rows="3"
+            placeholder="Descripción corta para este tipo de contenido">
+    {{ old('description_es', $mediaType->description_es ?? '') }}
+  </textarea>
+        </div>
 
         {{-- Actions --}}
         <div class="d-flex justify-content-between mt-4">

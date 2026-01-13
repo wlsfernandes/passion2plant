@@ -20,6 +20,7 @@
       <table class="table table-bordered datatable-buttons">
         <thead>
           <tr>
+            <th></th>
             <th>Name</th>
             <th>Slug</th>
             <th>Status</th>
@@ -29,6 +30,17 @@
         <tbody>
           @foreach ($mediaTypes as $mediaType)
             <tr>
+              <td class="text-center">
+                <a href="{{ route('admin.images.edit', ['model' => 'media-types', 'id' => $mediaType->id]) }}">
+                  @if ($mediaType->image_url)
+                    <img src="{{ route('admin.images.preview', ['model' => 'media-types', 'id' => $mediaType->id]) }}"
+                      class="rounded" style="width:60px;height:60px;object-fit:cover;">
+                  @else
+                    <i class="uil uil-image text-muted font-size-24"></i>
+                  @endif
+                </a>
+              </td>
+
               {{-- Name --}}
               <td>
                 <strong>{{ $mediaType->name }}</strong>
