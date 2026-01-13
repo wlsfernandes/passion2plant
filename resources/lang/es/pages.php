@@ -32,5 +32,7 @@ return [
   'visit_resource' => 'Visitar Recurso',
   'no_media_found' => 'No se encontraron elementos de medios.',
   'resources' => 'Nuestros Recursos',
-  'resources_description' => 'Explore nuestra colección curada de recursos diseñados para apoyar e inspirar su camino en la fe y la justicia.'
+  'resources_description' => 'Explore nuestra colección curada de recursos diseñados para apoyar e inspirar su camino en la fe y la justicia.',
+  'recommended_books' => 'Libros Recomendados',
+  'recommended_books_description' => 'Una selección curada de libros para profundizar su comprensión y práctica de la fe y la justicia.',
 ];

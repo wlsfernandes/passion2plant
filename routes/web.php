@@ -63,7 +63,10 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 /* Blogs */
 Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs.display');
 Route::get('/our-blogs', [BlogController::class, 'indexPublic'])->name('blogs.index.public');
+/* Book Recommendations */
+Route::get('/our-book-recommendations', [BookRecommendationController::class, 'indexPublic'])->name('book-recommendations.index.public');
 
+/* Contact */
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 /* Events */
@@ -81,8 +84,7 @@ Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name(
 
 /* Services */
 Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
-Route::get('/service/{service:slug}', [ServiceController::class, 'display'])
-  ->name('services.display');
+Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
 /* Teams */
 Route::get('/our-team', [TeamController::class, 'indexPublic'])->name('teams.index.public');
 Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');

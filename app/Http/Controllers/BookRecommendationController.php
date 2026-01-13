@@ -28,6 +28,18 @@ class BookRecommendationController extends BaseController
   }
 
   /**
+   * Public: list all published blogs
+   * URL: /our-blogs
+   */
+  public function indexPublic()
+  {
+    $books = BookRecommendation::all()
+      ->sortByDesc('created_at');
+
+    return view('frontend.book-recommendations.index', compact('books'));
+  }
+
+  /**
    * Display a listing of book recommendations.
    */
   public function index()

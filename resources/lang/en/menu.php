@@ -16,4 +16,5 @@ return [
   'sign_in' => 'Sign In',
   'learn_more' => 'Learn More',
   'media' => 'Media',
+  'recommended_books' => 'Recommended Books',
 ];

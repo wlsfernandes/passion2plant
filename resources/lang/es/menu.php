@@ -16,4 +16,5 @@ return [
   'sign_in' => 'Acceder',
   'learn_more' => 'Conócenos',
   'media' => 'Medios',
+  'recommended_books' => 'Libros Recomendados',
 ];
