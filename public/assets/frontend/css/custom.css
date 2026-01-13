@@ -491,3 +491,11 @@ section {
   padding-top: 16px;
   text-align: center;
 }
+
+.media-list-item h4 {
+  line-height: 1.4;
+}
+
+.media-list-item hr {
+  border-top: 1px solid #eee;
+}
