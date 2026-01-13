@@ -21,38 +21,40 @@
       </div>
 
       {{-- Media Items --}}
-      <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="service__items h-100 d-flex flex-column">
 
-        @forelse ($media as $item)
-          <div class="col-lg-4 col-md-6">
-            <div class="service__items h-100">
+          <div class="content d-flex flex-column h-100">
 
-              <div class="content">
+            {{-- Media Type Badge --}}
+            <span class="badge bg-light text-dark mb-2 align-self-start">
+              {{ $type->name }}
+            </span>
 
-                <span class="badge bg-light text-dark mb-2">
-                  {{ $item->title }}
-                </span>
+            {{-- Title (wraps naturally) --}}
+            <h5 class="media-title">
+              {{ $type->title }}
+            </h5>
 
-                @if ($item->description)
-                  <small class="text-muted">
-                    {{ \Illuminate\Support\Str::limit(strip_tags($item->description), 120) }}
-                  </small>
-                @endif
+            {{-- Description (optional) --}}
+            @if ($type->description)
+              <p class="text-muted">
+                {{ $type->description }}
+              </p>
+            @endif
 
-                <a href="{{ $item->external_link }}" class="btns mt-3" target="_blank" rel="noopener">
-                  Visit Resource
-                </a>
-              </div>
-
+            {{-- Action pinned to bottom --}}
+            <div class="mt-auto pt-3 text-center">
+              <a href="{{ $type->external_link }}" class="btns" target="_blank" rel="noopener">
+                Visit Resource
+              </a>
             </div>
-          </div>
-        @empty
-          <div class="col-12 text-center text-muted">
-            No resources available yet.
-          </div>
-        @endforelse
 
+          </div>
+
+        </div>
       </div>
+
 
     </div>
   </section>
