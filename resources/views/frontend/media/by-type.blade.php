@@ -21,40 +21,44 @@
       </div>
 
       {{-- Media Items --}}
-      <div class="col-lg-4 col-md-6">
-        <div class="service__items h-100 d-flex flex-column">
+      <div class="row g-4">
 
-          <div class="content d-flex flex-column h-100">
+        @forelse ($media as $item)
+          <div class="col-lg-4 col-md-6">
+            <div class="service__items h-100 d-flex flex-column">
 
-            {{-- Media Type Badge --}}
-            <span class="badge bg-light text-dark mb-2 align-self-start">
-              {{ $type->name }}
-            </span>
+              <div class="content d-flex flex-column h-100">
 
-            {{-- Title (wraps naturally) --}}
-            <h5 class="media-title">
-              {{ $type->title }}
-            </h5>
+                {{-- Title --}}
+                <h5 class="media-title mb-2">
+                  {{ $item->title }}
+                </h5>
 
-            {{-- Description (optional) --}}
-            @if ($type->description)
-              <p class="text-muted">
-                {{ $type->description }}
-              </p>
-            @endif
+                {{-- Description --}}
+                @if ($item->description)
+                  <p class="text-muted">
+                    {{ $item->description }}
+                  </p>
+                @endif
 
-            {{-- Action pinned to bottom --}}
-            <div class="mt-auto pt-3 text-center">
-              <a href="{{ $type->external_link }}" class="btns" target="_blank" rel="noopener">
-                Visit Resource
-              </a>
+                {{-- Button pinned to bottom --}}
+                <div class="mt-auto pt-3">
+                  <a href="{{ $item->external_link }}" class="btns" target="_blank" rel="noopener">
+                    Visit Resource
+                  </a>
+                </div>
+
+              </div>
+
             </div>
-
           </div>
+        @empty
+          <div class="col-12 text-center text-muted">
+            No resources available yet.
+          </div>
+        @endforelse
 
-        </div>
       </div>
-
 
     </div>
   </section>
