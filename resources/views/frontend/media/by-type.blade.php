@@ -30,7 +30,7 @@
               <div class="content">
 
                 <span class="badge bg-light text-dark mb-2">
-                  {{ $type->name }}
+                  {{ $item->title }}
                 </span>
 
                 <h5 class="mt-2">
@@ -38,13 +38,13 @@
                 </h5>
 
                 @if ($item->description)
-                  <p class="text-muted">
+                  <small class="text-muted">
                     {{ \Illuminate\Support\Str::limit(strip_tags($item->description), 120) }}
-                  </p>
+                  </small>
                 @endif
 
                 <a href="{{ $item->external_link }}" class="btns mt-3" target="_blank" rel="noopener">
-                  Visit Resource →
+                  Visit Resource
                 </a>
               </div>
 
