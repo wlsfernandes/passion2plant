@@ -15,4 +15,5 @@ return [
   'our_team' => 'Our Team',
   'sign_in' => 'Sign In',
   'learn_more' => 'Learn More',
+  'media' => 'Media',
 ];

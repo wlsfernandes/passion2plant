@@ -49,14 +49,14 @@
 
               {{-- Action --}}
               <a href="{{ $item->external_link }}" target="_blank" rel="noopener" class="cmn--btn">
-                Visit Resource
+                @lang('pages.visit_resource')
               </a>
 
               <hr class="mt-50">
             </article>
           @empty
             <p class="text-center text-muted">
-              No resources available yet.
+              @lang('pages.no_media_found')
             </p>
           @endforelse
 

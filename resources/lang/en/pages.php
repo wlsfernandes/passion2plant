@@ -29,4 +29,6 @@ return [
   'media' => 'Media',
   'media_description' => 'Explore our collection of articles, videos, and podcasts',
   'explore' => 'Explore',
+  'visit_resource' => 'Visit Resource',
+  'no_media_found' => 'No media items found.',
 ];

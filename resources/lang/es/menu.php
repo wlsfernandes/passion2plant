@@ -15,5 +15,5 @@ return [
   'our_team' => 'Nuestro Equipo',
   'sign_in' => 'Acceder',
   'learn_more' => 'Conócenos',
-
+  'media' => 'Medios',
 ];

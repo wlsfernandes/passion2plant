@@ -99,6 +99,11 @@
                   {{ __('menu.our_team') }}
                 </a>
               </li>
+              <li>
+                <a href="{{ route('media.index.public') }}">
+                  {{ __('menu.media') }}
+                </a>
+              </li>
               <li><a href="#">{{ __('menu.opportunities') }}</a></li>
 
             </ul>
