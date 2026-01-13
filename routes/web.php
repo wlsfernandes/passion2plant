@@ -58,19 +58,37 @@ Route::get('lang/{locale}', function ($locale) {
 Public web routes
 |-------------------------------------------------------------------------- */
 Route::get('/', [HomeController::class, 'index'])->name('index');
+
+/* Blogs */
+Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs.display');
+Route::get('/our-blogs', [BlogController::class, 'indexPublic'])->name('blogs.index.public');
+
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
-Route::get('/our-pages/{slug}', [PageController::class, 'display'])->name('pages.display');
-Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
+
+/* Events */
+Route::get('/event/{event:slug}', [EventController::class, 'display'])->name('events.display');
+Route::get('/our-events', [EventController::class, 'indexPublic'])->name('events.index.public');
+
+/* Files & Images */
 Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
 Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
-Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
+
+/* Pages */
+Route::get('/our-pages/{slug}', [PageController::class, 'display'])->name('pages.display');
+/* Projects */
+Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
+
+/* Services */
 Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
-Route::get('/our-blogs', [BlogController::class, 'indexPublic'])->name('blogs.index.public');
-Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs.display');
-Route::get('/our-events', [EventController::class, 'indexPublic'])->name('events.index.public');
-Route::get('/event/{event:slug}', [EventController::class, 'display'])->name('events.display');
+Route::get('/service/{service:slug}', [ServiceController::class, 'display'])
+  ->name('services.display');
+/* Teams */
 Route::get('/our-team', [TeamController::class, 'indexPublic'])->name('teams.index.public');
+Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
+
+/* Media */
+Route::get('/insights', [MediaController::class, 'indexPublic'])->name('media.index.public');
+Route::get('/insights/{type:slug}', [MediaController::class, 'byType'])->name('media.byType');
 
 
 

@@ -26,4 +26,7 @@ return [
   'download_file' => 'Descargar Archivo',
   'apply_now' => 'Aplica Ahora',
   'learn_more' => 'Aprende Más',
+  'media' => 'Medios',
+  'media_description' => 'Explore nuestra colección de artículos, videos y podcasts',
+  'explore' => 'Explorar',
 ];

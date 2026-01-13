@@ -15,6 +15,14 @@ class MediaType extends Model
     'is_active',
   ];
 
+  protected $casts = [
+    'is_active' => 'boolean',
+  ];
+
+  public function scopeVisible($query)
+  {
+    return $query->where('is_active', true);
+  }
   protected static function booted()
   {
     static::creating(function (MediaType $type) {

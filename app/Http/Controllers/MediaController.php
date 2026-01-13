@@ -6,6 +6,7 @@ use App\Models\Media;
 use App\Models\MediaType;
 use Illuminate\Http\Request;
 use App\Services\SystemLogger;
+use Illuminate\View\View;
 use Exception;
 
 class MediaController extends BaseController
@@ -33,6 +34,36 @@ class MediaController extends BaseController
     ]);
   }
 
+  public function indexPublic()
+  {
+    $mediaTypes = MediaType::visible()
+      ->orderBy('name')
+      ->get();
+
+    return view('frontend.media-types.index', compact('mediaTypes'));
+  }
+
+
+  /**
+   * Display media items by media type (slug-based).
+   * URL: /media/{slug}
+   */
+  public function byType(string $slug): View
+  {
+    $type = MediaType::visible()
+      ->where('slug', $slug)
+      ->firstOrFail();
+
+    $media = $type->media()
+      ->where('is_published', true)
+      ->orderByDesc('published_at')
+      ->get();
+
+    return view('frontend.media.by-type', [
+      'type' => $type,
+      'media' => $media,
+    ]);
+  }
   /**
    * Display a listing of media.
    */

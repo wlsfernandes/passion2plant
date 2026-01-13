@@ -26,4 +26,7 @@ return [
   'download_file' => 'Download File',
   'apply_now' => 'Apply Now',
   'learn_more' => 'Learn More',
+  'media' => 'Media',
+  'media_description' => 'Explore our collection of articles, videos, and podcasts',
+  'explore' => 'Explore',
 ];
