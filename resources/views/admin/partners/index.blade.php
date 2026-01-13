@@ -35,18 +35,25 @@
             <tr>
               {{-- Image --}}
               <td class="d-flex justify-content-center align-items-center">
-                @if ($partner->image_url)
-                  <a href="{{ route('admin.images.preview', ['model' => 'partners', 'id' => $partner->id]) }}"
-                    target="_blank" title="View image">
-                    <img src="{{ route('admin.images.preview', ['model' => 'partners', 'id' => $partner->id]) }}"
-                      alt="Partner image" class="rounded-circle mb-1" style="width:80px;height:80px;object-fit:cover;">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                  @if ($partner->image_url)
+                    <a href="{{ route('admin.images.preview', ['model' => 'partners', 'id' => $partner->id]) }}"
+                      target="_blank" title="View image">
+                      <img src="{{ route('admin.images.preview', ['model' => 'partners', 'id' => $partner->id]) }}"
+                        alt="Partner image" class="rounded-circle mb-1" style="width:80px;height:80px;object-fit:cover;">
+                    </a>
+                  @else
+                    <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mb-1"
+                      style="width:80px;height:80px;">
+                      <i class="uil uil-image text-muted font-size-24"></i>
+                    </div>
+                  @endif
+
+                  <a href="{{ route('admin.images.edit', ['model' => 'partners', 'id' => $partner->id]) }}"
+                    class="text-primary small" title="Upload / Change image">
+                    <i class="uil uil-edit"></i> Edit
                   </a>
-                @else
-                  <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mb-1"
-                    style="width:80px;height:80px;">
-                    <i class="uil uil-image text-muted font-size-24"></i>
-                  </div>
-                @endif
+                </div>
               </td>
               {{-- Name --}}
               <td>

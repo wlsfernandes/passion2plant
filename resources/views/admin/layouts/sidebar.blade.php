@@ -45,6 +45,12 @@
               <li class="menu-title">Content</li>
               <li><a href="{{ route('abouts.index') }}"><i class="fas fa-info"></i> About</a></li>
               <li><a href="{{ route('banners.index') }}"><i class="fas fa-image"></i> Banners</a></li>
+              <li>
+                <a href="{{ route('book-recommendations.index') }}">
+                  <i class="uil uil-book-open"></i>
+                  <small>Book Recommendations</small>
+                </a>
+              </li>
               <li><a href="{{ route('blogs.index') }}"><i class="uil-blogger-alt"></i> Blog</a></li>
               <li><a href="{{ route('projects.index') }}"><i class="uil uil-calendar-alt"></i> Cohorts</a></li>
               <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a></li>

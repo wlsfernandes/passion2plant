@@ -31,14 +31,20 @@
           @foreach ($mediaTypes as $mediaType)
             <tr>
               <td class="text-center">
-                <a href="{{ route('admin.images.edit', ['model' => 'media-types', 'id' => $mediaType->id]) }}">
-                  @if ($mediaType->image_url)
-                    <img src="{{ route('admin.images.preview', ['model' => 'media-types', 'id' => $mediaType->id]) }}"
-                      class="rounded" style="width:60px;height:60px;object-fit:cover;">
-                  @else
-                    <i class="uil uil-image text-muted font-size-24"></i>
-                  @endif
-                </a>
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                  <a href="{{ route('admin.images.edit', ['model' => 'media-types', 'id' => $mediaType->id]) }}">
+                    @if ($mediaType->image_url)
+                      <img src="{{ route('admin.images.preview', ['model' => 'media-types', 'id' => $mediaType->id]) }}"
+                        class="rounded" style="width:60px;height:60px;object-fit:cover;">
+                    @else
+                      <i class="uil uil-image text-muted font-size-24"></i>
+                    @endif
+                  </a>
+                  <a href="{{ route('admin.images.edit', ['model' => 'media-types', 'id' => $mediaType->id]) }}"
+                    class="text-primary small" title="Upload / Change image">
+                    <i class="uil uil-edit"></i> Edit
+                  </a>
+                </div>
               </td>
 
               {{-- Name --}}
