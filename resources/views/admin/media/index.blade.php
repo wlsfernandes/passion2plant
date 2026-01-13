@@ -72,7 +72,7 @@
               <td class="text-center">
                 <form method="POST"
                   action="{{ route('admin.publish.toggle', [
-                      'model' => 'media',
+                      'model' => 'medias',
                       'id' => $item->id,
                   ]) }}">
                   @csrf
