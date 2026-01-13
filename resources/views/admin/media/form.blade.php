@@ -62,7 +62,12 @@
               value="{{ old('published_at', isset($media->published_at) ? $media->published_at->format('Y-m-d') : '') }}">
           </div>
         </div>
-
+        {{-- External Link --}}
+        <div class="mb-3">
+          <label class="form-label">External Link</label>
+          <input type="url" name="external_link" class="form-control" placeholder="https://..."
+            value="{{ old('external_link', $media->external_link ?? '') }}">
+        </div>
         {{-- Title EN --}}
         <div class="mb-3">
           <label class="form-label">Title (English)</label>
@@ -88,14 +93,6 @@
           <label class="form-label">Description (Spanish)</label>
           <textarea name="description_es" class="form-control" rows="4" placeholder="Descripción en español">{{ old('description_es', $media->description_es ?? '') }}</textarea>
         </div>
-
-        {{-- External Link --}}
-        <div class="mb-3">
-          <label class="form-label">External Link</label>
-          <input type="url" name="external_link" class="form-control" placeholder="https://..."
-            value="{{ old('external_link', $media->external_link ?? '') }}">
-        </div>
-
 
         {{-- Actions --}}
         <div class="d-flex justify-content-between">
