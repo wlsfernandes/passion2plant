@@ -24,7 +24,7 @@
               <div class="service__items center book-card">
 
                 {{-- Cover --}}
-                <div class="thumb book-thumb">
+                <div class="thumb standard-thumb">
                   @if ($book->image_url)
                     <img
                       src="{{ route('admin.images.preview', [
