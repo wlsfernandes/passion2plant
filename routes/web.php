@@ -159,7 +159,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
   Route::resource('pages', PageController::class);
   Route::resource('about', AboutController::class);
   Route::resource('donations', DonationController::class);
-  Route::resource('media', MediaController::class);
+  Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
   Route::resource('media-types', MediaTypeController::class);
   Route::resource('partners', PartnerController::class);
   Route::resource('positions', PositionController::class);
