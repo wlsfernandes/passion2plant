@@ -90,6 +90,8 @@ Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profi
 Route::get('/insights', [MediaController::class, 'indexPublic'])->name('media.index.public');
 Route::get('/insights/{type:slug}', [MediaController::class, 'byType'])->name('media.byType');
 
+/* Resources */
+Route::get('/our-resources', [ResourceController::class, 'indexPublic'])->name('resources.index.public');
 
 
 

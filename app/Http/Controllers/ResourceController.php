@@ -32,6 +32,17 @@ class ResourceController extends BaseController
     ]);
   }
 
+  public function indexPublic()
+  {
+    $resources = Resource::visible()
+      ->orderBy('title_en', 'asc')
+      ->get();
+
+    return view('frontend.resources.index', compact('resources'));
+  }
+
+
+
   /**
    * Display a listing of resources.
    */

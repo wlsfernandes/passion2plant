@@ -29,4 +29,8 @@ return [
   'media' => 'Medios',
   'media_description' => 'Explore nuestra colección de artículos, videos y podcasts',
   'explore' => 'Explorar',
+  'visit_resource' => 'Visitar Recurso',
+  'no_media_found' => 'No se encontraron elementos de medios.',
+  'resources' => 'Nuestros Recursos',
+  'resources_description' => 'Explore nuestra colección curada de recursos diseñados para apoyar e inspirar su camino en la fe y la justicia.'
 ];

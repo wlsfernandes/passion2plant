@@ -42,4 +42,23 @@ class Resource extends Model
   {
     static::updated(fn() => \Log::info('RESOURCE updated fired'));
   }
+
+  public function getTitleAttribute(): string
+  {
+    $locale = app()->getLocale();
+    return $this->{'title_' . $locale} ?? $this->title_en;
+  }
+
+  public function getDescriptionAttribute(): ?string
+  {
+    $locale = app()->getLocale();
+    return $this->{'description_' . $locale} ?? $this->description_en;
+  }
+
+  public function getFileUrlAttribute(): ?string
+  {
+    $locale = app()->getLocale();
+    return $this->{'file_url_' . $locale} ?? $this->file_url_en;
+  }
+
 }

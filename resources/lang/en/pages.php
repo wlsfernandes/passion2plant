@@ -31,4 +31,6 @@ return [
   'explore' => 'Explore',
   'visit_resource' => 'Visit Resource',
   'no_media_found' => 'No media items found.',
+  'resources' => 'Our Resources',
+  'resources_description' => 'Explore our curated collection of resources designed to support and inspire your journey in faith and justice.'
 ];

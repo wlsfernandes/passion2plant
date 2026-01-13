@@ -130,7 +130,7 @@
         <li><a href="#">{{ __('menu.partnerships') }}</a></li>
         <li><a href="{{ route('services.index.public') }}">{{ __('menu.services') }}</a></li>
 
-        <li><a href="">{{ __('menu.resources') }}</a></li>
+        <li><a href="{{ route('resources.index.public') }}">{{ __('menu.resources') }}</a></li>
         <li><a href="#">{{ __('menu.donate') }}</a></li>
         {{-- Learn More (nested submenu) --}}
         <li class="has-submenu">
