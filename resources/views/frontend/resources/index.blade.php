@@ -3,7 +3,29 @@
 @section('title', __('pages.resources'))
 
 @section('content')
-
+  <section class="breadcumd__banner overhid">
+    <div class="container">
+      <div class="breadcumd__wrapper">
+        <h2 class="left__content">
+          @lang('pages.resources')
+        </h2>
+        <ul class="right__content">
+          <li>
+            <a href="index.html">
+              <i class="fa-solid fa-house"></i>
+              @lang('pages.home')
+            </a>
+          </li>
+          <li>
+            <i class="fa-solid fa-chevron-right"></i>
+          </li>
+          <li>
+            @lang('pages.resources')
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
   <section class="blog__section pt-130 pb-130">
     <div class="container">
 

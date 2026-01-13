@@ -3,6 +3,30 @@
 @section('title', $page->title)
 
 @section('content')
+@section('content')
+  <section class="breadcumd__banner overhid">
+    <div class="container">
+      <div class="breadcumd__wrapper">
+        <h2 class="left__content">
+          @lang('pages.learning_resources')
+        </h2>
+        <ul class="right__content">
+          <li>
+            <a href="index.html">
+              <i class="fa-solid fa-house"></i>
+              @lang('pages.home')
+            </a>
+          </li>
+          <li>
+            <i class="fa-solid fa-chevron-right"></i>
+          </li>
+          <li>
+            @lang('pages.learning_resources')
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
   <!-- Page Details Section -->
   <section class="details__section event__section overhid pt-130 pb-130">
     <div class="container">

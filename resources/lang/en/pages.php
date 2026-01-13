@@ -35,4 +35,10 @@ return [
   'resources_description' => 'Explore our curated collection of resources designed to support and inspire your journey in faith and justice.',
   'recommended_books' => 'Recommended Books',
   'recommended_books_description' => 'A curated selection of books to deepen your understanding and practice of faith and justice.',
+  'our_services' => 'Our Services',
+  'home' => 'Home',
+  'book_recommendations' => 'Book Recommendations',
+  'learning_resources' => 'Learning Resources',
+
+
 ];

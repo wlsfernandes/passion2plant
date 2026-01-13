@@ -1,7 +1,30 @@
 @extends('frontend.layouts.app')
 @section('title', 'Passion2Plant - ' . $project->title)
 @section('content')
-
+@section('content')
+  <section class="breadcumd__banner overhid">
+    <div class="container">
+      <div class="breadcumd__wrapper">
+        <h2 class="left__content">
+          @lang('pages.cohorts')
+        </h2>
+        <ul class="right__content">
+          <li>
+            <a href="index.html">
+              <i class="fa-solid fa-house"></i>
+              @lang('pages.home')
+            </a>
+          </li>
+          <li>
+            <i class="fa-solid fa-chevron-right"></i>
+          </li>
+          <li>
+            @lang('pages.cohorts')
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
   <!-- Project Details Section -->
   <section class="details__section event__section overhid pt-130 pb-130">
     <div class="container">
