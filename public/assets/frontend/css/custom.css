@@ -476,21 +476,23 @@ section {
 
 .media-title {
   font-size: 1rem;
-  /* smaller, cleaner */
   line-height: 1.35;
   font-weight: 600;
   margin: 0;
+
+  /* Standard (new spec) */
+  line-clamp: 3;
+
+  /* Required for current browser support */
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  line-clamp: 3;
-  /* limit to 3 lines */
   -webkit-box-orient: vertical;
+
   overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
-.service__items {
-  height: 100%;
-}
 
 .service__items .content {
   height: 100%;
