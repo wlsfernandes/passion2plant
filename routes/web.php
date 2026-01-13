@@ -15,6 +15,8 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuItemController;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\MediaTypeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PositionController;
@@ -157,6 +159,8 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
   Route::resource('pages', PageController::class);
   Route::resource('about', AboutController::class);
   Route::resource('donations', DonationController::class);
+  Route::resource('media', MediaController::class);
+  Route::resource('media-types', MediaTypeController::class);
   Route::resource('partners', PartnerController::class);
   Route::resource('positions', PositionController::class);
   Route::resource('projects', ProjectController::class);

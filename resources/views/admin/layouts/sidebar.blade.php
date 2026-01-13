@@ -50,16 +50,15 @@
               <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a></li>
               <li><a href="{{ route('pages.index') }}"><i class="fas fa-file-alt"></i> Pages</a></li>
               <li><a href="{{ route('partners.index') }}"><i class="fas fa-handshake"></i> Partners</a></li>
-              <li><a href="{{ route('positions.index') }}"><i class="uil uil-briefcase"></i> Open
-                  Positions</a></li>
+              <li><a href="{{ route('positions.index') }}"><i class="uil uil-briefcase"></i> Open Positions</a></li>
               <li><a href="{{ route('resources.index') }}"><i class="fas fa-folder-open"></i> Resources</a></li>
               <li><a href="{{ route('services.index') }}"><i class="uil-briefcase"></i> Services</a></li>
               <li><a href="{{ route('teams.index') }}"><i class="fas fa-users"></i> Team</a></li>
-              <li><a href="{{ route('testimonials.index') }}"><i class="uil-feedback"></i> Testimonials</a>
-              </li>
-
+              <li><a href="{{ route('testimonials.index') }}"><i class="uil-feedback"></i> Testimonials</a></li>
+              <li class="menu-title">Media</li>
+              <li><a href="{{ route('media-types.index') }}"><i class="uil uil-layer-group"></i>Media Types</a></li>
+              <li><a href="{{ route('media.index') }}"><i class="uil uil-play-circle"></i>Media Items</a></li>
               <li class="menu-title">Configuration</li>
-
               <li><a href="{{ route('settings.index') }}"><i class="fas fa-cog"></i> Site Settings</a></li>
               <li><a href="{{ route('social-links.index') }}"><i class="fas fa-share-alt"></i> Social
                   Media</a></li>
