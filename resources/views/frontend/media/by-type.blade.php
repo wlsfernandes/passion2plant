@@ -4,11 +4,11 @@
 
 @section('content')
 
-  <section class="service__section pt-130 pb-130">
+  <section class="blog__section pt-130 pb-130">
     <div class="container">
 
       {{-- Header --}}
-      <div class="row mb-50">
+      <div class="row mb-60">
         <div class="col-lg-8 mx-auto text-center">
           <h2>{{ $type->name }}</h2>
 
@@ -20,45 +20,47 @@
         </div>
       </div>
 
-      {{-- Media Items --}}
-      <div class="row g-4">
+      {{-- Media List --}}
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
 
-        @forelse ($media as $item)
-          <div class="col-lg-4 col-md-6">
-            <div class="service__items h-100 d-flex flex-column">
+          @forelse ($media as $item)
+            <article class="media-list-item mb-50">
 
-              <div class="content d-flex flex-column h-100">
+              {{-- Title --}}
+              <h4 class="mb-2">
+                {{ $item->title }}
+              </h4>
 
-                {{-- Title --}}
-                <div class="media-meta text-muted small mb-3">
-                  <i class="uil uil-link"></i>
-                  {{ parse_url($item->external_link, PHP_URL_HOST) }}
-                </div>
-
-                {{-- Description --}}
-                @if ($item->description)
-                  <p class="text-muted">
-                    {{ $item->description }}
-                  </p>
+              {{-- Meta --}}
+              <div class="text-muted small mb-2">
+                {{ parse_url($item->external_link, PHP_URL_HOST) }}
+                @if ($item->published_at)
+                  • {{ $item->published_at->format('F Y') }}
                 @endif
-
-                {{-- Button pinned to bottom --}}
-                <div class="mt-auto pt-3">
-                  <a href="{{ $item->external_link }}" class="btns" target="_blank" rel="noopener">
-                    Visit Resource
-                  </a>
-                </div>
-
               </div>
 
-            </div>
-          </div>
-        @empty
-          <div class="col-12 text-center text-muted">
-            No resources available yet.
-          </div>
-        @endforelse
+              {{-- Description --}}
+              @if ($item->description)
+                <p class="mb-3">
+                  {{ $item->description }}
+                </p>
+              @endif
 
+              {{-- Action --}}
+              <a href="{{ $item->external_link }}" target="_blank" rel="noopener" class="cmn--btn">
+                Visit Resource
+              </a>
+
+              <hr class="mt-50">
+            </article>
+          @empty
+            <p class="text-center text-muted">
+              No resources available yet.
+            </p>
+          @endforelse
+
+        </div>
       </div>
 
     </div>
