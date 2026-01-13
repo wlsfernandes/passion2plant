@@ -36,6 +36,12 @@
             value="{{ old('title_en', $book->title_en ?? '') }}">
         </div>
 
+        <div class="mb-3">
+          <label class="form-label">External Link</label>
+          <input type="url" name="external_link" class="form-control" required
+            value="{{ old('external_link', $book->external_link ?? '') }}">
+        </div>
+
         {{-- Title ES --}}
         <div class="mb-3">
           <label class="form-label">Title (Spanish)</label>

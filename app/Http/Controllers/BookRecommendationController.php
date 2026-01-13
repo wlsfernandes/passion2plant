@@ -23,6 +23,7 @@ class BookRecommendationController extends BaseController
       'description_es' => ['nullable', 'string'],
 
       'image_url' => ['nullable', 'string'],
+      'external_link' => ['nullable', 'url', 'max:255'],
     ]);
   }
 

@@ -16,6 +16,7 @@ class BookRecommendation extends Model
     'description_en',
     'description_es',
     'image_url',
+    'external_link'
   ];
 
   /**
