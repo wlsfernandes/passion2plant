@@ -536,3 +536,75 @@ section {
     margin: 50px 0;
   }
 }
+
+.legacy-section .title__content {
+  max-width: 100%;
+  padding: 0 5%;
+}
+
+.legacy-section h1,
+.legacy-section h5 {
+  color: #ffffff;
+  max-width: 100%;
+}
+
+.legacy-section .legacy-content {
+  max-width: 100%;
+  margin-top: 20px;
+  font-size: 1.25rem;
+  line-height: 1.9;
+}
+
+/* Force white text for ALL HTML coming from DB */
+.approach-section .approach-content,
+.approach-section .approach-content * {
+  color: #000 !important;
+}
+
+/* approach */
+.approach-section .title__content {
+  max-width: 100%;
+  padding: 0 5%;
+  background: none;
+}
+
+.approach-section h1,
+.approach-section h5 {
+  color: #ffffff;
+  max-width: 100%;
+}
+
+.approach-section .approach-content {
+  max-width: 100%;
+  margin-top: 20px;
+  font-size: 1.25rem;
+  line-height: 1.9;
+}
+
+/* Force white text for ALL HTML coming from DB */
+.approach-section .approach-content,
+.approach-section .approach-content * {
+  color: #000 !important;
+}
+
+
+
+@media (max-width: 768px) {
+  .section-spacing {
+    margin: 50px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .legacy-section .legacy-content {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .approach-section .approach-content {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+  }
+}

@@ -80,7 +80,7 @@
             <ul class="sub-menu">
               <li>
                 <a href="{{ route('about.index.public') }}">
-                  {{ __('menu.about') }}
+                  {{ __('menu.who_we_are') }}
                 </a>
               </li>
               <li>

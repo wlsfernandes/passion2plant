@@ -17,4 +17,5 @@ return [
   'learn_more' => 'Conócenos',
   'media' => 'Medios',
   'recommended_books' => 'Libros Recomendados',
+  'who_we_are' => 'Quiénes Somos',
 ];

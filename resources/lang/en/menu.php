@@ -17,4 +17,5 @@ return [
   'learn_more' => 'Learn More',
   'media' => 'Media',
   'recommended_books' => 'Recommended Books',
+  'who_we_are' => 'Who We Are',
 ];
