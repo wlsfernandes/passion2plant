@@ -1,7 +1,7 @@
 @if (!empty($aboutSections['header']))
   <section class="section__bg legacy-section">
     <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
-      <h1>{{ $aboutSections['header']->{'title_' . app()->getLocale()} ?? '' }}</h1>
+      <h1 class="heading-gradient-green-black">{{ $aboutSections['header']->{'title_' . app()->getLocale()} ?? '' }}</h1>
       <h5>{{ $aboutSections['header']->{'subtitle_' . app()->getLocale()} ?? '' }}</h5>
       <div class="legacy-content">
         {!! $aboutSections['header']->{'content_' . app()->getLocale()} ?? '' !!}
