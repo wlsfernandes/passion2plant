@@ -12,6 +12,8 @@ enum AboutSection: string
   case APPROACH = 'approach';
   case LEGACY = 'legacy';
 
+  case HEADER = 'header';
+
   public function label(): string
   {
     return match ($this) {
@@ -22,6 +24,7 @@ enum AboutSection: string
       self::PROBLEM => 'The Problem We Address',
       self::APPROACH => 'Our Approach',
       self::LEGACY => 'Our Legacy',
+      self::HEADER => 'Header Section',
     };
   }
 

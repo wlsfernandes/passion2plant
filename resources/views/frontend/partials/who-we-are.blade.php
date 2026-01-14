@@ -1,10 +1,10 @@
-@if (!empty($aboutSections['vision']))
+@if (!empty($aboutSections['header']))
   <section class="section__bg legacy-section">
     <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
-      <h1>{{ $aboutSections['vision']->{'title_' . app()->getLocale()} ?? '' }}</h1>
-      <h5>{{ $aboutSections['vision']->{'subtitle_' . app()->getLocale()} ?? '' }}</h5>
+      <h1>{{ $aboutSections['header']->{'title_' . app()->getLocale()} ?? '' }}</h1>
+      <h5>{{ $aboutSections['header']->{'subtitle_' . app()->getLocale()} ?? '' }}</h5>
       <div class="legacy-content">
-        {!! $aboutSections['vision']->{'content_' . app()->getLocale()} ?? '' !!}
+        {!! $aboutSections['header']->{'content_' . app()->getLocale()} ?? '' !!}
       </div>
     </div>
   </section>
