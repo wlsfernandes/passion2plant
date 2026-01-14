@@ -18,7 +18,7 @@
             <div class="details__thumb">
               <!-- <img class="img-fluid w-75 mx-auto d-block" -->
               <img
-                src="{{ route('admin.images.preview', ['model' => 'about', 'id' => $aboutSections['problem']->id]) }}"alt="about__image">
+                src="{{ route('admin.images.preview', ['model' => 'about', 'id' => $aboutSections['new_way']->id]) }}"alt="about__image">
             </div>
           </div>
         </div>
