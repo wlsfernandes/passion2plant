@@ -647,7 +647,7 @@ section {
 /* --- OVERRIDE THEME CONTAINERS --- */
 .p2p-legacy .container,
 .p2p-legacy .title__content {
-  max-width: 920px !important;
+
   margin-left: auto !important;
   margin-right: auto !important;
   padding-left: 1.5rem;
