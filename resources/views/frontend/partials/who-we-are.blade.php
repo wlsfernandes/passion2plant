@@ -1,14 +1,23 @@
 @if (!empty($aboutSections['header']))
-  <section class="section__bg legacy-section">
+  <section class="section__bg legacy-section p2p-legacy">
     <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
-      <h2 class="heading-gradient-green-black">{{ $aboutSections['header']->{'title_' . app()->getLocale()} ?? '' }}</h2>
-      <h5>{{ $aboutSections['header']->{'subtitle_' . app()->getLocale()} ?? '' }}</h5>
-      <div class="legacy-content">
+
+      <h2 class="heading-gradient-green-black p2p-title">
+        {{ $aboutSections['header']->{'title_' . app()->getLocale()} ?? '' }}
+      </h2>
+
+      <h5 class="p2p-subtitle">
+        {{ $aboutSections['header']->{'subtitle_' . app()->getLocale()} ?? '' }}
+      </h5>
+
+      <div class="legacy-content p2p-content">
         {!! $aboutSections['header']->{'content_' . app()->getLocale()} ?? '' !!}
       </div>
+
     </div>
   </section>
 @endif
+
 @if (!empty($aboutSections['new_way']))
   <section class="team__details overhid section-spacing">
     <div class="container">
