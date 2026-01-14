@@ -611,10 +611,21 @@ section {
   }
 }
 
-/* ===============================
-   Passion2Plant – Legacy Section
-   =============================== */
+/* =====================================================
+   Passion2Plant – Legacy / Vision Section (FULL CONTROL)
+   ===================================================== */
 
+/* --- SECTION RESET & ISOLATION --- */
+.p2p-legacy {
+  position: relative;
+  isolation: isolate;
+  /* stops background bleed */
+  background-color: #f7f6f2 !important;
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+/* --- SUBTLE TEXTURE OVERLAY --- */
 .p2p-legacy::before {
   content: "";
   position: absolute;
@@ -626,64 +637,82 @@ section {
   z-index: 0;
 }
 
-.p2p-legacy {
-  background: #f7f6f2 !important;
-  position: relative;
-  isolation: isolate;
-  /* 🔑 prevents background bleed */
-}
-
-
-
-/* Title */
-.p2p-legacy .title__content {
+/* --- FORCE CONTENT ABOVE OVERLAY --- */
+.p2p-legacy * {
   position: relative;
   z-index: 1;
 }
 
-.p2p-legacy .p2p-title {
-  letter-spacing: 0.06em;
-  text-transform: none;
-  margin-bottom: 1rem;
-  transition: letter-spacing 0.8s ease;
+/* --- OVERRIDE THEME CONTAINERS --- */
+.p2p-legacy .container,
+.p2p-legacy .title__content {
+  max-width: 920px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-/* Subtle interaction on load (WOW triggers fadeInUp) */
-.wow.fadeInUp .p2p-title {
+/* --- TITLE --- */
+.p2p-legacy h2 {
+  color: #1e5f3c;
+  font-weight: 600;
   letter-spacing: 0.12em;
+  margin-bottom: 1.2rem;
+  text-align: center;
 }
 
-/* Subtitle */
-.p2p-legacy .p2p-subtitle {
+/* --- SUBTITLE --- */
+.p2p-legacy h5 {
+  color: #1f2933;
   font-weight: 400;
   opacity: 0.85;
   max-width: 760px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
 }
 
-/* Content */
-.p2p-legacy .p2p-content {
-  max-width: 820px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.9;
+/* --- MAIN CONTENT BLOCK --- */
+.p2p-legacy .legacy-content {
+  margin-top: 2rem;
 }
 
-/* Paragraph rhythm */
-.p2p-legacy .p2p-content p {
-  margin-bottom: 1.4rem;
+/* --- PARAGRAPHS (THIS FIXES “STRETCH”) --- */
+.p2p-legacy .legacy-content p {
+  max-width: 760px !important;
+  margin: 0 auto 1.6rem !important;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: #1f2933;
+  text-align: center;
 }
 
-/* Soft divider */
-.p2p-legacy .p2p-content p:first-of-type::after {
+/* --- DESKTOP TYPOGRAPHY IMPROVEMENT --- */
+@media (min-width: 992px) {
+  .p2p-legacy .legacy-content p {
+    text-align: left;
+  }
+}
+
+/* --- SOFT DIVIDER AFTER FIRST PARAGRAPH --- */
+.p2p-legacy .legacy-content p:first-of-type::after {
   content: "";
   display: block;
-  width: 60px;
+  width: 64px;
   height: 3px;
-  margin: 1.5rem auto;
-  background: linear-gradient(to right, var(--p2p-green), var(--p2p-dark));
+  margin: 2rem auto;
+  background: linear-gradient(to right,
+      #6fbf9c,
+      #1e5f3c);
   border-radius: 3px;
 }
+
+/* --- REMOVE THEME BACKGROUNDS IF ANY --- */
+.p2p-legacy section,
+.p2p-legacy .section__bg {
+  background: transparent !important;
+}
+
 
 @media (max-width: 768px) {
   .p2p-legacy .p2p-content {
