@@ -616,8 +616,18 @@ section {
    =============================== */
 
 .p2p-legacy {
-  --p2p-green: #6fbf9c;
-  --p2p-dark: #0f1f17;
+  background: #f7f6f2;
+  position: relative;
+}
+
+.p2p-legacy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(111, 191, 156, 0.08) 1px,
+      transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
 }
 
 /* Title */

@@ -33,7 +33,7 @@
         </div>
         <div class="col-xxl-7 col-xl-7 col-lg-10">
           <div class="about__header heading-gradient-green-black">
-            <h2 class="heading-gradient-green-black">
+            <h2 class="heading-gradient-green-black" data-wow-duration="1.3s">
               {{ $aboutSections['new_way']->{'title_' . app()->getLocale()} ?? '' }}</h2>
           </div>
           <div class="details__cont" style="margin-top: 20px;">
@@ -56,7 +56,7 @@
       <div class="row g-5">
         <div class="col-xxl-7 col-xl-7 col-lg-10">
           <div class="about__header heading-gradient-green-black">
-            <h2 class="heading-gradient-green-black">
+            <h2 class="heading-gradient-green-black" data-wow-duration="1.3s">
               {{ $aboutSections['who_we_are']->{'title_' . app()->getLocale()} ?? '' }}</h2>
           </div>
           <div class="details__cont" style="margin-top: 20px;">
@@ -93,7 +93,7 @@
           </div>
         </div>
         <div class="col-xxl-7 col-xl-7 col-lg-10">
-          <div class="about__header heading-gradient-green-black">
+          <div class="about__header heading-gradient-green-black" data-wow-duration="1.3s">
             <h2 class="heading-gradient-green-black">
               {{ $aboutSections['values']->{'title_' . app()->getLocale()} ?? '' }}</h2>
           </div>
@@ -114,7 +114,7 @@
       <div class="row g-5">
 
         <div class="col-xxl-7 col-xl-7 col-lg-10">
-          <div class="about__header heading-gradient-green-black">
+          <div class="about__header heading-gradient-green-black" data-wow-duration="1.3s">
             <h2 class="heading-gradient-green-black">
               {{ $aboutSections['problem']->{'title_' . app()->getLocale()} ?? '' }}</h2>
           </div>
@@ -156,7 +156,7 @@
         </div>
         <div class="col-xxl-7 col-xl-7 col-lg-10">
           <div class="about__header heading-gradient-green-black">
-            <h2 class="heading-gradient-green-black">
+            <h2 class="heading-gradient-green-black" data-wow-duration="1.3s">
               {{ $aboutSections['legacy']->{'title_' . app()->getLocale()} ?? '' }}</h2>
           </div>
           <div class="details__cont" style="margin-top: 20px;">
@@ -182,7 +182,7 @@
       <div class="row g-5">
 
         <div class="col-xxl-7 col-xl-7 col-lg-10">
-          <div class="about__header heading-gradient-green-black">
+          <div class="about__header heading-gradient-green-black" data-wow-duration="1.3s">
             <h2 class="heading-gradient-green-black">
               {{ $aboutSections['approach']->{'title_' . app()->getLocale()} ?? '' }}</h2>
           </div>
