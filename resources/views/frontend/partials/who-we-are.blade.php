@@ -74,17 +74,6 @@
   <section class="about__section pt-130 pb-130 overhid">
     <div class="container">
       <div class="row g-4 align-items-center justify-content-between">
-        <div class="col-xxl-6 col-xl-6 col-lg-6 wow fadeInLeft" data-wow-duration="3s">
-          <div class="about__thumb">
-            <img src="assets/img/about/about1.jpg" alt="about__image">
-            <div class="video__content">
-              <div class="video video-pulse">
-                <a class="video-btn" href="https://www.youtube.com/watch?v=gR4BiOBJfEc"><i
-                    class="fa-solid fa-play"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="col-xxl-6 col-xl-6 col-lg-6 wow fadeInRight" data-wow-duration="5s">
           <div class="about__content">
             <div class="about__header">
