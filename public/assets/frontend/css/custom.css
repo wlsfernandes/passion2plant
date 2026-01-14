@@ -620,7 +620,7 @@ section {
   position: relative;
   isolation: isolate;
   /* stops background bleed */
-  background-color: #f7f6f2 !important;
+  background-color: red !important;
   padding: 5rem 0;
   overflow: hidden;
 }
