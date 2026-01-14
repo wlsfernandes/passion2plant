@@ -620,7 +620,9 @@ section {
   position: relative;
   isolation: isolate;
   /* stops background bleed */
-  background-color: red !important;
+  background: linear-gradient(180deg,
+      rgba(35, 173, 117, 0.08) 0%,
+      rgba(247, 246, 242, 0.95) 100%) !important;
   padding: 5rem 0;
   overflow: hidden;
 }
