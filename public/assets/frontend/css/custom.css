@@ -615,20 +615,21 @@ section {
    Passion2Plant – Legacy Section
    =============================== */
 
-.p2p-legacy {
-  background: #f7f6f2;
-  position: relative;
-}
-
 .p2p-legacy::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(111, 191, 156, 0.08) 1px,
-      transparent 1px);
+  background-image: radial-gradient(rgba(111, 191, 156, 0.08) 1px, transparent 1px) !important;
   background-size: 24px 24px;
   pointer-events: none;
 }
+
+.p2p-legacy {
+  background: #f7f6f2 !important;
+  position: relative;
+}
+
+
 
 /* Title */
 .p2p-legacy .p2p-title {
