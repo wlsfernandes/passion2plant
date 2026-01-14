@@ -528,6 +528,7 @@ section {
 
 
 .section-spacing {
+  margin-top: 120px;
   margin: 80px 0;
 }
 
@@ -540,6 +541,7 @@ section {
 .legacy-section .title__content {
   max-width: 100%;
   padding: 0 5%;
+
 }
 
 .legacy-section h1,
