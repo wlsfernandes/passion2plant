@@ -54,6 +54,13 @@
               <li><a href="{{ route('blogs.index') }}"><i class="uil-blogger-alt"></i> Blog</a></li>
               <li><a href="{{ route('projects.index') }}"><i class="uil uil-calendar-alt"></i> Cohorts</a></li>
               <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a></li>
+              <li>
+                <a href="{{ route('gallery-images.index') }}">
+                  <i class="uil uil-image"></i>
+                  <span>Gallery Images</span>
+                </a>
+              </li>
+
               <li><a href="{{ route('pages.index') }}"><i class="fas fa-file-alt"></i> Pages</a></li>
               <li><a href="{{ route('partners.index') }}"><i class="fas fa-handshake"></i> Partners</a></li>
               <li><a href="{{ route('positions.index') }}"><i class="uil uil-briefcase"></i> Open Positions</a></li>

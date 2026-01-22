@@ -40,46 +40,53 @@ class S3
      * Returns the stored path (NOT URL)
      */
     public static function uploadImageAsWebp(
-        UploadedFile $file,
-        string $directory,
-        int $quality = 85,
-        string $disk = 's3'
-    ): string {
-        if (!$file->isValid()) {
-            throw new Exception('Invalid image upload.');
-        }
-
-        // ✅ Extra safety: ensure it's an image (not just extension-based)
-        if (!str_starts_with($file->getMimeType(), 'image/')) {
-            throw new Exception('Uploaded file is not a valid image.');
-        }
-
-        $filename = Str::uuid() . '.webp';
-        $path = trim($directory, '/') . '/' . $filename;
-
-        // ✅ Intervention Image v3
-        $manager = new ImageManager(new Driver());
-
-        try {
-            $image = $manager
-                ->read($file->getRealPath())
-                ->orient()          // ✅ Fix rotation (EXIF)
-                ->toWebp($quality); // ✅ Convert ANY format → WebP
-        } catch (\Throwable $e) {
-            throw new Exception('Unable to process image file.');
-        }
-
-        Storage::disk($disk)->put(
-            $path,
-            (string) $image,
-            [
-                'ContentType' => 'image/webp',
-                'Visibility' => 'public', // optional but common for images
-            ]
-        );
-
-        return $path;
+    UploadedFile $file,
+    string $directory,
+    int $quality = 85,
+    string $disk = 's3'
+): string {
+    if (!$file->isValid()) {
+        throw new Exception('Invalid image upload.');
     }
+
+    if (!str_starts_with($file->getMimeType(), 'image/')) {
+        throw new Exception('Uploaded file is not a valid image.');
+    }
+
+    $filename = Str::uuid() . '.webp';
+    $path = trim($directory, '/') . '/' . $filename;
+
+    $manager = new ImageManager(new Driver());
+
+    try {
+        $image = $manager
+            ->read($file->getRealPath())
+            ->orient() // ✅ Fix EXIF rotation
+            ->resize(
+                1920,
+                1920,
+                function ($constraint) {
+                    $constraint->aspectRatio(); // keep proportions
+                    $constraint->upsize();      // never upscale
+                }
+            )
+            ->toWebp($quality);
+    } catch (\Throwable $e) {
+        throw new Exception('Unable to process image file.');
+    }
+
+    Storage::disk($disk)->put(
+        $path,
+        (string) $image,
+        [
+            'ContentType' => 'image/webp',
+            'Visibility' => 'public',
+        ]
+    );
+
+    return $path;
+}
+
 
     /**
      * Delete file from storage (by path)

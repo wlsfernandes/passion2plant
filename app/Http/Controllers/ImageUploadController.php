@@ -18,6 +18,7 @@ class ImageUploadController extends BaseController
     'book-recommendations' => \App\Models\BookRecommendation::class,
     'donations' => \App\Models\Donation::class,
     'media-types' => \App\Models\MediaType::class,
+    'gallery-images' => \App\Models\GalleryImage::class,
     'partners' => \App\Models\Partner::class,
     'positions' => \App\Models\Position::class,
     'products' => \App\Models\Product::class,
