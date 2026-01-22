@@ -50,6 +50,7 @@ class ViewServiceProvider extends ServiceProvider
       $featuredTestimonials = Testimonial::visible()->get();
 
       $featuredTeams = Team::visible()
+        ->with('sectors')
         ->inRandomOrder()
         ->limit(4)
         ->get();
