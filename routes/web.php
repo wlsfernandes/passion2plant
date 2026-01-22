@@ -20,6 +20,7 @@ use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaTypeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProductController;
@@ -63,6 +64,9 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 /* About */
 Route::get('/about-us', [AboutController::class, 'indexPublic'])->name('about.index.public');
+
+/* pulpit-fellows */
+Route::get('/pulpit-fellows', [HomeController::class, 'pulpitFellows'])->name('pulpit-fellows');
 
 /* Blogs */
 Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs.display');
@@ -185,6 +189,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
   Route::resource('book-recommendations', BookRecommendationController::class);
   Route::resource('events', EventController::class);
   Route::resource('pages', PageController::class);
+Route::resource('pages.sections', SectionController::class)->scoped();
   Route::resource('about', AboutController::class);
   Route::resource('donations', DonationController::class);
   Route::resource('gallery-images', GalleryImageController::class);
@@ -194,7 +199,6 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
   Route::resource('positions', PositionController::class);
   Route::resource('projects', ProjectController::class);
   Route::resource('projects.images', ProjectImageController::class);
-
   Route::resource('resources', ResourceController::class);
   Route::resource('services', ServiceController::class);
   Route::resource('stores', StoreController::class);

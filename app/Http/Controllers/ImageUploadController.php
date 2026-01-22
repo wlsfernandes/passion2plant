@@ -24,6 +24,7 @@ class ImageUploadController extends BaseController
     'products' => \App\Models\Product::class,
     'projects' => \App\Models\Project::class,
     'project-images' => \App\Models\ProjectImage::class,
+    'sections' => \App\Models\Section::class,
     'stores' => \App\Models\Store::class,
     'testimonials' => \App\Models\Testimonial::class,
     'teams' => \App\Models\Team::class,

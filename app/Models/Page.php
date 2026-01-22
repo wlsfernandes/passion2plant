@@ -25,6 +25,11 @@ class Page extends Model
     'is_published' => 'boolean',
   ];
 
+public function sections()
+{
+    return $this->hasMany(Section::class);
+}
+
   /**
    * Boot method to handle slug generation.
    */

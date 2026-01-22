@@ -91,8 +91,8 @@ class AboutController extends BaseController
       'about_us.create',
       [
         'about_us_id' => $about->id,
-        'email' => auth()->user()?->email,
-        'roles' => auth()->user()?->roles?->pluck('name')->toArray() ?? [],
+        'email' => Auth::user()?->email,
+        'roles' => Auth::user()?->roles?->pluck('name')->toArray() ?? [],
       ]
     );
 
@@ -124,8 +124,8 @@ class AboutController extends BaseController
       'about_us.update',
       [
         'about_us_id' => $about->id,
-        'email' => auth()->user()?->email,
-        'roles' => auth()->user()?->roles?->pluck('name')->toArray() ?? [],
+        'email' => Auth::user()?->email,
+        'roles' => Auth::user()?->roles?->pluck('name')->toArray() ?? [],
       ]
     );
 
@@ -152,8 +152,8 @@ class AboutController extends BaseController
       'about_us.delete',
       [
         'about_us_id' => $about->id,
-        'email' => auth()->user()?->email,
-        'roles' => auth()->user()?->roles?->pluck('name')->toArray() ?? [],
+        'email' => Auth::user()?->email,
+        'roles' => Auth::user()?->roles?->pluck('name')->toArray() ?? [],
       ]
     );
 

@@ -17,4 +17,9 @@ class HomeController extends Controller
   {
     return view('frontend.home');
   }
+
+  public function pulpitFellows()
+  {
+    return view('frontend.pulpit-fellows.index');
+  }
 }
