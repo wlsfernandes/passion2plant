@@ -69,11 +69,14 @@
                 </small>
               </td>
 
-              {{-- Slug --}}
+              {{-- Sector --}}
               <td>
-                <code>{{ $team->sector }}</code>
+                @foreach ($team->sectors as $sector)
+                  <span class="badge bg-secondary me-1">
+                    {{ $sector->name }}
+                  </span>
+                @endforeach
               </td>
-
 
 
               {{-- Published --}}
