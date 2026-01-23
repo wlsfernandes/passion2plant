@@ -42,7 +42,7 @@
                         </a>
 
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="{{ route('pages.index') }}"><i class="uil uil-capture"></i> Pages</a></li>
+                            <li><a href="{{ route('pages.index') }}"><i class="uil uil-parking-square"></i> Pages</a></li>
                             <li><a href="{{ route('abouts.index') }}"><i class="fas fa-info"></i> About</a></li>
                             <li><a href="{{ route('banners.index') }}"><i class="fas fa-image"></i> Banners</a></li>
                             <li>
