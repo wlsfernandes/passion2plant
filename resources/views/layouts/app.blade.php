@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="author" content="Wilson Fernandes Junior">
+    <meta name="author" content="Devpromaster">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', config('app.name'))</title>
+    <title>@yield('title', 'Passion2Plant')</title>
 
     {{-- Favicon --}}
     <link rel="shortcut icon" href="{{ asset('assets/frontend/img/logo/favicon.png') }}">
@@ -51,4 +51,5 @@
 
     @stack('scripts')
 </body>
+
 </html>
