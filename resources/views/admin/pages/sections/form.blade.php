@@ -29,7 +29,7 @@
                 {{-- Sort Order --}}
                 {{-- Order & Publish --}}
                 <div class="row mb-4">
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <label class="form-label d-block">Published</label>
                         <input type="hidden" name="is_published" value="0">
 
@@ -39,7 +39,7 @@
                             <label for="is_published" data-on-label="Yes" data-off-label="No"></label>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <label class="form-label">Sort Order</label>
                         <input type="number" name="sort_order" class="form-control"
                             value="{{ old('sort_order', $section->sort_order ?? 0) }}">
@@ -47,78 +47,91 @@
                             Lower numbers appear first.
                         </small>
                     </div>
+                    <div class="col-md-7">
+                        <label class="form-label">External Link (optional)</label>
+                        <input type="url" name="external_link" class="form-control"
+                            value="{{ old('external_link', $section->external_link ?? '') }}">
+                        <small class="text-muted">
+                            If provided, the section title will link to this URL.
+                        </small>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Button Text (optional)</label>
+                        <input type="text" name="button_text" class="form-control"
+                            value="{{ old('button_text', $section->button_text ?? '') }}">
+                        <small class="text-muted">
+                            Text for the link button (e.g., "Learn More").
+                        </small>
+                    </div>
+
+                    <hr>
 
 
-                </div>
+                    {{-- Image --}}
+                    <div class="mb-4">
+                        <label class="form-label">Section Image</label>
 
-                <hr>
+                        @isset($section)
+                            @if ($section->image_url)
+                                <div class="mb-2">
+                                    <img src="{{ route('admin.images.preview', ['model' => 'sections', 'id' => $section->id]) }}"
+                                        class="img-thumbnail" style="max-width:200px;">
+                                </div>
+                            @endif
+                        @endisset
 
+                        <input type="file" name="image_url" class="form-control" accept="image/*">
 
-                {{-- Image --}}
-                <div class="mb-4">
-                    <label class="form-label">Section Image</label>
+                        <small class="text-muted">
+                            Optional. Recommended width ≥ 1200px.
+                        </small>
+                    </div>
 
-                    @isset($section)
-                        @if ($section->image_url)
-                            <div class="mb-2">
-                                <img src="{{ route('admin.images.preview', ['model' => 'sections', 'id' => $section->id]) }}"
-                                    class="img-thumbnail" style="max-width:200px;">
-                            </div>
-                        @endif
-                    @endisset
+                    <hr>
 
-                    <input type="file" name="image_url" class="form-control" accept="image/*">
+                    {{-- English --}}
+                    <h6 class="mb-3">English Content</h6>
+
+                    <div class="mb-3">
+                        <label class="form-label">Title (EN)</label>
+                        <input type="text" name="title_en" class="form-control"
+                            value="{{ old('title_en', $section->title_en ?? '') }}">
+                    </div>
+
+                    <textarea name="content_en" id="content_en" class="form-control section-editor" rows="6"
+                        placeholder="Write the section content in English...">{{ old('content_en', $section->content_en ?? '') }}</textarea>
 
                     <small class="text-muted">
-                        Optional. Recommended width ≥ 1200px.
+                        You can use basic formatting (paragraphs, lists).
                     </small>
-                </div>
 
-                <hr>
+                    <hr>
 
-                {{-- English --}}
-                <h6 class="mb-3">English Content</h6>
+                    {{-- Spanish --}}
+                    <h6 class="mb-3">Spanish Content</h6>
 
-                <div class="mb-3">
-                    <label class="form-label">Title (EN)</label>
-                    <input type="text" name="title_en" class="form-control"
-                        value="{{ old('title_en', $section->title_en ?? '') }}">
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">Title (ES)</label>
+                        <input type="text" name="title_es" class="form-control"
+                            value="{{ old('title_es', $section->title_es ?? '') }}">
+                    </div>
 
-                <textarea name="content_en" id="content_en" class="form-control section-editor" rows="6"
-                    placeholder="Write the section content in English...">{{ old('content_en', $section->content_en ?? '') }}</textarea>
-
-                <small class="text-muted">
-                    You can use basic formatting (paragraphs, lists).
-                </small>
-
-                <hr>
-
-                {{-- Spanish --}}
-                <h6 class="mb-3">Spanish Content</h6>
-
-                <div class="mb-3">
-                    <label class="form-label">Title (ES)</label>
-                    <input type="text" name="title_es" class="form-control"
-                        value="{{ old('title_es', $section->title_es ?? '') }}">
-                </div>
-
-                <textarea name="content_es" id="content_es" class="form-control section-editor" rows="6"
-                    placeholder="Escriba el contenido de la sección en Español...">{{ old('content_es', $section->content_es ?? '') }}</textarea>
+                    <textarea name="content_es" id="content_es" class="form-control section-editor" rows="6"
+                        placeholder="Escriba el contenido de la sección en Español...">{{ old('content_es', $section->content_es ?? '') }}</textarea>
 
 
-                <hr>
-                {{-- Actions --}}
-                <div class="d-flex justify-content-between">
-                    <a href="{{ route('pages.sections.index', $page) }}" class="btn btn-light">
-                        <i class="uil uil-arrow-left"></i> Back
-                    </a>
+                    <hr>
+                    {{-- Actions --}}
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('pages.sections.index', $page) }}" class="btn btn-light">
+                            <i class="uil uil-arrow-left"></i> Back
+                        </a>
 
-                    <button class="btn btn-primary">
-                        <i class="uil uil-save"></i>
-                        {{ isset($section) ? 'Update Section' : 'Create Section' }}
-                    </button>
-                </div>
+                        <button class="btn btn-primary">
+                            <i class="uil uil-save"></i>
+                            {{ isset($section) ? 'Update Section' : 'Create Section' }}
+                        </button>
+                    </div>
 
             </form>
         </div>

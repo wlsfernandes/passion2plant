@@ -29,7 +29,7 @@
                         <th></th>
                         <th width="60">Order</th>
                         <th>Title (EN)</th>
-                        <th>Title (ES)</th>
+                        <th>External Link</th>
                         <th width="120">Published</th>
                         <th width="140">Actions</th>
                     </tr>
@@ -67,7 +67,14 @@
                             </td>
 
                             <td>
-                                {{ $section->title_es ?? '—' }}
+                                @if ($section->external_link)
+                                    <i class="fa-solid fa-link text-primary"></i>
+                                    <a href="{{ $section->external_link ?? '#' }}" target="_blank">
+                                        Click here</a>
+                                @else
+                                    <i class="fa-solid fa-link-slash text-secondary"></i>
+                                    <span class="text-muted">No link</span>
+                                @endif
                             </td>
 
                             <td class="text-center">

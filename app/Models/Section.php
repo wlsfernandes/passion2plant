@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Auditable;
 
 class Section extends Model
 {
@@ -19,6 +18,8 @@ class Section extends Model
         'content_es',
         'image_url',
         'is_published',
+        'external_link',
+        'button_text',
     ];
 
     protected $casts = [
@@ -48,8 +49,7 @@ class Section extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{'title_' . $locale}
-            ?? $this->title_en;
+        return $this->{'title_' . $locale} ?? $this->title_en;
     }
 
     /**
@@ -59,8 +59,7 @@ class Section extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{'content_' . $locale}
-            ?? $this->content_en;
+        return $this->{'content_' . $locale} ?? $this->content_en;
     }
 
     /**

@@ -68,7 +68,6 @@
             // Even index → image left | Odd index → image right
             $imageLeft = $index % 2 === 0;
         @endphp
-
         <section class="team__details overhid section-spacing">
             <div class="container">
                 <div class="row g-5 align-items-center">
@@ -117,6 +116,13 @@
                     @endif
 
                 </div>
+                @if ($section->external_link)
+                    <div class="text-center mt-4">
+                        <a href="{{ $section->external_link }}" target="_blank" class="cmn--btn">
+                            {{ $section->button_text ?? __('pages.learn_more') }}
+                        </a>
+                    </div>
+                @endif
             </div>
         </section>
     @endforeach
