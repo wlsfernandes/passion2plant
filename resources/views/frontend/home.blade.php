@@ -1,7 +1,7 @@
 {{-- resources/views/frontend/pages/home.blade.php --}}
 @extends('frontend.layouts.app')
 
-@section('title', 'Team | Passion2Plant')
+@section('title', 'Home | Passion2Plant')
 
 @section('content')
 
