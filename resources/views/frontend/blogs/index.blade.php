@@ -4,7 +4,7 @@
 
 @extends('frontend.layouts.app')
 
-@section('title', __('pages.blogs'))
+@section('title', __('pages.blogs') . ' | Passion2Plant')
 
 @section('content')
     <section class="blog__section pt-130 pb-130 overhid">

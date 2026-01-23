@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', $page->title)
+@section('title', $page->title . ' | Passion2Plant')
 
 @section('content')
     {{-- Page Hero --}}

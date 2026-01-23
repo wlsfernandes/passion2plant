@@ -1,7 +1,7 @@
 {{-- resources/views/frontend/pages/home.blade.php --}}
 @extends('frontend.layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Team | Passion2Plant')
 
 @section('content')
 
@@ -9,13 +9,13 @@
     @include('frontend.partials.about')
     @include('frontend.partials.testimonial')
     @include('frontend.partials.team-carousel')
-    @include('frontend.partials.partners')  
+    @include('frontend.partials.partners')
     @include('frontend.partials.services-carousel')
-@include('frontend.partials.blog-carousel')
-@include('frontend.partials.event-carousel')
+    @include('frontend.partials.blog-carousel')
+    @include('frontend.partials.event-carousel')
 
 
-<!--Work Section Here-->
+    <!--Work Section Here-->
     <section class="work__section pt-130 pb-130 overhid">
         <div class="container">
             <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
@@ -293,7 +293,7 @@
     </section>
     <!--Involve Section End-->
 
-@include('frontend.partials.team-carousel')  
+    @include('frontend.partials.team-carousel')
     <!--Process Section Here-->
     <section class="process__section section__bg overhid pt-130 pb-130">
         <div class="container">
@@ -371,7 +371,7 @@
     </section>
     <!--Process Section End-->
 
-@include('frontend.partials.testimonial')
+    @include('frontend.partials.testimonial')
 
     <!--Contact Info Section Here-->
     <div class="contact__info__section pt-130 pb-130 section__bg overhid">
@@ -398,12 +398,14 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form__clt">
-                                        <input type="text" name="email" id="email" placeholder=" Your Email...">
+                                        <input type="text" name="email" id="email"
+                                            placeholder=" Your Email...">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form__clt">
-                                        <input type="text" name="number" id="number" placeholder="Phone Number...">
+                                        <input type="text" name="number" id="number"
+                                            placeholder="Phone Number...">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

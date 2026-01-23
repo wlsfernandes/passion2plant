@@ -4,7 +4,7 @@
 
 @extends('frontend.layouts.app')
 
-@section('title', __('pages.events'))
+@section('title', __('pages.events') . ' | Passion2Plant')
 
 @section('content')
     <section class="event__section pt-130 pb-130 overhid">
@@ -45,7 +45,7 @@
                                 </small>
 
                                 <p>
-                                    {!!  $event->getContent() !!}
+                                    {!! $event->getContent() !!}
                                 </p>
 
                                 <a href="{{ route('events.display', $event->slug) }}" class="btns">
