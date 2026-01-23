@@ -3,30 +3,47 @@
 @section('title', $page->title)
 
 @section('content')
-@section('content')
-    <section class="breadcumd__banner overhid">
-        <div class="container">
-            <div class="breadcumd__wrapper">
-                <h2 class="left__content">
-                    @lang('pages.learning_resources')
-                </h2>
-                <ul class="right__content">
-                    <li>
-                        <a href="index.html">
-                            <i class="fa-solid fa-house"></i>
-                            @lang('pages.home')
-                        </a>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </li>
-                    <li>
-                        @lang('pages.learning_resources')
-                    </li>
-                </ul>
+    {{-- Page Hero --}}
+    @if ($page->image_url)
+        <div class="details__thumb hero-image mb-50">
+            <img src="{{ route('admin.images.preview', [
+                'model' => 'pages',
+                'id' => $page->id,
+            ]) }}"
+                alt="{{ $page->title }}" class="img-fluid w-100">
+
+            <div class="hero-title">
+                <div class="hero-title-box">
+                    <h2>{{ $page->title }}</h2>
+                </div>
             </div>
         </div>
-    </section>
+    @else
+        <section class="breadcumd__banner overhid">
+            <div class="container">
+                <div class="breadcumd__wrapper">
+                    <h2 class="left__content">
+                        {{ $page->title }}
+                    </h2>
+                    <ul class="right__content">
+                        <li>
+                            <a href="{{ route('home') }}">
+                                <i class="fa-solid fa-house"></i>
+                                @lang('pages.home')
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </li>
+                        <li>
+                            {{ $page->title }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    @endif
+
     <!-- Page Details Section -->
     <section class="details__section event__section overhid pt-130 pb-130">
         <div class="container">
@@ -34,30 +51,10 @@
                 <div class="col-lg-12">
                     <div class="details__items">
                         <div class="details__content">
-                            <h2 class="heading-gradient-green-black">
-                                {{ $page->title }}
-                            </h2>
-                        </div>
-                        {{-- Page Image --}}
-                        @if ($page->image_url)
-                            <div class="details__thumb">
-                                <img src="{{ route('admin.images.preview', [
-                                    'model' => 'pages',
-                                    'id' => $page->id,
-                                ]) }}"
-                                    alt="{{ $page->title }}">
-                            </div>
-                        @endif
-
-                        {{-- Page Content --}}
-                        <div class="details__content">
                             <div class="page__content">
                                 {!! $page->content !!}
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>

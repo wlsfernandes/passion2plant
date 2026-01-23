@@ -713,3 +713,56 @@ section {
     line-height: 1.7;
   }
 }
+
+.hero-image {
+  position: relative;
+}
+
+.hero-image img {
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.hero-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero-title-box {
+  background: rgba(0, 0, 0, 0.55);
+  /* dark translucent box */
+  backdrop-filter: blur(4px);
+  /* subtle glass effect */
+  -webkit-backdrop-filter: blur(4px);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  max-width: 90%;
+}
+
+.hero-title-box h2 {
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+
+.hero-title h2 {
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero-image img {
+    max-height: 300px;
+  }
+}
