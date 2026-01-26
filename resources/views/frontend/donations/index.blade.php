@@ -9,7 +9,7 @@
         <div class="container">
             <div class="breadcumd__wrapper">
                 <h2 class="left__content">
-                    @lang('pages.our_services')
+                    @lang('pages.donations')
                 </h2>
                 <ul class="right__content">
                     <li>
@@ -22,7 +22,7 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </li>
                     <li>
-                        @lang('pages.services')
+                        @lang('pages.donations')
                     </li>
                 </ul>
             </div>
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row g-4">
 
-                @forelse($services as $service)
+                @forelse($donations as $donation)
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
                         data-wow-duration="{{ 3 + ($loop->index % 3) * 2 }}s">
 
@@ -45,28 +45,37 @@
 
                             {{-- Image --}}
                             <div class="thumb">
-                                <a href="{{ route('services.display', $service->slug) }}">
-                                    <img src="{{ route('admin.images.preview', ['model' => 'services', 'id' => $service->id]) }}"
-                                        alt="{{ $service->getTitle() }}" loading="lazy">
-                                </a>
+                                <img src="{{ route('admin.images.preview', ['model' => 'donations', 'id' => $donation->id]) }}"
+                                    alt="{{ $donation->title }}" loading="lazy">
                             </div>
 
                             {{-- Content --}}
                             <div class="content">
-                                <h5>
-                                    <a href="{{ route('services.display', $service->slug) }}">
-                                        {{ $service->getTitle() }}
+
+                                <h5 class="mb-1">
+                                    <a href="{{ route('donations.checkout', $donation) }}"
+                                        class="text-decoration-none text-dark">
+                                        {{ $donation->title }}
                                     </a>
                                 </h5>
 
-                                <p>
-                                    {{ Str::limit(strip_tags($service->getDescription()), 120) }}
+                                @if ($donation->suggested_amount)
+                                    <span class="badge bg-soft-success text-success mb-2">
+                                        Suggested: ${{ number_format($donation->suggested_amount, 0) }}
+                                    </span>
+                                @endif
+
+                                <p class="mt-2">
+                                    {{ Str::limit(strip_tags($donation->description), 120) }}
                                 </p>
 
-                                <a href="{{ route('services.display', $service->slug) }}" class="btns">
-                                    @lang('pages.read_more')
+                                <a href="{{ route('donations.checkout', $donation) }}"
+                                    class="btn btn-sm btn-outline-success mt-2">
+                                    Give Now
                                 </a>
+
                             </div>
+
 
                         </div>
                     </div>

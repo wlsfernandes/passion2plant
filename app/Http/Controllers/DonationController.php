@@ -1,34 +1,93 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Donation;
-use Illuminate\Http\Request;
-use App\Services\SystemLogger;
 use App\Helpers\S3;
+use App\Models\Donation;
+use App\Services\SystemLogger;
 use Exception;
+use Illuminate\Http\Request;
+use Stripe\Checkout\Session as CheckoutSession;
+use Stripe\Stripe;
 
 class DonationController extends BaseController
 {
-    /**
-     * Validation rules
-     * (Project standard: before store/update)
-     */
+
+/* redirect to stripewebhookController*/
+    public function startCheckout(Request $request, Donation $donation)
+    {
+        $validated = $request->validate([
+            'amount'     => 'required|numeric|min:1',
+            'email'      => 'required|email',
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'country'    => 'nullable|string|max:255',
+            'address'    => 'nullable|string|max:500',
+        ]);
+
+        // ✅ Stripe v19 (same API, stricter validation)
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $session = CheckoutSession::create([
+            'mode'                 => 'payment',
+
+            // Stripe Checkout handles PCI for you
+            'payment_method_types' => ['card'],
+
+            'line_items'           => [[
+                'price_data' => [
+                    'currency'     => 'usd',
+                    'product_data' => [
+                        'name' => $donation->title,
+                    ],
+                    // Stripe expects cents
+                    'unit_amount'  => (int) ($validated['amount'] * 100),
+                ],
+                'quantity'   => 1,
+            ]],
+
+            // Prefill email in Stripe Checkout
+            'customer_email'       => $validated['email'],
+
+            'success_url'          => route('donations.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url'           => route('donations.checkout', $donation),
+
+            // 🔑 CRITICAL: metadata for webhook routing
+            'metadata'             => [
+                'type'         => 'donation',
+                'payable_type' => Donation::class,
+                'payable_id'   => (string) $donation->id,
+
+                'first_name'   => $validated['first_name'],
+                'last_name'    => $validated['last_name'],
+                'email'        => $validated['email'],
+                'country'      => $validated['country'] ?? '',
+                'address'      => $validated['address'] ?? '',
+            ],
+        ]);
+
+        // Stripe v19 returns hosted Checkout URL
+        return redirect()->away($session->url);
+    }
+
+/**
+ * Validation rules
+ * (Project standard: before store/update)
+ */
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'title_en' => ['required', 'string', 'max:255'],
-            'title_es' => ['required', 'string', 'max:255'],
+            'title_en'         => ['required', 'string', 'max:255'],
+            'title_es'         => ['required', 'string', 'max:255'],
 
-            'description_en' => ['nullable', 'string'],
-            'description_es' => ['nullable', 'string'],
+            'description_en'   => ['nullable', 'string'],
+            'description_es'   => ['nullable', 'string'],
 
             'suggested_amount' => ['nullable', 'numeric', 'min:0'],
-            'currency' => ['required', 'string', 'size:3'],
+            'currency'         => ['required', 'string', 'size:3'],
 
-            'image_url' => ['nullable', 'string'],
+            'image_url'        => ['nullable', 'string'],
 
-            'is_published' => ['required', 'boolean'],
+            'is_published'     => ['required', 'boolean'],
         ]);
     }
 
@@ -40,6 +99,26 @@ class DonationController extends BaseController
         $donations = Donation::orderBy('id')->get();
 
         return view('admin.donations.index', compact('donations'));
+    }
+
+    public function indexPublic()
+    {
+        $donations = Donation::where('is_published', true)
+            ->orderBy('id')
+            ->get();
+
+        return view('frontend.donations.index', compact('donations'));
+    }
+
+    /**
+     * Show the checkout page for a specific donation.
+     */
+    public function checkout(Request $request, Donation $donation)
+    {
+        return view('frontend.donations.checkout', [
+            'donation' => $donation,
+            'amount'   => $request->get('amount', $donation->suggested_amount),
+        ]);
     }
 
     /**
@@ -66,8 +145,8 @@ class DonationController extends BaseController
                 'donations.store',
                 [
                     'donation_id' => $donation->id,
-                    'title' => $donation->title,
-                    'email' => $request->email,
+                    'title'       => $donation->title,
+                    'email'       => $request->email,
                 ]
             );
 
@@ -82,7 +161,7 @@ class DonationController extends BaseController
                 'donations.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
+                    'email'     => $request->email,
                 ]
             );
 
@@ -116,8 +195,8 @@ class DonationController extends BaseController
                 'donations.update',
                 [
                     'donation_id' => $donation->id,
-                    'title' => $donation->title,
-                    'email' => $request->email,
+                    'title'       => $donation->title,
+                    'email'       => $request->email,
                 ]
             );
 
@@ -132,8 +211,8 @@ class DonationController extends BaseController
                 'donations.update',
                 [
                     'donation_id' => $donation->id,
-                    'exception' => $e->getMessage(),
-                    'email' => $request->email,
+                    'exception'   => $e->getMessage(),
+                    'email'       => $request->email,
                 ]
             );
 
@@ -150,7 +229,7 @@ class DonationController extends BaseController
     {
         try {
             // Cleanup image if exists
-            if (!empty($donation->image_url)) {
+            if (! empty($donation->image_url)) {
                 S3::delete($donation->image_url);
             }
 
@@ -162,7 +241,7 @@ class DonationController extends BaseController
                 'donations.delete',
                 [
                     'donation_id' => $donation->id,
-                    'email' => request()->email,
+                    'email'       => request()->email,
                 ]
             );
 
@@ -177,8 +256,8 @@ class DonationController extends BaseController
                 'donations.delete',
                 [
                     'donation_id' => $donation->id,
-                    'exception' => $e->getMessage(),
-                    'email' => request()->email,
+                    'exception'   => $e->getMessage(),
+                    'email'       => request()->email,
                 ]
             );
 

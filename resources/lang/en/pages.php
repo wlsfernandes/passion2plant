@@ -41,5 +41,5 @@ return [
     'learning_resources'            => 'Learning Resources',
     'about_us'                      => 'About Us',
     'learn_more'                    => 'Learn More',
-
+    'donations'                     => 'Donations',
 ];

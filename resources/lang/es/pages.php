@@ -41,5 +41,5 @@ return [
     'learning_resources'            => 'Recursos de Aprendizaje',
     'about_us'                      => 'Sobre Nosotros',
     'learn_more'                    => 'Aprende Más',
-
+    'donations'                     => 'Donaciones',
 ];

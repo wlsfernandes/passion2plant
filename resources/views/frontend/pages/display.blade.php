@@ -27,7 +27,7 @@
                     </h2>
                     <ul class="right__content">
                         <li>
-                            <a href="{{ route('home') }}">
+                            <a href="{{ url('/') }}">
                                 <i class="fa-solid fa-house"></i>
                                 @lang('pages.home')
                             </a>

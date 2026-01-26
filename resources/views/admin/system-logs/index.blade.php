@@ -35,28 +35,38 @@
 
                         <tbody>
                             @foreach ($logs as $log)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $log->created_at->format('Y-m-d H:i') }}</td>
-                                                    <td>{{ $log->user->name ?? 'System' }}</td>
-                                                    <td>
-                                                        <span
-                                                            class="badge bg-{{ 
-                                                                                                                                                                                                                                        match ($log->level) {
-                                    'critical' => 'danger',
-                                    'error' => 'danger',
-                                    'warning' => 'warning',
-                                    default => 'secondary'
-                                }
-                                                                                                                                                                                                                                    }}">
-                                                            {{ strtoupper($log->level) }}
-                                                        </span>
-                                                    </td>
-                                                    <td>{{ $log->action ?? '-' }}</td>
-                                                    <td style="max-width:300px; white-space: normal;">
-                                                        {{ $log->message }}
-                                                    </td>
-                                                </tr>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $log->created_at->format('Y-m-d H:i') }}</td>
+                                    <td>{{ $log->user->name ?? 'System' }}</td>
+                                    <td>
+                                        <span
+                                            class="badge bg-{{ match ($log->level) {
+                                                'critical' => 'danger',
+                                                'error' => 'danger',
+                                                'warning' => 'warning',
+                                                default => 'secondary',
+                                            } }}">
+                                            {{ strtoupper($log->level) }}
+                                        </span>
+                                    </td>
+                                    <td>{{ $log->action ?? '-' }}</td>
+
+                                    <td>
+                                        <small>
+                                            <strong>{{ $log->message }}</strong><br>
+
+                                            @foreach ($log->context as $key => $value)
+                                                <div>
+                                                    <span class="text-muted">{{ $key }}:</span>
+                                                    <span>
+                                                        {{ is_scalar($value) ? $value : json_encode($value) }}
+                                                    </span>
+                                                </div>
+                                            @endforeach
+                                        </small>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
