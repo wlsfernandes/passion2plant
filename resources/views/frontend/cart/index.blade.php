@@ -113,25 +113,92 @@
                 </div>
 
                 {{-- TOTALS --}}
-                <div class="row justify-content-end">
+                <div class="row g-5 align-items-start">
+
+                    {{-- LEFT: CHECKOUT FORM --}}
+                    <div class="col-lg-7 col-xl-8">
+                        <div class="signup__boxes round16">
+                            <h3 class="title mb-3">
+                                Checkout Details
+                            </h3>
+
+                            <form method="POST" action="{{ route('cart.checkout') }}" class="write__review">
+                                @csrf
+
+                                <div class="row g-4">
+
+                                    <div class="col-lg-6">
+                                        <div class="frm__grp">
+                                            <label class="fz-18 fw-500 inter title mb-3">First Name</label>
+                                            <input type="text" name="first_name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="frm__grp">
+                                            <label class="fz-18 fw-500 inter title mb-3">Last Name</label>
+                                            <input type="text" name="last_name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="frm__grp">
+                                            <label class="fz-18 fw-500 inter title mb-3">Email</label>
+                                            <input type="email" name="email" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="frm__grp">
+                                            <label class="fz-18 fw-500 inter title mb-3">Country</label>
+                                            <input type="text" name="country" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="frm__grp">
+                                            <label class="fz-18 fw-500 inter title mb-3">Shipping Address</label>
+                                            <input type="text" name="address" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="cmn--btn w-100">
+                                            <span>
+                                                Proceed to Payment
+                                            </span>
+                                        </button>
+
+                                        <p class="fz-14 fw-400 text-center mt-3 text-muted">
+                                            <i class="uil uil-lock"></i>
+                                            Secure checkout powered by <strong>Stripe</strong>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    {{-- RIGHT: CART TOTAL --}}
                     <div class="col-lg-5 col-xl-4">
                         <div class="cart__pragh__box">
                             <div class="cart__graph p-4">
 
-                                <h4 class="mb-4 text-center">Cart Total</h4>
+                                <h4 class="mb-4 text-center">Order Summary</h4>
 
                                 <ul class="list-unstyled mb-4">
-                                    <li class="d-flex justify-content-between align-items-center mb-2">
+                                    <li class="d-flex justify-content-between mb-2">
                                         <span class="text-muted">Subtotal</span>
                                         <span>$ {{ number_format($subtotal, 2) }}</span>
                                     </li>
 
-                                    <li class="d-flex justify-content-between align-items-center mb-2">
+                                    <li class="d-flex justify-content-between mb-2">
                                         <span class="text-muted">Shipping</span>
                                         <span>$ {{ number_format($shipping, 2) }}</span>
                                     </li>
 
-                                    <li class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top">
+                                    <li class="d-flex justify-content-between pt-3 mt-3 border-top">
                                         <strong>Total</strong>
                                         <strong class="fs-5">
                                             $ {{ number_format($total, 2) }}
@@ -139,16 +206,12 @@
                                     </li>
                                 </ul>
 
-                                <div class="chck text-center">
-                                    <a href="{{ route('checkout.index') }}" class="cmn--btn w-100">
-                                        <span>Proceed to Checkout</span>
-                                    </a>
-                                </div>
-
                             </div>
                         </div>
                     </div>
+
                 </div>
+
 
 
             </div>

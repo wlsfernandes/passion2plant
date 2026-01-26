@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Stripe\Checkout\Session as CheckoutSession;
+use Stripe\Stripe;
 
 class CartController extends Controller
 {
@@ -88,4 +90,110 @@ class CartController extends Controller
             ->where('is_digital', false)
             ->sum(fn($item) => $shippingPerItem * (int) $item['quantity']);
     }
+
+    /* -------------------------------------------------
+     |  Checkout Sucess Redirect
+     | -------------------------------------------------
+     */
+    public function success(Request $request)
+    {
+
+        // ✅ CLEAR CART SESSION
+        session()->forget('cart');
+
+        // Optional: flash message
+        session()->flash('success', 'Thank you! Your order was completed.');
+
+        return view('frontend.cart.success');
+    }
+
+    /*
+    * Start Stripe Checkout for Cart
+      */
+    public function checkout(Request $request)
+    {
+        $validated = $request->validate([
+            'email'      => 'required|email',
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'country'    => 'nullable|string|max:255',
+            'address'    => 'nullable|string|max:500',
+        ]);
+
+        $cart = session()->get('cart', []);
+
+        abort_if(empty($cart), 400, 'Cart is empty.');
+
+        // ---------------------------------------
+        // Build Stripe line items from cart
+        // ---------------------------------------
+        $lineItems = [];
+
+        foreach ($cart as $item) {
+            $lineItems[] = [
+                'price_data' => [
+                    'currency'     => 'usd',
+                    'product_data' => [
+                        'name' => $item['name'],
+                    ],
+                    'unit_amount'  => (int) ((float) $item['price'] * 100),
+                ],
+                'quantity'   => (int) $item['quantity'],
+            ];
+        }
+
+        // ---------------------------------------
+        // Shipping: $3.99 per physical item
+        // ---------------------------------------
+        $shipping = collect($cart)
+            ->where('is_digital', false)
+            ->sum(fn($item) => 3.99 * (int) $item['quantity']);
+
+        if ($shipping > 0) {
+            $lineItems[] = [
+                'price_data' => [
+                    'currency'     => 'usd',
+                    'product_data' => [
+                        'name' => 'Shipping',
+                    ],
+                    'unit_amount'  => (int) ($shipping * 100),
+                ],
+                'quantity'   => 1,
+            ];
+        }
+
+        // ---------------------------------------
+        // Stripe v19
+        // ---------------------------------------
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $session = CheckoutSession::create([
+            'mode'                 => 'payment',
+            'payment_method_types' => ['card'],
+
+            'line_items'           => $lineItems,
+
+            'customer_email'       => $validated['email'],
+
+            'success_url'          => route('cart.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url'           => route('cart.index'),
+
+            // ---------------------------------------
+            // Metadata snapshot for webhook
+            // ---------------------------------------
+            'metadata'             => [
+                'type'       => 'cart',
+                'email'      => $validated['email'],
+                'first_name' => $validated['first_name'],
+                'last_name'  => $validated['last_name'],
+                'country'    => $validated['country'] ?? '',
+                'address'    => $validated['address'] ?? '',
+                'cart'       => json_encode($cart),
+                'shipping'   => (string) $shipping,
+            ],
+        ]);
+
+        return redirect()->away($session->url);
+    }
+
 }

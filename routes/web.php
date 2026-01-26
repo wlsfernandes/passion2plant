@@ -16,6 +16,7 @@ use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaTypeController;
 use App\Http\Controllers\MenuItemController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PositionController;
@@ -105,12 +106,14 @@ Route::get('/donate-success', function () {return view('frontend.donations.succe
 /* Store */
 Route::get('/store', [StoreController::class, 'indexPublic'])->name('stores.index.public');
 Route::get('/store/{slug}', [StoreController::class, 'show'])->name('store.products.show');
+
+/* Cart */
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/checkout/success', [CartController::class, 'success'])->name('cart.success');
 
-Route::get('/checkout', [CheckoutController::class, 'index'])
-    ->name('checkout.index');
 /* Stripe Webhooks */
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
 
@@ -183,7 +186,7 @@ Route::middleware(['auth', 'verified', 'can:access-admin'])->group(function () {
 */
 Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(function () {
 
-    // Site Settings
+// Site Settings
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
@@ -201,6 +204,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('gallery-images', GalleryImageController::class);
     Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
     Route::resource('media-types', MediaTypeController::class);
+    Route::resource('orders', OrderController::class);
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('projects', ProjectController::class);

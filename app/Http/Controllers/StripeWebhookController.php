@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donation;
+use App\Models\Order;
 use App\Models\Payment;
 use App\Services\SystemLogger;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class StripeWebhookController extends BaseController
         $type    = $session->metadata->type ?? null;
         match ($type) {
             'donation' => $this->processDonation($session),
+            'cart'     => $this->processCart($session),
             default    => null,
         };
     }
@@ -122,6 +124,116 @@ class StripeWebhookController extends BaseController
 
             // ❗ DO NOT throw again
             // Stripe webhooks must still return 200 to avoid retries
+        }
+    }
+
+    /*  * Process a completed checkout session for a cart purchase
+     * @param object $session The Stripe checkout session object
+     * @return void
+     */
+
+    protected function processCart($session): void
+    {
+        try {
+            // ----------------------------------
+            // Idempotency
+            // ----------------------------------
+            if (Payment::where('stripe_session_id', $session->id)->exists()) {
+                SystemLogger::log(
+                    'Cart payment already recorded (duplicate webhook ignored)',
+                    'info',
+                    'payments.cart.duplicate',
+                    [
+                        'stripe_session_id' => $session->id,
+                    ]
+                );
+                return;
+            }
+
+            // ----------------------------------
+            // Decode cart safely
+            // ----------------------------------
+            $cart = [];
+
+            if (! empty($session->metadata->cart)) {
+                $cart = json_decode($session->metadata->cart, true) ?? [];
+            }
+
+            if (empty($cart)) {
+                throw new \Exception('Cart metadata is empty or invalid.');
+            }
+
+            $shipping = (int) round(((float) ($session->metadata->shipping ?? 0)) * 100);
+
+            $subtotal = collect($cart)->sum(function ($item) {
+                return (int) ($item['price'] * 100) * (int) $item['quantity'];
+            });
+
+            // ----------------------------------
+            // Create Order
+            // ----------------------------------
+            $order = Order::create([
+                'status'     => 'paid',
+                'subtotal'   => $subtotal,
+                'shipping'   => $shipping,
+                'total'      => $session->amount_total,
+                'currency'   => $session->currency,
+
+                'email'      => $session->customer_email,
+                'first_name' => $session->metadata->first_name ?? null,
+                'last_name'  => $session->metadata->last_name ?? null,
+                'country'    => $session->metadata->country ?? null,
+                'address'    => $session->metadata->address ?? null,
+
+                'metadata'   => $session->metadata,
+            ]);
+
+            // ----------------------------------
+            // Order Items
+            // ----------------------------------
+            foreach ($cart as $item) {
+                $order->items()->create([
+                    'product_id'   => $item['product_id'],
+                    'product_name' => $item['name'],
+                    'price'        => (int) ($item['price'] * 100),
+                    'quantity'     => (int) $item['quantity'],
+                    'currency'     => $item['currency'],
+                ]);
+            }
+
+            // ----------------------------------
+            // Attach Payment → Order
+            // ----------------------------------
+            Payment::where('stripe_session_id', $session->id)->update([
+                'order_id'     => $order->id,
+                'payable_type' => Order::class,
+                'payable_id'   => $order->id,
+            ]);
+
+            SystemLogger::log(
+                'Order created after cart payment',
+                'info',
+                'orders.created',
+                [
+                    'order_id'    => $order->id,
+                    'items_count' => count($cart),
+                    'total'       => $session->amount_total,
+                ]
+            );
+
+        } catch (\Throwable $e) {
+
+            SystemLogger::log(
+                'Cart payment processing failed',
+                'error',
+                'payments.cart.failed',
+                [
+                    'exception'         => $e->getMessage(),
+                    'stripe_session_id' => $session->id ?? null,
+                    'email'             => $session->customer_email ?? null,
+                    'payload'           => $session,
+                ]
+            );
         }
     }
 

@@ -92,18 +92,11 @@
                         <ul class="sub-menu" aria-expanded="false">
 
                             <li class="menu-title">Catalog</li>
-
-                            <li>
-                                <a href="{{ route('stores.index') }}">
-                                    <i class="uil uil-store-alt"></i> Stores
-                                </a>
-                            </li>
                             <li>
                                 <a href="{{ route('donations.index') }}">
                                     <i class="uil uil-heart"></i> Donations
                                 </a>
                             </li>
-
                             <li>
                                 <a href="{{ route('products.index') }}">
                                     <i class="uil uil-box"></i> Products
@@ -114,7 +107,9 @@
 
                             {{-- Future-ready placeholders --}}
                             <li class="text-muted ps-4 small">
-                                Orders (coming soon)
+                                <a href="{{ route('orders.index') }}">
+                                    Orders
+                                </a>
                             </li>
 
                             <li class="text-muted ps-4 small">
