@@ -70,15 +70,14 @@
                                     </li>
 
                                     <li>
-                                        <a href="{{ route('cart.add', $product->id) }}">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </a>
-                                    </li>
+                                        <form method="POST" action="{{ route('cart.add', $product) }}">
+                                            @csrf
+                                            <input type="hidden" name="quantity" value="1">
 
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa-solid fa-heart"></i>
-                                        </a>
+                                            <button type="submit" class="cart-icon-btn">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </button>
+                                        </form>
                                     </li>
                                 </ul>
                             </div>

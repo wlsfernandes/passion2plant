@@ -113,30 +113,35 @@
                 </div>
 
                 {{-- TOTALS --}}
-                <div class="row">
-                    <div class="col-lg-6"></div>
-                    <div class="col-xl-6">
+                <div class="row justify-content-end">
+                    <div class="col-lg-5 col-xl-4">
                         <div class="cart__pragh__box">
-                            <div class="cart__graph">
-                                <h4>Cart Total</h4>
-                                <ul>
-                                    <li>
-                                        <span>Subtotal</span>
+                            <div class="cart__graph p-4">
+
+                                <h4 class="mb-4 text-center">Cart Total</h4>
+
+                                <ul class="list-unstyled mb-4">
+                                    <li class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="text-muted">Subtotal</span>
                                         <span>$ {{ number_format($subtotal, 2) }}</span>
                                     </li>
-                                    <li>
-                                        <span>Shipping</span>
-                                        <span>$ 0.00</span>
+
+                                    <li class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="text-muted">Shipping</span>
+                                        <span>$ {{ number_format($shipping, 2) }}</span>
                                     </li>
-                                    <li>
+
+                                    <li class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top">
                                         <strong>Total</strong>
-                                        <strong>$ {{ number_format($subtotal, 2) }}</strong>
+                                        <strong class="fs-5">
+                                            $ {{ number_format($total, 2) }}
+                                        </strong>
                                     </li>
                                 </ul>
 
-                                <div class="chck">
-                                    <a href="{{ route('checkout.index') }}" class="cmn--btn">
-                                        <span>Checkout</span>
+                                <div class="chck text-center">
+                                    <a href="{{ route('checkout.index') }}" class="cmn--btn w-100">
+                                        <span>Proceed to Checkout</span>
                                     </a>
                                 </div>
 
@@ -144,6 +149,7 @@
                         </div>
                     </div>
                 </div>
+
 
             </div>
         </div>

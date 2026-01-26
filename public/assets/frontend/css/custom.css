@@ -796,3 +796,21 @@ section {
   }
 
 }
+
+.cart-icon-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cart-icon-btn i {
+  color: #fff;
+  /* WHITE icon */
+  font-size: 18px;
+}
+
+.cart-icon-btn:hover i {
+  color: #f1f1f1;
+  /* soft hover */
+}
