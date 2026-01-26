@@ -42,4 +42,5 @@ return [
     'about_us'                      => 'Sobre Nosotros',
     'learn_more'                    => 'Aprende Más',
     'donations'                     => 'Donaciones',
+    'our_store'                     => 'Nuestra Tienda',
 ];

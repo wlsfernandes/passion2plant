@@ -1,29 +1,46 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Store;
-use Illuminate\Http\Request;
-use App\Services\SystemLogger;
 use App\Helpers\S3;
+use App\Models\Product;
+use App\Models\Store;
+use App\Services\SystemLogger;
 use Exception;
+use Illuminate\Http\Request;
 
 class StoreController extends BaseController
 {
-    /**
-     * Validation rules
-     * (Project standard: before store/update)
-     */
+
+/*  */
+    public function indexPublic()
+    {
+        $products = Product::where('is_published', true)->paginate(12);
+
+        return view('frontend.store.index', compact('products'));
+    }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug', $slug)
+            ->where('is_published', true)
+            ->firstOrFail();
+
+        return view('frontend.store.show', compact('product'));
+    }
+/**
+ * Validation rules
+ * (Project standard: before store/update)
+ */
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'type' => ['nullable', 'string', 'max:255'],
+            'name'         => ['required', 'string', 'max:255'],
+            'type'         => ['nullable', 'string', 'max:255'],
 
-            'content_en' => ['nullable', 'string'],
-            'content_es' => ['nullable', 'string'],
+            'content_en'   => ['nullable', 'string'],
+            'content_es'   => ['nullable', 'string'],
 
-            'image_url' => ['nullable', 'string'],
+            'image_url'    => ['nullable', 'string'],
 
             'is_published' => ['required', 'boolean'],
 
@@ -65,8 +82,8 @@ class StoreController extends BaseController
                 'stores.store',
                 [
                     'store_id' => $store->id,
-                    'slug' => $store->slug,
-                    'email' => $request->email,
+                    'slug'     => $store->slug,
+                    'email'    => $request->email,
                 ]
             );
 
@@ -81,7 +98,7 @@ class StoreController extends BaseController
                 'stores.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
+                    'email'     => $request->email,
                 ]
             );
 
@@ -116,8 +133,8 @@ class StoreController extends BaseController
                 'stores.update',
                 [
                     'store_id' => $store->id,
-                    'slug' => $store->slug,
-                    'email' => $request->email,
+                    'slug'     => $store->slug,
+                    'email'    => $request->email,
                 ]
             );
 
@@ -131,9 +148,9 @@ class StoreController extends BaseController
                 'error',
                 'stores.update',
                 [
-                    'store_id' => $store->id,
+                    'store_id'  => $store->id,
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
+                    'email'     => $request->email,
                 ]
             );
 
@@ -150,7 +167,7 @@ class StoreController extends BaseController
     {
         try {
             // Cleanup image if exists
-            if (!empty($store->image_url)) {
+            if (! empty($store->image_url)) {
                 S3::delete($store->image_url);
             }
 
@@ -162,7 +179,7 @@ class StoreController extends BaseController
                 'stores.delete',
                 [
                     'store_id' => $store->id,
-                    'email' => request()->email,
+                    'email'    => request()->email,
                 ]
             );
 
@@ -176,9 +193,9 @@ class StoreController extends BaseController
                 'error',
                 'stores.delete',
                 [
-                    'store_id' => $store->id,
+                    'store_id'  => $store->id,
                     'exception' => $e->getMessage(),
-                    'email' => request()->email,
+                    'email'     => request()->email,
                 ]
             );
 

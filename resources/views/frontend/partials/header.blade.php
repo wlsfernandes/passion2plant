@@ -155,6 +155,8 @@
                 </li>
 
                 <li><a href="{{ route('donation.index.public') }}">{{ __('menu.donate') }}</a></li>
+
+                <li><a href="{{ route('stores.index.public') }}">{{ __('menu.store') }}</a></li>
                 {{-- Learn More (nested submenu) --}}
                 <li class="has-submenu">
                     <a href="#">

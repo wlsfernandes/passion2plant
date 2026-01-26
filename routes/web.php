@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookRecommendationController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FileUploadController;
@@ -101,6 +102,15 @@ Route::get('/donate/{donation}', [DonationController::class, 'checkout'])->name(
 Route::post('/donate/{donation}/checkout', [DonationController::class, 'startCheckout'])->name('donations.start');
 Route::get('/donate-success', function () {return view('frontend.donations.success');})->name('donations.success');
 
+/* Store */
+Route::get('/store', [StoreController::class, 'indexPublic'])->name('stores.index.public');
+Route::get('/store/{slug}', [StoreController::class, 'show'])->name('store.products.show');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::get('/checkout', [CheckoutController::class, 'index'])
+    ->name('checkout.index');
 /* Stripe Webhooks */
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
 
