@@ -1,7 +1,10 @@
 <?php
 namespace App\Models;
 
+use App\Models\OrderItem;
+use App\Models\Payment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
 class Order extends Model
@@ -29,14 +32,14 @@ class Order extends Model
     // Relationships
     // -----------------
 
+    public function payment(): HasOne
+    {
+        return $this->hasOne(Payment::class, 'order_id');
+    }
+
     public function items()
     {
         return $this->hasMany(OrderItem::class);
-    }
-
-    public function payment()
-    {
-        return $this->hasOne(Payment::class);
     }
 
     protected static function booted()

@@ -19,6 +19,7 @@ use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -186,6 +187,8 @@ Route::middleware(['auth', 'verified', 'can:access-admin'])->group(function () {
 */
 Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(function () {
 
+    Route::get('payments', [PaymentController::class, 'index'])->name('admin.payments.index');
+    Route::get('payments/{payment}', [PaymentController::class, 'show'])->name('admin.payments.show');
 // Site Settings
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
@@ -196,15 +199,14 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('banners', BannerController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('book-recommendations', BookRecommendationController::class);
-    Route::resource('events', EventController::class);
-    Route::resource('pages', PageController::class);
-    Route::resource('pages.sections', SectionController::class)->scoped();
-    Route::resource('about', AboutController::class);
     Route::resource('donations', DonationController::class);
+    Route::resource('events', EventController::class);
     Route::resource('gallery-images', GalleryImageController::class);
     Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
     Route::resource('media-types', MediaTypeController::class);
     Route::resource('orders', OrderController::class);
+    Route::resource('pages', PageController::class);
+    Route::resource('pages.sections', SectionController::class)->scoped();
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('projects', ProjectController::class);

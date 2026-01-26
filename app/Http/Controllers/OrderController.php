@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\View\View;
 
-class OrderController extends Controller
+class OrderController extends BaseController
 {
     public function index(): View
     {

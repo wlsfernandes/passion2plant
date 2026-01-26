@@ -105,15 +105,18 @@
 
                             <li class="menu-title">Sales</li>
 
-                            {{-- Future-ready placeholders --}}
                             <li class="text-muted ps-4 small">
-                                <a href="{{ route('orders.index') }}">
-                                    Orders
+                                <a href="{{ route('orders.index') }}" class="d-flex align-items-center gap-2">
+                                    <i class="uil uil-box"></i>
+                                    <span>Orders</span>
                                 </a>
                             </li>
 
                             <li class="text-muted ps-4 small">
-                                Payments (coming soon)
+                                <a href="{{ route('admin.payments.index') }}" class="d-flex align-items-center gap-2">
+                                    <i class="uil uil-credit-card"></i>
+                                    <span>Payments</span>
+                                </a>
                             </li>
 
                         </ul>

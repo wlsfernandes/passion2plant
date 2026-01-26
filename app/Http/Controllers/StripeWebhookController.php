@@ -170,8 +170,38 @@ class StripeWebhookController extends BaseController
             });
 
             // ----------------------------------
-            // Create Order
+            // Create Payment + Order + Order Items
             // ----------------------------------
+
+            $payment = Payment::create([
+                // Polymorphic target (temporary until order exists)
+                'payable_type'             => null,
+                'payable_id'               => null,
+
+                // Stripe references
+                'stripe_session_id'        => $session->id,
+                'stripe_payment_intent_id' => $session->payment_intent ?? null,
+                'stripe_customer_id'       => $session->customer ?? null,
+
+                // Payment info
+                'payment_type'             => 'one_time',
+                'status'                   => 'completed',
+
+                // Amounts are stored in cents
+                'amount'                   => $session->amount_total,
+                'currency'                 => $session->currency,
+
+                // Customer snapshot
+                'email'                    => $session->customer_email,
+                'first_name'               => $session->metadata->first_name ?? null,
+                'last_name'                => $session->metadata->last_name ?? null,
+                'country'                  => $session->metadata->country ?? null,
+                'address'                  => $session->metadata->address ?? null,
+
+                'metadata'                 => $session->metadata,
+                'paid_at'                  => now(),
+            ]);
+
             $order = Order::create([
                 'status'     => 'paid',
                 'subtotal'   => $subtotal,

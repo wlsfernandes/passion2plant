@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Payment extends Model
@@ -41,6 +42,8 @@ class Payment extends Model
         // Meta / audit
         'metadata',
         'paid_at',
+
+        'order_id',
     ];
 
     /**
@@ -87,5 +90,11 @@ class Payment extends Model
     public function getCustomerNameAttribute(): string
     {
         return trim(($this->first_name ?? '') . ' ' . ($this->last_name ?? ''));
+    }
+
+    // 🔑 THIS IS THE IMPORTANT ONE
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(Order::class);
     }
 }
