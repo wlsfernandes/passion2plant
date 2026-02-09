@@ -14,7 +14,6 @@
     @include('frontend.partials.blog-carousel')
     @include('frontend.partials.donate-carousel')
     @include('frontend.partials.event-carousel')
-    @include('frontend.partials.team-carousel')
     <!--Involve Section Here-->
     <section class="involve__section pt-130 pb-130 overhid">
         <div class="container">
