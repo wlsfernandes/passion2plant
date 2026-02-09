@@ -2491,7 +2491,7 @@ input.main-search-input::placeholder {
 }
 
 .involve__section {
-  background: url(../img/involve/bg.jpg) no-repeat center center;
+  background: url(../img/involve/banner.png) repeat center center;
   background-size: cover;
   position: relative;
 }
@@ -2510,6 +2510,7 @@ input.main-search-input::placeholder {
 
 .involve__section .involve__items {
   max-width: 650px;
+  max-height: fit-content;
   position: relative;
 }
 

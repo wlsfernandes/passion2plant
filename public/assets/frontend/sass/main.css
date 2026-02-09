@@ -2008,7 +2008,7 @@ input.main-search-input::placeholder {
 }
 
 .involve__section {
-  background: url(../img/involve/bg.jpg) no-repeat center center;
+  background: url(../img/involve/banner.png) no-repeat center center;
   background-size: cover;
   position: relative;
 }
@@ -2024,7 +2024,7 @@ input.main-search-input::placeholder {
   background-color: rgba(0, 0, 0, 0.4);
 }
 .involve__section .involve__items {
-  max-width: 650px;
+  max-width: 790px;
   position: relative;
 }
 .involve__section .involve__items h6 {
