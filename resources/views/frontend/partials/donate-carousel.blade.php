@@ -1,43 +1,12 @@
-@extends('frontend.layouts.app')
-
-@section('title', 'Services' . ' | Passion2Plant')
-
-@section('content')
-
-    <!--Breadcumd Section Here-->
-    <section class="breadcumd__banner overhid">
-        <div class="container">
-            <div class="breadcumd__wrapper">
-                <h2 class="left__content">
-                    @lang('pages.donations')
-                </h2>
-                <ul class="right__content">
-                    <li>
-                        <a href="{{ url('/') }}">
-                            <i class="fa-solid fa-house"></i>
-                            @lang('pages.home')
-                        </a>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </li>
-                    <li>
-                        @lang('pages.donations')
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!--Breadcumd Section End-->
-    @php
+ @php
         use Illuminate\Support\Str;
     @endphp
 
     <section class="service__section section__bg pt-130 pb-130 overhid">
         <div class="container">
-              <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
+            <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
       <h6>@lang('pages.donate_now')</h6>
-   
+      
     </div>
             <div class="row g-4">
 
@@ -92,5 +61,3 @@
             </div>
         </div>
     </section>
-
-@endsection

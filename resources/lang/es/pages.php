@@ -43,4 +43,6 @@ return [
     'learn_more'                    => 'Aprende Más',
     'donations'                     => 'Donaciones',
     'our_store'                     => 'Nuestra Tienda',
-];
+    'donate_now'                    => '¡Dona Ahora!',
+    'donate_description'             => 'Apoye nuestra misión de equipar a pastores y plantar iglesias centradas en la justicia haciendo una donación. Su contribución nos ayuda a proporcionar recursos, capacitación y apoyo a líderes y comunidades necesitadas.',
+    ];

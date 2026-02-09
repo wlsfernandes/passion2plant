@@ -9,6 +9,7 @@ use App\Models\About;
 use App\Models\Blog;
 use App\Models\Event;
 use App\Models\Banner;
+use App\Models\Donation;
 use App\Models\Page;
 use App\Models\Setting;
 use App\Models\SocialLink;
@@ -74,6 +75,10 @@ class ViewServiceProvider extends ServiceProvider
 
       $projects = Project::visible()->orderByDesc('start_date')->get();
 
+      $donations = Donation::inRandomOrder()
+        ->limit(3)
+        ->get();
+
       $view->with([
         'settings' => $settings,
         'socialLinks' => $socialLinks,
@@ -89,6 +94,7 @@ class ViewServiceProvider extends ServiceProvider
         'featuredEvents' => $featuredEvents,
         'pages' => $pages,
         'projects' => $projects,
+        'donations' => $donations,
       ]);
     });
   }

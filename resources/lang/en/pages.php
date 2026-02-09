@@ -43,4 +43,6 @@ return [
     'learn_more'                    => 'Learn More',
     'donations'                     => 'Donations',
     'our_store'                     => 'Our Store',
+    'donate_now'                    => 'Donate Now',
+    'donate_description'             => 'Support our mission to equip pastors and plant justice-centered churches by making a donation. Your contribution helps us provide resources, training, and support to leaders and communities in need.',   
 ];
