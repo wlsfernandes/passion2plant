@@ -15,7 +15,15 @@ class StripeWebhookController extends BaseController
     {
         $payload   = $request->getContent();
         $sigHeader = $request->header('Stripe-Signature');
-
+        SystemLogger::log(
+            'RAW Stripe webhook HIT',
+            'info',
+            'webhooks.stripe.raw',
+            [
+                'headers' => $request->headers->all(),
+                'body'    => $request->getContent(),
+            ]
+        );
         try {
             $event = Webhook::constructEvent(
                 $payload,
@@ -295,7 +303,7 @@ class StripeWebhookController extends BaseController
                     )->toArray(),
                 ];
                 event(new PaymentCompleted('cart', $payload));
-            
+
             } catch (\Throwable $e) {
                 SystemLogger::log(
                     'Failed to dispatch PaymentCompleted event',
