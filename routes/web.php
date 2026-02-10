@@ -119,8 +119,9 @@ Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.c
 Route::get('/checkout/success', [CartController::class, 'success'])->name('cart.success');
 
 /* Stripe Webhooks */
-Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
-
+Route::post('/stripe/webhook', function () {
+    return response()->json(['alive' => true]);
+});
 // 🧱 ADMIN SECTION
 /*
 |--------------------------------------------------------------------------
