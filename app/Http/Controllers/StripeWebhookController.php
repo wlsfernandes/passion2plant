@@ -15,15 +15,7 @@ class StripeWebhookController extends BaseController
     {
         $payload   = $request->getContent();
         $sigHeader = $request->header('Stripe-Signature');
-        SystemLogger::log(
-            'RAW Stripe webhook HIT',
-            'info',
-            'webhooks.stripe.raw',
-            [
-                'headers' => $request->headers->all(),
-                'body'    => $request->getContent(),
-            ]
-        );
+
         try {
             $event = Webhook::constructEvent(
                 $payload,
@@ -193,6 +185,15 @@ class StripeWebhookController extends BaseController
     protected function processCart($session): void
     {
         try {
+
+            SystemLogger::log(
+                'Processing cart payment',
+                'info',
+                'payments.cart.processing',
+                [
+                    'session_id' => $session->id,
+                ]
+            );
             // ----------------------------------
             // Idempotency
             // ----------------------------------
