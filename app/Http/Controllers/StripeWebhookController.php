@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\PaymentCompleted;
 use App\Models\Donation;
 use App\Models\Order;
 use App\Models\Payment;
@@ -88,6 +89,29 @@ class StripeWebhookController extends BaseController
                 'metadata'                 => $session->metadata,
                 'paid_at'                  => now(),
             ]);
+
+            // send email notification (wrapped in...)
+            try {
+                $payload = [
+                    'email'    => $session->customer_email,
+                    'name'     => trim($session->metadata->first_name ?? '') ?: 'Friend',
+                    'amount'   => number_format($session->amount_total / 100, 2),
+                    'currency' => strtoupper($session->currency ?? 'USD'),
+                ];
+
+                event(new PaymentCompleted('donation', $payload));
+
+            } catch (\Throwable $e) {
+                SystemLogger::log(
+                    'Failed to dispatch PaymentCompleted event',
+                    'error',
+                    'events.payment_completed.failed',
+                    [
+                        'exception'  => $e->getMessage(),
+                        'payment_id' => $payment->id,
+                    ]
+                );
+            }
 
             // ✅ SUCCESS LOG
             SystemLogger::log(
@@ -230,7 +254,33 @@ class StripeWebhookController extends BaseController
                     'currency'     => $item['currency'],
                 ]);
             }
+/* send email notification (wrapped in...) */
 
+            try {
+                $payload = [
+                    'email'    => $session->customer_email,
+                    'name'     => trim(($session->metadata->first_name ?? '') . ' ' . ($session->metadata->last_name ?? '')),
+                    'amount'   => number_format($session->amount_total / 100, 2),
+                    'currency' => strtoupper($session->currency ?? 'USD'),
+                    // Optional but useful
+                    'order_id' => $order->id ?? null,
+                    'items'    => collect($cart)->map(fn($item) =>
+                        $item['name'] . ' × ' . $item['quantity']
+                    )->toArray(),
+                ];
+                event(new PaymentCompleted('cart', $payload));
+            
+            } catch (\Throwable $e) {
+                SystemLogger::log(
+                    'Failed to dispatch PaymentCompleted event',
+                    'error',
+                    'events.payment_completed.failed',
+                    [
+                        'exception'  => $e->getMessage(),
+                        'payment_id' => $payment->id,
+                    ]
+                );
+            }
             // ----------------------------------
             // Attach Payment → Order
             // ----------------------------------

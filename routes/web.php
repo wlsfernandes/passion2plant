@@ -38,7 +38,9 @@ use App\Http\Controllers\SystemLogController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /* |--------------------------------------------------------------------------
 Language Switcher
@@ -109,6 +111,7 @@ Route::get('/store', [StoreController::class, 'indexPublic'])->name('stores.inde
 Route::get('/store/{slug}', [StoreController::class, 'show'])->name('store.products.show');
 
 /* Cart */
+Route::get('/cart/show', [CartController::class, 'show'])->name('cart.show');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');

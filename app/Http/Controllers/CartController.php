@@ -8,6 +8,15 @@ use Stripe\Stripe;
 
 class CartController extends Controller
 {
+
+    public function show()
+    {
+        $cart      = session()->get('cart', []);
+        $cartTotal = collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']);
+
+        return view('payment.cart', compact('cart', 'cartTotal'));
+    }
+
     public function index()
     {
         $cart = session()->get('cart', []);
