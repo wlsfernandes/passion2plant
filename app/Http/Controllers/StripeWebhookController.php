@@ -22,7 +22,25 @@ class StripeWebhookController extends BaseController
                 $sigHeader,
                 config('services.stripe.webhook_secret')
             );
+            SystemLogger::log(
+                'Stripe webhook received and verified',
+                'info',
+                'webhooks.stripe.received',
+                [
+                    'event_id'   => $event->id,
+                    'event_type' => $event->type,
+                ]
+            );
         } catch (\Throwable $e) {
+            SystemLogger::log(
+                'Stripe webhook signature verification failed',
+                'error',
+                'webhooks.stripe.invalid_signature',
+                [
+                    'exception' => $e->getMessage(),
+                    'payload'   => $payload,
+                ]
+            );
             return response()->json(['error' => 'Invalid signature'], 400);
         }
 
@@ -48,6 +66,14 @@ class StripeWebhookController extends BaseController
     protected function processDonation($session): void
     {
         try {
+            SystemLogger::log(
+                'Processing donation payment',
+                'info',
+                'payments.donation.processing',
+                [
+                    'session_id' => $session->id,
+                ]
+            );
 
             $payableId = $session->metadata->payable_id ?? null;
             $payment   = Payment::create([

@@ -24,6 +24,16 @@ class DonationController extends BaseController
             'address'    => 'nullable|string|max:500',
         ]);
 
+        SystemLogger::log(
+            'Starting donation checkout',
+            'info',
+            'donations.checkout.start',
+            [
+                'donation_id' => $donation->id,
+                'email'       => $validated['email'],
+                'amount'      => $validated['amount'],
+            ]
+        );
         // ✅ Stripe v19 (same API, stricter validation)
         Stripe::setApiKey(config('services.stripe.secret'));
 
