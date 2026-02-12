@@ -1119,7 +1119,7 @@ section {
 
 .partner-card-inner {
   width: 100%;
-  max-width: 350px;           /* controls wide logos */
+  max-width: 600px;           /* controls wide logos */
   max-height: 100px;          /* controls tall logos */
   display: flex;
   align-items: center;
