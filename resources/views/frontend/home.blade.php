@@ -4,7 +4,11 @@
 @section('title', 'Home | Passion2Plant')
 
 @section('content')
-
+@if (session('success'))
+         <div class="alert alert-success">
+             {{ session('success') }}
+         </div>
+     @endif
     @include('frontend.partials.banner')
     @include('frontend.partials.about')
     @include('frontend.partials.team-carousel')

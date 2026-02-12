@@ -174,7 +174,7 @@
                         @endforeach
                     </ul>
                 </li>
-                <li><a href="#">{{ __('menu.contact') }}</a></li>
+                <li><a href="{{ route('contact') }}">{{ __('menu.contact') }}</a></li>
                 @php
                     $cart = session('cart', []);
                     $cartCount = collect($cart)->sum('quantity');

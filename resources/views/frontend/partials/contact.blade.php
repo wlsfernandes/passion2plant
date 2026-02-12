@@ -1,10 +1,6 @@
  <!--Contact Info Section Here-->
  <div class="contact__info__section pt-130 pb-130 section__bg overhid">
-     @if (session('success'))
-         <div class="alert alert-success">
-             {{ session('success') }}
-         </div>
-     @endif
+     
      <div class="container">
          <div class="row g-5 align-items-center">
              <div class="col-lg-7">
