@@ -1126,8 +1126,8 @@ section {
 }
 
 .partner-card img {
-  max-width: 350px;           /* controls horizontal logos */
-  max-height: 220px;           /* controls vertical balance */
+  max-width: 700px;           /* controls horizontal logos */
+  max-height: 500px;           /* controls vertical balance */
   width: auto;
   height: auto;
   object-fit: contain;
