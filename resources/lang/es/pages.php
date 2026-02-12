@@ -60,5 +60,6 @@ return [
     'office_address'                => 'Dirección de la Oficina',  
     'passion_description'          => 'Passion2Plant es una red completamente igualitaria que equipa a líderes de la mayoría global para plantar iglesias con una mentalidad holística y orientada a la justicia desde el principio. Creemos en el poder del Espíritu de Dios para guiar y sostener comunidades de fe que se centran en Jesús, la justicia y el bienestar holístico.',
     'events_description'                 => 'Explore nuestros próximos eventos, talleres y conferencias diseñados para equipar e inspirar a pastores y plantadores de iglesias en su misión de crear comunidades de fe centradas en la justicia.',  
-    ];
-
+    'partnerships'                    => 'Asociaciones',
+    'partnerships_description'        => 'Descubra nuestras asociaciones con organizaciones y líderes que comparten nuestro compromiso con la plantación de iglesias centradas en la justicia y el desarrollo del liderazgo.',
+];

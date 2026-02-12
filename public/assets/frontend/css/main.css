@@ -1897,6 +1897,9 @@ input.main-search-input::placeholder {
   background-size: cover;
   position: relative;
   background-attachment: fixed;
+  min-height: 500px;          /* NEW */
+  display: flex;              /* NEW */
+  align-items: center;        /* NEW */
 }
 
 .breadcumd__banner::before {
@@ -1917,7 +1920,7 @@ input.main-search-input::placeholder {
   justify-content: space-between;
   position: relative;
   flex-wrap: wrap;
-  padding: 150px 0;
+  padding: 120px 0;
 }
 
 @media (max-width: 767px) {

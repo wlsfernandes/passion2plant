@@ -128,7 +128,23 @@
                         @endforeach
                     </ul>
                 </li>
-                <li><a href="#">{{ __('menu.partnerships') }}</a></li>
+                {{-- PARTNERSHIPS --}}
+                <li class="has-submenu">
+                    <a href="#">
+                        {{ __('menu.partnerships') }}
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+
+                    <ul class="sub-menu">
+                        @foreach ($collaborators as $collaborator)
+                            <li>
+                                <a href="{{ route('collaborators.display', $collaborator->slug) }}">
+                                    {{ $collaborator->title }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
                 <li><a href="{{ route('services.index.public') }}">{{ __('menu.services') }}</a></li>
 
                 <li class="has-submenu">

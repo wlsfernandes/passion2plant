@@ -7,6 +7,7 @@ use App\Models\Project;
 use Illuminate\Support\ServiceProvider;
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\Collaborator;
 use App\Models\Event;
 use App\Models\Banner;
 use App\Models\Donation;
@@ -73,6 +74,7 @@ class ViewServiceProvider extends ServiceProvider
 
       $projects = Project::visible()->orderByDesc('start_date')->get();
 
+      $collaborators = Collaborator::visible()->orderByDesc('start_date')->get();
       $donations = Donation::inRandomOrder()
         ->limit(3)
         ->get();
@@ -92,6 +94,7 @@ class ViewServiceProvider extends ServiceProvider
         'featuredEvents' => $featuredEvents,
         'pages' => $pages,
         'projects' => $projects,
+        'collaborators' => $collaborators,
         'donations' => $donations,
       ]);
     });

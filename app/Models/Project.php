@@ -10,6 +10,7 @@ class Project extends Model
   protected $fillable = [
     'title_en',
     'title_es',
+    'image_url',
     'slug',
     'description_en',
     'description_es',
@@ -115,5 +116,14 @@ class Project extends Model
     return $query->where('is_published', true);
   }
 
+   public function getBannerUrlAttribute(): string
+    {
+        return $this->image_url
+            ? route('admin.images.preview', [
+            'model' => 'projects',
+            'id'    => $this->id,
+        ])
+            : asset('assets/frontend/img/banner/breadcumd-bg.jpg');
+    }
 
 }

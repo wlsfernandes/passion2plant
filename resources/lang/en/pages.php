@@ -59,7 +59,8 @@ return [
     'hot_line'                        => 'Hotline',
     'email_address'                   => 'Email Address',
     'office_address'                  => 'Office Address',
-    'passion_description'            => 'Passion2Plant is a fully egalitarian network that equips global majority leaders to plant holistically minded, justice-oriented churches from the start. We believe in the power of the Spirit of God to guide and sustain faith communities that center on Jesus, justice, and holistic well-being.',
-    'events_description'                 => 'Explore our upcoming events, workshops, and conferences designed to equip and inspire pastors and church planters in their mission to create justice-centered faith communities.',  
-
+    'passion_description'             => 'Passion2Plant is a fully egalitarian network that equips global majority leaders to plant holistically minded, justice-oriented churches from the start. We believe in the power of the Spirit of God to guide and sustain faith communities that center on Jesus, justice, and holistic well-being.',
+    'events_description'              => 'Explore our upcoming events, workshops, and conferences designed to equip and inspire pastors and church planters in their mission to create justice-centered faith communities.',
+    'partnerships'                    => 'Partnerships',
+    'partnerships_description'        => 'Discover our partnerships with organizations and leaders who share our commitment to justice-centered church planting and leadership development.',
 ];

@@ -19,6 +19,8 @@ class ImageUploadController extends BaseController
     'donations' => \App\Models\Donation::class,
     'media-types' => \App\Models\MediaType::class,
     'gallery-images' => \App\Models\GalleryImage::class,
+    'collaborators' => \App\Models\Collaborator::class,
+    'collaborator-images' => \App\Models\CollaboratorImage::class,
     'partners' => \App\Models\Partner::class,
     'positions' => \App\Models\Position::class,
     'products' => \App\Models\Product::class,
@@ -32,6 +34,7 @@ class ImageUploadController extends BaseController
     'resources' => \App\Models\Resource::class,
     'services' => \App\Models\Service::class,
     'settings' => \App\Models\Setting::class,
+
     // add more models here
   ];
 

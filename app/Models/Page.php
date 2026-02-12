@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class Page extends Model
@@ -86,7 +87,7 @@ class Page extends Model
      */
     protected static function booted()
     {
-        static::updated(fn() => \Log::info('PAGE updated fired'));
+        static::updated(fn() => Log::info('PAGE updated fired'));
     }
     /**
      * Get title based on current locale.

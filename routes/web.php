@@ -7,6 +7,8 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookRecommendationController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CollaboratorController;
+use App\Http\Controllers\CollaboratorImageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EventController;
@@ -86,6 +88,9 @@ Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 
 Route::get('/our-pages/{slug}', [PageController::class, 'display'])->name('pages.display');
 /* Projects */
 Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
+
+Route::get('/our-collaborators/{slug}', [CollaboratorController::class, 'display'])->name('collaborators.display');
+
 
 /* Services */
 Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
@@ -214,7 +219,9 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('projects', ProjectController::class);
+    Route::resource('collaborators', CollaboratorController::class);
     Route::resource('projects.images', ProjectImageController::class);
+    Route::resource('collaborators.images', CollaboratorImageController::class);
     Route::resource('resources', ResourceController::class);
     Route::resource('services', ServiceController::class);
     Route::resource('stores', StoreController::class);

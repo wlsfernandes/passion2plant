@@ -54,6 +54,8 @@
                             <li><a href="{{ route('blogs.index') }}"><i class="uil-blogger-alt"></i> Blog</a></li>
                             <li><a href="{{ route('projects.index') }}"><i class="uil uil-calendar-alt"></i> Cohorts</a>
                             </li>
+                            <li><a href="{{ route('collaborators.index') }}"> <i class="uil uil-users-alt"></i> Collaborators</a>
+                            </li>
                             <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a></li>
                             <li>
                                 <a href="{{ route('gallery-images.index') }}">
