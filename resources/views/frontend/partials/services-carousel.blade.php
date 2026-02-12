@@ -16,7 +16,7 @@
                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
                     data-wow-duration="{{ 3 + ($loop->index * 2) }}s">
 
-                    <div class="service__items center">
+                    <div class="blog__items center">
 
                         {{-- Image --}}
                         <div class="thumb">
@@ -38,7 +38,7 @@
                                 {{ Str::limit(strip_tags($service->getDescription()), 120) }}
                             </p>
 
-                            <a href="{{ route('services.display', $service->slug) }}" class="btns">
+                            <a href="{{ route('services.display', $service->slug) }}" class="btn btn-sm btn-outline-success mt-2">
                                 @lang('pages.read_more')
                             </a>
                         </div>

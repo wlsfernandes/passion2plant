@@ -57,5 +57,8 @@ return [
     'contact_information_description' => 'No dude en comunicarse con nosotros a través de cualquiera de los siguientes métodos. Estamos aquí para ayudarle y responder cualquier pregunta que pueda tener.',
     'hot_line'                      => 'Línea Directa',
     'email_address'                 => 'Dirección de Correo Electrónico',       
-    'office_address'                => 'Dirección de la Oficina',   
+    'office_address'                => 'Dirección de la Oficina',  
+    'passion_description'          => 'Passion2Plant es una red completamente igualitaria que equipa a líderes de la mayoría global para plantar iglesias con una mentalidad holística y orientada a la justicia desde el principio. Creemos en el poder del Espíritu de Dios para guiar y sostener comunidades de fe que se centran en Jesús, la justicia y el bienestar holístico.',
+    'events_description'                 => 'Explore nuestros próximos eventos, talleres y conferencias diseñados para equipar e inspirar a pastores y plantadores de iglesias en su misión de crear comunidades de fe centradas en la justicia.',  
     ];
+

@@ -23,9 +23,7 @@ class ViewServiceProvider extends ServiceProvider
   {
     view()->composer('frontend.*', function ($view) {
 
-      $settings = cache()->rememberForever('frontend_settings', function () {
-        return Setting::current();
-      });
+      $settings = Setting::query()->first();
 
       $socialLinks = cache()->rememberForever('frontend_social_links', function () {
         return SocialLink::query()

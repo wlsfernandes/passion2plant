@@ -15,7 +15,7 @@
                 <h6>@lang('pages.events')</h6>
                 <div class="witr_bar_main">
                     <div class="witr_bar_inner witr_bar_innerc center"></div>
-                    <h3>@lang('pages.events_description')</h3>
+                    <p>@lang('pages.events_description')</p>
                 </div>
             </div>
 

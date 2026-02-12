@@ -229,40 +229,42 @@
 <div id="targetElement" class="side_bar slideInRight side_bar_hidden">
     <div class="logo mb-30">
         <img src="{{ route('admin.images.preview', ['model' => 'settings', 'id' => $settings->id]) }}"
-            alt="{{ $settings->site_name ?? config('app.name') }}">
+            alt="{{ $settings->site_name ?? config('app.name') }}" height="80" loading="lazy" width="auto">
     </div>
-    <p class="text-justify">Throughout human history, our relationship with the soil has affected our ability to
-        cultivate crops and influenced the success of civilizations. This relationship between humans, the earth, and
-        food sources affirms soil as the foundation of agriculture.</p>
+    <p class="text-justify">@lang('pages.passion_description')</p>
     <ul class="info py-4 mt-65 bor__top bor__bottom">
-        <li><i class="fa-solid fa-location-dot"></i> <a href="#0">Inner Circular Rose Valley Park.</a>
+        <li><i class="fa-solid fa-paper-plane"></i> <a href="#0">passion2plant@gmail.com</a></li>
+        <li><i class="fa-solid fa-location-dot"></i> <a href="#0">P.O. Box 580527, Kissimmee, FL 34758</a>
         </li>
-        <li class="py-4"><i class="fa-solid fa-phone-volume"></i> <a href="#0">+48 301 111 299</a>
-        </li>
-        <li><i class="fa-solid fa-paper-plane"></i> <a href="#0">example@example.com</a></li>
+       
     </ul>
     <ul class="social__icon mt-65">
         <li>
-            <a href="#0"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.facebook.com/Passion2Plant" target="_blank" rel="noopener"><i
+                    class="fa-brands fa-facebook-f"></i></a>
         </li>
         <li>
-            <a href="#0"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/passion2plant/" target="_blank" rel="noopener"><i
+                    class="fa-brands fa-instagram"></i></a>
         </li>
         <li>
-            <a href="#0"><i class="fa-brands fa-linkedin-in"></i></a>
-        </li>
-        <li>
-            <a href="#0"><i class="fa-brands fa-instagram"></i></a>
-        </li>
-        <li>
-            <a href="#0"><i class="fa-brands fa-youtube"></i></a>
-        </li>
+    <a href="https://www.threads.com/@passion2plant"
+       target="_blank"
+       rel="noopener"
+       aria-label="Threads"
+       class="threads-icon">
+
+        <i class="fa-brands fa-threads"></i>
+    </a>
+</li>
+
+
     </ul>
     <button id="closeButton" class="text-white"><i class="fa-solid fa-xmark"></i></button>
 </div>
 <!-- Sidebar area end here -->
 
-<!-- fullscreen search bar area start here -->
+<!-- fullscreen search bar area start here
 <div class="search-wrap">
     <div class="search-inner">
         <i class="fas fa-times search-close" id="search-close"></i>
@@ -275,4 +277,4 @@
         </div>
     </div>
 </div>
-<!-- fullscreen search bar area end here -->
+fullscreen search bar area end here -->

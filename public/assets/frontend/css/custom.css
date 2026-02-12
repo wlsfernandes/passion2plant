@@ -965,7 +965,6 @@ section {
         font-size: 0.95rem;
     }
 }
-/*BLOG POST IMAGES*/
 /* Blog Card Container */
 .blog__items {
     border-radius: 12px;
@@ -990,6 +989,47 @@ section {
     display: block;
     transition: transform 0.4s ease;
 }
+/* Make columns stretch evenly */
+.row.g-4 > div {
+    display: flex;
+}
+
+/* Blog card layout */
+.blog__items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+/* Keep image fixed */
+.blog__items .thumb {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.blog__items .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content grows evenly */
+.blog__items .content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+}
+
+/* Push Read More to bottom */
+.blog__items .btns {
+    margin-top: auto;
+}
+
 
 /* Hover Effect (Optional but Nice) */
 .blog__items:hover .thumb img {

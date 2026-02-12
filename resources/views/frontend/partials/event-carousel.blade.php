@@ -16,7 +16,7 @@
         <div class="row g-4">
             @foreach($featuredEvents as $event)
                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp">
-                    <div class="event__items">
+                    <div class="blog__items">
 
                         <div class="thumb">
                             <a href="{{ route('events.display', $event->slug) }}">
@@ -40,7 +40,7 @@
                                 {{ $event->limitText($event->getContent(), 120) }}
                             </p>
 
-                            <a href="{{ route('events.display', $event->slug) }}" class="btns">
+                            <a href="{{ route('events.display', $event->slug) }}" class="btn btn-sm btn-outline-success mt-2">
                                 @lang('pages.read_more')
                             </a>
                         </div>
