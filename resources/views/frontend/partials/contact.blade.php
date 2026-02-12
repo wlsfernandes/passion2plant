@@ -1,6 +1,10 @@
  <!--Contact Info Section Here-->
  <div class="contact__info__section pt-130 pb-130 section__bg overhid">
-     
+     @if (session('success'))
+         <div class="alert alert-success">
+             {{ session('success') }}
+         </div>
+     @endif
      <div class="container">
          <div class="row g-5 align-items-center">
              <div class="col-lg-7">
@@ -61,19 +65,7 @@
                              @lang('pages.contact_information_description')
                          </p>
                      </div>
-                     <div class="info__wrap d-flex align-items-center mt-5">
-                         <div class="icon">
-                             <i class="fa-solid fa-phone"></i>
-                         </div>
-                         <div class="content">
-                             <h6>
-                                 @lang('pages.hot_line')
-                             </h6>
-                             <p>
-                                 +47 232 001
-                             </p>
-                         </div>
-                     </div>
+                     
                      <div class="info__wrap d-flex align-items-center mt-4">
                          <div class="icon">
                              <i class="fa-solid fa-location-dot"></i>
@@ -83,20 +75,7 @@
                                  @lang('pages.office_address')
                              </h6>
                              <p>
-                                 Inner Circular Rose Valley Park.
-                             </p>
-                         </div>
-                     </div>
-                     <div class="info__wrap d-flex align-items-center mt-4">
-                         <div class="icon">
-                             <i class="fa-solid fa-envelope"></i>
-                         </div>
-                         <div class="content">
-                             <h6>
-                                 @lang('pages.email_address')
-                             </h6>
-                             <p>
-                                 example@example.com
+                                  P.O. Box 580527, Kissimmee, FL 34758
                              </p>
                          </div>
                      </div>

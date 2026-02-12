@@ -2012,7 +2012,10 @@ input.main-search-input::placeholder {
   width: 200px;
   animation: top-image-bounce 3s infinite ease-in-out;
 }
-
+.about__section .col-lg-6:first-child {
+  position: relative;
+  overflow: hidden;
+}
 @media (max-width: 1199px) {
   .about__section .about__thumb .small__about__one {
     left: -30px;
