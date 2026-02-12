@@ -57,18 +57,20 @@
 
                         {{-- Partner Icons --}}
                         @if ($collaborator->images->count())
-                            <div class="partner-icons mt-40">
-                                <div class="row g-3 justify-content-center align-items-center">
+                            <div class="partner-cards mt-50">
+                                <div class="row g-4 justify-content-center">
 
                                     @foreach ($collaborator->images as $image)
-                                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex justify-content-center">
+                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
 
-                                            <a class="partner-icon" href="{{ $collaborator->external_link ?: '#0' }}"
-                                                @if (!empty($collaborator->external_link)) target="_blank" rel="noopener noreferrer" @endif
-                                                aria-label="{{ $collaborator->title }}">
+                                            <a href="{{ $collaborator->external_link ?: '#0' }}" class="partner-card w-100"
+                                                @if (!empty($collaborator->external_link)) target="_blank" rel="noopener noreferrer" @endif>
 
-                                                <img src="{{ route('admin.images.preview', ['model' => 'collaborator-images', 'id' => $image->id]) }}"
-                                                    alt="{{ $collaborator->title }}" loading="lazy">
+                                                <div class="partner-card-inner">
+                                                    <img src="{{ route('admin.images.preview', ['model' => 'collaborator-images', 'id' => $image->id]) }}"
+                                                        alt="{{ $collaborator->title }}" loading="lazy">
+                                                </div>
+
                                             </a>
 
                                         </div>
@@ -77,6 +79,7 @@
                                 </div>
                             </div>
                         @endif
+
 
 
 

@@ -1105,3 +1105,45 @@ section {
     max-width: 75px;
   }
 }
+.partner-card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.partner-card-inner {
+  height: 250px;                 /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.partner-card img {
+  max-width: 140px;
+  max-height: 140px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.10);
+}
+
+.partner-card:hover img {
+  transform: scale(1.05);
+}
+@media (max-width: 768px) {
+  .partner-card-inner {
+    height: 200px;
+    padding: 20px;
+  }
+
+  .partner-card img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
