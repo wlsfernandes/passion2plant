@@ -15,51 +15,48 @@
         <div class="swiper testimonial__wrapper">
             <div class="swiper-wrapper">
 
-                @foreach($featuredTestimonials as $testimonial)
+                @foreach ($featuredTestimonials as $testimonial)
                     <div class="swiper-slide">
                         <div class="testi__items">
-                            <div class="testi__wrap">
-                                <div class="testi__thumb">
-                                    <img
-                                        src="{{ route('admin.images.preview', ['model' => 'testimonials', 'id' => $testimonial->id]) }}"
-                                        alt="{{ $testimonial->name }}"
-                                        loading="lazy"
-                                    >
-                                </div>
 
-                                <div class="content">
-                                    <h6>{{ $testimonial->name }}</h6>
-                                    <span>{{ Str::limit($testimonial->role, 30) }}</span>
-                                </div>
+                            <!-- Image -->
+                            <div class="testi__thumb text-center mb-3">
+                                <img src="{{ route('admin.images.preview', ['model' => 'testimonials', 'id' => $testimonial->id]) }}"
+                                    alt="{{ $testimonial->name }}" class="rounded-circle shadow"
+                                    style="width:140px;height:140px;object-fit:cover;" loading="lazy">
                             </div>
 
-                            <p>
-                                {{ Str::limit(
-                                    strip_tags($locale === 'es'
-                                        ? $testimonial->content_es
-                                        : $testimonial->content_en),
-                                    140
-                                ) }}
+                            <!-- Name + Role -->
+                            <div class="text-center mb-4">
+                                <h5 class="mb-1">{{ $testimonial->name }}</h5>
+                                <span>
+                                    {{ $testimonial->role }}
+                                </span>
+                            </div>
+
+                            <!-- Content -->
+                            <p class="testimonial-content">
+                                {{ strip_tags($locale === 'es' ? $testimonial->content_es : $testimonial->content_en) }}
                             </p>
 
-                            <ul>
+                            <!-- Stars -->
+                            <ul class="testimonial-stars mt-4">
                                 <li><i class="fas fa-star"></i></li>
                                 <li><i class="fas fa-star"></i></li>
                                 <li><i class="fas fa-star"></i></li>
                                 <li><i class="fas fa-star"></i></li>
                                 <li><i class="fas fa-star"></i></li>
                             </ul>
+
                         </div>
                     </div>
                 @endforeach
-
+               
             </div>
-
-            <div class="swiper-dot text-center pt-5">
-                <div class="dot"></div>
-            </div>
+             <div class="swiper-dot text-center">
+                    <div class="dot"></div>
+                </div>
         </div>
-
     </div>
 </section>
 <!--Testimonial Section End-->

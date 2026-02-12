@@ -868,3 +868,100 @@ section {
   color: #f1f1f1;
   /* soft hover */
 }
+
+/* Testimonial Carousel */
+/* Testimonial Carousel */
+
+.testi__items {
+    position: relative;
+    width: 100%;
+    padding: 60px 40px; /* 20px+ side breathing space */
+    border-radius: 12px;
+    overflow: hidden;
+    color: #fff;
+}
+/* Background overlay (darken image) */
+.testi__items::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+/* Ensure content is above overlay */
+.testi__items > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Image */
+.testi__thumb img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    display: block;
+}
+
+/* Name */
+.testi__items h5 {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Role */
+.testi__items span {
+    color: #f1f1f1;
+    font-size: 0.95rem;
+}
+
+/* Content */
+.testimonial-content {
+   width: 100% !important;
+    max-width: 100% !important;
+    display: block; 
+  text-align: justify;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-top: 20px;
+    padding: 0 20px; /* 20px border space */
+}
+
+/* Stars */
+.testimonial-stars {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.testimonial-stars li i {
+    color: #28a745;
+    font-size: 18px;
+}
+.testi__items .testimonial-content {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+
+    .testi__items {
+        padding: 40px 20px;
+    }
+
+    .testi__thumb img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .testimonial-content {
+        font-size: 0.95rem;
+    }
+}

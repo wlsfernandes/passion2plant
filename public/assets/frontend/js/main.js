@@ -192,27 +192,20 @@ $(document).ready(function () {
   //Donate-slide-area-start-End
 
   //Testimonial-slide-area-start-here
-  var swiper = new Swiper(".testimonial__wrapper", {
-    spaceBetween: 30,
-    speed: 1000,
+  new Swiper('.testimonial__wrapper', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    centeredSlides: true,
+    loop: true,
     autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
+        delay: 5000,
     },
-    loop: "true",
     pagination: {
-      el: ".dot",
-      clickable: true,
+        el: '.swiper-dot .dot',
+        clickable: true,
     },
-    breakpoints: {
-      575: {
-        slidesPerView: 1,
-      },
-      992: {
-        slidesPerView: 3,
-      },
-    },
-  });
+});
+
   //Testimonial-slide-area-start-End
 
   //Wow-animation-area-start-here

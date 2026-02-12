@@ -7,6 +7,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookRecommendationController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FileUploadController;
@@ -72,7 +73,7 @@ Route::get('/our-book-recommendations', [BookRecommendationController::class, 'i
 
 /* Contact */
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-
+Route::post('/send-message', [ContactController::class, 'send'])->name('contact.send')->middleware('throttle:5,1'); 
 /* Events */
 Route::get('/event/{event:slug}', [EventController::class, 'display'])->name('events.display');
 Route::get('/our-events', [EventController::class, 'indexPublic'])->name('events.index.public');
