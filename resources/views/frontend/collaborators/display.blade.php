@@ -66,7 +66,7 @@
                                             <a href="{{ $collaborator->external_link ?: '#0' }}" class="partner-card w-100"
                                                 @if (!empty($collaborator->external_link)) target="_blank" rel="noopener noreferrer" @endif>
 
-                                                <div class="partner-card-inner">
+                                                <div class="partner-card">
                                                     <img src="{{ route('admin.images.preview', ['model' => 'collaborator-images', 'id' => $image->id]) }}"
                                                         alt="{{ $collaborator->title }}" loading="lazy">
                                                 </div>
