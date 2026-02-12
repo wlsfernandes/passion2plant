@@ -1111,7 +1111,7 @@ section {
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
   text-decoration: none;
-  padding: 40px 30px;
+  padding: 10px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
