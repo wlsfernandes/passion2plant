@@ -1073,20 +1073,35 @@ section {
 }
 .partner-icon {
   width: 100%;
-  max-width: 150px;       /* caps size */
-  aspect-ratio: 1 / 1;    /* perfect square */
+  max-width: 100px;     /* reduced from 150px */
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;          /* gives logo breathing room */
-  overflow: hidden;
-  border-radius: 12px;
-  background: #fff;       /* optional – makes logos pop */
+  padding: 10px;        /* reduced */
+  border-radius: 10px;
+  background: #fff;
+  transition: all 0.3s ease;
 }
 
 .partner-icon img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;    /* preserves proportions */
+  object-fit: contain;
   display: block;
+}
+.partner-icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+@media (max-width: 768px) {
+  .partner-icon {
+    max-width: 85px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-icon {
+    max-width: 75px;
+  }
 }
