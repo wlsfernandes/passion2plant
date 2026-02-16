@@ -35,7 +35,7 @@ class TeamController extends BaseController
   {
     $teams = Team::visible()
     ->with('sectors')
-    ->orderBy('order')
+    ->orderBy('sector_id')
     ->orderBy('name')
     ->get();
 
