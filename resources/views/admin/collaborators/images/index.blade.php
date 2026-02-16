@@ -23,6 +23,10 @@
         class="mb-4">
         @csrf
 
+        <div class="mb-3">
+          <input type="url" name="external_link" class="form-control" value="{{ old('external_link', $collaborator->external_link ?? '') }}" placeholder="External Link (Optional)">
+        </div>  
+
         <div class="row g-2 align-items-center">
           <div class="col-md-8">
             <input type="file" name="image" class="form-control" accept="image/*" required>

@@ -12,6 +12,7 @@ class CollaboratorImage extends Model
     'position',
     'caption_en',
     'caption_es',
+    'external_link',
   ];
 
   /*
