@@ -341,7 +341,12 @@ section {
 /* =====================================================
    TESTIMONIAL THUMBNAIL IMAGE
    ===================================================== */
-.testi__thumb img {
+.details__thumb img {
+    height: 260px;
+    object-fit: cover;
+}
+
+   .testi__thumb img {
   max-width: 50px;
   max-height: 50px;
   object-fit: cover;

@@ -93,6 +93,9 @@ Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name(
 
 Route::get('/our-collaborators/{slug}', [CollaboratorController::class, 'display'])->name('collaborators.display');
 
+/* positions */
+Route::get('/join-our-team', [PositionController::class, 'indexPublic'])->name('positions.index.public');
+Route::get('/position/{slug}', [PositionController::class, 'display'])->name('positions.display');
 /* Services */
 Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
 Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');

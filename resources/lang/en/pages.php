@@ -63,4 +63,7 @@ return [
     'events_description'              => 'Explore our upcoming events, workshops, and conferences designed to equip and inspire pastors and church planters in their mission to create justice-centered faith communities.',
     'partnerships'                    => 'Partnerships',
     'partnerships_description'        => 'Discover our partnerships with organizations and leaders who share our commitment to justice-centered church planting and leadership development.',
+    'open_positions'                  => 'Open Positions',
+    'view_position'                   => 'View Position',
+    'download_details'                => 'Download Details',
 ];

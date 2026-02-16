@@ -105,7 +105,7 @@
                                     {{ __('menu.media') }}
                                 </a>
                             </li>
-                            <li><a href="#">{{ __('menu.opportunities') }}</a></li>
+                            <li><a href="{{ route('positions.index.public') }}">{{ __('menu.opportunities') }}</a></li>
                             <li>
                                 <a href="{{ url('/info/why-learn-with-us') }}">
                                    {{ __('menu.why_learn') }}

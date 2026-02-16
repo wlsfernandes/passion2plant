@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Position;
-use Illuminate\Http\Request;
-use App\Services\SystemLogger;
 use App\Helpers\S3;
+use App\Models\Position;
+use App\Services\SystemLogger;
 use Exception;
+use Illuminate\Http\Request;
 
 class PositionController extends BaseController
 {
@@ -17,22 +16,53 @@ class PositionController extends BaseController
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'title_en' => ['required', 'string', 'max:255'],
-            'title_es' => ['nullable', 'string', 'max:255'],
+            'title_en'         => ['required', 'string', 'max:255'],
+            'title_es'         => ['nullable', 'string', 'max:255'],
 
-            'content_en' => ['nullable', 'string'],
-            'content_es' => ['nullable', 'string'],
+            'content_en'       => ['nullable', 'string'],
+            'content_es'       => ['nullable', 'string'],
 
-            'image_url' => ['nullable', 'string'],
-            'file_url_en' => ['nullable', 'string'],
-            'file_url_es' => ['nullable', 'string'],
+            'image_url'        => ['nullable', 'string'],
+            'file_url_en'      => ['nullable', 'string'],
+            'file_url_es'      => ['nullable', 'string'],
 
-            'external_link' => ['nullable', 'url'],
+            'external_link'    => ['nullable', 'url'],
 
-            'is_published' => ['nullable', 'boolean'],
+            'is_published'     => ['nullable', 'boolean'],
             'publish_start_at' => ['nullable', 'date'],
-            'publish_end_at' => ['nullable', 'date'],
+            'publish_end_at'   => ['nullable', 'date'],
         ]);
+    }
+
+    public function indexPublic()
+    {
+        $positions = Position::where('is_published', true)
+            ->where(function ($query) {
+                $query->whereNull('publish_start_at')
+                    ->orWhere('publish_start_at', '<=', now());
+            })
+            ->where(function ($query) {
+                $query->whereNull('publish_end_at')
+                    ->orWhere('publish_end_at', '>=', now());
+            })
+            ->orderByDesc('created_at')
+            ->get();
+
+        return view('frontend.positions.index', compact('positions'));
+    }
+
+    public function display($slug)
+    {
+        $position = Position::where('slug', $slug)->firstOrFail();
+
+        // If the position is not published, show 404
+        if (! $position->is_published ||
+            ($position->publish_start_at && $position->publish_start_at > now()) ||
+            ($position->publish_end_at && $position->publish_end_at < now())) {
+            abort(404);
+        }
+
+        return view('frontend.positions.display', compact('position'));
     }
 
     /**
@@ -70,7 +100,7 @@ class PositionController extends BaseController
                 'positions.store',
                 [
                     'position_id' => $position->id,
-                    'email' => $request->email,
+                    'email'       => $request->email,
                 ]
             );
 
@@ -85,7 +115,7 @@ class PositionController extends BaseController
                 'positions.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
+                    'email'     => $request->email,
                 ]
             );
 
@@ -120,7 +150,7 @@ class PositionController extends BaseController
                 'positions.update',
                 [
                     'position_id' => $position->id,
-                    'email' => $request->email,
+                    'email'       => $request->email,
                 ]
             );
 
@@ -135,8 +165,8 @@ class PositionController extends BaseController
                 'positions.update',
                 [
                     'position_id' => $position->id,
-                    'exception' => $e->getMessage(),
-                    'email' => $request->email,
+                    'exception'   => $e->getMessage(),
+                    'email'       => $request->email,
                 ]
             );
 
@@ -153,15 +183,15 @@ class PositionController extends BaseController
     {
         try {
             // Cleanup associated S3 assets
-            if (!empty($position->image_url)) {
+            if (! empty($position->image_url)) {
                 S3::delete($position->image_url);
             }
 
-            if (!empty($position->file_url_en)) {
+            if (! empty($position->file_url_en)) {
                 S3::delete($position->file_url_en);
             }
 
-            if (!empty($position->file_url_es)) {
+            if (! empty($position->file_url_es)) {
                 S3::delete($position->file_url_es);
             }
 
@@ -173,7 +203,7 @@ class PositionController extends BaseController
                 'positions.delete',
                 [
                     'position_id' => $position->id,
-                    'email' => request()->email,
+                    'email'       => request()->email,
                 ]
             );
 
@@ -188,8 +218,8 @@ class PositionController extends BaseController
                 'positions.delete',
                 [
                     'position_id' => $position->id,
-                    'exception' => $e->getMessage(),
-                    'email' => request()->email,
+                    'exception'   => $e->getMessage(),
+                    'email'       => request()->email,
                 ]
             );
 

@@ -1,10 +1,10 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Services' . ' | Passion2Plant')
+@section('title', 'Services | Passion2Plant')
 
 @section('content')
 
-    <!--Breadcumd Section Here-->
+    <!-- Breadcrumb -->
     <section class="breadcumd__banner overhid">
         <div class="container">
             <div class="breadcumd__wrapper">
@@ -18,58 +18,57 @@
                             @lang('pages.home')
                         </a>
                     </li>
-                    <li>
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </li>
-                    <li>
-                        @lang('pages.services')
-                    </li>
+                    <li><i class="fa-solid fa-chevron-right"></i></li>
+                    <li>@lang('pages.services')</li>
                 </ul>
             </div>
         </div>
     </section>
-    <!--Breadcumd Section End-->
-    @php
-        use Illuminate\Support\Str;
-    @endphp
+    <!-- End Breadcrumb -->
 
-    <section class="service__section section__bg pt-130 pb-130 overhid">
+    @php use Illuminate\Support\Str; @endphp
+
+    <section class="details__section pt-130 pb-130 overhid">
         <div class="container">
-            <div class="row g-4">
+            <div class="row justify-content-center g-4">
 
                 @forelse($services as $service)
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
-                        data-wow-duration="{{ 3 + ($loop->index % 3) * 2 }}s">
+                    <div class="col-12 col-sm-6 col-lg-4 d-flex">
 
-                        <div class="service__items center">
+                        <div class="details__items text-center w-100 d-flex flex-column">
 
                             {{-- Image --}}
-                            <div class="thumb">
+                            <div class="details__thumb mb-3">
                                 <a href="{{ route('services.display', $service->slug) }}">
                                     <img src="{{ route('admin.images.preview', ['model' => 'services', 'id' => $service->id]) }}"
-                                        alt="{{ $service->getTitle() }}" loading="lazy">
+                                        alt="{{ $service->getTitle() }}" class="img-fluid w-100" loading="lazy">
                                 </a>
                             </div>
 
                             {{-- Content --}}
-                            <div class="content">
-                                <h5>
+                            <div class="details__content px-3 d-flex flex-column flex-grow-1">
+
+                                <h5 class="mb-2">
                                     <a href="{{ route('services.display', $service->slug) }}">
                                         {{ $service->getTitle() }}
                                     </a>
                                 </h5>
 
-                                <p>
+                                <p class="flex-grow-1">
                                     {{ Str::limit(strip_tags($service->getDescription()), 120) }}
                                 </p>
 
-                                <a href="{{ route('services.display', $service->slug) }}" class="btns">
+                                <a href="{{ route('services.display', $service->slug) }}" class="cmn--btn mt-3">
                                     @lang('pages.read_more')
                                 </a>
+
                             </div>
 
                         </div>
+
                     </div>
+
+
                 @empty
                     <div class="col-12 text-center text-muted">
                         @lang('pages.no_services_available')
