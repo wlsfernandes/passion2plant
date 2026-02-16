@@ -72,9 +72,9 @@ class ViewServiceProvider extends ServiceProvider
         ->get();
       $pages = Page::visible()->get();
 
-      $projects = Project::visible()->orderByDesc('start_date')->get();
+      $projects = Project::visible()->orderBy('order')->get();
 
-      $collaborators = Collaborator::visible()->orderByDesc('start_date')->get();
+      $collaborators = Collaborator::visible()->orderBy('order')->get();
       $donations = Donation::inRandomOrder()
         ->limit(3)
         ->get();
