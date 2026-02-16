@@ -126,6 +126,12 @@
                                 </a>
                             </li>
                         @endforeach
+                        <li>
+                            <a href="{{ url('/info/pulpit-fellows') }}">
+                                Pulpit Fellows
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
                 {{-- PARTNERSHIPS --}}
@@ -252,7 +258,7 @@
         <li><i class="fa-solid fa-paper-plane"></i> <a href="#0">passion2plant@gmail.com</a></li>
         <li><i class="fa-solid fa-location-dot"></i> <a href="#0">P.O. Box 580527, Kissimmee, FL 34758</a>
         </li>
-       
+
     </ul>
     <ul class="social__icon mt-65">
         <li>
@@ -264,15 +270,12 @@
                     class="fa-brands fa-instagram"></i></a>
         </li>
         <li>
-    <a href="https://www.threads.com/@passion2plant"
-       target="_blank"
-       rel="noopener"
-       aria-label="Threads"
-       class="threads-icon">
+            <a href="https://www.threads.com/@passion2plant" target="_blank" rel="noopener" aria-label="Threads"
+                class="threads-icon">
 
-        <i class="fa-brands fa-threads"></i>
-    </a>
-</li>
+                <i class="fa-brands fa-threads"></i>
+            </a>
+        </li>
 
 
     </ul>
