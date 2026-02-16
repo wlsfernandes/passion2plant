@@ -214,7 +214,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
     Route::resource('media-types', MediaTypeController::class);
     Route::resource('orders', OrderController::class);
-    Route::resource('pages', PageController::class);
+    Route::resource('pages', PageController::class) ->except(['show']);
     Route::resource('pages.sections', SectionController::class)->scoped();
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
