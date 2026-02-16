@@ -34,9 +34,10 @@ class TeamController extends BaseController
   public function indexPublic()
   {
     $teams = Team::visible()
-      ->with('sectors')
-      ->orderBy('name')
-      ->get();
+    ->with('sectors')
+    ->orderBy('order')
+    ->orderBy('name')
+    ->get();
 
     $sectors = Sector::orderBy('name')->get();
 
