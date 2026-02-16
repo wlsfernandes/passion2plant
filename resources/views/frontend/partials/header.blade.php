@@ -173,7 +173,7 @@
                 <li><a href="{{ route('donation.index.public') }}">{{ __('menu.donate') }}</a></li>
 
                 <li><a href="{{ route('stores.index.public') }}">{{ __('menu.store') }}</a></li>
-                {{-- Learn More (nested submenu) --}}
+                {{-- Learn More (nested submenu) 
                 <li class="has-submenu">
                     <a href="#">
                         {{ __('menu.learn_more') }}
@@ -189,7 +189,7 @@
                             </li>
                         @endforeach
                     </ul>
-                </li>
+                </li> --}}
                 <li><a href="{{ route('contact') }}">{{ __('menu.contact') }}</a></li>
                 @php
                     $cart = session('cart', []);
