@@ -63,8 +63,8 @@
                                     @foreach ($collaborator->images as $image)
                                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
 
-                                            <a href="{{ $collaborator->external_link ?: '#0' }}" class="partner-card w-100"
-                                                @if (!empty($collaborator->external_link)) target="_blank" rel="noopener noreferrer" @endif>
+                                            <a href="{{ $image->external_link ?: '' }}" class="partner-card w-100"
+                                                @if (!empty($image->external_link)) target="_blank" rel="noopener noreferrer" @endif>
 
                                                 <div class="partner-card">
                                                     <img src="{{ route('admin.images.preview', ['model' => 'collaborator-images', 'id' => $image->id]) }}"
