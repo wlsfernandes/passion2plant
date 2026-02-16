@@ -18,7 +18,8 @@ class Project extends Model
     'end_date',
     'is_published',
     'external_link',
-  ];
+    'order',
+    ];
 
   protected $casts = [
     'start_date' => 'date',

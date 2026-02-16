@@ -23,6 +23,7 @@
             <th>Gallery</th>
             <th>Title</th>
             <th>Period</th>
+            <th>Order</th>
             <th>Published</th>
             <th width="140">Actions</th>
           </tr>
@@ -100,7 +101,7 @@
                     {{ $project->external_link }} </a></small>
               </td>
 
-
+              <td>{{ $project->order }}</td>
 
               {{-- Publish toggle --}}
               <td class="text-center">

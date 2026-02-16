@@ -42,18 +42,23 @@
         </div>
         {{-- Dates --}}
         <div class="row">
-          <div class="col-md-2 mb-2">
+          <div class="col-md-1 mb-2">
             <label class="form-label">Start Date</label>
             <input type="date" name="start_date" class="form-control"
               value="{{ old('start_date', isset($collaborator->start_date) ? $collaborator->start_date->format('Y-m-d') : '') }}">
           </div>
 
-          <div class="col-md-2 mb-2">
+          <div class="col-md-1 mb-2">
             <label class="form-label">End Date</label>
             <input type="date" name="end_date" class="form-control"
               value="{{ old('end_date', isset($collaborator->end_date) ? $collaborator->end_date->format('Y-m-d') : '') }}">
           </div>
-          <div class="col-md-8 mb-2">
+          <div class="col-md-1 mb-2">
+            <label class="form-label">Order</label>
+            <input type="number" name="order" class="form-control" min="0"
+              value="{{ old('order', $collaborator->order ?? 0) }}">
+          </div>
+          <div class="col-md-9 mb-2">
             <label class="form-label">External Link</label>
             <input type="url" name="external_link" class="form-control" placeholder="https://example.com"
               value="{{ old('external_link', $collaborator->external_link ?? '') }}">

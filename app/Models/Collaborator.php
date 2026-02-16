@@ -18,6 +18,7 @@ class Collaborator extends Model
         'is_published',
         'external_link',
         'image_url',
+        'order',
     ];
 
     protected $casts = [

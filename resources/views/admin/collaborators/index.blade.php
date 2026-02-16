@@ -23,6 +23,7 @@
             <th>Gallery</th>
             <th>Title</th>
             <th>Period</th>
+            <th>Order</th>
             <th>Published</th>
             <th width="140">Actions</th>
           </tr>
@@ -100,6 +101,8 @@
                 <small><a href="{{ $collaborator->external_link }}" target="_blank" class="text-decoration-none">
                     {{ $collaborator->external_link }} </a></small>
               </td>
+
+              <td>{{ $collaborator->order }}</td>
 
 
 

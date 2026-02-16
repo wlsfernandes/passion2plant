@@ -26,6 +26,7 @@ class ProjectController extends BaseController
             'start_date'     => ['nullable', 'date'],
             'end_date'       => ['nullable', 'date', 'after_or_equal:start_date'],
             'is_published'   => ['required', 'boolean'],
+            'order'          => ['nullable', 'integer'],
         ]);
     }
 
