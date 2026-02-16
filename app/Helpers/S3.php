@@ -1,13 +1,13 @@
 <?php
-
 namespace App\Helpers;
 
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
+use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Exception;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+
 class S3
 {
     /**
@@ -19,12 +19,12 @@ class S3
         string $directory,
         string $disk = 's3'
     ): string {
-        if (!$file->isValid()) {
+        if (! $file->isValid()) {
             throw new Exception('Invalid file upload.');
         }
 
         $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-        $path = trim($directory, '/') . '/' . $filename;
+        $path     = trim($directory, '/') . '/' . $filename;
 
         Storage::disk($disk)->putFileAs(
             $directory,
@@ -40,53 +40,61 @@ class S3
      * Returns the stored path (NOT URL)
      */
     public static function uploadImageAsWebp(
-    UploadedFile $file,
-    string $directory,
-    int $quality = 85,
-    string $disk = 's3'
-): string {
-    if (!$file->isValid()) {
-        throw new Exception('Invalid image upload.');
+        UploadedFile $file,
+        string $directory,
+        int $quality = 85,
+        string $disk = 's3'
+    ): string {
+
+        if (! $file || ! $file->isValid()) {
+            throw new Exception('Invalid image upload.');
+        }
+
+        $realPath = $file->getRealPath();
+
+        if (! $realPath || ! file_exists($realPath)) {
+            throw new Exception('Uploaded file is not readable.');
+        }
+
+        // Safer image validation (does not depend on filename)
+        if (! @exif_imagetype($realPath)) {
+            throw new Exception('Uploaded file is not a valid image.');
+        }
+
+        $filename = Str::uuid() . '.webp';
+        $path     = trim($directory, '/') . '/' . $filename;
+
+        $manager = new ImageManager(new Driver());
+
+        try {
+            $image = $manager
+                ->read($realPath) // 🔥 use realPath instead of file object
+                ->orient()
+                ->resize(
+                    1920,
+                    1920,
+                    function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    }
+                )
+                ->toWebp($quality);
+
+        } catch (\Throwable $e) {
+            throw new Exception('Unable to process image file.');
+        }
+
+        Storage::disk($disk)->put(
+            $path,
+            (string) $image,
+            [
+                'ContentType' => 'image/webp',
+                'Visibility'  => 'public',
+            ]
+        );
+
+        return $path;
     }
-
-    if (!str_starts_with($file->getMimeType(), 'image/')) {
-        throw new Exception('Uploaded file is not a valid image.');
-    }
-
-    $filename = Str::uuid() . '.webp';
-    $path = trim($directory, '/') . '/' . $filename;
-
-    $manager = new ImageManager(new Driver());
-
-    try {
-        $image = $manager
-            ->read($file->getRealPath())
-            ->orient() // ✅ Fix EXIF rotation
-            ->resize(
-                1920,
-                1920,
-                function ($constraint) {
-                    $constraint->aspectRatio(); // keep proportions
-                    $constraint->upsize();      // never upscale
-                }
-            )
-            ->toWebp($quality);
-    } catch (\Throwable $e) {
-        throw new Exception('Unable to process image file.');
-    }
-
-    Storage::disk($disk)->put(
-        $path,
-        (string) $image,
-        [
-            'ContentType' => 'image/webp',
-            'Visibility' => 'public',
-        ]
-    );
-
-    return $path;
-}
-
 
     /**
      * Delete file from storage (by path)
@@ -95,7 +103,7 @@ class S3
         ?string $path,
         string $disk = 's3'
     ): void {
-        if (!$path) {
+        if (! $path) {
             return;
         }
 
