@@ -10,18 +10,6 @@ use Illuminate\Http\Request;
 class PageController extends BaseController
 {
 
-    /**
-     * Display a public page by slug.
-     */
-    public function display(string $slug)
-    {
-        $page = Page::visible()
-            ->with('sections')
-            ->where('slug', $slug)
-            ->firstOrFail();
-
-        return view('frontend.pages.display', compact('page'));
-    }
 
     /**
      * Validation rules

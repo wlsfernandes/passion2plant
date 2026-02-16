@@ -21,6 +21,7 @@ use App\Http\Controllers\MediaTypeController;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PagePublicController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PositionController;
@@ -85,7 +86,7 @@ Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'previ
 Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
 
 /* Pages */
-Route::get('/our-pages/{slug}', [PageController::class, 'display'])->name('pages.display');
+Route::get('/pages/{slug}', [PagePublicController::class, 'show'])->name('public.pages.show');
 /* Projects */
 Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
 
