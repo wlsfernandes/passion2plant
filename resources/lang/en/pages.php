@@ -66,4 +66,5 @@ return [
     'open_positions'                  => 'Open Positions',
     'view_position'                   => 'View Position',
     'download_details'                => 'Download Details',
-];
+'no_open_positions'              => 'No open positions at the moment. Please check back later for updates.',
+    ];

@@ -65,4 +65,5 @@ return [
     'open_positions'                  => 'Posiciones Abiertas',
     'view_position'                   => 'Ver Posición',
     'download_details'                   => 'Descargar Detalles',
+    'no_open_positions'              => 'No hay posiciones abiertas en este momento. Por favor, vuelva más tarde para actualizaciones.',
 ];
