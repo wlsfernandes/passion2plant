@@ -76,7 +76,7 @@ Route::get('/our-book-recommendations', [BookRecommendationController::class, 'i
 
 /* Contact */
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
-Route::post('/send-message', [ContactController::class, 'send'])->name('contact.send')->middleware('throttle:5,1'); 
+Route::post('/send-message', [ContactController::class, 'send'])->name('contact.send')->middleware('throttle:5,1');
 /* Events */
 Route::get('/event/{event:slug}', [EventController::class, 'display'])->name('events.display');
 Route::get('/our-events', [EventController::class, 'indexPublic'])->name('events.index.public');
@@ -86,14 +86,12 @@ Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'previ
 Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
 Route::delete('/images/{model}/{id}', [ImageUploadController::class, 'destroy'])->name('admin.images.destroy');
 
-
 /* Pages */
 Route::get('/info/{slug}', [PagePublicController::class, 'show'])->name('public.info.show');
 /* Projects */
 Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
 
 Route::get('/our-collaborators/{slug}', [CollaboratorController::class, 'display'])->name('collaborators.display');
-
 
 /* Services */
 Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
@@ -205,6 +203,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+    Route::patch('/collaborators/{collaborator}/images/{image}/link', [CollaboratorImageController::class, 'updateLink'])->name('collaborators.images.updateLink');
 
     // Content
     Route::resource('abouts', AboutController::class);
@@ -217,7 +216,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
     Route::resource('media-types', MediaTypeController::class);
     Route::resource('orders', OrderController::class);
-    Route::resource('pages', PageController::class) ->except(['show']);;
+    Route::resource('pages', PageController::class)->except(['show']);;
     Route::resource('pages.sections', SectionController::class)->scoped();
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
