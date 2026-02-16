@@ -106,7 +106,11 @@
                                 </a>
                             </li>
                             <li><a href="#">{{ __('menu.opportunities') }}</a></li>
-
+                            <li>
+                                <a href="{{ url('/info/why-learn-with-us') }}">
+                                   {{ __('menu.why_learn') }}
+                                </a>
+                            </li>
                         </ul>
 
                     </li>

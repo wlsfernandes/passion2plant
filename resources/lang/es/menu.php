@@ -19,4 +19,5 @@ return [
     'recommended_books' => 'Libros Recomendados',
     'who_we_are'        => 'Quiénes Somos',
     'store'             => 'Tienda',
+    'why_learn'         => '¿Por qué aprender con nosotros?',
 ];

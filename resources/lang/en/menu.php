@@ -19,4 +19,5 @@ return [
     'recommended_books' => 'Recommended Books',
     'who_we_are'        => 'Who We Are',
     'store'             => 'Store',
+    'why_learn'         => 'Why Learn With Us?',
 ];
