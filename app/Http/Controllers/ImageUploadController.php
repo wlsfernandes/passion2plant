@@ -81,7 +81,7 @@ class ImageUploadController extends BaseController
     public function update(Request $request, string $model, int $id)
     {
 
-      //   dd($request->file('image')?->getError(), $request->file('image')?->getErrorMessage());
+        //   dd($request->file('image')?->getError(), $request->file('image')?->getErrorMessage());
 
         $request->validate([
             'image' => 'required|image|max:5120',
@@ -136,4 +136,37 @@ class ImageUploadController extends BaseController
 
         return $this->models[$model]::findOrFail($id);
     }
+
+    public function destroy(string $model, int $id)
+    {
+        try {
+            $instance = $this->resolveModel($model, $id);
+
+            if (! empty($instance->image_url)) {
+                S3::delete($instance->image_url);
+
+                $instance->update([
+                    'image_url' => null,
+                ]);
+            }
+
+            return back()->with('success', 'Image deleted successfully.');
+
+        } catch (\Throwable $e) {
+
+            SystemLogger::log(
+                'Image deletion failed',
+                'error',
+                'images.delete.failed',
+                [
+                    'model'     => $model,
+                    'model_id'  => $id,
+                    'exception' => $e->getMessage(),
+                ]
+            );
+
+            return back()->with('error', 'Failed to delete image.');
+        }
+    }
+
 }

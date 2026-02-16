@@ -2,7 +2,7 @@
 
 @section('title', 'Upload Image')
 @section('css')
-  <link href="{{ asset('/assets/admin/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/assets/admin/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <div class="card border border-primary">
@@ -20,7 +20,7 @@
                 <strong>Image upload guidelines:</strong><br>
                 • The image will be automatically converted to <strong>WebP</strong> and optimized.<br>
 
-                @if($modelKey === 'banners')
+                @if ($modelKey === 'banners')
                     • Recommended dimensions for <strong>banners</strong>:
                     <strong>1920 × 600 pixels</strong>.<br>
                     • Use a wide image with important content centered.
@@ -41,10 +41,21 @@
             </div>
 
 
-            @if($image)
-                <div class="mb-3">
+            @if ($image)
+                <div class="mb-3 text-center">
                     <img src="{{ route('admin.images.preview', ['model' => $modelKey, 'id' => $model->id]) }}"
-                        class="img-thumbnail" style="max-height: 200px;" alt="Current image">
+                        class="img-thumbnail mb-3" style="max-height: 200px;" alt="Current image">
+
+                    <form method="POST"
+                        action="{{ route('admin.images.destroy', ['model' => $modelKey, 'id' => $model->id]) }}"
+                        onsubmit="return confirm('Are you sure you want to delete this image?')">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            <i class="uil-trash"></i> Delete Image
+                        </button>
+                    </form>
                 </div>
             @endif
 
