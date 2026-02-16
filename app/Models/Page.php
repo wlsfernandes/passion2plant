@@ -108,4 +108,9 @@ class Page extends Model
 
         return $this->{'content_' . $locale} ?? $this->content_en;
     }
+
+    public function getUrlAttribute(): string
+    {
+        return route('public.info.show', $this->slug);
+    }
 }

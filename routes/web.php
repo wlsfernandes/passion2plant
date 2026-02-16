@@ -86,7 +86,7 @@ Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'previ
 Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
 
 /* Pages */
-Route::get('/pages/{slug}', [PagePublicController::class, 'show'])->name('public.pages.show');
+Route::get('/info/{slug}', [PagePublicController::class, 'show'])->name('public.info.show');
 /* Projects */
 Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
 
@@ -215,7 +215,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
     Route::resource('media-types', MediaTypeController::class);
     Route::resource('orders', OrderController::class);
-    Route::resource('pages', PageController::class) ->except(['show']);
+    Route::resource('pages', PageController::class) ->except(['show']);;
     Route::resource('pages.sections', SectionController::class)->scoped();
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);

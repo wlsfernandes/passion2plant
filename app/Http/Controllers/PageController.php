@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class PageController extends BaseController
 {
 
+    /**
+     * Display a public page by slug.
+     */
+   
 
     /**
      * Validation rules

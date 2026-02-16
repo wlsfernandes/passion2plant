@@ -69,11 +69,11 @@
 
                             {{-- Slug --}}
                             <td>
-                                <a href="{{ config('app.url') . '/our-pages/' . $page->slug }}" target="_blank"
-                                    class="text-decoration-none">
-                                    <code>{{ config('app.url') . '/pages/' . $page->slug }}</code>
+                                <a href="{{ $page->url }}" target="_blank" class="text-decoration-none">
+                                    <code>{{ $page->url }}</code>
                                 </a>
                             </td>
+
                             <td class="text-center align-middle">
                                 <a href="{{ route('pages.sections.index', $page) }}" class="btn btn-sm btn-outline-primary"
                                     title="Manage sections">
