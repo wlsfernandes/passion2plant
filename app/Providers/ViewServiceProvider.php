@@ -58,11 +58,11 @@ class ViewServiceProvider extends ServiceProvider
       $partnerLogos = Partner::visible()->get();
 
       $featuredServices = Service::visible()
-        ->inRandomOrder()
+        ->lastest()
         ->limit(3)
         ->get();
       $featuredBlogs = Blog::visible()
-        ->inRandomOrder()
+        ->lastest()
         ->limit(3)
         ->get();
 
