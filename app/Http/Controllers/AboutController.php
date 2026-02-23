@@ -8,7 +8,7 @@ use App\Services\SystemLogger;
 use App\Helpers\S3;
 use App\Enums\AboutSection;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class AboutController extends BaseController
