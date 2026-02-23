@@ -104,25 +104,7 @@
 
 
         {{-- Gallery (only after create) --}}
-        @if (isset($collaborator))
-          <div class="mb-4">
-            <h6 class="mb-2">
-              <i class="uil uil-images"></i> Project Gallery
-            </h6>
-
-            <a href="{{ route('projects.images.index', $collaborator) }}" class="btn btn-outline-primary btn-sm">
-              <i class="uil uil-image-plus"></i> Manage Images
-            </a>
-
-            <p class="small text-muted mt-2 mb-0">
-              Upload, reorder, and remove project images.
-            </p>
-          </div>
-        @else
-          <div class="alert alert-warning small">
-            You can add images after creating the project.
-          </div>
-        @endif
+       
 
         <hr>
 
@@ -143,21 +125,8 @@
 @endsection
 
 @section('script')
-  <script src="{{ asset('/assets/admin/libs/ckeditor/ckeditor.min.js') }}"></script>
-  <script>
-    function createSimpleEditor(selector) {
-      ClassicEditor.create(document.querySelector(selector), {
-        removePlugins: [
-          'Image', 'ImageToolbar', 'ImageCaption', 'ImageStyle', 'ImageUpload', 'MediaEmbed'
-        ],
-        toolbar: [
-          'heading', '|', 'bold', 'italic', 'link',
-          'bulletedList', 'numberedList', 'blockQuote', '|', 'undo', 'redo'
-        ]
-      }).catch(console.error);
-    }
-
-    createSimpleEditor('#description_en');
-    createSimpleEditor('#description_es');
-  </script>
+<script>
+    AppEditor.create('#description_en');
+    AppEditor.create('#description_es');
+</script>
 @endsection

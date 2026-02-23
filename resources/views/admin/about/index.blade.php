@@ -11,7 +11,7 @@
         <i class="uil-file-alt"></i> About Us Page
       </h5>
 
-      <a href="{{ route('about.create') }}" class="btn btn-success">
+      <a href="{{ route('abouts.create') }}" class="btn btn-success">
         <i class="uil-plus"></i> Add About Page
       </a>
     </div>
@@ -91,11 +91,11 @@
 
               {{-- Actions --}}
               <td>
-                <a href="{{ route('about.edit', $about) }}" class="btn btn-sm btn-warning">
+                <a href="{{ route('abouts.edit', $about) }}" class="btn btn-sm btn-warning">
                   <i class="uil-pen"></i>
                 </a>
 
-                <form action="{{ route('about.destroy', $about) }}" method="POST" class="d-inline"
+                <form action="{{ route('abouts.destroy', $about) }}" method="POST" class="d-inline"
                   onsubmit="return confirm('Delete this About page?')">
                   @csrf
                   @method('DELETE')

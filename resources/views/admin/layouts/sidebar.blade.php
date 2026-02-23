@@ -42,103 +42,166 @@
                         </a>
 
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="{{ route('pages.index') }}"><i class="uil uil-parking-square"></i> Pages</a></li>
-                            <li><a href="{{ route('abouts.index') }}"><i class="fas fa-info"></i> About</a></li>
-                            <li><a href="{{ route('banners.index') }}"><i class="fas fa-image"></i> Banners</a></li>
+
+
                             <li>
-                                <a href="{{ route('book-recommendations.index') }}">
-                                    <i class="uil uil-book-open"></i>
-                                    <small>Book Recommendations</small>
+                                <a href="#" class="has-arrow waves-effect" onclick="return false;">
+                                    <i class="uil uil-home"></i>
+                                    <span>Home</span>
                                 </a>
+
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li>
+                                        <a href="{{ route('banners.index') }}">
+                                            <i class="fas fa-image"></i> Banners
+                                        </a>
+                                    </li>
+
+
+                                    <li><a href="{{ route('abouts.index') }}"><i class="fas fa-info"></i> About</a></li>
+                                    <li><a href="{{ route('teams.index') }}"><i class="fas fa-users"></i> Team</a></li>
+                                    <li>
+                                        <a href="{{ route('partners.index') }}">
+                                            <i class="fas fa-handshake"></i> Organizations
+                                        </a>
+                                    </li>
+                                    <li><a href="{{ route('testimonials.index') }}"><i class="uil-feedback"></i>
+                                            Testimonials</a>
+                                    <li><a href="{{ route('services.index') }}"><i class="uil uil-briefcase"></i>
+                                            Services</a></li>
+                                   
+                                    <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li><a href="{{ route('blogs.index') }}"><i class="uil-blogger-alt"></i> Blog</a></li>
+
+                            {{-- ABOUT PAGE ITEMS --}}
+                            <li>
+                                <a href="#" class="has-arrow waves-effect" onclick="return false;">
+                                    <i class="fas fa-info"></i>
+                                    <span>About Us</span>
+                                </a>
+
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('abouts.index') }}"><i class="fas fa-info"></i> About</a></li>
+                                    <li><a href="{{ route('blogs.index') }}"><i class="uil-blogger-alt"></i> Blog</a></li>
+
+
+                                    <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a>
+                                    </li>
+                                    <li><a href="{{ route('teams.index') }}"><i class="fas fa-users"></i> Team</a></li>
+                                    <li><a href="{{ route('media-types.index') }}"><i class="uil uil-layer-group"></i>
+                                            Media
+                                            Types</a></li>
+                                    <li><a href="{{ route('media.index') }}"><i class="uil uil-play-circle"></i> Media
+                                            Items</a>
+                                    </li>
+                                    <li><a href="{{ route('positions.index') }}"><i class="uil uil-briefcase"></i> Open
+                                            Positions</a></li>
+                                </ul>
+                            </li>
+
                             <li><a href="{{ route('projects.index') }}"><i class="uil uil-calendar-alt"></i> Cohorts</a>
                             </li>
-                            <li><a href="{{ route('collaborators.index') }}"> <i class="uil uil-users-alt"></i> Collaborators</a>
-                            </li>
-                            <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a></li>
-                            <li>
-                                <a href="{{ route('gallery-images.index') }}">
-                                    <i class="uil uil-image"></i>
-                                    <span>Gallery Images</span>
-                                </a>
-                            </li>
+                            <li><a href="{{ route('collaborators.index') }}"><i class="uil uil-users-alt"></i>
+                                    Partnerships</a></li>
 
-
-                            <li><a href="{{ route('partners.index') }}"><i class="fas fa-handshake"></i> Partners</a></li>
-                            <li><a href="{{ route('positions.index') }}"><i class="uil uil-briefcase"></i> Open
-                                    Positions</a></li>
+                            <li><a href="{{ route('services.index') }}"><i class="uil uil-briefcase"></i> Services</a></li>
                             <li><a href="{{ route('resources.index') }}"><i class="fas fa-folder-open"></i> Resources</a>
                             </li>
-                            <li><a href="{{ route('services.index') }}"><i class="uil-briefcase"></i> Services</a></li>
-                            <li><a href="{{ route('teams.index') }}"><i class="fas fa-users"></i> Team</a></li>
-                            <li><a href="{{ route('testimonials.index') }}"><i class="uil-feedback"></i> Testimonials</a>
-                            </li>
-                            <li class="menu-title">Media</li>
-                            <li><a href="{{ route('media-types.index') }}"><i class="uil uil-layer-group"></i>Media
-                                    Types</a></li>
-                            <li><a href="{{ route('media.index') }}"><i class="uil uil-play-circle"></i>Media Items</a>
-                            </li>
-                            <li class="menu-title">Configuration</li>
-                            <li><a href="{{ route('settings.index') }}"><i class="fas fa-cog"></i> Site Settings</a></li>
-                            <li><a href="{{ route('social-links.index') }}"><i class="fas fa-share-alt"></i> Social
-                                    Media</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="has-arrow waves-effect" onclick="return false;">
-                            <i class="uil uil-store"></i>
-                            <span>Store</span>
-                        </a>
-
-                        <ul class="sub-menu" aria-expanded="false">
-
-                            <li class="menu-title">Catalog</li>
-                            <li>
-                                <a href="{{ route('donations.index') }}">
-                                    <i class="uil uil-heart"></i> Donations
-                                </a>
-                            </li>
+                             <li>
+                                        <a href="{{ route('donations.index') }}">
+                                            <i class="uil uil-heart"></i> Donations
+                                        </a>
+                                    </li>
                             <li>
                                 <a href="{{ route('products.index') }}">
                                     <i class="uil uil-box"></i> Products
                                 </a>
                             </li>
+                            {{-- MAIN WEBSITE ITEMS --}}
+                            <li><a href="{{ route('pages.index') }}"><i class="uil uil-parking-square"></i> Pages</a></li>
 
-                            <li class="menu-title">Sales</li>
 
-                            <li class="text-muted ps-4 small">
-                                <a href="{{ route('orders.index') }}" class="d-flex align-items-center gap-2">
-                                    <i class="uil uil-box"></i>
-                                    <span>Orders</span>
+
+                            <li>
+                                <a href="{{ route('gallery-images.index') }}">
+                                    <i class="uil uil-image"></i> Gallery Images
                                 </a>
                             </li>
 
-                            <li class="text-muted ps-4 small">
-                                <a href="{{ route('admin.payments.index') }}" class="d-flex align-items-center gap-2">
-                                    <i class="uil uil-credit-card"></i>
-                                    <span>Payments</span>
-                                </a>
-                            </li>
 
-                        </ul>
-                    </li>
-                @endcan
-                @can('access-admin')
-                    <li>
-                        <a href="#" class="has-arrow waves-effect" onclick="return false;">
-                            <i class="uil-setting"></i>
-                            <span>Administration</span>
-                        </a>
 
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="{{ route('users.index') }}"><i class="uil-chat-bubble-user"></i> Users</a></li>
-                            <li><a href="{{ route('roles.index') }}"><i class="uil-users-alt"></i> Roles</a></li>
-                            <li><a href="{{ route('audits.index') }}"><i class="uil-history"></i> Audit Trail</a></li>
-                            <li><a href="{{ url('system-logs') }}"><i class="uil uil-bug"></i> System Logs</a></li>
-                        </ul>
+
+
+
                     </li>
-                @endcan
+
+                    {{-- MEDIA --}}
+
+
+                    {{-- CONFIG --}}
+                    <li class="menu-title">Configuration</li>
+                    <li><a href="{{ route('settings.index') }}"><i class="fas fa-cog"></i> Site Settings</a></li>
+                    <li><a href="{{ route('social-links.index') }}"><i class="fas fa-share-alt"></i> Social
+                            Media</a></li>
+
+                </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect" onclick="return false;">
+                        <i class="uil uil-store"></i>
+                        <span>Store</span>
+                    </a>
+
+                    <ul class="sub-menu" aria-expanded="false">
+
+                        <li class="menu-title">Catalog</li>
+                        <li>
+                            <a href="{{ route('donations.index') }}">
+                                <i class="uil uil-heart"></i> Donations
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('products.index') }}">
+                                <i class="uil uil-box"></i> Products
+                            </a>
+                        </li>
+
+                        <li class="menu-title">Sales</li>
+
+                        <li class="text-muted ps-4 small">
+                            <a href="{{ route('orders.index') }}" class="d-flex align-items-center gap-2">
+                                <i class="uil uil-box"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+
+                        <li class="text-muted ps-4 small">
+                            <a href="{{ route('admin.payments.index') }}" class="d-flex align-items-center gap-2">
+                                <i class="uil uil-credit-card"></i>
+                                <span>Payments</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            @endcan
+            @can('access-admin')
+                <li>
+                    <a href="#" class="has-arrow waves-effect" onclick="return false;">
+                        <i class="uil-setting"></i>
+                        <span>Administration</span>
+                    </a>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('users.index') }}"><i class="uil-chat-bubble-user"></i> Users</a></li>
+                        <li><a href="{{ route('roles.index') }}"><i class="uil-users-alt"></i> Roles</a></li>
+                        <li><a href="{{ route('audits.index') }}"><i class="uil-history"></i> Audit Trail</a></li>
+                        <li><a href="{{ url('system-logs') }}"><i class="uil uil-bug"></i> System Logs</a></li>
+                    </ul>
+                </li>
+            @endcan
 
             </ul>
         </div>

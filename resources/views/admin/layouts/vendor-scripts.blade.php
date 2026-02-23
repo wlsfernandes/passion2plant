@@ -6,6 +6,8 @@
 <script src="{{ asset('/assets/admin/libs/node-waves/node-waves.min.js')}}"></script>
 <script src="{{ asset('/assets/admin/libs/waypoints/waypoints.min.js')}}"></script>
 <script src="{{ asset('/assets/admin/libs/jquery-counterup/jquery-counterup.min.js')}}"></script>
+<script src="{{ asset('/assets/admin/libs/ckeditor/ckeditor.min.js') }}"></script>
+<script src="{{ asset('/assets/admin/js/editor.js') }}"></script>
 
 @yield('script')
 

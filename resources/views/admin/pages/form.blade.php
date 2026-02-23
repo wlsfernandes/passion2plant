@@ -121,31 +121,8 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('/assets/admin/libs/ckeditor/ckeditor.min.js') }}"></script>
-
-    <script>
-        function createSimpleEditor(selector) {
-            ClassicEditor
-                .create(document.querySelector(selector), {
-                    removePlugins: [
-                        'Image',
-                        'ImageToolbar',
-                        'ImageCaption',
-                        'ImageStyle',
-                        'ImageUpload',
-                        'MediaEmbed'
-                    ],
-                    toolbar: [
-                        'heading', '|',
-                        'bold', 'italic', 'link',
-                        'bulletedList', 'numberedList', 'blockQuote', '|',
-                        'undo', 'redo'
-                    ]
-                })
-                .catch(error => console.error(error));
-        }
-
-        createSimpleEditor('#content_en');
-        createSimpleEditor('#content_es');
-    </script>
+<script>
+    AppEditor.create('#content_en');
+    AppEditor.create('#content_es');
+</script>
 @endsection
