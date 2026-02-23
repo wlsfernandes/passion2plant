@@ -97,7 +97,7 @@ class AboutController extends BaseController
     );
 
     return redirect()
-      ->route('admin.abouts.index')
+      ->route('abouts.index')
       ->with('success', 'About Us page created successfully.');
   }
 
@@ -130,7 +130,7 @@ class AboutController extends BaseController
     );
 
     return redirect()
-      ->route('admin.abouts.index')
+      ->route('abouts.index')
       ->with('success', 'About Us page updated successfully.');
   }
 
@@ -158,7 +158,7 @@ class AboutController extends BaseController
     );
 
     return redirect()
-      ->route('admin.abouts.index')
+      ->route('abouts.index')
       ->with('success', 'About Us page deleted successfully.');
   }
 }
