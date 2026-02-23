@@ -35,6 +35,66 @@ class S3
         return $path;
     }
 
+    public static function uploadImageAsWebpPreset(
+        UploadedFile $file,
+        string $directory,
+        string $mode = 'contain', // contain | cover
+        int $width = 1600,
+        int $height = 1600,
+        int $quality = 85,
+        string $disk = 's3'
+    ): string {
+
+        if (! $file || ! $file->isValid()) {
+            throw new Exception('Invalid image upload.');
+        }
+
+        $realPath = $file->getRealPath();
+
+        if (! $realPath || ! file_exists($realPath)) {
+            throw new Exception('Uploaded file is not readable.');
+        }
+
+        if (! @exif_imagetype($realPath)) {
+            throw new Exception('Uploaded file is not a valid image.');
+        }
+
+        $filename = Str::uuid() . '.webp';
+        $path     = trim($directory, '/') . '/' . $filename;
+
+        $manager = new ImageManager(new Driver());
+
+        try {
+            $img = $manager
+                ->read($realPath)
+                ->orient();
+
+            // cover = exact size + crop overflow (best for banners/cards/square)
+            if ($mode === 'cover') {
+                $img = $img->cover($width, $height);
+            } else {
+                // contain = no crop (keeps whole image), scale down only
+                // Note: scaleDown(width, height) is the right v3 approach
+                $img = $img->scaleDown($width, $height);
+            }
+
+            $webp = $img->toWebp($quality);
+
+        } catch (\Throwable $e) {
+            throw new Exception('Unable to process image file.');
+        }
+
+        Storage::disk($disk)->put(
+            $path,
+            (string) $webp,
+            [
+                'ContentType' => 'image/webp',
+                'Visibility'  => 'public',
+            ]
+        );
+
+        return $path;
+    }
     /**
      * Upload IMAGE and convert to WebP
      * Returns the stored path (NOT URL)

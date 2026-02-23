@@ -78,57 +78,100 @@ class ImageUploadController extends BaseController
         ]);
     }
 
-    public function update(Request $request, string $model, int $id)
-    {
+   public function update(Request $request, string $model, int $id)
+{
+    $request->validate([
+        'image'      => 'required|image|max:5120',
+        'image_type' => 'required|in:banner,blog_social,event_header,card,square,original_fit',
+    ]);
 
-        //   dd($request->file('image')?->getError(), $request->file('image')?->getErrorMessage());
+    try {
+        $instance = $this->resolveModel($model, $id);
 
-        $request->validate([
-            'image' => 'required|image|max:5120',
-        ]);
-        try {
+        // Presets (simple + predictable)
+        $preset = match ($request->input('image_type')) {
+            'banner' => [
+                'mode'    => 'cover', // crop to fit
+                'width'   => 1920,
+                'height'  => 600,
+                'quality' => 85,
+            ],
+            'blog_social' => [
+                'mode'    => 'cover',
+                'width'   => 1200,
+                'height'  => 630,
+                'quality' => 85,
+            ],
+            'event_header' => [
+                'mode'    => 'cover',
+                'width'   => 1200,
+                'height'  => 500,
+                'quality' => 85,
+            ],
+            'card' => [
+                'mode'    => 'cover',
+                'width'   => 900,
+                'height'  => 600,
+                'quality' => 85,
+            ],
+            'square' => [
+                'mode'    => 'cover',
+                'width'   => 800,
+                'height'  => 800,
+                'quality' => 85,
+            ],
+            default => [ // original_fit
+                'mode'    => 'contain', // no crop (keeps full image)
+                'width'   => 1600,
+                'height'  => 1600,
+                'quality' => 85,
+            ],
+        };
 
-            $instance = $this->resolveModel($model, $id);
+        DB::transaction(function () use ($request, $instance, $model, $preset) {
 
-            DB::transaction(function () use ($request, $instance, $model) {
+            // Delete old image if exists
+            if (!empty($instance->image_url)) {
+                S3::delete($instance->image_url);
+            }
 
-                // Delete old image if exists
-                if (! empty($instance->image_url)) {
-                    S3::delete($instance->image_url);
-                }
-
-                // Upload new image (converted to WebP)
-                $path = S3::uploadImageAsWebp(
-                    $request->file('image'),
-                    "{$model}/images"
-                );
-
-                $instance->update([
-                    'image_url' => $path,
-                ]);
-            });
-
-            return redirect()
-                ->route("{$model}.index")
-                ->with('success', 'Image uploaded successfully.');
-
-        } catch (Throwable $e) {
-
-            SystemLogger::log(
-                'Image upload failed',
-                'error',
-                'images.update.failed',
-                [
-                    'model'     => $model,
-                    'exception' => $e->getMessage(),
-                ]
+            // Upload new image (WebP + correct size)
+            $path = S3::uploadImageAsWebpPreset(
+                file: $request->file('image'),
+                directory: "{$model}/images",
+                mode: $preset['mode'],
+                width: $preset['width'],
+                height: $preset['height'],
+                quality: $preset['quality'],
+                disk: 's3'
             );
 
-            return back()
-                ->withInput()
-                ->with('error', 'Failed to upload image. Please try again.');
-        }
+            $instance->update([
+                'image_url' => $path,
+            ]);
+        });
+
+        return redirect()
+            ->route("{$model}.index")
+            ->with('success', 'Image uploaded successfully.');
+
+    } catch (Throwable $e) {
+
+        SystemLogger::log(
+            'Image upload failed',
+            'error',
+            'images.update.failed',
+            [
+                'model'     => $model,
+                'exception' => $e->getMessage(),
+            ]
+        );
+
+        return back()
+            ->withInput()
+            ->with('error', 'Failed to upload image. Please try again.');
     }
+}
 
     protected function resolveModel(string $model, int $id): Model
     {
