@@ -27,7 +27,7 @@
             <hr />
 
             <form method="POST"
-                  action="{{ isset($position) ? route('positions.update', $position) : route('positions.store') }}">
+                action="{{ isset($position) ? route('positions.update', $position) : route('positions.store') }}">
                 @csrf
                 @isset($position)
                     @method('PUT')
@@ -37,12 +37,8 @@
                 Publish Controls
                 ======================== --}}
                 <div class="form-check form-switch form-switch-lg mb-4">
-                    <input type="checkbox"
-                           name="is_published"
-                           value="1"
-                           class="form-check-input"
-                           id="is_published"
-                           {{ old('is_published', $position->is_published ?? false) ? 'checked' : '' }}>
+                    <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published"
+                        {{ old('is_published', $position->is_published ?? false) ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_published">
                         Publish this position on the website
                     </label>
@@ -50,20 +46,16 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <input type="date"
-                               name="publish_start_at"
-                               class="form-control"
-                               value="{{ old('publish_start_at', optional($position->publish_start_at ?? null)->toDateString()) }}">
+                        <input type="date" name="publish_start_at" class="form-control"
+                            value="{{ old('publish_start_at', optional($position->publish_start_at ?? null)->toDateString()) }}">
                         <small class="text-muted">
                             Position becomes visible on the website.
                         </small>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <input type="date"
-                               name="publish_end_at"
-                               class="form-control"
-                               value="{{ old('publish_end_at', optional($position->publish_end_at ?? null)->toDateString()) }}">
+                        <input type="date" name="publish_end_at" class="form-control"
+                            value="{{ old('publish_end_at', optional($position->publish_end_at ?? null)->toDateString()) }}">
                         <small class="text-muted">
                             Position is hidden after this date.
                         </small>
@@ -76,12 +68,9 @@
                 Titles
                 ======================== --}}
                 <div class="mb-3">
-                    <input type="text"
-                           name="title_en"
-                           class="form-control @error('title_en') is-invalid @enderror"
-                           placeholder="Position title in English"
-                           value="{{ old('title_en', $position->title_en ?? '') }}"
-                           required>
+                    <input type="text" name="title_en" class="form-control @error('title_en') is-invalid @enderror"
+                        placeholder="Position title in English" value="{{ old('title_en', $position->title_en ?? '') }}"
+                        required>
                     <small class="text-muted">
                         Required. Displayed as the main position title.
                     </small>
@@ -94,11 +83,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <input type="text"
-                           name="title_es"
-                           class="form-control"
-                           placeholder="Título del puesto en español"
-                           value="{{ old('title_es', $position->title_es ?? '') }}">
+                    <input type="text" name="title_es" class="form-control" placeholder="Título del puesto en español"
+                        value="{{ old('title_es', $position->title_es ?? '') }}">
                     <small class="text-muted">
                         Optional Spanish version of the title.
                     </small>
@@ -110,22 +96,16 @@
                 Content
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control"
-                              id="content_en"
-                              name="content_en"
-                              rows="6"
-                              placeholder="Write the job description in English...">{{ old('content_en', $position->content_en ?? '') }}</textarea>
+                    <textarea class="form-control summernote" id="content_en" name="content_en" rows="6"
+                        placeholder="Write the job description in English...">{{ old('content_en', $position->content_en ?? '') }}</textarea>
                     <small class="text-muted">
                         Main job description shown on the public page.
                     </small>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control"
-                              id="content_es"
-                              name="content_es"
-                              rows="6"
-                              placeholder="Escriba la descripción del puesto en español...">{{ old('content_es', $position->content_es ?? '') }}</textarea>
+                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="6"
+                        placeholder="Escriba la descripción del puesto en español...">{{ old('content_es', $position->content_es ?? '') }}</textarea>
                     <small class="text-muted">
                         Optional Spanish version of the description.
                     </small>
@@ -137,11 +117,9 @@
                 External Application Link
                 ======================== --}}
                 <div class="mb-3">
-                    <input type="url"
-                           name="external_link"
-                           class="form-control"
-                           placeholder="https://external-application-link.com"
-                           value="{{ old('external_link', $position->external_link ?? '') }}">
+                    <input type="url" name="external_link" class="form-control"
+                        placeholder="https://external-application-link.com"
+                        value="{{ old('external_link', $position->external_link ?? '') }}">
                     <small class="text-muted">
                         Optional external link for job applications.
                     </small>
@@ -167,8 +145,5 @@
     </div>
 @endsection
 @section('script')
-<script>
-    AppEditor.create('#content_en');
-    AppEditor.create('#content_es');
-</script>
+    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

@@ -28,7 +28,7 @@
 
             <form method="POST" action="{{ isset($event) ? route('events.update', $event) : route('events.store') }}">
                 @csrf
-                @if(isset($event))
+                @if (isset($event))
                     @method('PUT')
                 @endif
                 {{-- =======================
@@ -36,7 +36,8 @@
                 ======================== --}}
 
                 <div class="form-check form-switch form-switch-lg mb-4">
-                    <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published" {{ old('is_published', $event->is_published ?? false) ? 'checked' : '' }}>
+                    <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published"
+                        {{ old('is_published', $event->is_published ?? false) ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_published">
                         Publish this event on the website
                     </label>
@@ -96,7 +97,7 @@
                 Content
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control" id="content_en" name="content_en" rows="6"
+                    <textarea class="form-control summernote" id="content_en" name="content_en" rows="6"
                         placeholder="Write the event content in English...">{{ old('content_en', $event->content_en ?? '') }}</textarea>
                     <small class="text-muted">
                         This content will appear on the public event page.
@@ -104,7 +105,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control" id="content_es" name="content_es" rows="6"
+                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="6"
                         placeholder="Escriba el contenido del evento en español...">{{ old('content_es', $event->content_es ?? '') }}</textarea>
                     <small class="text-muted">
                         Contenido del evento en español.
@@ -144,8 +145,5 @@
     </div>
 @endsection
 @section('script')
-<script>
-    AppEditor.create('#content_en');
-    AppEditor.create('#content_es');
-</script>
+    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

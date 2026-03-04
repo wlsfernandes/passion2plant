@@ -27,7 +27,7 @@
             <hr />
 
             <form method="POST"
-                  action="{{ isset($service) ? route('services.update', $service) : route('services.store') }}">
+                action="{{ isset($service) ? route('services.update', $service) : route('services.store') }}">
                 @csrf
                 @isset($service)
                     @method('PUT')
@@ -37,12 +37,8 @@
                 Publish Controls
                 ======================== --}}
                 <div class="form-check form-switch form-switch-lg mb-4">
-                    <input type="checkbox"
-                           name="is_published"
-                           value="1"
-                           class="form-check-input"
-                           id="is_published"
-                           {{ old('is_published', $service->is_published ?? false) ? 'checked' : '' }}>
+                    <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published"
+                        {{ old('is_published', $service->is_published ?? false) ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_published">
                         Publish this service on the website
                     </label>
@@ -54,23 +50,16 @@
                 Titles
                 ======================== --}}
                 <div class="mb-3">
-                    <input type="text"
-                           name="title_en"
-                           class="form-control"
-                           placeholder="Service title in English"
-                           value="{{ old('title_en', $service->title_en ?? '') }}"
-                           required>
+                    <input type="text" name="title_en" class="form-control" placeholder="Service title in English"
+                        value="{{ old('title_en', $service->title_en ?? '') }}" required>
                     <small class="text-muted">
                         Main service title displayed publicly.
                     </small>
                 </div>
 
                 <div class="mb-3">
-                    <input type="text"
-                           name="title_es"
-                           class="form-control"
-                           placeholder="Título del servicio en español"
-                           value="{{ old('title_es', $service->title_es ?? '') }}">
+                    <input type="text" name="title_es" class="form-control" placeholder="Título del servicio en español"
+                        value="{{ old('title_es', $service->title_es ?? '') }}">
                 </div>
 
                 <hr>
@@ -79,22 +68,16 @@
                 Descriptions
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control"
-                              id="description_en"
-                              name="description_en"
-                              rows="6"
-                              placeholder="Describe the service in English...">{{ old('description_en', $service->description_en ?? '') }}</textarea>
+                    <textarea class="form-control summernote" id="description_en" name="description_en" rows="6"
+                        placeholder="Describe the service in English...">{{ old('description_en', $service->description_en ?? '') }}</textarea>
                     <small class="text-muted">
                         Short description shown on the website.
                     </small>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control"
-                              id="description_es"
-                              name="description_es"
-                              rows="6"
-                              placeholder="Describa el servicio en español...">{{ old('description_es', $service->description_es ?? '') }}</textarea>
+                    <textarea class="form-control summernote" id="description_es" name="description_es" rows="6"
+                        placeholder="Describa el servicio en español...">{{ old('description_es', $service->description_es ?? '') }}</textarea>
                 </div>
 
                 <hr>
@@ -103,11 +86,8 @@
                 External Link
                 ======================== --}}
                 <div class="mb-3">
-                    <input type="url"
-                           name="external_link"
-                           class="form-control"
-                           placeholder="https://example.com"
-                           value="{{ old('external_link', $service->external_link ?? '') }}">
+                    <input type="url" name="external_link" class="form-control" placeholder="https://example.com"
+                        value="{{ old('external_link', $service->external_link ?? '') }}">
                     <small class="text-muted">
                         Optional link for more information (opens in a new tab).
                     </small>
@@ -134,8 +114,5 @@
 @endsection
 
 @section('script')
-<script>
-    AppEditor.create('#description_en');
-    AppEditor.create('#description_es');
-</script>
+    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

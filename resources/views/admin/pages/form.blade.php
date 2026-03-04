@@ -36,7 +36,8 @@
                 Publish Controls
                 ======================== --}}
                 <div class="form-check form-switch form-switch-lg mb-4">
-                    <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published" {{ old('is_published', $page->is_published ?? false) ? 'checked' : '' }}>
+                    <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published"
+                        {{ old('is_published', $page->is_published ?? false) ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_published">
                         Publish this page on the website
                     </label>
@@ -85,7 +86,7 @@
                 Content
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control" id="content_en" name="content_en" rows="6"
+                    <textarea class="form-control summernote" id="content_en" name="content_en" rows="6"
                         placeholder="Write the page content in English...">{{ old('content_en', $page->content_en ?? '') }}</textarea>
                     <small class="text-muted">
                         Main content shown on the public page.
@@ -93,7 +94,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control" id="content_es" name="content_es" rows="6"
+                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="6"
                         placeholder="Escriba el contenido de la página en español...">{{ old('content_es', $page->content_es ?? '') }}</textarea>
                     <small class="text-muted">
                         Optional Spanish version.
@@ -121,8 +122,5 @@
 @endsection
 
 @section('script')
-<script>
-    AppEditor.create('#content_en');
-    AppEditor.create('#content_es');
-</script>
+    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

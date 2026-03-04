@@ -13,4 +13,7 @@
 
     <!-- App Css-->
     <link href="{{ asset('/assets/admin/css/app.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+
 </head>

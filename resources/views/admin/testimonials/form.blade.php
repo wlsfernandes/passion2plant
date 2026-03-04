@@ -27,7 +27,7 @@
             <hr />
 
             <form method="POST"
-                  action="{{ isset($testimonial) ? route('testimonials.update', $testimonial) : route('testimonials.store') }}">
+                action="{{ isset($testimonial) ? route('testimonials.update', $testimonial) : route('testimonials.store') }}">
                 @csrf
                 @isset($testimonial)
                     @method('PUT')
@@ -37,12 +37,8 @@
                 Publish Controls
                 ======================== --}}
                 <div class="form-check form-switch form-switch-lg mb-4">
-                    <input type="checkbox"
-                           name="is_published"
-                           value="1"
-                           class="form-check-input"
-                           id="is_published"
-                           {{ old('is_published', $testimonial->is_published ?? false) ? 'checked' : '' }}>
+                    <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published"
+                        {{ old('is_published', $testimonial->is_published ?? false) ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_published">
                         Publish this testimonial on the website
                     </label>
@@ -54,22 +50,16 @@
                 Author Info
                 ======================== --}}
                 <div class="mb-3">
-                    <input type="text"
-                           name="name"
-                           class="form-control"
-                           placeholder="Author name (optional)"
-                           value="{{ old('name', $testimonial->name ?? '') }}">
+                    <input type="text" name="name" class="form-control" placeholder="Author name (optional)"
+                        value="{{ old('name', $testimonial->name ?? '') }}">
                     <small class="text-muted">
                         Example: John Doe
                     </small>
                 </div>
 
                 <div class="mb-3">
-                    <input type="text"
-                           name="role"
-                           class="form-control"
-                           placeholder="Author role or title (optional)"
-                           value="{{ old('role', $testimonial->role ?? '') }}">
+                    <input type="text" name="role" class="form-control" placeholder="Author role or title (optional)"
+                        value="{{ old('role', $testimonial->role ?? '') }}">
                     <small class="text-muted">
                         Example: Student, Pastor, Partner
                     </small>
@@ -81,11 +71,8 @@
                 Content
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control @error('content_en') is-invalid @enderror"
-                              id="content_en"
-                              name="content_en"
-                              rows="5"
-                              placeholder="Write the testimonial in English...">{{ old('content_en', $testimonial->content_en ?? '') }}</textarea>
+                    <textarea class="form-control @error('content_en') is-invalid @enderror" id="content_en" name="content_en"
+                        rows="5" placeholder="Write the testimonial in English...">{{ old('content_en', $testimonial->content_en ?? '') }}</textarea>
                     <small class="text-muted">
                         Required. This is the main testimonial text.
                     </small>
@@ -98,11 +85,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control"
-                              id="content_es"
-                              name="content_es"
-                              rows="5"
-                              placeholder="Escriba el testimonio en español...">{{ old('content_es', $testimonial->content_es ?? '') }}</textarea>
+                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="5"
+                        placeholder="Escriba el testimonio en español...">{{ old('content_es', $testimonial->content_es ?? '') }}</textarea>
                     <small class="text-muted">
                         Optional Spanish version.
                     </small>
@@ -129,8 +113,5 @@
 @endsection
 
 @section('script')
-<script>
-    AppEditor.create('#content_en');
-    AppEditor.create('#content_es');
-</script>
+    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection
