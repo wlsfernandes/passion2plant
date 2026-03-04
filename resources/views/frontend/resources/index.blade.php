@@ -51,7 +51,7 @@
                             {{-- Description --}}
                             @if ($resource->description)
                                 <p class="mb-3">
-                                    {{ $resource->description }}
+                                    {!! $resource->description !!}
                                 </p>
                             @endif
 
