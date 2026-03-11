@@ -83,12 +83,12 @@
 
                 {{-- Description --}}
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="description_en" name="description_en" rows="5"
+                    <textarea class="form-control ckeditor" id="description_en" name="description_en" rows="5"
                         placeholder="Product description in English...">{{ old('description_en', $product->description_en ?? '') }}</textarea>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="description_es" name="description_es" rows="5"
+                    <textarea class="form-control ckeditor" id="description_es" name="description_es" rows="5"
                         placeholder="Descripción del producto en español...">{{ old('description_es', $product->description_es ?? '') }}</textarea>
                 </div>
 
@@ -120,8 +120,4 @@
             </form>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

@@ -52,7 +52,9 @@
 
                         {{-- Project Description --}}
                         <div class="details__content mb-20">
-                            {!! $collaborator->description !!}
+                            <div class="cms-content" id="cms-content">
+                                {!! $collaborator->description !!}
+                            </div>
                         </div>
 
                         {{-- Partner Icons --}}

@@ -52,7 +52,9 @@
                     <div class="details__items">
                         <div class="details__content">
                             <div class="page__content">
-                                {!! $page->content !!}
+                                <div class="cms-content" id="cms-content">
+                                    {!! $page->content !!}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,7 +98,9 @@
                         </div>
 
                         <div class="details__cont mt-3">
-                            {!! $section->content !!}
+                            <div class="cms-content" id="cms-content">
+                                {!! $section->content !!}
+                            </div>
                         </div>
                     </div>
 

@@ -79,7 +79,7 @@
                 Descriptions
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control summernote" name="description_en" rows="3"
+                    <textarea class="form-control ckeditor" name="description_en" rows="3"
                         placeholder="Short description in English...">{{ old('description_en', $resource->description_en ?? '') }}</textarea>
                     <small class="text-muted">
                         Brief description shown next to the resource.
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control summernote" name="description_es" rows="3"
+                    <textarea class="form-control ckeditor" name="description_es" rows="3"
                         placeholder="Descripción corta en español...">{{ old('description_es', $resource->description_es ?? '') }}</textarea>
                 </div>
 
@@ -123,7 +123,4 @@
             </form>
         </div>
     </div>
-@endsection
-@section('script')
-    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

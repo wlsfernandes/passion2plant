@@ -115,7 +115,7 @@
                 Bio Content
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_en" name="content_en" rows="5"
+                    <textarea class="form-control ckeditor" id="content_en" name="content_en" rows="5"
                         placeholder="Write the biography in English...">{{ old('content_en', $team->content_en ?? '') }}</textarea>
                     <small class="text-muted">
                         English biography shown on the public profile.
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="5"
+                    <textarea class="form-control ckeditor" id="content_es" name="content_es" rows="5"
                         placeholder="Escriba la biografía en español...">{{ old('content_es', $team->content_es ?? '') }}</textarea>
                     <small class="text-muted">
                         Optional Spanish version.
@@ -148,8 +148,4 @@
             </form>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

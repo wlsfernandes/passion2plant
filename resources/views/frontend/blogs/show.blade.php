@@ -17,8 +17,9 @@
 
                         <div class="details__content">
                             <h2>{{ $blog->getTitle() }}</h2>
-
-                            {!! $blog->getContent() !!}
+                            <div class="cms-content" id="cms-content">
+                                {!! $blog->getContent() !!}
+                            </div>
                         </div>
                         <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
 

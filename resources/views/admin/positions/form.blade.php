@@ -96,7 +96,7 @@
                 Content
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_en" name="content_en" rows="6"
+                    <textarea class="form-control ckeditor" id="content_en" name="content_en" rows="6"
                         placeholder="Write the job description in English...">{{ old('content_en', $position->content_en ?? '') }}</textarea>
                     <small class="text-muted">
                         Main job description shown on the public page.
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="6"
+                    <textarea class="form-control ckeditor" id="content_es" name="content_es" rows="6"
                         placeholder="Escriba la descripción del puesto en español...">{{ old('content_es', $position->content_es ?? '') }}</textarea>
                     <small class="text-muted">
                         Optional Spanish version of the description.
@@ -143,7 +143,4 @@
             </form>
         </div>
     </div>
-@endsection
-@section('script')
-    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

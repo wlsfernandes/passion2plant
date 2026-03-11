@@ -68,9 +68,10 @@
                         <div class="details__content">
                             <h3>{{ $service->getTitle() }}</h3>
 
-                            {!! $service->getDescription() !!}
+                            <div class="cms-content" id="cms-content">
+                               {!! $service->getDescription() !!}
+                            </div>
                         </div>
-
                         {{-- External link (optional) --}}
                         @if ($service->external_link)
                             <a href="{{ $service->external_link }}" target="_blank" class="cmn--btn mt-4">

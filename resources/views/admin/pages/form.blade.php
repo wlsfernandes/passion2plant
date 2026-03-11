@@ -86,7 +86,7 @@
                 Content
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_en" name="content_en" rows="6"
+                    <textarea class="form-control ckeditor" id="content_en" name="content_en" rows="6"
                         placeholder="Write the page content in English...">{{ old('content_en', $page->content_en ?? '') }}</textarea>
                     <small class="text-muted">
                         Main content shown on the public page.
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="6"
+                    <textarea class="form-control ckeditor" id="content_es" name="content_es" rows="6"
                         placeholder="Escriba el contenido de la página en español...">{{ old('content_es', $page->content_es ?? '') }}</textarea>
                     <small class="text-muted">
                         Optional Spanish version.
@@ -119,8 +119,4 @@
             </form>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

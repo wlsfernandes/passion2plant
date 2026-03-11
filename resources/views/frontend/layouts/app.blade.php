@@ -43,15 +43,17 @@
 
     {{-- JS --}}
     <script src="{{ asset('assets/frontend/js/jquery-3.7.0.min.js') }}"></script>
-     <script src="{{ asset('assets/frontend/js/wow.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/wow.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-   
+    <script src="{{ asset('assets/frontend/js/cms-renderer.js') }}"></script>
+
 
     @stack('scripts')
 </body>
+
 </html>

@@ -61,14 +61,14 @@
                 {{-- Description EN --}}
                 <div class="mb-3">
                     <label class="form-label">Description (English)</label>
-                    <textarea class="form-control summernote" id="description_en" name="description_en" rows="4"
+                    <textarea class="form-control ckeditor" id="description_en" name="description_en" rows="4"
                         placeholder="Donation description in English...">{{ old('description_en', $donation->description_en ?? '') }}</textarea>
                 </div>
 
                 {{-- Description ES --}}
                 <div class="mb-3">
                     <label class="form-label">Description (Spanish)</label>
-                    <textarea class="form-control summernote" id="description_es" name="description_es" rows="4"
+                    <textarea class="form-control ckeditor" id="description_es" name="description_es" rows="4"
                         placeholder="Descripción de la donación en español...">{{ old('description_es', $donation->description_es ?? '') }}</textarea>
                 </div>
 
@@ -130,8 +130,4 @@
             </form>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection

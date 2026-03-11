@@ -45,7 +45,9 @@
                                 </small>
 
                                 <p>
+                                <div class="cms-content" id="cms-content">
                                     {!! $event->getContent() !!}
+                                </div>
                                 </p>
 
                                 <a href="{{ route('events.display', $event->slug) }}" class="btns">

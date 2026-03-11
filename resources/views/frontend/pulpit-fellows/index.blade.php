@@ -39,7 +39,9 @@
                 </h5>
 
                 <div class="legacy-content p2p-content">
-                    {!! $aboutSections['header']->{'content_' . app()->getLocale()} ?? '' !!}
+                    <div class="cms-content" id="cms-content">
+                        {!! $aboutSections['header']->{'content_' . app()->getLocale()} ?? '' !!}
+                    </div>
                 </div>
 
             </div>
@@ -69,7 +71,9 @@
                                 {{ $aboutSections['new_way']->{'subtitle_' . app()->getLocale()} ?? '' }}
                             </h5>
                             <p style="margin-top: 20px;">
+                            <div class="cms-content" id="cms-content">
                                 {!! $aboutSections['new_way']->{'content_' . app()->getLocale()} ?? '' !!}
+                            </div>
                             </p>
                         </div>
                     </div>
@@ -89,7 +93,9 @@
                         </div>
                         <div class="details__cont" style="margin-top: 20px;">
                             <p style="margin-top: 20px;">
+                            <div class="cms-content" id="cms-content">
                                 {!! $aboutSections['who_we_are']->{'content_' . app()->getLocale()} ?? '' !!}
+                            </div>
                             </p>
                         </div>
                     </div>
@@ -126,7 +132,9 @@
                         </div>
                         <div class="details__cont" style="margin-top: 20px;">
                             <p style="margin-top: 20px;">
+                            <div class="cms-content" id="cms-content">
                                 {!! $aboutSections['values']->{'content_' . app()->getLocale()} ?? '' !!}
+                            </div>
                             </p>
                         </div>
                     </div>
@@ -150,7 +158,9 @@
                                 {{ $aboutSections['problem']->{'subtitle_' . app()->getLocale()} ?? '' }}
                             </h5>
                             <p style="margin-top: 20px;">
+                            <div class="cms-content" id="cms-content">
                                 {!! $aboutSections['problem']->{'content_' . app()->getLocale()} ?? '' !!}
+                            </div>
                             </p>
                         </div>
                     </div>
@@ -191,7 +201,9 @@
                                 {{ $aboutSections['legacy']->{'subtitle_' . app()->getLocale()} ?? '' }}
                             </h5>
                             <p style="margin-top: 20px;">
+                            <div class="cms-content" id="cms-content">
                                 {!! $aboutSections['legacy']->{'content_' . app()->getLocale()} ?? '' !!}
+                            </div>
                             </p>
                         </div>
                     </div>
@@ -215,7 +227,9 @@
                         </div>
                         <div class="details__cont" style="margin-top: 20px;">
                             <p style="margin-top: 20px;">
+                            <div class="cms-content" id="cms-content">
                                 {!! $aboutSections['approach']->{'content_' . app()->getLocale()} ?? '' !!}
+                            </div>
                             </p>
                         </div>
                     </div>

@@ -71,7 +71,9 @@
 
                         {{-- Project Description --}}
                         <div class="details__content mb-20">
-                            {!! $project->description !!}
+                            <div class="cms-content" id="cms-content">
+                                {!! $project->description !!}
+                            </div>
                         </div>
 
                         {{-- Project Images --}}

@@ -48,6 +48,7 @@
     <script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/cms-renderer.js') }}"></script>
 
     @stack('scripts')
 </body>

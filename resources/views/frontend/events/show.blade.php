@@ -20,7 +20,8 @@
 
                             <p class="text-muted mb-4">
                                 {{ $event->event_date?->format('F d, Y') }}
-                            </p>{!! $event->getContent() !!}
+                            </p>
+                            <div class="cms-content" id="cms-content">{!! $event->getContent() !!}</div>
                         </div>
                         @if ($event->hasDownloadFile())
                             <a href="{{ route('admin.files.download', [

@@ -69,7 +69,7 @@
                                             Testimonials</a>
                                     <li><a href="{{ route('services.index') }}"><i class="uil uil-briefcase"></i>
                                             Services</a></li>
-                                   
+
                                     <li><a href="{{ route('events.index') }}"><i class="uil uil-ticket"></i> Events</a>
                                     </li>
                                 </ul>
@@ -109,11 +109,13 @@
                             <li><a href="{{ route('services.index') }}"><i class="uil uil-briefcase"></i> Services</a></li>
                             <li><a href="{{ route('resources.index') }}"><i class="fas fa-folder-open"></i> Resources</a>
                             </li>
-                             <li>
-                                        <a href="{{ route('donations.index') }}">
-                                            <i class="uil uil-heart"></i> Donations
-                                        </a>
-                                    </li>
+                            <li><a href="{{ route('testimonials.index') }}"><i class="uil uil-comment-dots"></i>
+                                    Testimonials</a></li>
+                            <li>
+                                <a href="{{ route('donations.index') }}">
+                                    <i class="uil uil-heart"></i> Donations
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{ route('products.index') }}">
                                     <i class="uil uil-box"></i> Products

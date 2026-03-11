@@ -12,7 +12,9 @@
                     <div class="details__items">
                         <div class="details__content">
                             <h2>{{ $position->getTitle() }}</h2>
-                            {!! $position->getDescription() !!}
+                            <div class="cms-content" id="cms-content">
+                                {!! $position->getDescription() !!}
+                            </div>
 
                             {{-- APPLY / EXTERNAL LINK --}}
 
@@ -82,7 +84,9 @@
                             </div>
 
                             <div class="details__cont mt-3">
-                                {!! $section->content !!}
+                                <div class="cms-content" id="cms-content">
+                                    {!! $section->content !!}
+                                </div>
                             </div>
                         </div>
 

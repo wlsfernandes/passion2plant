@@ -51,7 +51,9 @@
                             {{-- Description --}}
                             @if ($resource->description)
                                 <p class="mb-3">
+                                <div class="cms-content" id="cms-content">
                                     {!! $resource->description !!}
+                                </div>
                                 </p>
                             @endif
 

@@ -59,12 +59,12 @@
 
                 {{-- Content --}}
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_en" name="content_en" rows="5"
+                    <textarea class="form-control ckeditor" id="content_en" name="content_en" rows="5"
                         placeholder="Store description in English...">{{ old('content_en', $store->content_en ?? '') }}</textarea>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="5"
+                    <textarea class="form-control ckeditor" id="content_es" name="content_es" rows="5"
                         placeholder="Descripción de la tienda en español...">{{ old('content_es', $store->content_es ?? '') }}</textarea>
                 </div>
 

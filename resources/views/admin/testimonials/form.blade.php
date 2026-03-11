@@ -71,21 +71,16 @@
                 Content
                 ======================== --}}
                 <div class="mb-3">
-                    <textarea class="form-control @error('content_en') is-invalid @enderror" id="content_en" name="content_en"
-                        rows="5" placeholder="Write the testimonial in English...">{{ old('content_en', $testimonial->content_en ?? '') }}</textarea>
+                    <textarea class="form-control ckeditor" id="content_en" name="content_en" rows="5"
+                        placeholder="Write the testimonial in English...">{{ old('content_en', $testimonial->content_en ?? '') }}</textarea>
                     <small class="text-muted">
                         Required. This is the main testimonial text.
                     </small>
-
-                    @error('content_en')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
                 </div>
 
+
                 <div class="mb-3">
-                    <textarea class="form-control summernote" id="content_es" name="content_es" rows="5"
+                    <textarea class="form-control ckeditor" id="content_es" name="content_es" rows="5"
                         placeholder="Escriba el testimonio en español...">{{ old('content_es', $testimonial->content_es ?? '') }}</textarea>
                     <small class="text-muted">
                         Optional Spanish version.
@@ -110,8 +105,4 @@
             </form>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{ asset('/assets/admin/js/summernote-init.js') }}"></script>
 @endsection
