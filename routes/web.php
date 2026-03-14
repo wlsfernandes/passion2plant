@@ -18,7 +18,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaTypeController;
-use App\Http\Controllers\MenuItemController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PagePublicController;
@@ -32,6 +32,7 @@ use App\Http\Controllers\ProjectImageController;
 use App\Http\Controllers\PublishController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SectionCardController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
@@ -54,6 +55,7 @@ Route::get('lang/{locale}', function ($locale) {
         Session::put('locale', $locale);
         App::setLocale($locale);
     }
+
     return redirect()->back();
 })->name('lang.switch');
 
@@ -114,7 +116,9 @@ Route::get('/our-resources', [ResourceController::class, 'indexPublic'])->name('
 Route::get('/donate-now', [DonationController::class, 'indexPublic'])->name('donation.index.public');
 Route::get('/donate/{donation}', [DonationController::class, 'checkout'])->name('donations.checkout');
 Route::post('/donate/{donation}/checkout', [DonationController::class, 'startCheckout'])->name('donations.start');
-Route::get('/donate-success', function () {return view('frontend.donations.success');})->name('donations.success');
+Route::get('/donate-success', function () {
+    return view('frontend.donations.success');
+})->name('donations.success');
 
 /* Store */
 Route::get('/store', [StoreController::class, 'indexPublic'])->name('stores.index.public');
@@ -137,7 +141,7 @@ Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
 | Authentication (Breeze)
 |--------------------------------------------------------------------------
 */
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -202,12 +206,13 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
 
     Route::get('payments', [PaymentController::class, 'index'])->name('admin.payments.index');
     Route::get('payments/{payment}', [PaymentController::class, 'show'])->name('admin.payments.show');
-// Site Settings
+    // Site Settings
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
     Route::patch('/collaborators/{collaborator}/images/{image}/link', [CollaboratorImageController::class, 'updateLink'])->name('collaborators.images.updateLink');
-
+    Route::delete('pages/{page}/sections/{section}/images/{image}', [SectionController::class, 'destroyImage'])->name('pages.sections.images.destroy');
+    Route::delete('pages/{page}/sections/{section}/image', [SectionController::class, 'destroySectionImage'])->name('pages.sections.image.destroy');
     // Content
     Route::resource('abouts', AboutController::class);
     Route::resource('banners', BannerController::class);
@@ -219,8 +224,9 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
     Route::resource('media-types', MediaTypeController::class);
     Route::resource('orders', OrderController::class);
-    Route::resource('pages', PageController::class)->except(['show']);;
+    Route::resource('pages', PageController::class)->except(['show']);
     Route::resource('pages.sections', SectionController::class)->scoped();
+    Route::resource('pages.sections.cards', SectionCardController::class)->scoped();
     Route::resource('partners', PartnerController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('projects', ProjectController::class);
@@ -235,7 +241,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('testimonials', TestimonialController::class);
 
     // Navigation & Social
-    Route::resource('menu-items', MenuItemController::class);
+    Route::resource('menus', MenuController::class)->names('menus');
     Route::resource('social-links', SocialLinkController::class);
 
 });

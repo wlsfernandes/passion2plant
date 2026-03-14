@@ -25,12 +25,12 @@
                         {{ $aboutSections['vision']->{'title_' . app()->getLocale()} ?? '' }}
                     </h2>
                     <h4>
-                        <div class="cms-content" id="cms-content">
+                        <div class="cms-html" id="cms-html">
                             {!! $aboutSections['vision']->{'subtitle_' . app()->getLocale()} ?? '' !!}
                         </div>
                     </h4>
                     <p style="margin-top: 20px;">
-                    <div class="cms-content" id="cms-content">
+                    <div class="cms-html" id="cms-html">
                         {!! $aboutSections['vision']->{'content_' . app()->getLocale()} ?? '' !!}
                     </div>
                     </p>

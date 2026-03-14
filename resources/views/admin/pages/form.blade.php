@@ -81,31 +81,6 @@
                 @endisset
 
                 <hr>
-
-                {{-- =======================
-                Content
-                ======================== --}}
-                <div class="mb-3">
-                    <textarea class="form-control ckeditor" id="content_en" name="content_en" rows="6"
-                        placeholder="Write the page content in English...">{{ old('content_en', $page->content_en ?? '') }}</textarea>
-                    <small class="text-muted">
-                        Main content shown on the public page.
-                    </small>
-                </div>
-
-                <div class="mb-3">
-                    <textarea class="form-control ckeditor" id="content_es" name="content_es" rows="6"
-                        placeholder="Escriba el contenido de la página en español...">{{ old('content_es', $page->content_es ?? '') }}</textarea>
-                    <small class="text-muted">
-                        Optional Spanish version.
-                    </small>
-                </div>
-
-                <hr>
-
-                {{-- =======================
-                Actions
-                ======================== --}}
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('pages.index') }}" class="btn btn-secondary">
                         <i class="uil-arrow-left"></i> Back

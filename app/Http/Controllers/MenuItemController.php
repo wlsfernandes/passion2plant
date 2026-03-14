@@ -1,41 +1,40 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\BaseController;
 use App\Models\MenuItem;
-use Illuminate\Http\Request;
 use App\Services\SystemLogger;
-use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class MenuItemController extends BaseController
+class MenuController extends BaseController
 {
     /**
-     * Validation rules
-     * (Project standard: before store/update)
+     * Validation rules for menu items.
      */
-    protected function validatedData(Request $request): array
+    protected function validateMenu(Request $request)
     {
         return $request->validate([
-            'label_en' => ['required', 'string', 'max:255'],
-            'label_es' => ['nullable', 'string', 'max:255'],
-
-            'url' => ['required', 'string', 'max:255'],
-
-            'order' => ['nullable', 'integer', 'min:0'],
-
-            'is_active' => ['nullable', 'boolean'],
-            'open_in_new_tab' => ['nullable', 'boolean'],
+            'title_en' => 'required|string|max:255',
+            'title_es' => 'nullable|string|max:255',
+            'link' => 'nullable|string|max:255',
+            'order' => 'nullable|integer',
+            'parent_id' => 'nullable|exists:menu_items,id',
         ]);
     }
 
     /**
-     * Display a listing of menu items.
+     * Display a listing of the menu items.
      */
     public function index()
     {
-        $menuItems = MenuItem::ordered()->get();
+        $menus = MenuItem::with('children')
+            ->whereNull('parent_id')
+            ->orderBy('order')
+            ->get();
 
-        return view('admin.menu_items.index', compact('menuItems'));
+        return view('admin.menus.index', compact('menus'));
     }
 
     /**
@@ -43,7 +42,14 @@ class MenuItemController extends BaseController
      */
     public function create()
     {
-        return view('admin.menu_items.form');
+        $parents = MenuItem::whereNull('parent_id')
+            ->orderBy('order')
+            ->pluck('title_en', 'id');
+
+        return view('admin.menus.form', [
+            'menu' => new MenuItem,
+            'parents' => $parents,
+        ]);
     }
 
     /**
@@ -51,133 +57,119 @@ class MenuItemController extends BaseController
      */
     public function store(Request $request)
     {
-        // ✅ Validation first
-        $data = $this->validatedData($request);
+        $data = $this->validateMenu($request);
+
+        DB::beginTransaction();
 
         try {
-            $menuItem = MenuItem::create($data);
 
-            SystemLogger::log(
-                'Menu item created',
-                'info',
-                'menu_items.store',
-                [
-                    'menu_item_id' => $menuItem->id,
-                    'label_en' => $menuItem->label_en,
-                    'email' => $request->email,
-                ]
-            );
+            MenuItem::create($data);
+
+            DB::commit();
 
             return redirect()
-                ->route('menu-items.index')
+                ->route('admin.menus.index')
                 ->with('success', 'Menu item created successfully.');
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
             SystemLogger::log(
-                'Menu item creation failed',
+                'Menu creation failed',
                 'error',
-                'menu_items.store',
+                'menus.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
                 ]
             );
 
-            return back()
-                ->withInput()
-                ->with('error', 'Failed to create menu item.');
+            return back()->with('error', 'Failed to create menu item.');
         }
     }
 
     /**
      * Show the form for editing the specified menu item.
      */
-    public function edit(MenuItem $menuItem)
+    public function edit(MenuItem $menu)
     {
-        return view('admin.menu_items.form', compact('menuItem'));
+        $parents = MenuItem::whereNull('parent_id')
+            ->where('id', '!=', $menu->id)
+            ->orderBy('order')
+            ->pluck('title_en', 'id');
+
+        return view('admin.menus.form', compact('menu', 'parents'));
     }
 
     /**
      * Update the specified menu item.
      */
-    public function update(Request $request, MenuItem $menuItem)
+    public function update(Request $request, MenuItem $menu)
     {
-        // ✅ Validation first
-        $data = $this->validatedData($request);
+        $data = $this->validateMenu($request);
+
+        DB::beginTransaction();
 
         try {
-            $menuItem->update($data);
 
-            SystemLogger::log(
-                'Menu item updated',
-                'info',
-                'menu_items.update',
-                [
-                    'menu_item_id' => $menuItem->id,
-                    'label_en' => $menuItem->label_en,
-                    'email' => $request->email,
-                ]
-            );
+            $menu->update($data);
+
+            DB::commit();
 
             return redirect()
-                ->route('menu-items.index')
+                ->route('admin.menus.index')
                 ->with('success', 'Menu item updated successfully.');
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
             SystemLogger::log(
-                'Menu item update failed',
+                'Menu update failed',
                 'error',
-                'menu_items.update',
+                'menus.update',
                 [
-                    'menu_item_id' => $menuItem->id,
+                    'menu_id' => $menu->id,
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
                 ]
             );
 
-            return back()
-                ->withInput()
-                ->with('error', 'Failed to update menu item.');
+            return back()->with('error', 'Failed to update menu item.');
         }
     }
 
     /**
      * Remove the specified menu item.
      */
-    public function destroy(MenuItem $menuItem)
+    public function destroy(MenuItem $menu)
     {
-        try {
-            $menuItem->delete();
+        DB::beginTransaction();
 
-            SystemLogger::log(
-                'Menu item deleted',
-                'warning',
-                'menu_items.delete',
-                [
-                    'menu_item_id' => $menuItem->id,
-                    'label_en' => $menuItem->label_en,
-                    'email' => request()->email,
-                ]
-            );
+        try {
+
+            $menu->delete();
+
+            DB::commit();
 
             return redirect()
-                ->route('menu-items.index')
+                ->route('admin.menus.index')
                 ->with('success', 'Menu item deleted successfully.');
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
             SystemLogger::log(
-                'Menu item deletion failed',
+                'Menu deletion failed',
                 'error',
-                'menu_items.delete',
+                'menus.destroy',
                 [
-                    'menu_item_id' => $menuItem->id,
+                    'menu_id' => $menu->id,
                     'exception' => $e->getMessage(),
-                    'email' => request()->email,
                 ]
             );
 
-            return back()
-                ->with('error', 'Failed to delete menu item.');
+            return back()->with('error', 'Failed to delete menu item.');
         }
     }
 }

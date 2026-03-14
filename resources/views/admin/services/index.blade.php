@@ -58,7 +58,9 @@
 
                             {{-- Title --}}
                             <td>
-                                <strong><div class="cms-content" id="cms-content">{!! $service->title_en !!}</div></strong><br>
+                                <strong>
+                                    <div class="cms-html" id="cms-html">{!! $service->title_en !!}</div>
+                                </strong><br>
                             </td>
 
 

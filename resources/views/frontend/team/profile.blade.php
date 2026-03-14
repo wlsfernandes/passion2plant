@@ -33,7 +33,7 @@
                         </span>
 
                         <p class="mt-4">
-                        <div class="cms-content" id="cms-content">
+                        <div class="cms-html" id="cms-html">
                             {!! app()->getLocale() === 'es' ? $team->content_es : $team->content_en !!}
                         </div>
                         </p>

@@ -1,18 +1,3 @@
-/* ===============================
-   CMS CONTENT SYSTEM
-   =============================== */
-.cms-content h1,
-.cms-content h2,
-.cms-content h3,
-.cms-content h4,
-.cms-content p {
-    margin-bottom: 15px;
-}
-
-.cms-content [style*="color"] * {
-    color: inherit !important;
-    -webkit-text-fill-color: currentColor !important;
-}
 /* =========================
    Header / Logo
    ========================= */

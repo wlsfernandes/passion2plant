@@ -12,7 +12,7 @@
                     <div class="details__items">
                         <div class="details__content">
                             <h2>{{ $position->getTitle() }}</h2>
-                            <div class="cms-content" id="cms-content">
+                            <div class="cms-html" id="cms-html">
                                 {!! $position->getDescription() !!}
                             </div>
 
@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="details__cont mt-3">
-                                <div class="cms-content" id="cms-content">
+                                <div class="cms-html" id="cms-html">
                                     {!! $section->content !!}
                                 </div>
                             </div>

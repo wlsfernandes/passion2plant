@@ -22,11 +22,10 @@
             <table class="table table-bordered datatable-buttons">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Title (EN)</th>
                         <th>Slug</th>
-                        <th>Published</th>
                         <th>Sections</th>
+                        <th>Published</th>
                         <th width="140">Actions</th>
                     </tr>
                 </thead>
@@ -34,31 +33,6 @@
                 <tbody>
                     @foreach ($pages as $page)
                         <tr>
-                            {{-- Image --}}
-                            <td class="align-middle text-center">
-                                <div class="d-flex flex-column align-items-center justify-content-center">
-                                    @if ($page->image_url)
-                                        <a href="{{ route('admin.images.preview', ['model' => 'pages', 'id' => $page->id]) }}"
-                                            target="_blank" title="View image">
-                                            <img src="{{ route('admin.images.preview', ['model' => 'pages', 'id' => $page->id]) }}"
-                                                alt="Page image" class="rounded-circle mb-1"
-                                                style="width:80px;height:80px;object-fit:cover;">
-                                        </a>
-                                    @else
-                                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mb-1"
-                                            style="width:80px;height:80px;">
-                                            <i class="uil uil-image text-muted font-size-24"></i>
-                                        </div>
-                                    @endif
-
-                                    {{-- Edit / Upload --}}
-                                    <a href="{{ route('admin.images.edit', ['model' => 'pages', 'id' => $page->id]) }}"
-                                        class="text-primary small" title="Upload / Change image">
-                                        <i class="uil uil-edit"></i> Edit
-                                    </a>
-                                </div>
-                            </td>
-
                             {{-- Title --}}
                             <td>
                                 <strong>{{ $page->title_en }}</strong><br>

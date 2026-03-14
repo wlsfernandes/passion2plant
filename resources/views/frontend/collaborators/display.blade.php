@@ -52,7 +52,7 @@
 
                         {{-- Project Description --}}
                         <div class="details__content mb-20">
-                            <div class="cms-content" id="cms-content">
+                            <div class="cms-html" id="cms-html">
                                 {!! $collaborator->description !!}
                             </div>
                         </div>

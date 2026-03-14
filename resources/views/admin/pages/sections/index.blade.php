@@ -4,77 +4,138 @@
 
 @section('content')
     <div class="card border border-primary">
+
         <div class="card-header d-flex justify-content-between align-items-center">
+
             <div>
                 <h5 class="mb-0">
                     <i class="uil uil-layers"></i>
                     Sections for Page
                 </h5>
+
                 <small class="text-muted">
-                    {{ $page->title }}
+                    {{ $page->title }} <br>
+
+                    <a href="{{ route('pages.index') }}" class="btn btn-secondary btn-sm mt-1">
+                        <i class="uil uil-arrow-left"></i> Back to Pages
+                    </a>
                 </small>
             </div>
 
-            <a href="{{ route('pages.sections.create', $page) }}" class="btn btn-success">
-                <i class="uil uil-plus"></i> Add Section
-            </a>
-        </div>
+            <div class="d-flex gap-2">
 
+                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'hero']) }}"
+                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
+
+                    <img src="{{ asset('assets/admin/images/icons/header.png') }}" alt="Banner Icon" width="96">
+
+                    <span class="badge bg-primary text-uppercase px-3 py-2">+ Banner</span>
+
+                </a>
+
+                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'content']) }}"
+                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
+
+                    <img src="{{ asset('assets/admin/images/icons/content.png') }}" alt="Content Icon" width="96">
+
+                    <span class="badge bg-info text-uppercase px-3 py-2">+ Content</span>
+
+                </a>
+
+                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'cta']) }}"
+                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
+
+                    <img src="{{ asset('assets/admin/images/icons/cta.png') }}" alt="CTA Icon" width="96">
+
+                    <span class="badge bg-success text-uppercase px-3 py-2">+ CTA</span>
+
+                </a>
+                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'gallery']) }}"
+                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
+
+                    <img src="{{ asset('assets/admin/images/icons/gallery.png') }}" alt="Gallery Icon" width="96">
+
+                    <span class="badge bg-warning text-uppercase px-3 py-2">+ Gallery</span>
+
+                </a>
+                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'video']) }}"
+                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
+
+                    <img src="{{ asset('assets/admin/images/icons/video.png') }}" alt="Video Icon" width="96">
+
+                    <span class="badge bg-danger text-uppercase px-3 py-2">+ Video</span>
+
+                </a>
+
+
+            </div>
+
+        </div>
         <div class="card-body">
+
             <x-alert />
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th width="60">Order</th>
-                        <th>Title (EN)</th>
-                        <th>External Link</th>
-                        <th width="120">Published</th>
-                        <th width="140">Actions</th>
+                        <th class="text-center">Actions</th>
+                        <th class="text-center">Section</th>
+                        <th class="text-center">Order</th>
+                        <th class="text-center">Title (EN)</th>
+                        <th class="text-center">Published</th>
+                        <th class="text-center">+ Cards</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($sections as $section)
                         <tr>
-                            <td class="align-middle text-center">
-                                <div class="d-flex flex-column align-items-center justify-content-center">
-                                    @if ($section->image_url)
-                                        <a href="{{ route('admin.images.preview', ['model' => 'sections', 'id' => $section->id]) }}"
-                                            target="_blank" title="View image">
-                                            <img src="{{ route('admin.images.preview', ['model' => 'sections', 'id' => $section->id]) }}"
-                                                alt="Page image" class="rounded-circle mb-1"
-                                                style="width:80px;height:80px;object-fit:cover;">
-                                        </a>
-                                    @else
-                                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mb-1"
-                                            style="width:80px;height:80px;">
-                                            <i class="uil uil-image text-muted font-size-24"></i>
-                                        </div>
-                                    @endif
-                                </div>
-                                <a href="{{ route('pages.sections.edit', [$page, $section]) }}" class="text-primary small"
-                                    title="Upload / Change image">
-                                    <i class="uil uil-edit"></i> Edit
+                            <td class="text-center">
+
+                                <a href="{{ route('pages.sections.edit', [$page, $section]) }}" class="text-warning">
+                                    <i class="uil uil-pen font-size-18"></i>
                                 </a>
+
+                                <form action="{{ route('pages.sections.destroy', [$page, $section]) }}" method="POST"
+                                    class="d-inline" onsubmit="return confirm('Delete this section?')">
+
+                                    @csrf
+                                    @method('DELETE')
+                                    <i class="uil uil-trash text-danger font-size-18"></i>
+
+                                </form>
+                                @if ($page->url)
+                                    <a href="{{ $page->url }}" target="_blank" class="text-primary">
+                                        <i class="uil uil-external-link-alt font-size-18"></i>
+                                    </a>
+                                @endif
                             </td>
+                            <td class="text-center">
+
+                                @php
+                                    $badgeColors = [
+                                        'hero' => 'bg-primary',
+                                        'content' => 'bg-info',
+                                        'cta' => 'bg-success',
+                                        'gallery' => 'bg-warning',
+                                        'video' => 'bg-danger',
+                                    ];
+
+                                    $badge = $badgeColors[$section->type] ?? 'bg-secondary';
+                                @endphp
+
+                                <span class="badge {{ $badge }} text-uppercase px-3 py-2">
+                                    {{ ucfirst($section->type) }}
+                                </span>
+
+                            </td>
+
                             <td class="text-center">
                                 {{ $section->sort_order ?? '—' }}
                             </td>
 
                             <td>
-                                {{ $section->title_en ?? '—' }}
-                            </td>
-
-                            <td>
-                                @if ($section->external_link)
-                                    <i class="fa-solid fa-link text-primary"></i>
-                                    <a href="{{ $section->external_link ?? '#' }}" target="_blank">
-                                        Click here</a>
-                                @else
-                                    <i class="fa-solid fa-link-slash text-secondary"></i>
-                                    <span class="text-muted">No link</span>
-                                @endif
+                                {{ strip_tags($section->title_en ?? '') }}
                             </td>
 
                             <td class="text-center">
@@ -83,31 +144,31 @@
                                 </span>
                             </td>
 
-                            <td>
-                                <a href="{{ route('pages.sections.edit', [$page, $section]) }}"
-                                    class="btn btn-sm btn-warning">
-                                    <i class="uil uil-pen"></i>
-                                </a>
-
-                                <form action="{{ route('pages.sections.destroy', [$page, $section]) }}" method="POST"
-                                    class="d-inline" onsubmit="return confirm('Delete this section?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-danger">
-                                        <i class="uil uil-trash"></i>
-                                    </button>
-                                </form>
+                            {{-- Cards column --}}
+                            <td class="text-center">
+                                @if ($section->type === 'content')
+                                    <a href="{{ route('pages.sections.cards.index', [$page, $section]) }}"
+                                        class="btn btn-sm btn-primary"> + Cards ({{ $section->cards()->count() }})
+                                    </a>
+                                @endif
                             </td>
+
                         </tr>
+
                     @empty
+
                         <tr>
-                            <td colspan="5" class="text-center text-muted">
+                            <td colspan="6" class="text-center text-muted">
                                 No sections created yet.
                             </td>
                         </tr>
                     @endforelse
+
                 </tbody>
+
             </table>
+
         </div>
+
     </div>
 @endsection

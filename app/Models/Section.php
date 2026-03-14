@@ -1,74 +1,113 @@
 <?php
+
 namespace App\Models;
 
-use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    use HasFactory, Auditable;
+    use HasFactory;
 
     protected $fillable = [
         'page_id',
         'sort_order',
+
         'title_en',
         'title_es',
+
         'content_en',
         'content_es',
+
         'image_url',
-        'is_published',
+
         'external_link',
         'button_text',
+        'button_position',
+        'button_color',
+
+        'type',
+        'layout',
+
+        'is_published',
     ];
 
     protected $casts = [
         'is_published' => 'boolean',
     ];
 
-    /**
-     * Parent page
-     */
+    protected $attributes = [
+        'sort_order' => 0,
+    ];
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
     public function page()
     {
         return $this->belongsTo(Page::class);
     }
 
-    /**
-     * Scope: only visible sections
-     */
-    public function scopeVisible($query)
+    public function cards()
     {
-        return $query->where('is_published', true);
+        return $this->hasMany(SectionCard::class)->orderBy('sort_order');
     }
 
-    /**
-     * Get title based on current locale
-     */
-    public function getTitleAttribute(): ?string
+    public function images()
     {
-        $locale = app()->getLocale();
-
-        return $this->{'title_' . $locale} ?? $this->title_en;
+        return $this->hasMany(SectionImage::class)->orderBy('sort_order');
     }
 
-    /**
-     * Get content based on current locale
-     */
-    public function getContentAttribute(): ?string
-    {
-        $locale = app()->getLocale();
+    /*
+    |--------------------------------------------------------------------------
+    | Localization Helpers
+    |--------------------------------------------------------------------------
+    */
 
-        return $this->{'content_' . $locale} ?? $this->content_en;
+    public function getTitle()
+    {
+        return $this->{'title_'.app()->getLocale()};
     }
 
-    /**
-     * Default ordering by sort_order
-     */
+    public function getContent()
+    {
+        return $this->{'content_'.app()->getLocale()};
+    }
+
+    public function getButtonText()
+    {
+        return $this->button_text ?: 'Learn More';
+    }
+
     protected static function booted()
     {
-        static::addGlobalScope('ordered', function ($query) {
+        static::addGlobalScope('order', function ($query) {
             $query->orderBy('sort_order');
         });
+
+        static::creating(function ($section) {
+
+            // If sort_order is not defined or zero
+            if (! $section->sort_order) {
+
+                $maxOrder = self::where('page_id', $section->page_id)
+                    ->max('sort_order');
+
+                $section->sort_order = $maxOrder ? $maxOrder + 1 : 1;
+            }
+
+        });
+    }
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true);
     }
 }

@@ -2,60 +2,62 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Auditable;
 
 class MenuItem extends Model
 {
-    use HasFactory, Auditable;
-
     protected $fillable = [
-        'label_en',
-        'label_es',
-        'url',
+        'title_en',
+        'title_es',
+        'link',
         'order',
-        'is_active',
-        'open_in_new_tab',
+        'parent_id',
     ];
 
-    protected $casts = [
-        'is_active' => 'boolean',
-        'open_in_new_tab' => 'boolean',
-    ];
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     /**
-     * Scope: only active menu items.
+     * Parent menu item
      */
-    public function scopeActive($query)
+    public function parent()
     {
-        return $query->where('is_active', true);
+        return $this->belongsTo(MenuItem::class, 'parent_id');
     }
 
     /**
-     * Scope: ordered menu items.
+     * Submenu items
      */
-    public function scopeOrdered($query)
+    public function children()
     {
-        return $query->orderBy('order');
+        return $this->hasMany(MenuItem::class, 'parent_id')
+            ->orderBy('order');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Return title based on current locale
+     */
+    public function getTitleAttribute()
+    {
+        $locale = app()->getLocale();
+
+        return $this->{"title_{$locale}"} ?? $this->title_en;
     }
 
     /**
-     * Helper: get label based on locale.
+     * Scope main menu items
      */
-    public function label(string $locale = 'en'): string
+    public function scopeMain($query)
     {
-        return $locale === 'es' && $this->label_es
-            ? $this->label_es
-            : $this->label_en;
-    }
-
-    /**
-     * Lightweight model-level observability.
-     * Full logging handled in controllers via SystemLogger.
-     */
-    protected static function booted()
-    {
-        static::updated(fn() => \Log::info('MENU ITEM updated fired'));
+        return $query->whereNull('parent_id');
     }
 }

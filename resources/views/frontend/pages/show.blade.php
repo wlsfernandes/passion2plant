@@ -3,132 +3,17 @@
 @section('title', $page->title . ' | Passion2Plant')
 
 @section('content')
-    {{-- Page Hero --}}
-    @if ($page->image_url)
-        <div class="details__thumb hero-image mb-50">
-            <img src="{{ route('admin.images.preview', [
-                'model' => 'pages',
-                'id' => $page->id,
-            ]) }}"
-                alt="{{ $page->title }}" class="img-fluid w-100">
-
-            <div class="hero-title">
-                <div class="hero-title-box">
-                    <h2>{{ $page->title }}</h2>
-                </div>
-            </div>
-        </div>
-    @else
-        <section class="breadcumd__banner overhid">
-            <div class="container">
-                <div class="breadcumd__wrapper">
-                    <h2 class="left__content">
-                        {{ $page->title }}
-                    </h2>
-                    <ul class="right__content">
-                        <li>
-                            <a href="{{ url('/') }}">
-                                <i class="fa-solid fa-house"></i>
-                                @lang('pages.home')
-                            </a>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </li>
-                        <li>
-                            {{ $page->title }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    @endif
-
-    <!-- Page Details Section -->
-    <section class="details__section event__section overhid pt-130 pb-130">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-12">
-                    <div class="details__items">
-                        <div class="details__content">
-                            <div class="page__content">
-                                <div class="cms-content" id="cms-content">
-                                    {!! $page->content !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Page Details --}}
-
-    @foreach ($page->sections as $index => $section)
-        @php
-            // Even index → image left | Odd index → image right
-            $imageLeft = $index % 2 === 0;
-        @endphp
-        <section class="team__details overhid section-spacing">
-            <div class="container">
-                <div class="row g-5 align-items-center">
-
-                    {{-- IMAGE LEFT --}}
-                    @if ($imageLeft)
-                        <div class="col-xxl-5 col-xl-5 col-lg-8">
-                            @if ($section->image_url)
-                                <div class="details__thumb text-center">
-                                    <img src="{{ route('admin.images.preview', [
-                                        'model' => 'sections',
-                                        'id' => $section->id,
-                                    ]) }}"
-                                        alt="{{ $section->title }}" class="img-fluid">
-                                </div>
-                            @endif
-                        </div>
-                    @endif
-
-                    {{-- TEXT (always beside the image) --}}
-                    <div class="col-xxl-7 col-xl-7 col-lg-10">
-                        <div class="about__header heading-gradient-green-black">
-                            <h2 class="heading-gradient-green-black wow fadeInUp">
-                                {{ $section->title }}
-                            </h2>
-                        </div>
-
-                        <div class="details__cont mt-3">
-                            <div class="cms-content" id="cms-content">
-                                {!! $section->content !!}
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- IMAGE RIGHT --}}
-                    @if (!$imageLeft)
-                        <div class="col-xxl-5 col-xl-5 col-lg-8">
-                            @if ($section->image_url)
-                                <div class="details__thumb text-center">
-                                    <img src="{{ route('admin.images.preview', [
-                                        'model' => 'sections',
-                                        'id' => $section->id,
-                                    ]) }}"
-                                        alt="{{ $section->title }}" class="img-fluid">
-                                </div>
-                            @endif
-                        </div>
-                    @endif
-
-                </div>
-                @if ($section->external_link)
-                    <div class="text-center mt-4">
-                        <a href="{{ $section->external_link }}" target="_blank" class="cmn--btn">
-                            {{ $section->button_text ?? __('pages.learn_more') }}
-                        </a>
-                    </div>
-                @endif
-            </div>
-        </section>
+    @foreach ($page->sections as $section)
+        @if ($section->type === 'hero')
+            @include('frontend.pages.sections.hero', ['section' => $section])
+        @elseif ($section->type === 'cta')
+            @include('frontend.pages.sections.cta', ['section' => $section])
+        @elseif ($section->type === 'content')
+            @include('frontend.pages.sections.content', ['section' => $section])
+        @elseif ($section->type === 'gallery')
+            @include('frontend.pages.sections.gallery', ['section' => $section])
+        @elseif ($section->type === 'video')
+            @include('frontend.pages.sections.video', ['section' => $section])
+        @endif
     @endforeach
-
 @endsection

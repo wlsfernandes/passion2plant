@@ -63,7 +63,7 @@
                         {{-- DESCRIPTION --}}
                         <div class="product-description mb-4">
                             <p>
-                            <div class="cms-content" id="cms-content">
+                            <div class="cms-html" id="cms-html">
                                 {!! app()->getLocale() === 'es' ? $product->description_es : $product->description_en !!}
                             </div>
                             </p>
