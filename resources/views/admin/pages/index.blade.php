@@ -45,7 +45,7 @@
                             {{-- Slug --}}
                             <td>
                                 <a href="{{ $page->url }}" target="_blank" class="text-decoration-none">
-                                    <code>{{ $page->slug }}</code>
+                                    <code>/{{ $page->slug }}</code>
                                 </a>
                             </td>
                             <td class="text-center align-middle">
