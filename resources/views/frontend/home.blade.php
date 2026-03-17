@@ -4,16 +4,15 @@
 @section('title', 'Home | Passion2Plant')
 
 @section('content')
-@if (session('success'))
-         <div class="alert alert-success">
-             {{ session('success') }}
-         </div>
-     @endif
-    @include('frontend.partials.banner')
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     @include('frontend.partials.about')
     @include('frontend.partials.team-carousel')
     @include('frontend.partials.partners')
-     @include('frontend.partials.testimonial')
+    @include('frontend.partials.testimonial')
     @include('frontend.partials.services-carousel')
     @include('frontend.partials.blog-carousel')
     @include('frontend.partials.donate-carousel')
@@ -41,5 +40,5 @@
     </section>
     @include('frontend.partials.contact')
 
-   
+
 @endsection
