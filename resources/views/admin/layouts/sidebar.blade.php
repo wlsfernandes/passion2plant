@@ -44,15 +44,15 @@
                         </a>
 
                         <ul class="sub-menu">
+                            <li>
+                                <a href="{{ route('pages.index') }}">
+                                    <i class="uil uil-parking-square"></i> Pages
+                                </a>
+                            </li>
 
                             <li>
                                 <a href="{{ route('menus.index') }}">
                                     <i class="uil uil-bars"></i> Menus
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('pages.index') }}">
-                                    <i class="uil uil-parking-square"></i> Pages
                                 </a>
                             </li>
 
