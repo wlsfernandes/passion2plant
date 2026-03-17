@@ -65,47 +65,27 @@
                                 </a>
 
                                 <ul class="sub-menu">
-
                                     <li>
                                         <a href="{{ route('blogs.index') }}">
                                             <i class="uil-blogger-alt"></i> Blog
                                         </a>
                                     </li>
-
+                                    <li>
+                                        <a href="{{ route('donations.index') }}">
+                                            <i class="uil uil-heart"></i> Donate
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('events.index') }}">
                                             <i class="uil uil-ticket"></i> Events
                                         </a>
                                     </li>
-
+                                    <!-- partnerships -->
                                     <li>
-                                        <a href="{{ route('gallery-images.index') }}">
-                                            <i class="uil uil-image"></i> Gallery
+                                        <a href="{{ route('partners.index') }}">
+                                            <i class="uil uil-users-alt"></i> Partnerships
                                         </a>
                                     </li>
-
-
-
-                                    <li>
-                                        <a href="{{ route('media.index') }}">
-                                            <i class="uil uil-play-circle"></i> Media
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="{{ route('resources.index') }}">
-                                            <i class="fas fa-folder-open"></i> Resources
-                                        </a>
-                                    </li>
-
-
-
-                                    <li>
-                                        <a href="{{ route('positions.index') }}">
-                                            <i class="uil uil-briefcase"></i> Positions
-                                        </a>
-                                    </li>
-
                                     <li>
                                         <a href="{{ route('services.index') }}">
                                             <i class="uil uil-briefcase"></i> Services
@@ -130,7 +110,7 @@
                             <li>
                                 <a href="#" class="has-arrow waves-effect">
                                     <i class="uil uil-layer-group"></i>
-                                    <span>P2P Programs</span>
+                                    <span>Programs</span>
                                 </a>
 
                                 <ul class="sub-menu">
@@ -145,7 +125,25 @@
                                             <i class="uil uil-users-alt"></i> Partnerships
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('media.index') }}">
+                                            <i class="uil uil-play-circle"></i> Media
+                                        </a>
+                                    </li>
 
+                                    <li>
+                                        <a href="{{ route('resources.index') }}">
+                                            <i class="fas fa-folder-open"></i> Resources
+                                        </a>
+                                    </li>
+
+
+
+                                    <li>
+                                        <a href="{{ route('positions.index') }}">
+                                            <i class="uil uil-briefcase"></i> Positions
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             {{-- Configuration --}}
