@@ -104,13 +104,16 @@
                                     <i class="uil uil-pen font-size-18"></i>
                                 </a>
 
-                                <form action="{{ route('pages.sections.destroy', [$page, $section]) }}" method="POST"
-                                    class="d-inline" onsubmit="return confirm('Delete this section?')">
+                                <a href="#"
+                                    class="text-danger"onclick="event.preventDefault(); if(confirm('Delete this section?')) { document.getElementById('delete-form-{{ $section->id }}').submit();  }">
+                                    <i class="uil-trash font-size-18"></i>
+                                </a>
 
+                                <form id="delete-form-{{ $section->id }}"
+                                    action="{{ route('pages.sections.destroy', [$page, $section]) }}" method="POST"
+                                    style="display: none;">
                                     @csrf
                                     @method('DELETE')
-                                    <i class="uil uil-trash text-danger font-size-18"></i>
-
                                 </form>
                                 @if ($page->url)
                                     <a href="{{ $page->url }}" target="_blank" class="text-primary">
