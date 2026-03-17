@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Helpers\S3;
@@ -9,11 +10,9 @@ use Illuminate\Http\Request;
 
 class PageController extends BaseController
 {
-
     /**
      * Display a public page by slug.
      */
-   
 
     /**
      * Validation rules
@@ -22,13 +21,13 @@ class PageController extends BaseController
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'title_en'     => ['required', 'string', 'max:255'],
-            'title_es'     => ['nullable', 'string', 'max:255'],
+            'title_en' => ['required', 'string', 'max:255'],
+            'title_es' => ['nullable', 'string', 'max:255'],
 
-            'image_url'    => ['nullable', 'string'],
+            'image_url' => ['nullable', 'string'],
 
-            'content_en'   => ['nullable', 'string'],
-            'content_es'   => ['nullable', 'string'],
+            'content_en' => ['nullable', 'string'],
+            'content_es' => ['nullable', 'string'],
 
             'is_published' => ['nullable', 'boolean'],
         ]);
@@ -39,7 +38,7 @@ class PageController extends BaseController
      */
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::withCount(['sections', 'banners'])->get();
 
         return view('admin.pages.index', compact('pages'));
     }
@@ -69,8 +68,8 @@ class PageController extends BaseController
                 'pages.store',
                 [
                     'page_id' => $page->id,
-                    'slug'    => $page->slug,
-                    'email'   => $request->email,
+                    'slug' => $page->slug,
+                    'email' => $request->email,
                 ]
             );
 
@@ -85,7 +84,7 @@ class PageController extends BaseController
                 'pages.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email'     => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -120,8 +119,8 @@ class PageController extends BaseController
                 'pages.update',
                 [
                     'page_id' => $page->id,
-                    'slug'    => $page->slug,
-                    'email'   => $request->email,
+                    'slug' => $page->slug,
+                    'email' => $request->email,
                 ]
             );
 
@@ -135,9 +134,9 @@ class PageController extends BaseController
                 'error',
                 'pages.update',
                 [
-                    'page_id'   => $page->id,
+                    'page_id' => $page->id,
                     'exception' => $e->getMessage(),
-                    'email'     => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -166,8 +165,8 @@ class PageController extends BaseController
                 'pages.delete',
                 [
                     'page_id' => $page->id,
-                    'slug'    => $page->slug,
-                    'email'   => request()->email,
+                    'slug' => $page->slug,
+                    'email' => request()->email,
                 ]
             );
 
@@ -181,9 +180,9 @@ class PageController extends BaseController
                 'error',
                 'pages.delete',
                 [
-                    'page_id'   => $page->id,
+                    'page_id' => $page->id,
                     'exception' => $e->getMessage(),
-                    'email'     => request()->email,
+                    'email' => request()->email,
                 ]
             );
 

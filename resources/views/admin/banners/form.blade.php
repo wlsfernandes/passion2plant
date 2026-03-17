@@ -26,23 +26,20 @@
 
             <hr />
 
-            <form method="POST" action="{{ isset($banner) ? route('banners.update', $banner) : route('banners.store') }}">
+            <form method="POST" action="{{ isset($banner) ? route('banners.update', $banner) : route('banners.store') }}"
+                enctype="multipart/form-data">
                 @csrf
-                @if(isset($banner))
+                @if (isset($banner))
                     @method('PUT')
                 @endif
+                <input type="hidden" name="page_id" value="{{ $pageId ?? ($banner->page_id ?? '') }}">
 
-                {{-- =======================
-                Publish Controls
-                ======================== --}}
-                {{-- =======================
-                Publish & Link Controls
-                ======================== --}}
                 <div class="d-flex align-items-center gap-4 mb-4">
 
                     {{-- Publish switch --}}
                     <div class="form-check form-switch form-switch-lg">
-                        <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published" {{ old('is_published', $banner->is_published ?? false) ? 'checked' : '' }}>
+                        <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published"
+                            {{ old('is_published', $banner->is_published ?? false) ? 'checked' : '' }}>
                         <label class="form-check-label" for="is_published">
                             Publish this banner on the website
                         </label>
@@ -51,7 +48,8 @@
                     {{-- Open in new tab switch --}}
                     <div class="form-check form-switch form-switch-lg">
                         <input type="checkbox" name="open_in_new_tab" value="1" class="form-check-input"
-                            id="open_in_new_tab" {{ old('open_in_new_tab', $banner->open_in_new_tab ?? false) ? 'checked' : '' }}>
+                            id="open_in_new_tab"
+                            {{ old('open_in_new_tab', $banner->open_in_new_tab ?? false) ? 'checked' : '' }}>
                         <label class="form-check-label" for="open_in_new_tab">
                             Open link in a new tab
                         </label>
@@ -62,20 +60,16 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <input type="date" name="publish_start_at" class="form-control" value="{{ old(
-        'publish_start_at',
-        optional($banner->publish_start_at ?? null)->toDateString()
-    ) }}">
+                        <input type="date" name="publish_start_at" class="form-control"
+                            value="{{ old('publish_start_at', optional($banner->publish_start_at ?? null)->toDateString()) }}">
                         <small class="text-muted">
                             Banner becomes visible on this date.
                         </small>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <input type="date" name="publish_end_at" class="form-control" value="{{ old(
-        'publish_end_at',
-        optional($banner->publish_end_at ?? null)->toDateString()
-    ) }}">
+                        <input type="date" name="publish_end_at" class="form-control"
+                            value="{{ old('publish_end_at', optional($banner->publish_end_at ?? null)->toDateString()) }}">
                         <small class="text-muted">
                             Banner is hidden after this date.
                         </small>
@@ -87,34 +81,36 @@
                 {{-- =======================
                 Titles
                 ======================== --}}
-                <div class="mb-3">
-                    <input type="text" name="title_en" class="form-control" placeholder="Create a banner title in English"
-                        value="{{ old('title_en', $banner->title_en ?? '') }}" required>
-                    <small class="text-muted">
-                        Required — primary banner title.
-                    </small>
-                </div>
+                <div class="row g-4">
 
-                <div class="mb-3">
-                    <input type="text" name="title_es" class="form-control" placeholder="Crear un título en español"
-                        value="{{ old('title_es', $banner->title_es ?? '') }}">
-                    <small class="text-muted">
-                        Optional Spanish version of the title.
-                    </small>
+                    <div class="col-md-6">
+                        <label class="form-label">Title (EN)</label>
+                        <textarea name="title_en" class="form-control ckeditor-title" rows="3">{{ old('title_en', $banner->title_en ?? '') }}</textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Title (ES)</label>
+                        <textarea name="title_es" class="form-control ckeditor-title" rows="3">{{ old('title_es', $banner->title_es ?? '') }}</textarea>
+                    </div>
+
                 </div>
                 <hr>
 
                 {{-- =======================
                 Subtitles (Optional)
                 ======================== --}}
-                <div class="mb-3">
-                    <input type="text" name="subtitle_en" class="form-control" placeholder="Optional subtitle in English"
-                        value="{{ old('subtitle_en', $banner->subtitle_en ?? '') }}">
-                </div>
+                <div class="row g-4">
 
-                <div class="mb-3">
-                    <input type="text" name="subtitle_es" class="form-control" placeholder="Subtítulo opcional en español"
-                        value="{{ old('subtitle_es', $banner->subtitle_es ?? '') }}">
+                    <div class="col-md-6">
+                        <label class="form-label">Subtitle (EN)</label>
+                        <textarea name="subtitle_en" class="form-control ckeditor-subtitle" rows="3">{{ old('subtitle_en', $banner->subtitle_en ?? '') }}</textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Subtitle (ES)</label>
+                        <textarea name="subtitle_es" class="form-control ckeditor-subtitle" rows="3">{{ old('subtitle_es', $banner->subtitle_es ?? '') }}</textarea>
+                    </div>
+
                 </div>
                 <hr>
 
@@ -142,6 +138,21 @@
                     </small>
                 </div>
 
+                <hr>
+
+                @if (isset($banner) && $banner->image_url)
+                    <div class="mb-4 text-center">
+                        <div class="mb-2 fw-semibold">Current image</div>
+                        <img src="{{ route('admin.images.preview', ['model' => 'banners', 'id' => $banner->id]) }}"
+                            class="img-thumbnail mb-3" style="max-height: 220px;" alt="Current image">
+                    </div>
+                @endif
+                <div class="mb-3">
+                    <input type="file" name="image_url" class="form-control mt-3" accept="image/*">
+                    <small class="text-muted">
+                        Recommended: 1920x720px (or similar ratio)
+                    </small>
+                </div>
                 {{-- =======================
                 Actions
                 ======================== --}}

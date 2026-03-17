@@ -12,10 +12,6 @@
 
         <div class="card-header">
             @switch($type)
-                @case('hero')
-                    <img src="{{ asset('assets/admin/images/icons/header.png') }}" alt="Banner Icon" width="96">
-                @break
-
                 @case('content')
                     <img src="{{ asset('assets/admin/images/icons/content.png') }}" alt="Content Icon" width="96">
                 @break
@@ -24,12 +20,16 @@
                     <img src="{{ asset('assets/admin/images/icons/cta.png') }}" alt="CTA Icon" width="96">
                 @break
 
+                @case('promo')
+                    <img src="{{ asset('assets/admin/images/icons/promo.png') }}" alt="Promo Icon" width="96">
+                @break
+
                 @case('gallery')
                     <img src="{{ asset('assets/admin/images/icons/gallery.png') }}" alt="Gallery Icon" width="96">
                 @break
 
-                @case('text')
-                    <img src="{{ asset('assets/admin/images/icons/text.png') }}" alt="Text Icon" width="96">
+                @case('hero')
+                    <img src="{{ asset('assets/admin/images/icons/header.png') }}" alt="Banner Icon" width="96">
                 @break
 
                 @case('video')
@@ -62,7 +62,7 @@
                 <input type="hidden" name="type" value="{{ $type }}">
                 @include('admin.pages.sections.types.settings', ['type' => $type])
 
-                @if ($type === 'hero')
+                @if ($type === 'promo')
                     @include('admin.pages.sections.partials.button')
                     @include('admin.pages.sections.types.content')
                     @include('admin.pages.sections.partials.image')
@@ -80,7 +80,9 @@
                     @include('admin.pages.sections.partials.image')
                     @include('admin.pages.sections.partials.image-layout')
                 @endif
-
+                @if ($type === 'feature')
+                    @include('admin.pages.sections.types.feature')
+                @endif
                 @if ($type === 'gallery')
                     @include('admin.pages.sections.types.content')
                     @include('admin.pages.sections.partials.multiple-images')

@@ -43,20 +43,30 @@ use App\Http\Controllers\SystemLogController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\App;
+/*
+|--------------------------------------------------------------------------
+| Controllers
+|--------------------------------------------------------------------------
+*/
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
-/* |--------------------------------------------------------------------------
-Language Switcher
-|-------------------------------------------------------------------------- */
+/*
+|--------------------------------------------------------------------------
+| Language Switcher
+|--------------------------------------------------------------------------
+*/
+
 Route::get('lang/{locale}', function ($locale) {
+
     if (in_array($locale, ['en', 'es'])) {
         Session::put('locale', $locale);
         App::setLocale($locale);
     }
 
     return redirect()->back();
+
 })->name('lang.switch');
 
 /* |--------------------------------------------------------------------------
@@ -88,8 +98,6 @@ Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'previ
 Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
 Route::delete('/images/{model}/{id}', [ImageUploadController::class, 'destroy'])->name('admin.images.destroy');
 
-/* Pages */
-Route::get('/info/{slug}', [PagePublicController::class, 'show'])->name('public.info.show');
 /* Projects */
 Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
 
@@ -134,13 +142,12 @@ Route::get('/checkout/success', [CartController::class, 'success'])->name('cart.
 
 /* Stripe Webhooks */
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
-
-// 🧱 ADMIN SECTION
 /*
 |--------------------------------------------------------------------------
 | Authentication (Breeze)
 |--------------------------------------------------------------------------
 */
+
 require __DIR__.'/auth.php';
 
 /*
@@ -148,15 +155,17 @@ require __DIR__.'/auth.php';
 | Logout
 |--------------------------------------------------------------------------
 */
+
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
 
 /*
 |--------------------------------------------------------------------------
-| Admin (protected by Gate)
+| ADMIN AREA
 |--------------------------------------------------------------------------
 */
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/admin', function () {
@@ -168,6 +177,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return redirect()->route('admin.dashboard');
     })->name('dashboard');
 
+});
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN MODULES
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(function () {
+
+    Route::resource('pages', PageController::class)->except(['show']);
+    Route::resource('pages.sections', SectionController::class)->scoped();
+    Route::resource('pages.sections.cards', SectionCardController::class)->scoped();
+
+    Route::resource('menus', MenuController::class);
+    Route::resource('services', ServiceController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('stores', StoreController::class);
 });
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -247,11 +274,32 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
 });
 /*
 |--------------------------------------------------------------------------
-| Profile
+| PROFILE
 |--------------------------------------------------------------------------
 */
+
 Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
+
+/*
+|--------------------------------------------------------------------------
+| CMS PAGES (KEEP LAST)
+|--------------------------------------------------------------------------
+|
+| This allows dynamic pages like:
+| /about-us
+| /vision
+| /mission
+|
+| without breaking admin routes.
+|
+*/
+
+Route::fallback([PagePublicController::class, 'show'])->name('public.page.show');

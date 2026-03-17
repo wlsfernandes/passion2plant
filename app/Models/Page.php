@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use App\Traits\Auditable;
@@ -9,7 +10,7 @@ use Illuminate\Support\Str;
 
 class Page extends Model
 {
-    use HasFactory, Auditable;
+    use Auditable, HasFactory;
 
     protected $fillable = [
         'title_en',
@@ -24,6 +25,11 @@ class Page extends Model
     protected $casts = [
         'is_published' => 'boolean',
     ];
+
+    public function banners()
+    {
+        return $this->hasMany(Banner::class)->orderBy('sort_order');
+    }
 
     public function sections()
     {
@@ -57,14 +63,14 @@ class Page extends Model
      */
     protected static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
     {
-        $slug     = Str::slug($title);
+        $slug = Str::slug($title);
         $original = $slug;
-        $counter  = 1;
+        $counter = 1;
 
         while (
             static::where('slug', $slug)
-            ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
-            ->exists()
+                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
+                ->exists()
         ) {
             $slug = "{$original}-{$counter}";
             $counter++;
@@ -87,8 +93,9 @@ class Page extends Model
      */
     protected static function booted()
     {
-        static::updated(fn() => Log::info('PAGE updated fired'));
+        static::updated(fn () => Log::info('PAGE updated fired'));
     }
+
     /**
      * Get title based on current locale.
      */
@@ -96,7 +103,7 @@ class Page extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{'title_' . $locale} ?? $this->title_en;
+        return $this->{'title_'.$locale} ?? $this->title_en;
     }
 
     /**
@@ -106,11 +113,11 @@ class Page extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{'content_' . $locale} ?? $this->content_en;
+        return $this->{'content_'.$locale} ?? $this->content_en;
     }
 
     public function getUrlAttribute(): string
     {
-        return route('public.info.show', $this->slug);
+        return url($this->slug);
     }
 }

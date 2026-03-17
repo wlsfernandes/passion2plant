@@ -24,6 +24,7 @@
                     <tr>
                         <th>Title (EN)</th>
                         <th>Slug</th>
+                        <th>Banners</th>
                         <th>Sections</th>
                         <th>Published</th>
                         <th width="140">Actions</th>
@@ -47,7 +48,17 @@
                                     <code>{{ $page->url }}</code>
                                 </a>
                             </td>
+                            <td class="text-center align-middle">
+                                <a href="{{ route('banners.index', ['page_id' => $page->id]) }}"
+                                    class="btn btn-sm btn-outline-info" title="Manage banners">
+                                    <i class="uil uil-image"></i>
+                                </a>
 
+                                <div class="small text-muted mt-1">
+                                    {{ $page->banners_count }}
+                                    banner{{ $page->banners_count === 1 ? '' : 's' }}
+                                </div>
+                            </td>
                             <td class="text-center align-middle">
                                 <a href="{{ route('pages.sections.index', $page) }}" class="btn btn-sm btn-outline-primary"
                                     title="Manage sections">

@@ -55,11 +55,6 @@
                                     <i class="uil uil-parking-square"></i> Pages
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('banners.index') }}">
-                                    <i class="fas fa-image"></i> Home Banner
-                                </a>
-                            </li>
 
 
                             {{-- FEATURES --}}

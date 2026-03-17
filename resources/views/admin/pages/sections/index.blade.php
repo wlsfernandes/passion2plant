@@ -24,14 +24,6 @@
 
             <div class="d-flex gap-2">
 
-                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'hero']) }}"
-                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
-
-                    <img src="{{ asset('assets/admin/images/icons/header.png') }}" alt="Banner Icon" width="96">
-
-                    <span class="badge bg-primary text-uppercase px-3 py-2">+ Banner</span>
-
-                </a>
 
                 <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'content']) }}"
                     style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
@@ -39,6 +31,15 @@
                     <img src="{{ asset('assets/admin/images/icons/content.png') }}" alt="Content Icon" width="96">
 
                     <span class="badge bg-info text-uppercase px-3 py-2">+ Content</span>
+
+                </a>
+
+                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'promo']) }}"
+                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
+
+                    <img src="{{ asset('assets/admin/images/icons/promo.png') }}" alt="Promo Icon" width="96">
+
+                    <span class="badge bg-primary text-uppercase px-3 py-2">+ Promo</span>
 
                 </a>
 
@@ -50,12 +51,19 @@
                     <span class="badge bg-success text-uppercase px-3 py-2">+ CTA</span>
 
                 </a>
+                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'feature']) }}"
+                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
+
+                    <img src="{{ asset('assets/admin/images/icons/cards.png') }}" alt="Feature Icon" width="96">
+
+                    <span class="badge bg-warning text-uppercase px-3 py-2">+ Feature</span>
+                </a>
                 <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'gallery']) }}"
                     style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
 
                     <img src="{{ asset('assets/admin/images/icons/gallery.png') }}" alt="Gallery Icon" width="96">
 
-                    <span class="badge bg-warning text-uppercase px-3 py-2">+ Gallery</span>
+                    <span class="badge bg-danger text-uppercase px-3 py-2">+ Gallery</span>
 
                 </a>
                 <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'video']) }}"
@@ -63,7 +71,7 @@
 
                     <img src="{{ asset('assets/admin/images/icons/video.png') }}" alt="Video Icon" width="96">
 
-                    <span class="badge bg-danger text-uppercase px-3 py-2">+ Video</span>
+                    <span class="badge bg-info text-uppercase px-3 py-2">+ Video</span>
 
                 </a>
 

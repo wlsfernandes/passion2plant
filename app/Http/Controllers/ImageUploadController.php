@@ -154,6 +154,11 @@ class ImageUploadController extends BaseController
                     'image_url' => $path,
                 ]);
             });
+            if ($model === 'banners') {
+                return redirect()
+                    ->route('pages.index', $instance->page_id)
+                    ->with('success', 'Image uploaded successfully.');
+            }
 
             return redirect()
                 ->route("{$model}.index")

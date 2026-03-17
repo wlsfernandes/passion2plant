@@ -2,41 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\S3;
 use App\Models\Banner;
+use App\Models\Page;
 use App\Services\SystemLogger;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Throwable;
-use App\Helpers\S3;
 
 class BannerController extends BaseController
 {
-    /**
-     * List all banners (published + drafts).
-     */
-    public function index()
+    protected function validateData(Request $request): array
     {
-        $banners = Banner::orderBy('sort_order')
-            ->orderByDesc('created_at')
-            ->get();
+        $request->merge([
+            'is_published' => $request->has('is_published'),
+            'open_in_new_tab' => $request->has('open_in_new_tab'),
+        ]);
 
-        return view('admin.banners.index', compact('banners'));
-    }
+        return $request->validate([
+            'page_id' => 'nullable|exists:pages,id',
 
-    /**
-     * Show create form.
-     */
-    public function create()
-    {
-        return view('admin.banners.form');
-    }
-
-    /**
-     * Store new banners.
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
             'title_en' => 'required|string|max:255',
             'title_es' => 'nullable|string|max:255',
 
@@ -50,42 +34,73 @@ class BannerController extends BaseController
             'publish_end_at' => 'nullable|date|after_or_equal:publish_start_at',
 
             'is_published' => 'nullable|boolean',
-            'sort_order' => 'nullable|integer',
+            'sort_order' => 'nullable|integer|min:0',
+
+            'image_url' => 'nullable|image|max:2048',
         ]);
+    }
 
+    /**
+     * List all banners (published + drafts).
+     */
+    public function index(Request $request)
+    {
+        $query = Banner::query();
+
+        // Filter by page if provided
+        if ($request->filled('page_id')) {
+            $query->where('page_id', $request->page_id);
+        }
+
+        $banners = $query
+            ->orderBy('sort_order')
+            ->orderByDesc('created_at')
+            ->get();
+
+        // Optional: load page for context
+        $page = null;
+
+        if ($request->filled('page_id')) {
+            $page = Page::find($request->page_id);
+        }
+
+        return view('admin.banners.index', compact('banners', 'page'));
+    }
+
+    /**
+     * Show create form.
+     */
+    public function create(Request $request)
+    {
+        $pageId = $request->get('page_id');
+
+        return view('admin.banners.form', compact('pageId'));
+    }
+
+    /**
+     * Store new banners.
+     */
+    public function store(Request $request)
+    {
+        $data = $this->validateData($request);
         try {
-            DB::transaction(function () use ($request) {
-                Banner::create([
-                    'title_en' => $request->title_en,
-                    'title_es' => $request->title_es,
+            if ($request->hasFile('image_url')) {
+                $data['image_url'] = S3::uploadImageAsWebpPreset(
+                    $request->file('image_url'), // ✅ FIX HERE
+                    'banners',
+                    'cover',
+                    1600,
+                    600,
+                    85
+                );
+            }
+            Banner::create($data);
 
-                    'subtitle_en' => $request->subtitle_en,
-                    'subtitle_es' => $request->subtitle_es,
-
-                    'link' => $request->link,
-                    'open_in_new_tab' => (bool) $request->open_in_new_tab,
-
-                    'publish_start_at' => $request->publish_start_at,
-                    'publish_end_at' => $request->publish_end_at,
-                    'is_published' => (bool) $request->is_published,
-
-                    'sort_order' => $request->sort_order ?? 0,
-                ]);
-            });
-            SystemLogger::log(
-                'Banner created',
-                'info',
-                'banners.store',
-                [
-                    'email' => $request->email,
-                    'roles' => $request->roles ?? [],
-                ]
-            );
             return redirect()
-                ->route('banners.index')
+                ->route('pages.index', $data['page_id'] ?? null)
                 ->with('success', 'Banner created successfully.');
 
-        } catch (Throwable $e) {
+        } catch (Exception $e) {
 
             SystemLogger::log(
                 'Banner creation failed',
@@ -93,12 +108,10 @@ class BannerController extends BaseController
                 'banners.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
                 ]
             );
-            return back()
-                ->withInput()
-                ->with('error', 'Failed to create banners.');
+
+            return back()->withInput()->with('error', 'Failed to create banner.');
         }
     }
 
@@ -107,7 +120,9 @@ class BannerController extends BaseController
      */
     public function edit(Banner $banner)
     {
-        return view('admin.banners.form', compact('banner'));
+        $pageId = $banner->page_id;
+
+        return view('admin.banners.form', compact('banner', 'pageId'));
     }
 
     /**
@@ -115,67 +130,38 @@ class BannerController extends BaseController
      */
     public function update(Request $request, Banner $banner)
     {
-        $request->validate([
-            'title_en' => 'required|string|max:255',
-            'title_es' => 'nullable|string|max:255',
-            'title_pt' => 'nullable|string|max:255',
-
-            'subtitle_en' => 'nullable|string',
-            'subtitle_es' => 'nullable|string',
-            'subtitle_pt' => 'nullable|string',
-
-            'link' => 'nullable|url|max:255',
-            'open_in_new_tab' => 'nullable|boolean',
-
-            'publish_start_at' => 'nullable|date',
-            'publish_end_at' => 'nullable|date|after_or_equal:publish_start_at',
-
-            'is_published' => 'nullable|boolean',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $data = $this->validateData($request);
 
         try {
-            DB::transaction(function () use ($request, $banner) {
-                $banner->update($request->only([
-                    'title_en',
-                    'title_es',
-                    'title_pt',
-                    'subtitle_en',
-                    'subtitle_es',
-                    'subtitle_pt',
-                    'link',
-                    'open_in_new_tab',
-                    'publish_start_at',
-                    'publish_end_at',
-                    'is_published',
-                    'sort_order',
-                ]));
-            });
-            SystemLogger::log(
-                'Banner updated',
-                'info',
-                'banners.update',
-                [
-                    'email' => $request->email,
-                    'roles' => $request->roles ?? [],
-                ]
-            );
+            if ($request->hasFile('image_url')) {
+                $data['image_url'] = S3::uploadImageAsWebpPreset(
+                    $request->file('image_url'), // ✅ FIX HERE
+                    'banners',
+                    'cover',
+                    1600,
+                    600,
+                    85
+                );
+            }
+            $banner->update($data);
+
             return redirect()
-                ->route('banners.index')
+                ->route('pages.index', $banner->page_id)
                 ->with('success', 'Banner updated successfully.');
 
-        } catch (Throwable $e) {
+        } catch (Exception $e) {
+
             SystemLogger::log(
-                'Banner creation failed',
+                'Banner update failed',
                 'error',
                 'banners.update',
                 [
+                    'banner_id' => $banner->id,
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
                 ]
             );
-            return back()
-                ->with('error', 'Failed to update banners.');
+
+            return back()->withInput()->with('error', 'Failed to update banner.');
         }
     }
 
@@ -186,7 +172,7 @@ class BannerController extends BaseController
     {
         try {
             // 🔥 Delete image from storage if exists
-            if (!empty($banner->image_url)) {
+            if (! empty($banner->image_url)) {
                 S3::delete($banner->image_url);
             }
 
@@ -203,8 +189,8 @@ class BannerController extends BaseController
             );
 
             return redirect()
-                ->route('banners.index')
-                ->with('success', 'Banner deleted successfully.');
+                ->route('pages.index', $banner->page_id)
+                ->with('success', 'Banner updated successfully.');
 
         } catch (Throwable $e) {
             SystemLogger::log(

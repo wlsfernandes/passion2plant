@@ -28,6 +28,7 @@ class Section extends Model
 
         'type',
         'layout',
+        'feature_type',
 
         'is_published',
     ];

@@ -1,13 +1,16 @@
 <?php
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Traits\Auditable;
+use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
     use Auditable;
+
     protected $fillable = [
+        'page_id',
         'title_en',
         'title_es',
         'subtitle_en',
@@ -28,4 +31,26 @@ class Banner extends Model
         'publish_start_at' => 'date',
         'publish_end_at' => 'date',
     ];
+
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true)
+            ->where(function ($q) {
+                $now = now();
+
+                $q->whereNull('publish_start_at')
+                    ->orWhere('publish_start_at', '<=', $now);
+            })
+            ->where(function ($q) {
+                $now = now();
+
+                $q->whereNull('publish_end_at')
+                    ->orWhere('publish_end_at', '>=', $now);
+            });
+    }
 }
