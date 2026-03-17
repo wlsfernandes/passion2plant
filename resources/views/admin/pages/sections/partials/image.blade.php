@@ -80,7 +80,8 @@
 
         <div class="mb-2">
             <label class="form-label">Image URL</label>
-            <input type="url" name="link_image" class="form-control">
+            <input type="url" name="link_image" class="form-control"
+                value="{{ old('link_image', $section->link_image ?? '') }}" placeholder="https://example.com">
         </div>
 
     </div>
