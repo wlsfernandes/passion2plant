@@ -78,6 +78,11 @@
             <input type="file" name="image_url" class="form-control" accept="image/*">
         </div>
 
+        <div class="mb-2">
+            <label class="form-label">Image URL</label>
+            <input type="url" name="link_image" class="form-control">
+        </div>
+
     </div>
 
 </div>

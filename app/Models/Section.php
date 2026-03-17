@@ -20,6 +20,7 @@ class Section extends Model
         'content_es',
 
         'image_url',
+        'link_image',
 
         'external_link',
         'button_text',

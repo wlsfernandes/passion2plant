@@ -34,6 +34,7 @@ class SectionController extends BaseController
             'layout' => ['nullable', 'string'],
             'button_position' => ['nullable', 'string'],
             'button_color' => ['nullable', 'string'],
+            'link_image' => 'nullable|string|max:255',
         ]);
     }
 
@@ -73,7 +74,7 @@ class SectionController extends BaseController
             if (! empty($data['image_url'])) {
                 $section->update(['image_url' => $data['image_url']]);
             }
-
+           
             SystemLogger::log(
                 'Page section created',
                 'info',
