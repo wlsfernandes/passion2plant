@@ -7,7 +7,7 @@
     <div class="container">
 
         @if ($layout === 'full')
-            <div class="row justify-content-center">
+            <div class="row">
                 <div class="col-lg-12">
                     @include('frontend.pages.sections.partials.content')
                 </div>
