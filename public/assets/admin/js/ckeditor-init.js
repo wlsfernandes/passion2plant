@@ -98,6 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     "italic",
                     "underline",
                     "|",
+                    "alignment",
+                    "|",
                     "undo",
                     "redo",
                 ],
