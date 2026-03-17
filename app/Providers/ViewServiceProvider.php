@@ -67,7 +67,6 @@ class ViewServiceProvider extends ServiceProvider
                 ->limit(3)
                 ->get();
             $menu = MenuItem::query()
-                ->where('is_published', true)
                 ->main()
                 ->with(['children' => function ($q) {
                     $q->where('is_published', true)->orderBy('order');
