@@ -21,7 +21,7 @@ class SectionController extends BaseController
     {
         return $request->validate([
             'sort_order' => ['nullable', 'integer'],
-            'feature_type' => 'nullable|string|in:team,partners,testimonial,services,blog,donate,event',
+            'feature_type' => 'nullable|string|in:team,partners,testimonial,services,blog,donate,event,contact',
             'title_en' => ['nullable', 'string', 'max:255'],
             'title_es' => ['nullable', 'string', 'max:255'],
             'content_en' => ['nullable', 'string'],
@@ -74,7 +74,7 @@ class SectionController extends BaseController
             if (! empty($data['image_url'])) {
                 $section->update(['image_url' => $data['image_url']]);
             }
-           
+
             SystemLogger::log(
                 'Page section created',
                 'info',
