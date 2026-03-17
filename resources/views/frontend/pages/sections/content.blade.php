@@ -9,7 +9,9 @@
         @if ($layout === 'full')
             <div class="row">
                 <div class="col-lg-12">
-                    @include('frontend.pages.sections.partials.content')
+                    <div class="cms-html mb-3">
+                        @include('frontend.pages.sections.partials.content')
+                    </div>
                 </div>
             </div>
         @else
@@ -18,7 +20,9 @@
                     @include('frontend.pages.sections.partials.image')
                 @endif
                 <div class="col-lg-7">
-                    @include('frontend.pages.sections.partials.content')
+                    <div class="cms-html mb-3">
+                        @include('frontend.pages.sections.partials.content')
+                    </div>
                 </div>
                 @if ($layout === 'image_right')
                     @include('frontend.pages.sections.partials.image')
