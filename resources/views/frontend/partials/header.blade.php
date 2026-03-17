@@ -68,139 +68,14 @@
 
             {{-- Main Menu --}}
             <ul class="main-menu">
-                <li><a href="{{ url('/') }}">{{ __('menu.home') }}</a></li>
+                @foreach ($menu as $item)
+                    @include('frontend.partials.menu-item', ['item' => $item])
+                @endforeach
 
-                <ul class="main-menu">
-
-                    <li>
-                        <a href="#">
-                            {{ __('menu.about') }}
-                            <i class="fas fa-chevron-down"></i>
-                        </a>
-
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="{{ route('about.index.public') }}">
-                                    {{ __('menu.who_we_are') }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('blogs.index.public') }}">
-                                    {{ __('menu.blog') }}
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('events.index.public') }}">
-                                    {{ __('menu.events') }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('teams.index.public') }}">
-                                    {{ __('menu.our_team') }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('media.index.public') }}">
-                                    {{ __('menu.media') }}
-                                </a>
-                            </li>
-                            <li><a href="{{ route('positions.index.public') }}">{{ __('menu.opportunities') }}</a></li>
-                            <li>
-                                <a href="{{ url('/info/why-learn-with-us') }}">
-                                   {{ __('menu.why_learn') }}
-                                </a>
-                            </li>
-                        </ul>
-
-                    </li>
-                </ul>
-                {{-- COHORTS --}}
-                <li class="has-submenu">
-                    <a href="#">
-                        {{ __('menu.cohorts') }}
-                        <i class="fas fa-chevron-down"></i>
-                    </a>
-
-                    <ul class="sub-menu">
-                        @foreach ($projects as $project)
-                            <li>
-                                <a href="{{ route('projects.display', $project->slug) }}">
-                                    {{ $project->title }}
-                                </a>
-                            </li>
-                        @endforeach
-                        <li>
-                            <a href="{{ url('/info/pulpit-fellows') }}">
-                                Pulpit Fellows
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-                {{-- PARTNERSHIPS --}}
-                <li class="has-submenu">
-                    <a href="#">
-                        {{ __('menu.partnerships') }}
-                        <i class="fas fa-chevron-down"></i>
-                    </a>
-
-                    <ul class="sub-menu">
-                        @foreach ($collaborators as $collaborator)
-                            <li>
-                                <a href="{{ route('collaborators.display', $collaborator->slug) }}">
-                                    {{ $collaborator->title }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
-                <li><a href="{{ route('services.index.public') }}">{{ __('menu.services') }}</a></li>
-
-                <li class="has-submenu">
-                    <a href="{{ route('resources.index.public') }}">
-                        {{ __('menu.resources') }}
-                        <i class="fas fa-chevron-down"></i>
-                    </a>
-
-                    <ul class="sub-menu">
-                        {{-- All Resources --}}
-                        <li>
-                            <a href="{{ route('resources.index.public') }}">
-                                {{ __('menu.resources') }}
-                            </a>
-                        </li>
-
-                        {{-- Book Recommendations --}}
-                        <li>
-                            <a href="{{ route('book-recommendations.index.public') }}">
-                                {{ __('menu.recommended_books') }}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li><a href="{{ route('donation.index.public') }}">{{ __('menu.donate') }}</a></li>
-
-                <li><a href="{{ route('stores.index.public') }}">{{ __('menu.store') }}</a></li>
-                {{-- Learn More (nested submenu) 
-                <li class="has-submenu">
-                    <a href="#">
-                        {{ __('menu.learn_more') }}
-                        <i class="fas fa-chevron-down"></i>
-                    </a>
-
-                    <ul class="sub-menu">
-                        @foreach ($pages as $page)
-                            <li>
-                                <a href="{{ route('pages.display', $page->slug) }}">
-                                    {{ $page->title }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li> --}}
+                {{-- Static extras (optional) --}}
                 <li><a href="{{ route('contact') }}">{{ __('menu.contact') }}</a></li>
+
+                {{-- CART --}}
                 @php
                     $cart = session('cart', []);
                     $cartCount = collect($cart)->sum('quantity');
@@ -210,13 +85,11 @@
                     <a href="{{ route('cart.index') }}" class="cart-link">
                         <span class="cart-icon">
                             <svg class="cart-svg" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="9" cy="21" r="1"></circle>
                                 <circle cx="20" cy="21" r="1"></circle>
                                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                             </svg>
-
 
                             @if ($cartCount > 0)
                                 <span class="cart-count-badge">{{ $cartCount }}</span>
@@ -225,8 +98,9 @@
                     </a>
                 </li>
 
-                <li class="nav-signin"><a href="{{ url('/login') }}">{{ __('menu.sign_in') }}</a></li>
-
+                <li class="nav-signin">
+                    <a href="{{ url('/login') }}">{{ __('menu.sign_in') }}</a>
+                </li>
             </ul>
 
             {{-- Right Menu Icons --}}

@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Collaborator;
 use App\Models\Donation;
 use App\Models\Event;
+use App\Models\MenuItem;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Project;
@@ -65,13 +66,19 @@ class ViewServiceProvider extends ServiceProvider
             $donations = Donation::inRandomOrder()
                 ->limit(3)
                 ->get();
+            $menu = MenuItem::query()
+                ->where('is_published', true)
+                ->main()
+                ->with(['children' => function ($q) {
+                    $q->where('is_published', true)->orderBy('order');
+                }])
+                ->orderBy('order')
+                ->get();
 
             $view->with([
                 'settings' => $settings,
                 'socialLinks' => $socialLinks,
-
                 'aboutSections' => $aboutSections,
-
                 'featuredTeams' => $featuredTeams,
                 'featuredTestimonials' => $featuredTestimonials,
                 'partnerLogos' => $partnerLogos,
@@ -82,6 +89,7 @@ class ViewServiceProvider extends ServiceProvider
                 'projects' => $projects,
                 'collaborators' => $collaborators,
                 'donations' => $donations,
+                'menu' => $menu,
             ]);
         });
     }

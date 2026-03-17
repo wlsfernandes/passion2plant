@@ -60,4 +60,9 @@ class MenuItem extends Model
     {
         return $query->whereNull('parent_id');
     }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order');
+    }
 }

@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $page = Page::visible()
-            ->where('slug', '/')
+            ->where('slug', 'home')
             ->with([
                 'banners' => fn ($q) => $q->published()->orderBy('sort_order'),
                 'sections' => fn ($q) => $q->published(),
