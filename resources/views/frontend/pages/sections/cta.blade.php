@@ -28,14 +28,14 @@
                 @endif
 
                 <div class="col-lg-7">
+                    <div class="cms-html mb-3">
+                        <div class="cta-content text-{{ $section->button_position ?? 'start' }}">
 
-                    <div class="cta-content text-{{ $section->button_position ?? 'start' }}">
+                            @include('frontend.pages.sections.partials.content')
+                            @include('frontend.pages.sections.partials.button')
 
-                        @include('frontend.pages.sections.partials.content')
-                        @include('frontend.pages.sections.partials.button')
-
+                        </div>
                     </div>
-
                 </div>
 
                 @if ($layout === 'image_right')

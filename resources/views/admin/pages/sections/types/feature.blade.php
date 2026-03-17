@@ -39,13 +39,17 @@
                 <option value="event"
                     {{ old('feature_type', $section->feature_type ?? '') == 'event' ? 'selected' : '' }}>Event Carousel
                 </option>
+                <option value="contact"
+                    {{ old('feature_type', $section->feature_type ?? '') == 'contact' ? 'selected' : '' }}>Contact
+                    Section</option>
 
             </select>
         </div>
         <p class="text-muted">
             A <strong>Feature</strong> section displays dynamic content from your platform in a visually engaging way,
             such as carousels or highlighted blocks. For example, you can showcase recent blog posts, team members,
-            testimonials, services, or events. Instead of adding content manually, this section automatically pulls and
+            testimonials, services, events, or contact information. Instead of adding content manually, this section
+            automatically pulls and
             displays the latest items, keeping your page fresh and interactive.
         </p>
     </div>

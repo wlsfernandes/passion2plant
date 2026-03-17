@@ -7,6 +7,7 @@
         'blog' => 'frontend.partials.blog-carousel',
         'donate' => 'frontend.partials.donate-carousel',
         'event' => 'frontend.partials.event-carousel',
+        'contact' => 'frontend.partials.contact',
         default => null,
     };
 @endphp
