@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Providers;
 
 use App\Models\About;
-use App\Models\Banner;
 use App\Models\Blog;
 use App\Models\Collaborator;
 use App\Models\Donation;
@@ -32,20 +32,7 @@ class ViewServiceProvider extends ServiceProvider
                     ->get();
             });
 
-            $banners = Banner::query()
-                ->where('is_published', true)
-                ->where(function ($q) {
-                    $q->whereNull('publish_start_at')
-                        ->orWhere('publish_start_at', '<=', now());
-                })
-                ->where(function ($q) {
-                    $q->whereNull('publish_end_at')
-                        ->orWhere('publish_end_at', '>=', now());
-                })
-                ->orderBy('sort_order')
-                ->get();
-
-            $aboutSections        = About::visible()->get()->keyBy('section');
+            $aboutSections = About::visible()->get()->keyBy('section');
             $featuredTestimonials = Testimonial::visible()->get();
 
             $featuredTeams = Team::visible()
@@ -75,27 +62,26 @@ class ViewServiceProvider extends ServiceProvider
             $projects = Project::visible()->orderBy('order')->get();
 
             $collaborators = Collaborator::visible()->orderBy('order')->get();
-            $donations     = Donation::inRandomOrder()
+            $donations = Donation::inRandomOrder()
                 ->limit(3)
                 ->get();
 
             $view->with([
-                'settings'             => $settings,
-                'socialLinks'          => $socialLinks,
-                'banners'              => $banners,
+                'settings' => $settings,
+                'socialLinks' => $socialLinks,
 
-                'aboutSections'        => $aboutSections,
+                'aboutSections' => $aboutSections,
 
-                'featuredTeams'        => $featuredTeams,
+                'featuredTeams' => $featuredTeams,
                 'featuredTestimonials' => $featuredTestimonials,
-                'partnerLogos'         => $partnerLogos,
-                'featuredServices'     => $featuredServices,
-                'featuredBlogs'        => $featuredBlogs,
-                'featuredEvents'       => $featuredEvents,
-                'pages'                => $pages,
-                'projects'             => $projects,
-                'collaborators'        => $collaborators,
-                'donations'            => $donations,
+                'partnerLogos' => $partnerLogos,
+                'featuredServices' => $featuredServices,
+                'featuredBlogs' => $featuredBlogs,
+                'featuredEvents' => $featuredEvents,
+                'pages' => $pages,
+                'projects' => $projects,
+                'collaborators' => $collaborators,
+                'donations' => $donations,
             ]);
         });
     }
