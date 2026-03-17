@@ -28,7 +28,7 @@ class Page extends Model
 
     public function banners()
     {
-        return $this->hasMany(Banner::class)->orderBy('sort_order');
+        return $this->hasMany(Banner::class, 'page_id');
     }
 
     public function sections()
