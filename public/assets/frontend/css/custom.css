@@ -1194,7 +1194,7 @@ section {
 }
 
 .thumb-card-contain img {
-    max-width: 140px; /* enforce visual width */
+    max-width: 200px; /* enforce visual width */
     max-height: 100px; /* enforce visual height */
     object-fit: contain;
 }
