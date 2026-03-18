@@ -1185,20 +1185,19 @@ section {
 
 .thumb-card-contain {
     width: 100%;
-    height: 240px; /* fixed visual area */
+    height: 160px; /* fixed visual area */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 25px;
-    background: #ffffff;
 }
 
 .thumb-card-contain img {
-    max-width: 200px; /* enforce visual width */
-    max-height: 100px; /* enforce visual height */
-    object-fit: contain;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
 }
-
 /* Hover restore color */
 .blog__items:hover .thumb-card-contain img {
     filter: grayscale(0%);
