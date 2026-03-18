@@ -1185,7 +1185,7 @@ section {
 
 .thumb-card-contain {
     width: 100%;
-    height: 180px; /* fixed visual area */
+    height: 240px; /* fixed visual area */
     display: flex;
     align-items: center;
     justify-content: center;
