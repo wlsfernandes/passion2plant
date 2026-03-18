@@ -43,6 +43,7 @@ use App\Http\Controllers\SystemLogController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WikipediaController;
 /*
 |--------------------------------------------------------------------------
 | Controllers
@@ -195,6 +196,8 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('services', ServiceController::class);
     Route::resource('products', ProductController::class);
     Route::resource('stores', StoreController::class);
+    Route::resource('wikipedias', WikipediaController::class);
+
 });
 Route::middleware(['auth', 'verified'])->group(function () {
 

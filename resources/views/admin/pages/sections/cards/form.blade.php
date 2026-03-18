@@ -95,7 +95,8 @@
                         <input type="file" name="image_url" class="form-control" accept="image/*">
 
                         <small class="text-muted">
-                            JPG, PNG or WebP recommended.
+                            JPG, PNG or WebP recommended. Attention use images size <code>280x220</code> and centralize for
+                            best results.
                         </small>
 
                     </div>
