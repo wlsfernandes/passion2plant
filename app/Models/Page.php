@@ -20,10 +20,28 @@ class Page extends Model
         'content_en',
         'content_es',
         'is_published',
+        // ✅ SEO Core
+    'seo_title_en',
+    'seo_title_es',
+    'seo_description_en',
+    'seo_description_es',
+    'seo_keywords', // JSON or comma string
+
+    // ✅ Social / Open Graph
+    'og_title_en',
+    'og_title_es',
+    'og_description_en',
+    'og_description_es',
+    'og_image_url',
+
+    // ✅ Indexing control
+    'is_published',
+    'no_index',
     ];
 
     protected $casts = [
         'is_published' => 'boolean',
+        'no_index' => 'boolean',
     ];
 
     public function banners()
@@ -120,4 +138,16 @@ class Page extends Model
     {
         return url($this->slug);
     }
+
+    public function getSeoTitleAttribute()
+{
+    return $this->{'seo_title_' . app()->getLocale()} 
+        ?? $this->title;
+}
+
+public function getSeoDescriptionAttribute()
+{
+    return $this->{'seo_description_' . app()->getLocale()} 
+        ?? \Str::limit(strip_tags($this->{'content_' . app()->getLocale()}), 160);
+}
 }

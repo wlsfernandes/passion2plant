@@ -1,6 +1,20 @@
 @extends('frontend.layouts.app')
 
-@section('title', $page->title . ' | Passion2Plant')
+<title>{{ $page->seo_title }} | Passion2Plant</title>
+
+<meta name="description" content="{{ $page->seo_description }}">
+<meta name="keywords" content="{{ $page->seo_keywords }}">
+
+{{-- Open Graph --}}
+<meta property="og:title" content="{{ $page->seo_title }}">
+<meta property="og:description" content="{{ $page->seo_description }}">
+<meta property="og:image" content="{{ $page->og_image_url }}">
+<meta property="og:type" content="website">
+
+{{-- Robots --}}
+@if ($page->no_index)
+    <meta name="robots" content="noindex, nofollow">
+@endif
 
 @section('content')
     @if ($page->banners->count())
