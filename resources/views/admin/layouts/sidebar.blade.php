@@ -4,7 +4,7 @@
     {{-- LOGO --}}
     <div class="navbar-brand-box">
 
-        <a href="{{ url('index') }}" class="logo logo-dark">
+        <a href="{{ url('/') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" height="60">
             </span>
@@ -13,7 +13,7 @@
             </span>
         </a>
 
-        <a href="{{ url('index') }}" class="logo logo-light">
+        <a href="{{ url('/') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ asset('/assets/admin/images/passion2plant.webp') }}" height="60">
             </span>

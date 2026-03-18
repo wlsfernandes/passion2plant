@@ -9,7 +9,7 @@
 
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div>
-                        <a href="{{ url('index') }}" class="mb-5 d-block auth-logo">
+                        <a href="{{ url('/') }}" class="mb-5 d-block auth-logo">
                             <img src="{{ asset('/assets/admin/images/logos/small.png') }}" alt="" height="22"
                                 class="logo logo-dark">
                             <img src="{{ asset('/assets/admin/images/logo-light.png') }}" alt="" height="22"
@@ -38,7 +38,6 @@
                             <p>©
                                 <script>
                                     document.write(new Date().getFullYear())
-
                                 </script> Minible. Crafted with <i class="mdi mdi-heart text-danger"></i> by
                                 Themesbrand
                             </p>
