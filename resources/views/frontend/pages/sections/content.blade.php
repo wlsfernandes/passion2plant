@@ -47,7 +47,7 @@
                         <div class="blog__items">
 
                             @if ($card->image_url)
-                                <div class="thumb thumb-card-contain">
+                                <div class="thumb">
                                     <img src="{{ route('admin.images.preview', ['model' => 'section_cards', 'id' => $card->id]) }}"
                                         alt="{{ $card->getTitle() }}">
                                 </div>
