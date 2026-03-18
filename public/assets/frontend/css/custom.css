@@ -1274,3 +1274,22 @@ section {
         padding: 15px;
     }
 }
+.thumb-card-contain {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumb-card-contain img {
+    max-height: 100%;
+    width: auto;
+}
+
+/* 🔥 KEY FIX FOR LARGE SCREENS */
+@media (min-width: 1200px) {
+    .thumb-card-contain img {
+        max-width: 180px; /* keeps logo from stretching visually */
+    }
+}
