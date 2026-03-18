@@ -30,6 +30,20 @@ class PageController extends BaseController
             'content_es' => ['nullable', 'string'],
 
             'is_published' => ['nullable', 'boolean'],
+            // ✅ SEO Core
+            'seo_title_en' => ['nullable', 'string', 'max:255'],
+            'seo_title_es' => ['nullable', 'string', 'max:255'],
+            'seo_description_en' => ['nullable', 'string'],
+            'seo_description_es' => ['nullable', 'string'],
+            'seo_keywords' => ['nullable', 'string'], // Could be JSON or comma-separated
+            // ✅ Social / Open Graph
+            'og_title_en' => ['nullable', 'string', 'max:255'],
+            'og_title_es' => ['nullable', 'string', 'max:255'],
+            'og_description_en' => ['nullable', 'string'],
+            'og_description_es' => ['nullable', 'string'],
+            'og_image_url' => ['nullable', 'string'],
+            // ✅ Indexing control
+            'no_index' => ['nullable', 'boolean'],
         ]);
     }
 
