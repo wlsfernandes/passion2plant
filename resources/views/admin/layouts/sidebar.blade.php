@@ -80,10 +80,24 @@
                                             <i class="uil uil-ticket"></i> Events
                                         </a>
                                     </li>
-                                    <!-- partnerships -->
+                                    <li>
+                                        <a href="{{ route('media.index') }}">
+                                            <i class="uil uil-play-circle"></i> Media
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('partners.index') }}">
                                             <i class="uil uil-users-alt"></i> Partnerships
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('positions.index') }}">
+                                            <i class="uil uil-briefcase"></i> Positions
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('resources.index') }}">
+                                            <i class="fas fa-folder-open"></i> Resources
                                         </a>
                                     </li>
                                     <li>
@@ -91,61 +105,21 @@
                                             <i class="uil uil-briefcase"></i> Services
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="{{ route('testimonials.index') }}">
                                             <i class="uil uil-comment-dots"></i> Testimonials
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="{{ route('teams.index') }}">
                                             <i class="fas fa-users"></i> Team
                                         </a>
                                     </li>
 
+
                                 </ul>
                             </li>
-                            {{-- PROGRAMS --}}
-                            <li>
-                                <a href="#" class="has-arrow waves-effect">
-                                    <i class="uil uil-layer-group"></i>
-                                    <span>Programs</span>
-                                </a>
 
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="{{ route('projects.index') }}">
-                                            <i class="uil uil-calendar-alt"></i> Cohorts
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="{{ route('collaborators.index') }}">
-                                            <i class="uil uil-users-alt"></i> Partnerships
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('media.index') }}">
-                                            <i class="uil uil-play-circle"></i> Media
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="{{ route('resources.index') }}">
-                                            <i class="fas fa-folder-open"></i> Resources
-                                        </a>
-                                    </li>
-
-
-
-                                    <li>
-                                        <a href="{{ route('positions.index') }}">
-                                            <i class="uil uil-briefcase"></i> Positions
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
                             {{-- Configuration --}}
                             <li>
                                 <a href="#" class="has-arrow waves-effect">
