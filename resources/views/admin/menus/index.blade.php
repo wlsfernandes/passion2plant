@@ -17,7 +17,26 @@
         </div>
 
         <div class="card-body">
+            <div class="alert alert-info mb-4">
+                <h6 class="mb-2">
+                    <i class="uil uil-info-circle"></i> Menu Manager Guide
+                </h6>
 
+                <p class="mb-2">
+                    The Menu Manager allows you to control the navigation of your website.
+                    These menus appear in the main header and help users navigate your site.
+                </p>
+
+                <ul class="mb-2">
+                    <li><strong>Main Menu:</strong> Top-level navigation items (e.g., Home, About, Contact)</li>
+                    <li><strong>Submenu:</strong> Dropdown items under a main menu</li>
+                    <li><strong>Order:</strong> Controls the position (lower numbers appear first)</li>
+                </ul>
+
+                <p class="mb-0">
+                    <strong>Tip:</strong> Keep menu titles short and clear. Avoid too many submenu levels.
+                </p>
+            </div>
             <x-alert />
 
             <div class="table-responsive">

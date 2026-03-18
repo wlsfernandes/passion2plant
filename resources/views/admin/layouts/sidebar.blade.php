@@ -175,11 +175,7 @@
 
                                 </ul>
                             </li>
-                            <li>
-                                <a href="{{ route('wikipedias.index') }}">
-                                    <i class="dripicons-help"></i> Wikipedia
-                                </a>
-                            </li>
+
                         </ul>
                     </li>
 

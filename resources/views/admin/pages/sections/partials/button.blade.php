@@ -13,6 +13,10 @@
 
                 <input type="text" name="button_text" class="form-control"
                     value="{{ old('button_text', $section->button_text ?? '') }}">
+                <small class="text-muted d-block mt-1">
+                    This is the text that will appear on the button. Keep it concise and action-oriented (e.g., "Learn
+                    More", "Buy Now", "Contact Us").
+                </small>
             </div>
 
             <div class="col-md-6">
@@ -20,6 +24,10 @@
 
                 <input type="url" name="external_link" class="form-control"
                     value="{{ old('external_link', $section->external_link ?? '') }}">
+                <small class="text-muted d-block mt-1">
+                    This is the URL that the button will link to. It can be an internal path (e.g., "/about-us") or an
+                    external URL (e.g., "https://example.com").
+                </small>
             </div>
 
             <div class="col-md-6">
@@ -43,6 +51,9 @@
                     </option>
 
                 </select>
+                <small class="text-muted d-block mt-1">
+                    Choose the alignment of the button within the section. Left, Center, or Right.
+                </small>
             </div>
 
             <div class="col-md-6">
@@ -76,6 +87,9 @@
                     </option>
 
                 </select>
+                <small class="text-muted d-block mt-1">
+                    Choose the color of the button. Options include Primary, Secondary, Success, Danger, and Dark.
+                </small>
             </div>
 
         </div>

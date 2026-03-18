@@ -18,6 +18,10 @@
                         {{ old('is_published', $section->is_published ?? true) ? 'checked' : '' }}>
 
                     <label for="is_published" data-on-label="Yes" data-off-label="No"></label>
+                    <small class="text-muted d-block mt-1">
+                        Toggle to publish or unpublish this section. Unpublished sections will not be visible on the
+                        website.
+                    </small>
                 </div>
             </div>
 
@@ -26,6 +30,9 @@
 
                 <input type="number" name="sort_order" class="form-control"
                     value="{{ old('sort_order', $section->sort_order ?? 0) }}">
+                <small class="text-muted d-block mt-1">
+                    Determines the order of sections on the page. Sections with lower numbers appear first.
+                </small>
             </div>
         </div>
 

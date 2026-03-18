@@ -14,18 +14,6 @@
         <div class="card-body">
             <x-alert />
 
-            {{-- Helper block --}}
-            <div class="bg-info bg-opacity-10 text-info small p-3 rounded mb-4">
-                <span class="text-primary fw-semibold">How pages work:</span><br>
-                • The <span class="text-dark">English title</span> generates the public URL (slug).<br>
-                • Each page can have a <span class="text-dark">banner image</span> shown at the top.<br>
-                • Content supports <span class="text-info">basic formatting</span> (bold, lists, links).<br>
-                • Use the <span class="text-success">Publish switch</span> to control visibility.<br>
-                • Pages are evergreen — no dates required.
-            </div>
-
-            <hr />
-
             <form method="POST" action="{{ isset($page) ? route('pages.update', $page) : route('pages.store') }}">
                 @csrf
                 @isset($page)

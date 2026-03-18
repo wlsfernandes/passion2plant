@@ -30,7 +30,26 @@
 
 
         <div class="card-body">
+            <div class="alert alert-info mb-4">
+                <h6 class="mb-2">
+                    <i class="uil uil-info-circle"></i> Section Cards Guide
+                </h6>
 
+                <p class="mb-2">
+                    Cards are structured items inside a section. They are used to display repeated content
+                    such as services, programs, features, or benefits.
+                </p>
+
+                <ul class="mb-2">
+                    <li><strong>Each card = one item</strong></li>
+                    <li><strong>Cards appear in a grid or list</strong></li>
+                    <li><strong>Only available for specific section types (like Content or Feature)</strong></li>
+                </ul>
+
+                <p class="mb-0">
+                    <strong>Tip:</strong> Use cards when you need to display multiple similar items in a clean layout.
+                </p>
+            </div>
             <x-alert />
 
             @if ($cards->count())

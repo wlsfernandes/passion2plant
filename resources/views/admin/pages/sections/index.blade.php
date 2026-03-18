@@ -80,7 +80,25 @@
 
         </div>
         <div class="card-body">
+            <div class="alert alert-info mb-4">
+                <h6 class="mb-2">
+                    <i class="uil uil-info-circle"></i> Sections Builder Guide
+                </h6>
 
+                <p class="mb-2">
+                    Sections are the building blocks of your page. Each section represents a visual block on the website.
+                </p>
+
+                <ul class="mb-2">
+                    <li><strong>Each section = one block of content</strong></li>
+                    <li><strong>Order controls vertical position (top to bottom)</strong></li>
+                    <li><strong>You can mix different section types</strong></li>
+                </ul>
+
+                <p class="mb-0">
+                    <strong>Tip:</strong> Build your page from top to bottom: Intro → Content → CTA → Media.
+                </p>
+            </div>
             <x-alert />
 
             <table class="table table-bordered">

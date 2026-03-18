@@ -25,6 +25,11 @@
                 </option>
 
             </select>
+            <small class="text-muted d-block mt-1">
+                Choose the layout for this section. "Image Left / Text Right" will display the image on the left side
+                and text on the right. "Image Right / Text Left" will display the image on the right side and text on
+                the left. "Full Width" means just Text.
+            </small>
         </div>
 
     </div>

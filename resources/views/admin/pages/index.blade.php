@@ -17,6 +17,28 @@
         </div>
 
         <div class="card-body">
+            <div class="alert alert-info mb-4">
+                <h6 class="mb-2">
+                    <i class="uil uil-info-circle"></i> Pages Manager Guide
+                </h6>
+
+                <p class="mb-2">
+                    Pages are the main building blocks of your website. Each page represents a full screen or route
+                    (for example: Home, About, Programs, Contact).
+                </p>
+
+                <ul class="mb-2">
+                    <li><strong>Slug:</strong> The URL of the page (e.g., <code>/about-us</code>)</li>
+                    <li><strong>Banners:</strong> Top visual section (hero area)</li>
+                    <li><strong>Sections:</strong> The content blocks inside the page (text, CTA, gallery, etc.)</li>
+                    <li><strong>Published:</strong> Controls if the page is visible on the website</li>
+                </ul>
+
+                <p class="mb-0">
+                    <strong>Tip:</strong> Build pages using sections. Keep a clear structure: Banner → Content → CTA →
+                    Gallery.
+                </p>
+            </div>
             <x-alert />
 
             <table class="table table-bordered datatable-buttons">

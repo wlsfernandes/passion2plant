@@ -35,6 +35,11 @@
 
                         <input type="text" name="title_en" class="form-control"
                             value="{{ old('title_en', $menu->title_en) }}" required>
+                        <p class="text-muted small mt-1">
+                            This is the main label shown in the website menu (English version).
+                            Keep it short and clear (1–3 words recommended).
+                            Example: "About", "Programs", "Contact".
+                        </p>
                     </div>
 
 
@@ -46,6 +51,11 @@
 
                         <input type="text" name="title_es" class="form-control"
                             value="{{ old('title_es', $menu->title_es) }}">
+                        <p class="text-muted small mt-1">
+                            This is the main label shown in the website menu (Spanish version).
+                            Keep it short and clear (1–3 words recommended).
+                            Example: "Acerca de", "Programas", "Contacto".
+                        </p>
                     </div>
 
 
@@ -57,6 +67,11 @@
 
                         <input type="text" name="link" class="form-control"
                             placeholder="/about-us or https://example.com" value="{{ old('link', $menu->link) }}">
+                        <p class="text-muted small mt-1">
+                            This is the URL or path the menu item will link to.
+                            Use a relative path for internal pages (e.g., "/about-us") or a full URL for external links
+                            (e.g., "https://example.com").
+                        </p>
                     </div>
 
 
@@ -68,6 +83,10 @@
 
                         <input type="number" name="order" class="form-control"
                             value="{{ old('order', $menu->order ?? 0) }}">
+                        <p class="text-muted small mt-1">
+                            This controls the position of the menu item. Lower numbers appear first.
+                        </p>
+
                     </div>
 
 
@@ -91,7 +110,9 @@
                             @endforeach
 
                         </select>
-
+                        <p class="text-muted small mt-1">
+                            Select a parent menu if this item should be a submenu. Leave blank for a main menu item.
+                        </p>
                     </div>
 
                 </div>

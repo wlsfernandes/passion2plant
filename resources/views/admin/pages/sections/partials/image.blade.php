@@ -66,6 +66,11 @@
                     </option>
 
                 </select>
+                <small class="text-muted d-block mt-1">
+                    Select the type of image you are uploading. This helps the system generate appropriate sizes and
+                    optimize display on the website. "Original Fit" will keep the image's original dimensions without
+                    cropping or resizing.
+                </small>
             </div>
 
         </div>
