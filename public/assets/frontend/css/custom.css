@@ -1156,3 +1156,121 @@ section {
     max-height: 180px; /* control inside space */
     object-fit: contain;
 }
+
+/* ========================================
+   Partner / Card Logo System (Scoped)
+   ======================================== */
+
+/* Card container */
+.blog__items {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Hover effect */
+.blog__items:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   IMAGE / LOGO AREA
+   ======================================== */
+
+.thumb-card-contain {
+    width: 100%;
+    height: 160px; /* consistent visual height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: #f9fafb;
+    border-bottom: 1px solid #f1f1f1;
+
+    /* critical fix */
+    overflow: visible !important;
+}
+
+/* Image behavior */
+.thumb-card-contain img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+
+    display: block;
+    margin: auto;
+
+    /* smooth animation */
+    transition: all 0.3s ease;
+
+    /* professional muted look */
+    filter: grayscale(100%);
+    opacity: 0.85;
+}
+
+/* Hover restore color */
+.blog__items:hover .thumb-card-contain img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ========================================
+   CONTENT AREA
+   ======================================== */
+
+.blog__items .content {
+    padding: 18px 20px 22px;
+    text-align: center;
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CMS text cleanup */
+.blog__items .cms-html p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #2d3748;
+    line-height: 1.4;
+}
+
+/* ========================================
+   GRID IMPROVEMENTS
+   ======================================== */
+
+.row.g-4 > [class*="col-"] {
+    display: flex;
+}
+
+/* Ensure equal height cards */
+.row.g-4 .blog__items {
+    width: 100%;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .thumb-card-contain {
+        height: 140px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .thumb-card-contain {
+        height: 120px;
+        padding: 15px;
+    }
+}
