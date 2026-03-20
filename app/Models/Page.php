@@ -62,18 +62,12 @@ class Page extends Model
     {
         parent::boot();
 
-        static::creating(function (Page $page) {
-            $page->slug = static::generateUniqueSlug($page->title_en);
-        });
+       static::creating(function (Page $page) {
+    if (empty($page->slug)) {
+        $page->slug = static::generateUniqueSlug($page->title_en);
+    }
+});
 
-        static::updating(function (Page $page) {
-            if ($page->isDirty('title_en')) {
-                $page->slug = static::generateUniqueSlug(
-                    $page->title_en,
-                    $page->id
-                );
-            }
-        });
     }
 
     /**
