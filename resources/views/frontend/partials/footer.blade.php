@@ -11,7 +11,7 @@
                                     alt="{{ $settings->site_name ?? config('app.name') }}"></a>
                         </div>
                         <p class="mb-4">
-                            {{ $settings->footer_text ?? '' }}sssssssssssssss
+                            {{ $settings->footer_text ?? '' }}
                         </p>
                         <ul class="social__icon">
                             @foreach ($socialLinks as $social)
