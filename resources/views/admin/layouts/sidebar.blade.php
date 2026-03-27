@@ -70,7 +70,11 @@
                                             <i class="uil-blogger-alt"></i> Blog
                                         </a>
                                     </li>
-
+                                    <li>
+                                        <a href="{{ route('donations.index') }}">
+                                            <i class="uil uil-heart"></i> Donate
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('events.index') }}">
                                             <i class="uil uil-ticket"></i> Events
@@ -87,7 +91,11 @@
                                             <i class="fas fa-users"></i> Team
                                         </a>
                                     </li>
-
+                                    <li>
+                                        <a href="{{ route('testimonials.index') }}">
+                                            <i class="uil uil-comment-dots"></i> Testimonials
+                                        </a>
+                                    </li>
 
                                 </ul>
                             </li>
@@ -98,11 +106,7 @@
                                 </a>
 
                                 <ul class="sub-menu">
-                                    <li>
-                                        <a href="{{ route('donations.index') }}">
-                                            <i class="uil uil-heart"></i> Donate
-                                        </a>
-                                    </li>
+
                                     <li>
                                         <a href="{{ route('media.index') }}">
                                             <i class="uil uil-play-circle"></i> Media
@@ -123,11 +127,7 @@
                                             <i class="fas fa-folder-open"></i> Resources
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('testimonials.index') }}">
-                                            <i class="uil uil-comment-dots"></i> Testimonials
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </li>
 
