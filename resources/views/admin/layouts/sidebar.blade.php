@@ -80,7 +80,11 @@
                                             <i class="uil uil-ticket"></i> Events
                                         </a>
                                     </li>
-
+                                    <li>
+                                        <a href="{{ route('partners.index') }}">
+                                            <i class="uil uil-users-alt"></i> Partnerships
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('services.index') }}">
                                             <i class="uil uil-briefcase"></i> Services
@@ -112,11 +116,7 @@
                                             <i class="uil uil-play-circle"></i> Media
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('partners.index') }}">
-                                            <i class="uil uil-users-alt"></i> Partnerships
-                                        </a>
-                                    </li>
+
                                     <li>
                                         <a href="{{ route('positions.index') }}">
                                             <i class="uil uil-briefcase"></i> Positions
