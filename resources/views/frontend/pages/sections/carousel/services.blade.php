@@ -5,16 +5,12 @@
 <!-- Service Section Here -->
 <section class="service__section section__bg pt-130 pb-130 overhid">
     <div class="container">
-
-        <div class="title__content center">
-            <h6>@lang('pages.services')</h6>
-        </div>
-
+        @include('frontend.pages.sections.partials.content')
         <div class="row g-4">
             <h3 class=" wow fadeInUp" data-wow-duration="1.3s"> @lang('pages.services_subtitle')</h3>
             @forelse($featuredServices as $service)
                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
-                    data-wow-duration="{{ 3 + ($loop->index * 2) }}s">
+                    data-wow-duration="{{ 3 + $loop->index * 2 }}s">
 
                     <div class="blog__items center">
 
@@ -38,7 +34,8 @@
                                 {{ Str::limit(strip_tags($service->getDescription()), 120) }}
                             </p>
 
-                            <a href="{{ route('services.display', $service->slug) }}" class="btn btn-sm btn-outline-success mt-2">
+                            <a href="{{ route('services.display', $service->slug) }}"
+                                class="btn btn-sm btn-outline-success mt-2">
                                 @lang('pages.read_more')
                             </a>
                         </div>

@@ -83,7 +83,6 @@ Route::get('/pulpit-fellows', [HomeController::class, 'pulpitFellows'])->name('p
 
 /* Blogs */
 Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs.display');
-Route::get('/our-blogs', [BlogController::class, 'indexPublic'])->name('blogs.index.public');
 /* Book Recommendations */
 Route::get('/our-book-recommendations', [BookRecommendationController::class, 'indexPublic'])->name('book-recommendations.index.public');
 
@@ -92,7 +91,6 @@ Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 Route::post('/send-message', [ContactController::class, 'send'])->name('contact.send')->middleware('throttle:5,1');
 /* Events */
 Route::get('/event/{event:slug}', [EventController::class, 'display'])->name('events.display');
-Route::get('/our-events', [EventController::class, 'indexPublic'])->name('events.index.public');
 
 /* Files & Images */
 Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'preview'])->name('admin.images.preview');
@@ -111,7 +109,6 @@ Route::get('/position/{slug}', [PositionController::class, 'display'])->name('po
 Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
 Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
 /* Teams */
-Route::get('/our-team', [TeamController::class, 'indexPublic'])->name('teams.index.public');
 Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
 
 /* Media */

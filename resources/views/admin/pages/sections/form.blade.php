@@ -81,7 +81,12 @@
                     @include('admin.pages.sections.partials.image-layout')
                 @endif
                 @if ($type === 'feature')
+                    @include('admin.pages.sections.types.content')
                     @include('admin.pages.sections.types.feature')
+                @endif
+                @if ($type === 'carousel')
+                    @include('admin.pages.sections.types.content')
+                    @include('admin.pages.sections.types.carousel')
                 @endif
                 @if ($type === 'gallery')
                     @include('admin.pages.sections.types.content')

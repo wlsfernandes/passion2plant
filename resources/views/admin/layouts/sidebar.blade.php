@@ -70,14 +70,37 @@
                                             <i class="uil-blogger-alt"></i> Blog
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('donations.index') }}">
-                                            <i class="uil uil-heart"></i> Donate
-                                        </a>
-                                    </li>
+
                                     <li>
                                         <a href="{{ route('events.index') }}">
                                             <i class="uil uil-ticket"></i> Events
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('services.index') }}">
+                                            <i class="uil uil-briefcase"></i> Services
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('teams.index') }}">
+                                            <i class="fas fa-users"></i> Team
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="has-arrow waves-effect">
+                                    <i class="uil uil-channel"></i>
+                                    <span>Engagement</span>
+                                </a>
+
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="{{ route('donations.index') }}">
+                                            <i class="uil uil-heart"></i> Donate
                                         </a>
                                     </li>
                                     <li>
@@ -101,22 +124,10 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('services.index') }}">
-                                            <i class="uil uil-briefcase"></i> Services
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="{{ route('testimonials.index') }}">
                                             <i class="uil uil-comment-dots"></i> Testimonials
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('teams.index') }}">
-                                            <i class="fas fa-users"></i> Team
-                                        </a>
-                                    </li>
-
-
                                 </ul>
                             </li>
 

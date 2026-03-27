@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Support\Str;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Service extends Model
 {
@@ -10,8 +11,8 @@ class Service extends Model
         'title_en',
         'title_es',
         'slug',
-        'description_en',
-        'description_es',
+        'content_en',
+        'content_es',
         'image_url',
         'external_link',
         'is_published',
@@ -20,7 +21,6 @@ class Service extends Model
     protected $casts = [
         'is_published' => 'boolean',
     ];
-
 
     /*
        |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ class Service extends Model
 
         while (
             static::where('slug', $slug)
-                ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
+                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
                 ->exists()
         ) {
             $slug = "{$original}-{$counter}";
@@ -69,8 +69,6 @@ class Service extends Model
 
         return $slug;
     }
-
-
 
     public function getTitle(?string $locale = null): string
     {
@@ -81,13 +79,13 @@ class Service extends Model
             : $this->title_en;
     }
 
-    public function getDescription(?string $locale = null): ?string
+    public function getContent(?string $locale = null): ?string
     {
         $locale = $locale ?? app()->getLocale();
 
         return $locale === 'es'
-            ? $this->description_es
-            : $this->description_en;
+            ? $this->content_es
+            : $this->content_en;
     }
 
     /*
@@ -101,4 +99,3 @@ class Service extends Model
         return $query->where('is_published', true);
     }
 }
-

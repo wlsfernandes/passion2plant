@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\S3;
 use App\Models\Service;
 use App\Services\SystemLogger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
-use App\Helpers\S3;
 
 class ServiceController extends BaseController
 {
@@ -20,6 +20,7 @@ class ServiceController extends BaseController
 
         return view('admin.services.index', compact('services'));
     }
+
     public function indexPublic()
     {
         $services = Service::visible()
@@ -28,6 +29,7 @@ class ServiceController extends BaseController
 
         return view('frontend.services.index', compact('services'));
     }
+
     /**
      * Display a specific service on the public site.
      */
@@ -46,7 +48,6 @@ class ServiceController extends BaseController
         ]);
     }
 
-
     /**
      * Show create form.
      */
@@ -64,8 +65,8 @@ class ServiceController extends BaseController
             'title_en' => 'required|string|max:255',
             'title_es' => 'nullable|string|max:255',
 
-            'description_en' => 'nullable|string',
-            'description_es' => 'nullable|string',
+            'content_en' => 'nullable|string',
+            'content_es' => 'nullable|string',
 
             'external_link' => 'nullable|url|max:255',
             'is_published' => 'nullable|boolean',
@@ -77,8 +78,8 @@ class ServiceController extends BaseController
                     'title_en' => $request->title_en,
                     'title_es' => $request->title_es,
 
-                    'description_en' => $request->description_en,
-                    'description_es' => $request->description_es,
+                    'content_en' => $request->content_en,
+                    'content_es' => $request->content_es,
 
                     'external_link' => $request->external_link,
                     'is_published' => (bool) $request->is_published,
@@ -134,8 +135,8 @@ class ServiceController extends BaseController
             'title_en' => 'required|string|max:255',
             'title_es' => 'nullable|string|max:255',
 
-            'description_en' => 'nullable|string',
-            'description_es' => 'nullable|string',
+            'content_en' => 'nullable|string',
+            'content_es' => 'nullable|string',
 
             'external_link' => 'nullable|url|max:255',
             'is_published' => 'nullable|boolean',
@@ -146,8 +147,8 @@ class ServiceController extends BaseController
                 $service->update($request->only([
                     'title_en',
                     'title_es',
-                    'description_en',
-                    'description_es',
+                    'content_en',
+                    'content_es',
                     'external_link',
                     'is_published',
                 ]));
@@ -191,7 +192,7 @@ class ServiceController extends BaseController
     {
         try {
             // 🔥 Delete image if exists
-            if (!empty($service->image_url)) {
+            if (! empty($service->image_url)) {
                 S3::delete($service->image_url);
             }
 

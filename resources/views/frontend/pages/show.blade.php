@@ -29,6 +29,8 @@
             @include('frontend.pages.sections.content', ['section' => $section])
         @elseif ($section->type === 'feature')
             @include('frontend.pages.sections.feature', ['section' => $section])
+        @elseif ($section->type === 'carousel')
+            @include('frontend.pages.sections.carousel', ['section' => $section])
         @elseif ($section->type === 'gallery')
             @include('frontend.pages.sections.gallery', ['section' => $section])
         @elseif ($section->type === 'video')

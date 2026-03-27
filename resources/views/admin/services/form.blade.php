@@ -49,20 +49,20 @@
                 <hr>
 
                 {{-- Titles --}}
-                <div class="mb-3">
-                    <input type="text" name="title_en" class="form-control" placeholder="Service title in English"
-                        value="{{ old('title_en', $service->title_en ?? '') }}" required>
+                <div class="row g-4">
 
-                    <small class="text-muted">
-                        Main service title displayed publicly.
-                    </small>
+                    <div class="col-md-6">
+                        <label class="form-label">Title (EN)</label>
+                        <textarea name="title_en" class="form-control ckeditor-title" rows="3">{{ old('title_en', $service->title_en ?? '') }}</textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Title (ES)</label>
+                        <textarea name="title_es" class="form-control ckeditor-title" rows="3">{{ old('title_es', $service->title_es ?? '') }}</textarea>
+
+                    </div>
+
                 </div>
-
-                <div class="mb-3">
-                    <input type="text" name="title_es" class="form-control" placeholder="Título del servicio en español"
-                        value="{{ old('title_es', $service->title_es ?? '') }}">
-                </div>
-
                 <hr>
 
                 {{-- Description EN --}}

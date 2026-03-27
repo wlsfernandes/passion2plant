@@ -1,13 +1,9 @@
 @php
     $view = match ($section->feature_type) {
-        'team' => 'frontend.partials.team-carousel',
-        'partners' => 'frontend.partials.partners',
-        'testimonial' => 'frontend.partials.testimonial',
-        'services' => 'frontend.partials.services-carousel',
-        'blog' => 'frontend.partials.blog-carousel',
-        'donate' => 'frontend.partials.donate-carousel',
-        'event' => 'frontend.partials.event-carousel',
-        'contact' => 'frontend.partials.contact',
+        'blog' => 'frontend.pages.sections.features.blog',
+        'team' => 'frontend.pages.sections.features.team',
+        'services' => 'frontend.pages.sections.features.service',
+        'event' => 'frontend.pages.sections.features.event',
         default => null,
     };
 @endphp

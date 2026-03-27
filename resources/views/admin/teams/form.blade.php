@@ -77,19 +77,18 @@
                     @enderror
 
                 </div>
+                <div class="row g-4">
 
-                <div class="mb-3">
-                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                        placeholder="Full name" value="{{ old('name', $team->name ?? '') }}" required>
-                    <small class="text-muted">
-                        Required. Used to generate the public profile URL.
-                    </small>
-
+                    <div class="col-md-12">
+                        <label class="form-label">Name</label>
+                        <textarea name="name" class="form-control ckeditor-title" rows="3">{{ old('name', $team->name ?? '') }}</textarea>
+                    </div>
                     @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
+
                 </div>
 
                 @isset($team)

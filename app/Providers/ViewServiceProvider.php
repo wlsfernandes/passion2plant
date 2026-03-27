@@ -11,6 +11,7 @@ use App\Models\MenuItem;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Project;
+use App\Models\Sector;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\SocialLink;
@@ -53,6 +54,18 @@ class ViewServiceProvider extends ServiceProvider
                 ->latest()
                 ->limit(3)
                 ->get();
+            $blogs = Blog::visible()
+                ->orderByDesc('created_at')
+                ->get();
+            $events = Event::visible()
+                ->orderByDesc('created_at')
+                ->get();
+            $teams = Team::visible()
+                ->orderByDesc('created_at')
+                ->get();
+            $services = Service::visible()
+                ->orderByDesc('created_at')
+                ->get();
 
             $featuredEvents = Event::visible()
                 ->latest()
@@ -71,7 +84,12 @@ class ViewServiceProvider extends ServiceProvider
                 ->with('children')
                 ->orderBy('order')
                 ->get();
-
+            $sectors = Sector::orderBy('id')
+                ->with(['teams' => function ($query) {
+                    $query->visible()
+                        ->orderBy('name');
+                }])
+                ->get();
             $view->with([
                 'settings' => $settings,
                 'socialLinks' => $socialLinks,
@@ -81,12 +99,17 @@ class ViewServiceProvider extends ServiceProvider
                 'partnerLogos' => $partnerLogos,
                 'featuredServices' => $featuredServices,
                 'featuredBlogs' => $featuredBlogs,
+                'blogs' => $blogs,
+                'events' => $events,
+                'teams' => $teams,
+                'services' => $services,
                 'featuredEvents' => $featuredEvents,
                 'pages' => $pages,
                 'projects' => $projects,
                 'collaborators' => $collaborators,
                 'donations' => $donations,
                 'menu' => $menu,
+                'sectors' => $sectors,
             ]);
         });
     }

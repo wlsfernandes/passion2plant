@@ -94,27 +94,19 @@
                 {{-- =======================
                 Content
                 ======================== --}}
-                <div class="mb-3">
-                    <label class="form-label">Content (English)</label>
+                <div class="row g-4">
 
-                    <textarea class="form-control ckeditor" id="content_en" name="content_en" rows="6"
-                        placeholder="Write the blog content in English...">{{ old('content_en', $blog->content_en ?? '') }}</textarea>
+                    <div class="col-md-6">
+                        <label class="form-label">Title (EN)</label>
+                        <textarea name="title_en" class="form-control ckeditor-title" rows="3">{{ old('title_en', $blog->title_en ?? '') }}</textarea>
+                    </div>
 
-                    <small class="text-muted">
-                        This content will appear on the public blog page.
-                    </small>
-                </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Title (ES)</label>
+                        <textarea name="title_es" class="form-control ckeditor-title" rows="3">{{ old('title_es', $blog->title_es ?? '') }}</textarea>
 
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Contenido (Español)</label>
-
-                    <textarea class="form-control ckeditor" id="content_es" name="content_es" rows="6"
-                        placeholder="Escriba el contenido del blog en español...">{{ old('content_es', $blog->content_es ?? '') }}</textarea>
-
-                    <small class="text-muted">
-                        Contenido del blog en español.
-                    </small>
                 </div>
 
                 <hr>

@@ -51,19 +51,26 @@
                     <span class="badge bg-success text-uppercase px-3 py-2">+ CTA</span>
 
                 </a>
+                <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'carousel']) }}"
+                    style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
+
+                    <img src="{{ asset('assets/admin/images/icons/cards.png') }}" alt="Feature Icon" width="96">
+
+                    <span class="badge bg-warning text-uppercase px-3 py-2">+ Carousel</span>
+                </a>
                 <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'feature']) }}"
                     style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
 
                     <img src="{{ asset('assets/admin/images/icons/cards.png') }}" alt="Feature Icon" width="96">
 
-                    <span class="badge bg-warning text-uppercase px-3 py-2">+ Feature</span>
+                    <span class="badge bg-danger text-uppercase px-3 py-2">+ Feature</span>
                 </a>
                 <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'gallery']) }}"
                     style="display:flex; flex-direction:column; align-items:center; text-decoration:none;">
 
                     <img src="{{ asset('assets/admin/images/icons/gallery.png') }}" alt="Gallery Icon" width="96">
 
-                    <span class="badge bg-danger text-uppercase px-3 py-2">+ Gallery</span>
+                    <span class="badge bg-info text-uppercase px-3 py-2">+ Gallery</span>
 
                 </a>
                 <a href="{{ route('pages.sections.create', ['page' => $page->id, 'type' => 'video']) }}"
@@ -71,7 +78,7 @@
 
                     <img src="{{ asset('assets/admin/images/icons/video.png') }}" alt="Video Icon" width="96">
 
-                    <span class="badge bg-info text-uppercase px-3 py-2">+ Video</span>
+                    <span class="badge bg-secondary text-uppercase px-3 py-2">+ Video</span>
 
                 </a>
 

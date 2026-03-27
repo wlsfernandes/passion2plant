@@ -1,17 +1,14 @@
 /* ===================================== */
 /* CMS HTML Rendering Isolation Layer */
 /* ===================================== */
-/* ===================================== */
-/* CMS HTML Rendering Isolation Layer */
-/* ===================================== */
 
 .cms-html {
     width: 100%;
 }
 
-/* Reset theme typography influence
-   IMPORTANT: do NOT include span/strong/em here
-   or CKEditor inline styles will break */
+/* ------------------------------------- */
+/* Reset theme influence (SAFE) */
+/* ------------------------------------- */
 
 .cms-html h1,
 .cms-html h2,
@@ -24,23 +21,15 @@
 .cms-html div,
 .cms-html li {
     font-family: inherit;
-    font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
     letter-spacing: inherit;
     text-transform: none;
 }
 
-/* Ensure inline styles propagate correctly */
-.cms-html strong,
-.cms-html em,
-.cms-html u,
-.cms-html i {
-    font-family: inherit;
-    font-size: inherit;
-}
-
-/* Prevent theme spacing conflicts */
+/* ------------------------------------- */
+/* Spacing reset */
+/* ------------------------------------- */
 
 .cms-html p,
 .cms-html h1,
@@ -55,7 +44,9 @@
     padding: 0;
 }
 
-/* Neutralize heavy theme blockquote styling */
+/* ------------------------------------- */
+/* Blockquote cleanup */
+/* ------------------------------------- */
 
 .cms-html blockquote {
     border: none;
@@ -63,9 +54,9 @@
     box-shadow: none;
 }
 
-/* ============================== */
-/* CKEditor Table Support */
-/* ============================== */
+/* ------------------------------------- */
+/* Table support */
+/* ------------------------------------- */
 
 .cms-html figure.table {
     display: block;
@@ -85,41 +76,50 @@
     vertical-align: middle;
 }
 
-/* Prevent layout forcing from theme */
+/* ------------------------------------- */
+/* Layout fixes */
+/* ------------------------------------- */
 
 .cms-html p,
 .cms-html div,
-.cms-html span,
 .cms-html figure,
 .cms-html table {
     float: none;
     clear: none;
     max-width: none;
 }
+
 .cms-html p:last-child {
     margin-bottom: 0;
 }
-/* Keep images responsive */
+
+/* ------------------------------------- */
+/* Images */
+/* ------------------------------------- */
 
 .cms-html img {
     max-width: 100%;
     height: auto;
 }
 
-/* ============================== */
-/* Let CKEditor inline styles win */
-/* ============================== */
+/* ------------------------------------- */
+/* IMPORTANT: Preserve inline styles */
+/* ------------------------------------- */
 
-.cms-html [style] {
-    font-family: inherit;
+/* DO NOT TOUCH span, strong, i, u */
+/* DO NOT use all: unset */
+/* DO NOT override [style] */
+
+/* Optional safety (light touch only) */
+.cms-html span,
+.cms-html strong,
+.cms-html em,
+.cms-html u,
+.cms-html i {
+    all: revert;
 }
-
 /* Alignment from CKEditor */
 
-.cms-html p[style*="text-align"],
-.cms-html div[style*="text-align"] {
-    text-align: inherit;
-}
 .cmn--btn {
     display: inline-block;
     padding: 12px 28px;

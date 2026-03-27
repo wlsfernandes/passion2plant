@@ -30,6 +30,7 @@ class Section extends Model
         'type',
         'layout',
         'feature_type',
+        'carousel_type',
 
         'is_published',
     ];
