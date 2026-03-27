@@ -21,6 +21,9 @@
                 <option value="contact"
                     {{ old('feature_type', $section->feature_type ?? '') == 'contact' ? 'selected' : '' }}>Contact
                 </option>
+                <option value="donate"
+                    {{ old('feature_type', $section->feature_type ?? '') == 'donate' ? 'selected' : '' }}>Donate
+                </option>
 
                 <option value="event"
                     {{ old('feature_type', $section->feature_type ?? '') == 'event' ? 'selected' : '' }}>Event

@@ -79,7 +79,7 @@ class ViewServiceProvider extends ServiceProvider
             $projects = Project::visible()->orderBy('order')->get();
 
             $collaborators = Collaborator::visible()->orderBy('order')->get();
-            $donations = Donation::inRandomOrder()
+            $featuredDonations = Donation::inRandomOrder()
                 ->limit(3)
                 ->get();
             $menu = MenuItem::query()
@@ -95,6 +95,7 @@ class ViewServiceProvider extends ServiceProvider
                 ->get();
             $resources = Resource::visible()->latest()->get();
             $books = BookRecommendation::latest()->get();
+            $donations = Donation::latest()->get();
 
             $view->with([
                 'settings' => $settings,
@@ -113,7 +114,7 @@ class ViewServiceProvider extends ServiceProvider
                 'pages' => $pages,
                 'projects' => $projects,
                 'collaborators' => $collaborators,
-                'donations' => $donations,
+                'featuredDonations' => $featuredDonations,
                 'menu' => $menu,
                 'sectors' => $sectors,
                 'positions' => $positions,
