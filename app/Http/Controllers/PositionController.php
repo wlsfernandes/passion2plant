@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Helpers\S3;
@@ -16,21 +17,21 @@ class PositionController extends BaseController
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'title_en'         => ['required', 'string', 'max:255'],
-            'title_es'         => ['nullable', 'string', 'max:255'],
+            'title_en' => ['required', 'string', 'max:255'],
+            'title_es' => ['required', 'string', 'max:255'],
 
-            'content_en'       => ['nullable', 'string'],
-            'content_es'       => ['nullable', 'string'],
+            'content_en' => ['nullable', 'string'],
+            'content_es' => ['nullable', 'string'],
 
-            'image_url'        => ['nullable', 'string'],
-            'file_url_en'      => ['nullable', 'string'],
-            'file_url_es'      => ['nullable', 'string'],
+            'image_url' => ['nullable', 'string'],
+            'file_url_en' => ['nullable', 'string'],
+            'file_url_es' => ['nullable', 'string'],
 
-            'external_link'    => ['nullable', 'url'],
+            'external_link' => ['nullable', 'url'],
 
-            'is_published'     => ['nullable', 'boolean'],
+            'is_published' => ['nullable', 'boolean'],
             'publish_start_at' => ['nullable', 'date'],
-            'publish_end_at'   => ['nullable', 'date'],
+            'publish_end_at' => ['nullable', 'date'],
         ]);
     }
 
@@ -100,7 +101,7 @@ class PositionController extends BaseController
                 'positions.store',
                 [
                     'position_id' => $position->id,
-                    'email'       => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -115,7 +116,7 @@ class PositionController extends BaseController
                 'positions.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email'     => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -150,7 +151,7 @@ class PositionController extends BaseController
                 'positions.update',
                 [
                     'position_id' => $position->id,
-                    'email'       => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -165,8 +166,8 @@ class PositionController extends BaseController
                 'positions.update',
                 [
                     'position_id' => $position->id,
-                    'exception'   => $e->getMessage(),
-                    'email'       => $request->email,
+                    'exception' => $e->getMessage(),
+                    'email' => $request->email,
                 ]
             );
 
@@ -203,7 +204,7 @@ class PositionController extends BaseController
                 'positions.delete',
                 [
                     'position_id' => $position->id,
-                    'email'       => request()->email,
+                    'email' => request()->email,
                 ]
             );
 
@@ -218,8 +219,8 @@ class PositionController extends BaseController
                 'positions.delete',
                 [
                     'position_id' => $position->id,
-                    'exception'   => $e->getMessage(),
-                    'email'       => request()->email,
+                    'exception' => $e->getMessage(),
+                    'email' => request()->email,
                 ]
             );
 
