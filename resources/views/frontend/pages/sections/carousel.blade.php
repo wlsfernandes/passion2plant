@@ -6,9 +6,8 @@
         'donate' => 'frontend.pages.sections.carousel.donate',
         'event' => 'frontend.pages.sections.carousel.event',
         /* partials */
-        'testimonial' => 'frontend.partials.testimonial',
-        'partners' => 'frontend.partials.partners',
-        'contact' => 'frontend.partials.contact',
+        'testimonial' => 'frontend.pages.sections.carousel.testimonial',
+        'partners' => 'frontend.pages.sections.carousel.partners',
         default => null,
     };
 @endphp

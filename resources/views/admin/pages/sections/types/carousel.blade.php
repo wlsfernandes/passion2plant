@@ -40,9 +40,6 @@
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'event' ? 'selected' : '' }}>Event
                     Carousel
                 </option>
-                <option value="contact"
-                    {{ old('carousel_type', $section->carousel_type ?? '') == 'contact' ? 'selected' : '' }}>Contact
-                    Section</option>
 
             </select>
         </div>
