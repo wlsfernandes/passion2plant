@@ -42,7 +42,8 @@
                                 {{ Str::limit(strip_tags($donation->description), 120) }}
                             </p>
 
-                            <a href="{{ route('donations.checkout', $donation) }}" class="btns">
+                            <a href="{{ route('donations.checkout', $donation) }}"
+                                class="btn btn-sm btn-outline-success mt-2">
                                 Give Now
                             </a>
 

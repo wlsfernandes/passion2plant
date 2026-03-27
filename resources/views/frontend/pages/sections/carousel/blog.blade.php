@@ -21,7 +21,8 @@
                             <p>
                                 {{ $blog->limitText($blog->getContent(), 120) }}
                             </p>
-                            <a href="{{ route('blogs.display', $blog->slug) }}" class="btns">
+                            <a href="{{ route('blogs.display', $blog->slug) }}"
+                                class="btn btn-sm btn-outline-success mt-2">
                                 @lang('pages.read_more')
                             </a>
                         </div>
