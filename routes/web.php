@@ -84,7 +84,6 @@ Route::get('/pulpit-fellows', [HomeController::class, 'pulpitFellows'])->name('p
 /* Blogs */
 Route::get('/blog/{blog:slug}', [BlogController::class, 'display'])->name('blogs.display');
 /* Book Recommendations */
-Route::get('/our-book-recommendations', [BookRecommendationController::class, 'indexPublic'])->name('book-recommendations.index.public');
 
 /* Contact */
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
