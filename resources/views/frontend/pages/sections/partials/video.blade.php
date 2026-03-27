@@ -1,8 +1,7 @@
     @if ($section->image_url)
-        {{ dd($section) }}
         <div class="section-video text-center position-relative">
 
-            <a href="{{ $section->external_link }}" target="_blank" class="video-link">
+            <a href="{{ $section->link_image }}" target="_blank" class="video-link" target="blank">
 
                 <img src="{{ route('admin.images.preview', [
                     'model' => 'sections',
