@@ -33,7 +33,7 @@
                             </h5>
 
                             <p>
-                                {!! Str::limit($position->getDescription()), 120) !!}
+                                {!! Str::limit($position->getDescription(), 120) !!}
                             </p>
 
                             <a href="{{ route('positions.display', $position->slug) }}"
