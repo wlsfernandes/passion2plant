@@ -3,6 +3,7 @@
         'blog' => 'frontend.pages.sections.features.blog',
         'event' => 'frontend.pages.sections.features.event',
         'position' => 'frontend.pages.sections.features.position',
+        'resource' => 'frontend.pages.sections.features.resource',
         'service' => 'frontend.pages.sections.features.service',
         'team' => 'frontend.pages.sections.features.team',
         'contact' => 'frontend.pages.sections.features.contact',

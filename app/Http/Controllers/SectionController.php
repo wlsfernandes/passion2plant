@@ -21,8 +21,8 @@ class SectionController extends BaseController
     {
         return $request->validate([
             'sort_order' => ['nullable', 'integer'],
-            'feature_type' => 'nullable|string|in:team,partners,testimonial,service,blog,donate,event,contact,position',
-            'carousel_type' => 'nullable|string|in:team,partners,testimonial,service,blog,donate,event,contact,position',
+            'feature_type' => 'nullable|string|in:team,partners,testimonial,service,blog,donate,event,contact,position,resource',
+            'carousel_type' => 'nullable|string|in:team,partners,testimonial,service,blog,donate,event,contact,position,resource',
             'title_en' => ['nullable', 'string', 'max:255'],
             'title_es' => ['nullable', 'string', 'max:255'],
             'content_en' => ['nullable', 'string'],

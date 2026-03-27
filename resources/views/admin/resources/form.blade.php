@@ -49,28 +49,19 @@
                 {{-- =======================
                 Titles
                 ======================== --}}
-                <div class="mb-3">
-                    <input type="text" name="title_en" class="form-control @error('title_en') is-invalid @enderror"
-                        placeholder="Resource title in English" value="{{ old('title_en', $resource->title_en ?? '') }}"
-                        required>
+                <div class="row g-4">
 
-                    <small class="text-muted">
-                        Required. Displayed as the main resource title.
-                    </small>
+                    <div class="col-md-6">
+                        <label class="form-label">Title (EN)</label>
+                        <textarea name="title_en" class="form-control ckeditor-title" rows="3">{{ old('title_en', $resource->title_en ?? '') }}</textarea>
+                    </div>
 
-                    @error('title_en')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Title (ES)</label>
+                        <textarea name="title_es" class="form-control ckeditor-title" rows="3">{{ old('title_es', $resource->title_es ?? '') }}</textarea>
 
-                <div class="mb-3">
-                    <input type="text" name="title_es" class="form-control" placeholder="Título del recurso en español"
-                        value="{{ old('title_es', $resource->title_es ?? '') }}">
-                    <small class="text-muted">
-                        Optional Spanish version.
-                    </small>
+                    </div>
+
                 </div>
 
                 <hr>
