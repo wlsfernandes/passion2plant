@@ -105,7 +105,6 @@ Route::get('/our-collaborators/{slug}', [CollaboratorController::class, 'display
 /* positions */
 Route::get('/position/{slug}', [PositionController::class, 'display'])->name('positions.display');
 /* Services */
-Route::get('/our-services', [ServiceController::class, 'indexPublic'])->name('services.index.public');
 Route::get('/service/{service:slug}', [ServiceController::class, 'display'])->name('services.display');
 /* Teams */
 Route::get('/team/{slug}', [TeamController::class, 'profile'])->name('team.profile');
