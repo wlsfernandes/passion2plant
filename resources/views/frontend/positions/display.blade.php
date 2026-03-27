@@ -11,7 +11,13 @@
                 <div class="col-lg-10">
                     <div class="details__items">
                         <div class="details__content">
-                            <h2>{{ $position->getTitle() }}</h2>
+                            <div class="details__thumb mb-4">
+                                <img src="{{ route('admin.images.preview', ['model' => 'positions', 'id' => $position->id]) }}"
+                                    alt="{{ $position->getTitle() }}">
+                            </div>
+                            <div class="cms-html" id="cms-html">
+                                {!! $position->getTitle() !!}
+                            </div>
                             <div class="cms-html" id="cms-html">
                                 {!! $position->getDescription() !!}
                             </div>

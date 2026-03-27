@@ -86,6 +86,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('positions.index') }}">
+                                            <i class="uil uil-briefcase"></i> Positions
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('services.index') }}">
                                             <i class="uil uil-briefcase"></i> Services
                                         </a>
@@ -117,11 +122,7 @@
                                         </a>
                                     </li>
 
-                                    <li>
-                                        <a href="{{ route('positions.index') }}">
-                                            <i class="uil uil-briefcase"></i> Positions
-                                        </a>
-                                    </li>
+
                                     <li>
                                         <a href="{{ route('resources.index') }}">
                                             <i class="fas fa-folder-open"></i> Resources

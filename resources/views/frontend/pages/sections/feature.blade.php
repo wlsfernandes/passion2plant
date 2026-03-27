@@ -1,9 +1,10 @@
 @php
     $view = match ($section->feature_type) {
         'blog' => 'frontend.pages.sections.features.blog',
-        'team' => 'frontend.pages.sections.features.team',
-        'services' => 'frontend.pages.sections.features.service',
         'event' => 'frontend.pages.sections.features.event',
+        'position' => 'frontend.pages.sections.features.position',
+        'services' => 'frontend.pages.sections.features.service',
+        'team' => 'frontend.pages.sections.features.team',
         default => null,
     };
 @endphp

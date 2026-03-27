@@ -11,21 +11,20 @@
 
             <select name="feature_type" class="form-control" required>
                 <option value="">Select Feature</option>
-
-                <option value="team"
-                    {{ old('feature_type', $section->feature_type ?? '') == 'team' ? 'selected' : '' }}>Team
-                </option>
-
-                <option value="services"
-                    {{ old('feature_type', $section->feature_type ?? '') == 'services' ? 'selected' : '' }}>Services
-                </option>
-
                 <option value="blog"
                     {{ old('feature_type', $section->feature_type ?? '') == 'blog' ? 'selected' : '' }}>Blog
                 </option>
-
                 <option value="event"
                     {{ old('feature_type', $section->feature_type ?? '') == 'event' ? 'selected' : '' }}>Event
+                </option>
+                <option value="service"
+                    {{ old('feature_type', $section->feature_type ?? '') == 'service' ? 'selected' : '' }}>Service
+                </option>
+                <option value="position"
+                    {{ old('feature_type', $section->feature_type ?? '') == 'position' ? 'selected' : '' }}>Position
+                </option>
+                <option value="team"
+                    {{ old('feature_type', $section->feature_type ?? '') == 'team' ? 'selected' : '' }}>Team
                 </option>
             </select>
         </div>

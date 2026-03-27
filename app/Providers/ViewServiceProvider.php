@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\MenuItem;
 use App\Models\Page;
 use App\Models\Partner;
+use App\Models\Position;
 use App\Models\Project;
 use App\Models\Sector;
 use App\Models\Service;
@@ -72,7 +73,7 @@ class ViewServiceProvider extends ServiceProvider
                 ->limit(3)
                 ->get();
             $pages = Page::visible()->get();
-
+            $positions = Position::visible()->get();
             $projects = Project::visible()->orderBy('order')->get();
 
             $collaborators = Collaborator::visible()->orderBy('order')->get();
@@ -110,6 +111,7 @@ class ViewServiceProvider extends ServiceProvider
                 'donations' => $donations,
                 'menu' => $menu,
                 'sectors' => $sectors,
+                'positions' => $positions,
             ]);
         });
     }
