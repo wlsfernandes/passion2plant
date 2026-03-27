@@ -14,6 +14,10 @@
                 <option value="blog"
                     {{ old('feature_type', $section->feature_type ?? '') == 'blog' ? 'selected' : '' }}>Blog
                 </option>
+                <option value="contact"
+                    {{ old('feature_type', $section->feature_type ?? '') == 'contact' ? 'selected' : '' }}>Contact
+                </option>
+
                 <option value="event"
                     {{ old('feature_type', $section->feature_type ?? '') == 'event' ? 'selected' : '' }}>Event
                 </option>

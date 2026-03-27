@@ -1,84 +1,74 @@
-<!--Contact Info Section Here-->
+<!-- Contact Section -->
 <div class="contact__info__section pt-130 pb-130 section__bg overhid">
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+
     <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-7">
-                <div class="contact__right">
-                    <div class="info__header">
-                        <h6>@lang('pages.have_questions')</h6>
-                        <div class="witr_bar_main">
-                            <div class="witr_bar_inner witr_bar_innerc">
-                            </div>
-                        </div>
-                        <p>
-                            @lang('pages.send_message')
-                        </p>
+
+        {{-- Success Message --}}
+        @if (session('success'))
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-6">
+                    <div class="alert alert-success text-center">
+                        {{ session('success') }}
                     </div>
+                </div>
+            </div>
+        @endif
+        @include('frontend.pages.sections.partials.content')
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                {{-- Card Wrapper --}}
+                <div class="p-4 p-md-5 bg-white rounded-4 shadow-sm">
+
+                    {{-- Title --}}
                     <form action="{{ route('contact.send') }}" method="POST">
                         @csrf
-                        {{-- Honeypot Field (hidden bot trap) --}}
+
+                        {{-- Honeypot --}}
                         <input type="text" name="website" style="display:none">
+
                         <div class="row g-4">
-                            <div class="col-lg-12">
-                                <div class="form__clt">
-                                    <input type="text" name="name" id="name" placeholder="@lang('pages.your_name')">
-                                </div>
+
+                            {{-- Name --}}
+                            <div class="col-12">
+                                <input type="text" name="name" id="name" class="form-control form-control-lg"
+                                    placeholder="@lang('pages.your_name')">
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form__clt">
-                                    <input type="text" name="email" id="email" placeholder="@lang('pages.your_email')">
-                                </div>
+
+                            {{-- Email --}}
+                            <div class="col-md-6">
+                                <input type="email" name="email" id="email" class="form-control form-control-lg"
+                                    placeholder="@lang('pages.your_email')">
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form__clt">
-                                    <input type="text" name="number" id="number" placeholder="@lang('pages.your_phone')">
-                                </div>
+
+                            {{-- Phone --}}
+                            <div class="col-md-6">
+                                <input type="text" name="number" id="number" class="form-control form-control-lg"
+                                    placeholder="@lang('pages.your_phone')">
                             </div>
-                            <div class="col-lg-12">
-                                <div class="form__clt__big">
-                                    <textarea name="message" id="message" placeholder="@lang('pages.your_message')"></textarea>
-                                </div>
+
+                            {{-- Message --}}
+                            <div class="col-12">
+                                <textarea name="message" id="message" rows="5" class="form-control form-control-lg"
+                                    placeholder="@lang('pages.your_message')"></textarea>
                             </div>
-                            <div class="col-lg-4">
+
+                            {{-- Button --}}
+                            <div class="col-12 text-center">
                                 <button type="submit" class="cmn--btn">
-                                    <i class="fa-solid fa-paper-plane"></i> @lang('pages.send')
+                                    <i class="fa-solid fa-paper-plane me-2"></i>
+                                    @lang('pages.send')
                                 </button>
                             </div>
-                        </div>
 
+                        </div>
                     </form>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="left__info">
-                    <div class="left__header">
-                        <h3>@lang('pages.contact_information')</h3>
-                        <p>
-                            @lang('pages.contact_information_description')
-                        </p>
-                    </div>
 
-                    <div class="info__wrap d-flex align-items-center mt-4">
-                        <div class="icon">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="content">
-                            <h6>
-                                @lang('pages.office_address')
-                            </h6>
-                            <p>
-                                P.O. Box 580527, Kissimmee, FL 34758
-                            </p>
-                        </div>
-                    </div>
                 </div>
+
             </div>
         </div>
+
     </div>
 </div>
-<!--Contact Info Section End-->
+<!-- Contact Section End -->
