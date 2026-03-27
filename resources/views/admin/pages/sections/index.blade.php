@@ -171,7 +171,11 @@
                             </td>
 
                             <td>
-                                {{ strip_tags($section->title_en ?? '') }}
+                                @if ($section->type === 'feature')
+                                    {{ $section->feature_type }}
+                                @else
+                                    {{ strip_tags($section->title_en ?? '') }}
+                                @endif
                             </td>
 
                             <td class="text-center">
