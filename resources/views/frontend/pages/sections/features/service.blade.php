@@ -21,7 +21,7 @@
                                 </h5>
 
                                 <p class="flex-grow-1">
-                                    {{ Str::limit(strip_tags($service->getDescription()), 120) }}
+                                    {{ Str::limit(strip_tags($service->getContent()), 120) }}
                                 </p>
 
                                 <a href="{{ route('services.display', $service->slug) }}" class="cmn--btn mt-3">
