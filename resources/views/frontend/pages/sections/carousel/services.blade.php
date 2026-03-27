@@ -7,7 +7,6 @@
     <div class="container">
         @include('frontend.pages.sections.partials.content')
         <div class="row g-4">
-            <h3 class=" wow fadeInUp" data-wow-duration="1.3s"> @lang('pages.services_subtitle')</h3>
             @forelse($featuredServices as $service)
                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
                     data-wow-duration="{{ 3 + $loop->index * 2 }}s">
