@@ -120,6 +120,7 @@ class ViewServiceProvider extends ServiceProvider
                 'positions' => $positions,
                 'resources' => $resources,
                 'books' => $books,
+                'donations' => $donations,
 
             ]);
         });
