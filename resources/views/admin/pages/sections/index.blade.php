@@ -173,6 +173,8 @@
                             <td>
                                 @if ($section->type === 'feature')
                                     {{ $section->feature_type }}
+                                @elseif ($section->type === 'carousel')
+                                    {{ $section->carousel_type }}
                                 @else
                                     {{ strip_tags($section->title_en ?? '') }}
                                 @endif
