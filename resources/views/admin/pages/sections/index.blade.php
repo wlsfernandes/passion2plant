@@ -153,8 +153,11 @@
                                         'hero' => 'bg-primary',
                                         'content' => 'bg-info',
                                         'cta' => 'bg-success',
-                                        'gallery' => 'bg-warning',
-                                        'video' => 'bg-danger',
+                                        'gallery' => 'bg-info',
+                                        'video' => 'bg-secondary',
+                                        'feature' => 'bg-danger',
+                                        'carousel' => 'bg-warning',
+                                        'promo' => 'bg-primary',
                                     ];
 
                                     $badge = $badgeColors[$section->type] ?? 'bg-secondary';
