@@ -31,7 +31,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     "redo",
                 ],
             },
+            fontColor: {
+                colors: [
+                    { color: "#000000", label: "Black" },
+                    { color: "#ffffff", label: "White" },
 
+                    // 🔥 Your brand / custom colors
+                    { color: "#23ad75", label: "Primary Green" },
+                    { color: "#198754", label: "Success Green" },
+                    { color: "#b04f4f", label: "Primary Red" },
+                    { color: "#dc3545", label: "Danger Red" },
+                    { color: "#ffc46b", label: "Warning Yellow" },
+                    { color: "#0d6efd", label: "Primary Blue" },
+                    { color: "#6c757d", label: "Gray" },
+
+                    // Optional extras
+                    { color: "#f59e0b", label: "Accent Orange" },
+                    { color: "#9333ea", label: "Purple" },
+                ],
+                columns: 5,
+            },
             fontFamily: {
                 options: [
                     "default",
@@ -104,7 +123,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     "redo",
                 ],
             },
+            fontColor: {
+                colors: [
+                    { color: "#000000", label: "Black" },
+                    { color: "#ffffff", label: "White" },
 
+                    // 🔥 Your brand / custom colors
+                    { color: "#23ad75", label: "Primary Green" },
+                    { color: "#198754", label: "Success Green" },
+                    { color: "#b04f4f", label: "Primary Red" },
+                    { color: "#dc3545", label: "Danger Red" },
+                    { color: "#ffc46b", label: "Warning Yellow" },
+                    { color: "#0d6efd", label: "Primary Blue" },
+                    { color: "#6c757d", label: "Gray" },
+
+                    // Optional extras
+                    { color: "#f59e0b", label: "Accent Orange" },
+                    { color: "#9333ea", label: "Purple" },
+                ],
+                columns: 5,
+            },
             fontFamily: {
                 options: [
                     "default",
