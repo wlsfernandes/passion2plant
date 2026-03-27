@@ -12,6 +12,7 @@ use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Position;
 use App\Models\Project;
+use App\Models\Resource;
 use App\Models\Sector;
 use App\Models\Service;
 use App\Models\Setting;
@@ -91,6 +92,8 @@ class ViewServiceProvider extends ServiceProvider
                         ->orderBy('name');
                 }])
                 ->get();
+            $resources = Resource::visible()->latest()->get();
+
             $view->with([
                 'settings' => $settings,
                 'socialLinks' => $socialLinks,
@@ -112,6 +115,7 @@ class ViewServiceProvider extends ServiceProvider
                 'menu' => $menu,
                 'sectors' => $sectors,
                 'positions' => $positions,
+                'resources' => $resources,
             ]);
         });
     }
