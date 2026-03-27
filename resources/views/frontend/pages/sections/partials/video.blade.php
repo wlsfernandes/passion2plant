@@ -1,5 +1,3 @@
-<div class="col-lg-5">
-
     @if ($section->image_url)
         <div class="section-video text-center position-relative">
 
@@ -19,5 +17,3 @@
 
         </div>
     @endif
-
-</div>
