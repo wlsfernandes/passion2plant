@@ -113,7 +113,6 @@ Route::get('/insights', [MediaController::class, 'indexPublic'])->name('media.in
 Route::get('/insights/{type:slug}', [MediaController::class, 'byType'])->name('media.byType');
 
 /* Donations */
-Route::get('/donate-now', [DonationController::class, 'indexPublic'])->name('donation.index.public');
 Route::get('/donate/{donation}', [DonationController::class, 'checkout'])->name('donations.checkout');
 Route::post('/donate/{donation}/checkout', [DonationController::class, 'startCheckout'])->name('donations.start');
 Route::get('/donate-success', function () {
