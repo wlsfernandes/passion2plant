@@ -31,7 +31,7 @@
                             </h5>
 
                             <p>
-                                {{ Str::limit(strip_tags($service->getDescription()), 120) }}
+                                {{ Str::limit(strip_tags($service->getContent()), 120) }}
                             </p>
 
                             <a href="{{ route('services.display', $service->slug) }}"
