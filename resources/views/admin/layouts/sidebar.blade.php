@@ -71,6 +71,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('book-recommendations.index') }}">
+                                            <i class="uil-book"></i>Books
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('donations.index') }}">
                                             <i class="uil uil-heart"></i> Donate
                                         </a>

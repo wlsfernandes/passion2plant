@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\BookRecommendation;
 use App\Models\Collaborator;
 use App\Models\Donation;
 use App\Models\Event;
@@ -93,6 +94,7 @@ class ViewServiceProvider extends ServiceProvider
                 }])
                 ->get();
             $resources = Resource::visible()->latest()->get();
+            $books = BookRecommendation::latest()->get();
 
             $view->with([
                 'settings' => $settings,
@@ -116,6 +118,8 @@ class ViewServiceProvider extends ServiceProvider
                 'sectors' => $sectors,
                 'positions' => $positions,
                 'resources' => $resources,
+                'books' => $books,
+
             ]);
         });
     }

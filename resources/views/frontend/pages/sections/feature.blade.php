@@ -1,6 +1,7 @@
 @php
     $view = match ($section->feature_type) {
         'blog' => 'frontend.pages.sections.features.blog',
+        'book' => 'frontend.pages.sections.features.book',
         'event' => 'frontend.pages.sections.features.event',
         'position' => 'frontend.pages.sections.features.position',
         'resource' => 'frontend.pages.sections.features.resource',
