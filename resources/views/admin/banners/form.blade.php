@@ -103,12 +103,12 @@
 
                     <div class="col-md-6">
                         <label class="form-label">Subtitle (EN)</label>
-                        <textarea name="subtitle_en" class="form-control ckeditor-subtitle" rows="3">{{ old('subtitle_en', $banner->subtitle_en ?? '') }}</textarea>
+                        <textarea name="subtitle_en" class="form-control ckeditor" rows="3">{{ old('subtitle_en', $banner->subtitle_en ?? '') }}</textarea>
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label">Subtitle (ES)</label>
-                        <textarea name="subtitle_es" class="form-control ckeditor-subtitle" rows="3">{{ old('subtitle_es', $banner->subtitle_es ?? '') }}</textarea>
+                        <textarea name="subtitle_es" class="form-control ckeditor" rows="3">{{ old('subtitle_es', $banner->subtitle_es ?? '') }}</textarea>
                     </div>
 
                 </div>
