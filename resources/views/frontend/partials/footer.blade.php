@@ -56,6 +56,7 @@
 
                         <ul class="list">
                             @foreach ($menu as $item)
+                                {{ dd($menu) }}
                                 <li>
                                     <a href="{{ $item->link ?: '#' }}">
                                         <i class="fa-solid fa-chevron-right"></i>
