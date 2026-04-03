@@ -61,7 +61,7 @@
                                         <i class="fa-solid fa-chevron-right"></i>
                                         {{ $item->title }}
                                     </a>
-                            @endif
+                                </li>
                             @endforeach
                         </ul>
 
