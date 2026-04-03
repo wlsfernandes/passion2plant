@@ -40,7 +40,7 @@
     </main>
 
     {{-- Footer --}}
-    @includeIf('frontend.partials.footer')
+    @include('frontend.partials.footer')
 
     {{-- JS --}}
     <script src="{{ asset('assets/frontend/js/jquery-3.7.0.min.js') }}"></script>

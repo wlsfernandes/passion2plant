@@ -49,7 +49,7 @@
                         <i class="uil-image"></i> Upload Logo
                     </a>
 
-                    @if($setting->image_url)
+                    @if ($setting->image_url)
                         <a href="{{ route('admin.images.preview', ['model' => 'settings', 'id' => $setting->id]) }}"
                             target="_blank" class="ms-2">
                             <i class="fas fa-eye text-primary"></i>
@@ -90,60 +90,9 @@
 
                 <div class="mb-3">
                     <label class="form-label">Address</label>
-                    <textarea name="address" class="form-control" rows="2"
-                        placeholder="Street, city, state, country">{{ old('address', $setting->address) }}</textarea>
+                    <textarea name="address" class="form-control" rows="2" placeholder="Street, city, state, country">{{ old('address', $setting->address) }}</textarea>
                     <small class="text-muted">
                         Physical or mailing address (optional).
-                    </small>
-                </div>
-
-                <hr>
-
-                {{-- =======================
-                Footer
-                ======================== --}}
-                <h6 class="text-primary mb-3">
-                    <i class="fas fa-align-center"></i> Footer
-                </h6>
-
-                <div class="mb-3">
-                    <label class="form-label">Footer Text</label>
-                    <textarea name="footer_text" class="form-control" rows="2"
-                        placeholder="© 2025 Your Organization. All rights reserved.">
-                                                                                                                        {{ old('footer_text', $setting->footer_text) }}
-                                                                                                                    </textarea>
-                    <small class="text-muted">
-                        Text displayed at the bottom of every page.
-                    </small>
-                </div>
-
-                <hr>
-
-                {{-- =======================
-                Default SEO
-                ======================== --}}
-                <h6 class="text-primary mb-3">
-                    <i class="fas fa-search"></i> Default SEO
-                </h6>
-
-                <div class="mb-3">
-                    <label class="form-label">Default SEO Title</label>
-                    <input type="text" name="default_seo_title" class="form-control"
-                        placeholder="Short descriptive title for search engines"
-                        value="{{ old('default_seo_title', $setting->default_seo_title) }}">
-                    <small class="text-muted">
-                        Used by search engines when a page has no custom SEO title.
-                    </small>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Default SEO Description</label>
-                    <textarea name="default_seo_description" class="form-control" rows="3"
-                        placeholder="A brief description of your organization for search engines.">
-                                                                                                                        {{ old('default_seo_description', $setting->default_seo_description) }}
-                                                                                                                    </textarea>
-                    <small class="text-muted">
-                        Appears under the title in search engine results.
                     </small>
                 </div>
 

@@ -24,6 +24,7 @@ class ImageUploadController extends BaseController
         'gallery-images' => \App\Models\GalleryImage::class,
         'collaborators' => \App\Models\Collaborator::class,
         'collaborator-images' => \App\Models\CollaboratorImage::class,
+        'footer' => \App\Models\Footer::class,
         'partners' => \App\Models\Partner::class,
         'positions' => \App\Models\Position::class,
         'products' => \App\Models\Product::class,

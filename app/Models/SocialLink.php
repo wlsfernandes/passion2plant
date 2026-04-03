@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\SocialPlatform;
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Auditable;
-use App\Enums\SocialPlatform;
 
 class SocialLink extends Model
 {
-    use HasFactory, Auditable;
+    use Auditable, HasFactory;
 
     protected $fillable = [
         'platform',
@@ -42,17 +42,17 @@ class SocialLink extends Model
     /**
      * Convenience: icon class from enum.
      */
-    public function icon(): string
+    public function getIconAttribute(): string
     {
-        return $this->platform->icon();
+        return $this->platform?->icon() ?? '';
     }
 
     /**
      * Convenience: label from enum.
      */
-    public function label(): string
+    public function getLabelAttribute(): string
     {
-        return $this->platform->label();
+        return $this->platform?->label() ?? '';
     }
 
     /**
@@ -61,6 +61,6 @@ class SocialLink extends Model
      */
     protected static function booted()
     {
-        static::updated(fn() => \Log::info('SOCIAL LINK updated fired'));
+        static::updated(fn () => \Log::info('SOCIAL LINK updated fired'));
     }
 }

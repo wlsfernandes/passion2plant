@@ -13,6 +13,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\GalleryImageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageUploadController;
@@ -232,6 +233,10 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::patch('/collaborators/{collaborator}/images/{image}/link', [CollaboratorImageController::class, 'updateLink'])->name('collaborators.images.updateLink');
     Route::delete('pages/{page}/sections/{section}/images/{image}', [SectionController::class, 'destroyImage'])->name('pages.sections.images.destroy');
     Route::delete('pages/{page}/sections/{section}/image', [SectionController::class, 'destroySectionImage'])->name('pages.sections.image.destroy');
+
+    Route::get('footer', [FooterController::class, 'index'])->name('footer.index');
+    Route::post('footer/save', [FooterController::class, 'save'])->name('footer.save');
+
     // Content
     Route::resource('abouts', AboutController::class);
     Route::resource('banners', BannerController::class);

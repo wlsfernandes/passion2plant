@@ -1,24 +1,40 @@
-<!--Footer Section Here-->
-<section class="footer__section">
+<section class="footer__section"
+    @if (!empty($footer)) style="background-image: url('{{ route('admin.images.preview', ['model' => 'footer', 'id' => $footer->id]) }}'); background-size: cover; background-position: center;" @endif>
     <div class="container">
         <div class="footer__top pt-65 pb-65">
             <div class="row g-5">
-                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s">
+
+                {{-- COLUMN 1: LOGO + TEXT + SOCIAL --}}
+                <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="footer__widget">
+
+                        {{-- LOGO (FROM SETTINGS) --}}
                         <div class="widget__head mb-4">
-                            <a href="{{ url('/') }}" class="logo site-logo"><img
-                                    src="{{ route('admin.images.preview', ['model' => 'settings', 'id' => $settings->id]) }}"
-                                    alt="{{ $settings->site_name ?? config('app.name') }}"></a>
+                            <a href="{{ url('/') }}" class="logo site-logo">
+                                <img src="{{ route('admin.images.preview', ['model' => 'settings', 'id' => $settings->id]) }}"
+                                    alt="{{ $settings->site_name ?? config('app.name') }}" style="max-height:80px;">
+                            </a>
                         </div>
+
+                        {{-- SUBTITLE --}}
                         <p class="mb-4">
-                            {{ $settings->footer_text ?? '' }}
+                        <div class="cms-html mb-3">
+                            {!! app()->getLocale() === 'es' ? $footer->title_es ?? '' : $footer->title_en ?? '' !!}
+                        </div>
                         </p>
-                        <ul class="social__icon">
+                        <p class="mb-4">
+                        <div class="cms-html mb-3">
+                            {!! app()->getLocale() === 'es' ? $footer->subtitle_es ?? '' : $footer->subtitle_en ?? '' !!}
+                        </div>
+                        </p>
+
+                        {{-- SOCIAL --}}
+                        <ul class="social__icon footer__social  mb-3">
                             @foreach ($socialLinks as $social)
                                 <li>
                                     <a href="{{ $social->url }}" target="_blank" rel="noopener"
-                                        aria-label="{{ $social->label() }}">
-                                        <i class="{{ $social->icon() }}"></i>
+                                        aria-label="{{ $social->label }}">
+                                        <i class="{{ $social->icon }}"></i>
                                     </a>
                                 </li>
                             @endforeach
@@ -26,64 +42,44 @@
 
                     </div>
                 </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="4s">
+
+                {{-- COLUMN 2: MENU --}}
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="footer__widget">
+
                         <div class="widget__head mb-4">
-                            <h5>{{ __('explore') }}</h5>
+                            <h5>@lang('pages.explore')</h5>
                             <div class="witr_bar_main">
-                                <div class="witr_bar_inner witr_bar_innerc">
-                                </div>
+                                <div class="witr_bar_inner witr_bar_innerc"></div>
                             </div>
                         </div>
+
                         <ul class="list">
-                            <li>
-                                <a href="{{ url('/about-us') }}">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                    {{ __('about') }}
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ url('/our-blogs') }}">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                    {{ __('blog') }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/our-services') }}">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                    {{ __('services') }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/contact') }}">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                    {{ __('contact') }}
-                                </a>
-                            </li>
-
+                            @foreach ($menu as $item)
+                                {{-- REMOVE BLOG --}}
+                                @if (strtolower($item->title ?? '') !== 'blog')
+                                    <li>
+                                        <a href="{{ $item->url ?? '#' }}">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            {{ $item->title }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
                         </ul>
+
                     </div>
                 </div>
+
             </div>
         </div>
+
+        {{-- FOOTER BOTTOM --}}
         <div class="footer__bottom pt-65 pb-65">
-            <p class="center" id="footerCopyright">Copyright © <span id="currentYear"></span><a href="#0"
-                    class="gym"> Passion2Plant</a>. Designed By <a href="https://devpromaster.com" class="theme"
-                    target="_blank" rel="noopener"> DevProMaster</a>
+            <p class="center">
+                © {{ date('Y') }} {{ $settings->site_name ?? config('app.name') }}
             </p>
         </div>
 
     </div>
 </section>
-<!--Footer Section End-->
-@push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const yearEl = document.getElementById('currentYear');
-            if (yearEl) {
-                yearEl.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
-@endpush

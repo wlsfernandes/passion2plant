@@ -1392,6 +1392,7 @@ input.main-search-input::placeholder {
     border-radius: 100%;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    
 }
 
 .side_bar .social__icon li a i {

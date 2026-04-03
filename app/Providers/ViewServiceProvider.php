@@ -8,6 +8,7 @@ use App\Models\BookRecommendation;
 use App\Models\Collaborator;
 use App\Models\Donation;
 use App\Models\Event;
+use App\Models\Footer;
 use App\Models\MenuItem;
 use App\Models\Page;
 use App\Models\Partner;
@@ -30,12 +31,12 @@ class ViewServiceProvider extends ServiceProvider
 
             $settings = Setting::query()->first();
 
-            $socialLinks = cache()->rememberForever('frontend_social_links', function () {
-                return SocialLink::query()
-                    ->where('is_published', true)
-                    ->ordered()
-                    ->get();
-            });
+            $footer = Footer::query()->first();
+
+            $socialLinks = SocialLink::query()
+                ->where('is_published', true)
+                ->ordered()
+                ->get();
 
             $aboutSections = About::visible()->get()->keyBy('section');
             $featuredTestimonials = Testimonial::visible()->get();
@@ -106,6 +107,7 @@ class ViewServiceProvider extends ServiceProvider
                 'partnerLogos' => $partnerLogos,
                 'featuredServices' => $featuredServices,
                 'featuredBlogs' => $featuredBlogs,
+                'footer' => $footer,
                 'blogs' => $blogs,
                 'events' => $events,
                 'teams' => $teams,

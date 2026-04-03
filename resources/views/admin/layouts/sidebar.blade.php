@@ -55,7 +55,11 @@
                                     <i class="uil uil-bars"></i> Menus
                                 </a>
                             </li>
-
+                            <li>
+                                <a href="{{ route('footer.index') }}">
+                                    <i class="uil uil-window"></i> Footer
+                                </a>
+                            </li>
 
                             {{-- FEATURES --}}
                             <li>
