@@ -60,7 +60,7 @@
                                     <a href="{{ $item->link ?? '#' }}"
                                         @if (Str::startsWith($item->link, ['http://', 'https://'])) target="_blank" rel="noopener" @endif>
                                         <i class="fa-solid fa-chevron-right"></i>
-                                        {{ $item->title }}
+                                        {{ $item->title }} -- {{ $item->link }}
                                     </a>
                                 </li>
                             @endforeach
