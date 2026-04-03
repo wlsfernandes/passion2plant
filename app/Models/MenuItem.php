@@ -65,4 +65,28 @@ class MenuItem extends Model
     {
         return $query->orderBy('order');
     }
+
+    public static function footerMenu()
+    {
+        $menu = self::main()
+            ->with('children')
+            ->orderBy('order')
+            ->get();
+
+        return self::flatten($menu);
+    }
+
+    private static function flatten($items)
+    {
+        $flat = collect();
+
+        foreach ($items as $item) {
+            $flat->push($item);
+
+            if ($item->children->count()) {
+                $flat = $flat->merge(self::flatten($item->children));
+            }
+        }
+
+    }
 }

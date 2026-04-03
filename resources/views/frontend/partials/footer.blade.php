@@ -55,7 +55,7 @@
                         </div>
 
                         <ul class="list">
-                            @foreach ($menu as $item)
+                            @foreach ($footerMenu as $item)
                                 <li>
                                     <a href="{{ $item->link ?? '#' }}"
                                         @if (Str::startsWith($item->link, ['http://', 'https://'])) target="_blank" rel="noopener" @endif>

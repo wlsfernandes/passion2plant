@@ -88,6 +88,7 @@ class ViewServiceProvider extends ServiceProvider
                 ->with('children')
                 ->orderBy('order')
                 ->get();
+            $footerMenu = MenuItem::footerMenu();
             $sectors = Sector::orderBy('id')
                 ->with(['teams' => function ($query) {
                     $query->visible()
@@ -123,6 +124,7 @@ class ViewServiceProvider extends ServiceProvider
                 'resources' => $resources,
                 'books' => $books,
                 'donations' => $donations,
+                'footerMenu' => $footerMenu,
 
             ]);
         });
