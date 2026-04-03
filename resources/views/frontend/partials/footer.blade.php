@@ -56,15 +56,12 @@
 
                         <ul class="list">
                             @foreach ($menu as $item)
-                                {{-- REMOVE BLOG --}}
-                                @if (strtolower($item->title ?? '') !== 'blog')
-                                    <li>
-                                        <a href="{{ $item->url ?? '#' }}">
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                            {{ $item->title }}
-                                        </a>
-                                    </li>
-                                @endif
+                                <li>
+                                    <a href="{{ $item->link ?? '#' }}">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                        {{ $item->title }}
+                                    </a>
+                            @endif
                             @endforeach
                         </ul>
 
