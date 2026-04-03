@@ -88,5 +88,6 @@ class MenuItem extends Model
             }
         }
 
+        return $flat; // ✅ THIS WAS MISSING
     }
 }
