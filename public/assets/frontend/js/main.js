@@ -196,6 +196,7 @@ $(document).ready(function () {
     slidesPerView: 1,
     spaceBetween: 0,
     centeredSlides: true,
+    autoHeight: true,
     loop: true,
     autoplay: {
         delay: 5000,

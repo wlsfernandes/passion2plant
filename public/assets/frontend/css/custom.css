@@ -144,7 +144,7 @@
 .banner__section h4,
 .banner__section h5,
 .banner__section h6 {
-    background: linear-gradient(90deg, #ffffff 0%, #4b8941 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #23ad75 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -199,7 +199,7 @@
 }
 
 .arry__button button:hover {
-    background: #4b8941;
+    background: #23ad75;
 }
 
 /* =====================================================
@@ -271,7 +271,7 @@ section {
 .banner__section h4,
 .banner__section h5,
 .banner__section h6 {
-    background: linear-gradient(90deg, #ffffff 0%, #4b8941 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #23ad75 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -326,11 +326,11 @@ section {
 }
 
 .arry__button button:hover {
-    background: #4b8941;
+    background: #23ad75;
 }
 
 .heading-gradient-green-black {
-    background: linear-gradient(90deg, #4b8941 0%, #000000 100%);
+    background: linear-gradient(90deg, #23ad75 0%, #000000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -397,7 +397,7 @@ section {
 /* Highlight Sign In menu item */
 .nav-signin > a {
     background: #ffffff;
-    color: #4b8941 !important;
+    color: #23ad75 !important;
     padding: 8px 16px;
     border-radius: 999px;
     font-weight: 600;
@@ -861,7 +861,6 @@ section {
 }
 
 /* Testimonial Carousel */
-/* Testimonial Carousel */
 
 .testi__items {
     position: relative;
@@ -944,7 +943,28 @@ section {
     max-width: 100% !important;
 }
 
-/* Responsive */
+/* =========================
+   FIX: DOT POSITION ONLY
+========================= */
+
+.swiper.testimonial__wrapper {
+    position: relative; /* required */
+    padding-bottom: 40px; /* space for dots */
+}
+
+.testimonial__wrapper .swiper-pagination {
+    position: absolute;
+    bottom: 10px; /* adjust if needed */
+    left: 0;
+    width: 100%;
+}
+.swiper-dot {
+    position: relative;
+    margin-top: -40px; /* pulls it UP */
+    z-index: 5;
+}
+/* ========================= */
+
 @media screen and (max-width: 768px) {
     .testi__items {
         padding: 40px 20px;
