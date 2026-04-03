@@ -40,8 +40,8 @@
                 </li>
                 <li>
                     <a href="{{ url('/lang/es') }}" class="{{ app()->getLocale() === 'es' ? 'active' : '' }}">
-                        <img src="{{ asset('/assets/admin/images/flags/spain.jpg') }}" alt="user-image" class="me-1"
-                            height="16"> <span class="align-middle"></span>
+                        <img src="{{ asset('/assets/admin/images/flags/puerto-rico.png') }}" alt="user-image"
+                            class="me-1" height="16"> <span class="align-middle"></span>
                     </a>
                 </li>
             </ul>
