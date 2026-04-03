@@ -7,7 +7,7 @@
 @section('title', __('pages.blogs') . ' | Passion2Plant')
 
 @section('content')
-    <section class="blog__section pt-130 pb-130 overhid">
+    <section class="blog__section pt-130 pb-130 overhid mb-50">
         <div class="container">
 
             {{-- Title --}}

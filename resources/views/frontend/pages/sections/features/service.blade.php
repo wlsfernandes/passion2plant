@@ -3,7 +3,7 @@
     $isSingle = $services->count() === 1;
 @endphp
 
-<section class="blog__section pt-130 pb-130 overhid">
+<section class="blog__section pt-130 pb-130 overhid mb-50">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
 
