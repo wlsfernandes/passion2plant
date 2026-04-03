@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Auditable;
 
 class Testimonial extends Model
 {
-    use HasFactory, Auditable;
+    use Auditable, HasFactory;
 
     protected $fillable = [
         'name',
@@ -37,6 +37,15 @@ class Testimonial extends Model
      */
     protected static function booted()
     {
-        static::updated(fn() => \Log::info('TESTIMONIAL updated fired'));
+        static::updated(fn () => \Log::info('TESTIMONIAL updated fired'));
+    }
+
+    public function getContentAttribute()
+    {
+        $locale = app()->getLocale();
+
+        $field = "content_{$locale}";
+
+        return $this->{$field} ?? $this->content_en ?? '';
     }
 }

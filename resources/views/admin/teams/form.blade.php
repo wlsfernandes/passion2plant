@@ -101,8 +101,7 @@
                 @endisset
 
                 <div class="mb-3">
-                    <input type="text" name="role" class="form-control" placeholder="Role or title (optional)"
-                        value="{{ old('role', $team->role ?? '') }}">
+                    <textarea name="role" class="form-control ckeditor-title" rows="2">{{ old('role', $team->role ?? '') }}</textarea>
                     <small class="text-muted">
                         Example: Executive Director, Program Manager
                     </small>

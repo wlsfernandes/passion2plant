@@ -13,8 +13,7 @@
                 <div class="col-xxl-5 col-xl-5 col-lg-8">
                     <div class="team__left">
                         <div class="details__thumb">
-                            <img src="{{ route('admin.images.preview', ['model' => 'teams', 'id' => $team->id]) }}"
-                                alt="{{ $team->name }}">
+                            <img src="{{ route('admin.images.preview', ['model' => 'teams', 'id' => $team->id]) }}">
                         </div>
                     </div>
                 </div>
@@ -23,12 +22,10 @@
                 <div class="col-xxl-7 col-xl-7 col-lg-10">
                     <div class="details__cont">
 
-                        <h3>{{ $team->name }}</h3>
+                        <div class="cms-html">{!! $team->name !!}</div>
 
                         <span>
-                            {{ $team->role }}
-                            ·
-                            {{ $team->sectors->pluck('name')->join(' · ') }}
+                            <div class="cms-html"> {!! $team->role !!}</div>
 
                         </span>
 

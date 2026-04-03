@@ -20,16 +20,14 @@
 
                             <!-- Name + Role -->
                             <div class="text-center mb-4">
-                                <h5 class="mb-1">{{ $testimonial->name }}</h5>
-                                <span>
-                                    {{ $testimonial->role }}
-                                </span>
+                                <div class="cms-html">{!! $testimonial->name !!}</div>
+                                <div class="cms-html">{!! $testimonial->role !!}</div>
                             </div>
 
                             <!-- Content -->
-                            <p class="testimonial-content">
-                                {{ strip_tags($locale === 'es' ? $testimonial->content_es : $testimonial->content_en) }}
-                            </p>
+                            <div class="cms-html">
+                                {!! $testimonial->content !!}
+                            </div>
 
                             <!-- Stars -->
                             <ul class="testimonial-stars mt-4">

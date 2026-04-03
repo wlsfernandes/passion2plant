@@ -50,16 +50,14 @@
                 Author Info
                 ======================== --}}
                 <div class="mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Author name (optional)"
-                        value="{{ old('name', $testimonial->name ?? '') }}">
+                    <textarea name="name" class="form-control ckeditor-title" rows="2">{{ old('name', $testimonial->name ?? '') }}</textarea>
                     <small class="text-muted">
                         Example: John Doe
                     </small>
                 </div>
 
                 <div class="mb-3">
-                    <input type="text" name="role" class="form-control" placeholder="Author role or title (optional)"
-                        value="{{ old('role', $testimonial->role ?? '') }}">
+                    <textarea name="role" class="form-control ckeditor-title" rows="2">{{ old('role', $testimonial->role ?? '') }}</textarea>
                     <small class="text-muted">
                         Example: Student, Pastor, Partner
                     </small>
