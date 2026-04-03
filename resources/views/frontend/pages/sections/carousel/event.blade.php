@@ -13,14 +13,14 @@
                         <div class="thumb">
                             <a href="{{ route('events.display', $event->slug) }}">
                                 <img src="{{ route('admin.images.preview', ['model' => 'events', 'id' => $event->id]) }}"
-                                    alt="{{ $event->getTitle() }}">
+                                    alt="{!! $event->getTitle() !!}">
                             </a>
                         </div>
 
                         <div class="content">
                             <h5>
                                 <a href="{{ route('events.display', $event->slug) }}">
-                                    {{ $event->getTitle() }}
+                                    {!! $event->getTitle() !!}
                                 </a>
                             </h5>
 
@@ -29,7 +29,7 @@
                             </small>
 
                             <p>
-                                {{ $event->limitText($event->getContent(), 120) }}
+                                {!! $event->limitText($event->getContent(), 120) !!}
                             </p>
 
                             <a href="{{ route('events.display', $event->slug) }}"
