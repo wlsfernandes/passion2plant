@@ -125,7 +125,7 @@
 <!-- Header End -->
 
 <!-- Sidebar area start here -->
-<div id="targetElement" class="side_bar slideInRight side_bar_hidden">
+<div id="targetElement" class="side_bar slideInRight side_bar_hidden d-block d-lg-none">
     <div class="logo mb-30">
         <img src="{{ route('admin.images.preview', ['model' => 'settings', 'id' => $settings->id]) }}"
             alt="{{ $settings->site_name ?? config('app.name') }}" height="80" loading="lazy" width="auto">
