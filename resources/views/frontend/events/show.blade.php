@@ -16,7 +16,7 @@
                         </div>
 
                         <div class="details__content">
-                            <h2>{{ $event->getTitle() }}</h2>
+                            <h2>{!! $event->getTitle() !!}</h2>
 
                             <p class="text-muted mb-4">
                                 {{ $event->event_date?->format('F d, Y') }}
