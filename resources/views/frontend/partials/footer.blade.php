@@ -56,12 +56,14 @@
 
                         <ul class="list">
                             @foreach ($footerMenu as $item)
-                                <li>
-                                    <a href="{{ $item->link ?? '#' }}">
-                                        <i class="fa-solid fa-chevron-right"></i>
-                                        {{ $item->title }}
-                                    </a>
-                                </li>
+                                @if (!empty($item->link))
+                                    <li>
+                                        <a href="{{ $item->link }}">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            {{ $item->title }}
+                                        </a>
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
 
