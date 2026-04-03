@@ -72,8 +72,7 @@
                     @include('frontend.partials.menu-item', ['item' => $item])
                 @endforeach
 
-                {{-- Static extras (optional) --}}
-                <li><a href="{{ route('contact') }}">{{ __('menu.contact') }}</a></li>
+
 
                 {{-- CART --}}
                 @php
