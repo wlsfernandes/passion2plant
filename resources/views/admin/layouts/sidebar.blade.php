@@ -100,6 +100,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('resources.index') }}">
+                                            <i class="fas fa-folder-open"></i> Resources
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('services.index') }}">
                                             <i class="uil uil-briefcase"></i> Services
                                         </a>
@@ -132,11 +137,7 @@
                                     </li>
 
 
-                                    <li>
-                                        <a href="{{ route('resources.index') }}">
-                                            <i class="fas fa-folder-open"></i> Resources
-                                        </a>
-                                    </li>
+
 
                                 </ul>
                             </li>
