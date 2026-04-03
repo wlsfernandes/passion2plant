@@ -88,7 +88,10 @@ class ViewServiceProvider extends ServiceProvider
                 ->with('children')
                 ->orderBy('order')
                 ->get();
-            $footerMenu = MenuItem::footerMenu();
+            $footerMenu = MenuItem::query()
+                ->main()
+                ->orderBy('order')
+                ->get();
             $sectors = Sector::orderBy('id')
                 ->with(['teams' => function ($query) {
                     $query->visible()
