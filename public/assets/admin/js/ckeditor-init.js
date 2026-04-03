@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     { color: "#ffffff", label: "White" },
 
                     // 🔥 Your brand / custom colors
-                    { color: "#23ad75", label: "Primary Green" },
+                    { color: "#4b8941", label: "Primary Green" },
                     { color: "#198754", label: "Success Green" },
                     { color: "#b04f4f", label: "Primary Red" },
                     { color: "#dc3545", label: "Danger Red" },
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     { color: "#ffffff", label: "White" },
 
                     // 🔥 Your brand / custom colors
-                    { color: "#23ad75", label: "Primary Green" },
+                    { color: "#4b8941", label: "Primary Green" },
                     { color: "#198754", label: "Success Green" },
                     { color: "#b04f4f", label: "Primary Red" },
                     { color: "#dc3545", label: "Danger Red" },
