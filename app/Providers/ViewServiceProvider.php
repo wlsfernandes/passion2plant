@@ -47,7 +47,6 @@ class ViewServiceProvider extends ServiceProvider
                 })
                 ->with('sectors')
                 ->orderBy('name') // alphabetical
-                ->limit(4)
                 ->get();
 
             $partnerLogos = Partner::visible()->get();
