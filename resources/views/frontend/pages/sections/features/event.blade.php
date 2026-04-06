@@ -14,16 +14,14 @@
                         <div class="thumb">
                             <a href="{{ route('events.display', $event->slug) }}">
                                 <img src="{{ route('admin.images.preview', ['model' => 'events', 'id' => $event->id]) }}"
-                                    alt="{{ $event->getTitle() }}" loading="lazy">
+                                    alt="{!! $event->getTitle() !!}" loading="lazy">
                             </a>
                         </div>
 
                         <div class="content">
-                            <h5>
-                                <a href="{{ route('events.display', $event->slug) }}">
-                                    {{ $event->getTitle() }}
-                                </a>
-                            </h5>
+                            <a href="{{ route('events.display', $event->slug) }}">
+                                {!! $event->getTitle() !!}
+                            </a>
 
                             <small class="text-muted d-block mb-2">
                                 {{ $event->event_date?->format('F d, Y') }}
