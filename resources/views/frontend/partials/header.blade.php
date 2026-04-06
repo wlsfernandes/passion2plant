@@ -103,7 +103,7 @@
             </ul>
 
             {{-- Right Menu Icons --}}
-            <div class="menu__right__components d-flex align-items-center">
+            <div class="menu__right__components d-flex align-items-center d-lg-none">
                 <div class="menu__components">
                     <a href="#0" class="search-trigger search-icon">
                         <i class="fa-solid fa-search"></i>
