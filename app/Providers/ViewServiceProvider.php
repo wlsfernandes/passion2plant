@@ -43,7 +43,7 @@ class ViewServiceProvider extends ServiceProvider
 
             $featuredTeams = Team::visible()
                 ->whereHas('sectors', function ($q) {
-                    $q->where('name', 'staff');
+                    $q->where('key', 'staff');
                 })
                 ->with('sectors')
                 ->orderBy('name') // alphabetical
