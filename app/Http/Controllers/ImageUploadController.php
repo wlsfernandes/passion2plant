@@ -71,6 +71,38 @@ class ImageUploadController extends BaseController
         return redirect((string) $request->getUri());
     }
 
+    public function previewField(string $model, int $id, string $field)
+    {
+        $instance = $this->resolveModel($model, $id);
+
+        // Validate field exists on model
+        if (! isset($instance->{$field})) {
+            abort(404, 'Field not found');
+        }
+
+        $filePath = $instance->{$field};
+
+        abort_if(! $filePath, 404);
+
+        $client = new S3Client([
+            'version' => 'latest',
+            'region' => config('filesystems.disks.s3.region'),
+            'credentials' => [
+                'key' => config('filesystems.disks.s3.key'),
+                'secret' => config('filesystems.disks.s3.secret'),
+            ],
+        ]);
+
+        $cmd = $client->getCommand('GetObject', [
+            'Bucket' => config('filesystems.disks.s3.bucket'),
+            'Key' => $filePath,
+        ]);
+
+        $request = $client->createPresignedRequest($cmd, '+10 minutes');
+
+        return redirect((string) $request->getUri());
+    }
+
     public function edit(string $model, int $id)
     {
         $instance = $this->resolveModel($model, $id);

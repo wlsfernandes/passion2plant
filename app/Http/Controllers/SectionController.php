@@ -36,6 +36,15 @@ class SectionController extends BaseController
             'button_position' => ['nullable', 'string'],
             'button_color' => ['nullable', 'string'],
             'link_image' => 'nullable|string|max:255',
+            'margin_top' => 'nullable|integer|min:0',
+            'margin_bottom' => 'nullable|integer|min:0',
+            'padding_top' => 'nullable|integer|min:0',
+            'padding_bottom' => 'nullable|integer|min:0',
+            'background_color' => 'nullable|string|max:7', // e.g. #ffffff
+            'text_color' => 'nullable|string|max:7', // e.g. #000000
+            'background_image' => 'nullable|image|max:2048',
+            'container' => 'nullable|string|in:container,full',
+            'custom_class' => 'nullable|string|max:255',
         ]);
     }
 
@@ -74,6 +83,14 @@ class SectionController extends BaseController
             $this->handleImageUpload($request, $section, $data);
             if (! empty($data['image_url'])) {
                 $section->update(['image_url' => $data['image_url']]);
+            }
+
+            if (! empty($data['background_image'])) {
+                $backgroundImageUrl = S3::uploadImageAsWebpPreset(
+                    $data['background_image'],
+                    'pages/sections/backgrounds'
+                );
+                $section->update(['background_image_url' => $backgroundImageUrl]);
             }
 
             SystemLogger::log(
@@ -150,7 +167,13 @@ class SectionController extends BaseController
             if (! empty($data['image_url'])) {
                 $section->update(['image_url' => $data['image_url']]);
             }
-
+            if (! empty($data['background_image'])) {
+                $backgroundImageUrl = S3::uploadImageAsWebpPreset(
+                    $data['background_image'],
+                    'pages/sections/backgrounds'
+                );
+                $section->update(['background_image_url' => $backgroundImageUrl]);
+            }
             /*
             |--------------------------------------------------------------------------
             | Update section

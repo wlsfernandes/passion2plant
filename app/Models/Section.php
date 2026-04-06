@@ -33,14 +33,45 @@ class Section extends Model
         'carousel_type',
 
         'is_published',
+
+        // ✅ NEW STYLE FIELDS
+        'margin_top',
+        'margin_bottom',
+        'padding_top',
+        'padding_bottom',
+
+        'background_color',
+        'text_color',
+        'background_image_url',
+
+        'container', // boxed or full
+        'custom_class',
     ];
 
     protected $casts = [
         'is_published' => 'boolean',
+
+        // spacing as integers
+        'margin_top' => 'integer',
+        'margin_bottom' => 'integer',
+        'padding_top' => 'integer',
+        'padding_bottom' => 'integer',
     ];
 
     protected $attributes = [
         'sort_order' => 0,
+
+        // sensible defaults
+        'margin_top' => 0,
+        'margin_bottom' => 0,
+        'padding_top' => 0,
+        'padding_bottom' => 0,
+
+        'background_color' => null,
+        'text_color' => null,
+        'background_image_url' => null,
+
+        'container' => 'container', // or 'container-fluid'
     ];
     /*
     |--------------------------------------------------------------------------
@@ -112,5 +143,52 @@ class Section extends Model
     public function scopePublished($query)
     {
         return $query->where('is_published', true);
+    }
+
+    /* Styles   |--------------------------------------------------------------------------
+    */
+    public function getStyleAttribute()
+    {
+        $styles = [];
+
+        if ($this->margin_top) {
+            $styles[] = "margin-top: {$this->margin_top}px";
+        }
+
+        if ($this->margin_bottom) {
+            $styles[] = "margin-bottom: {$this->margin_bottom}px";
+        }
+
+        if ($this->padding_top) {
+            $styles[] = "padding-top: {$this->padding_top}px";
+        }
+
+        if ($this->padding_bottom) {
+            $styles[] = "padding-bottom: {$this->padding_bottom}px";
+        }
+
+        if ($this->background_color) {
+            $styles[] = "background-color: {$this->background_color}";
+        }
+
+        if ($this->text_color) {
+            $styles[] = "color: {$this->text_color}";
+        }
+
+        if ($this->background_image_url) {
+
+            $imageUrl = route('admin.images.previewField', [
+                'model' => 'sections',
+                'id' => $this->id,
+                'field' => 'background_image_url',
+            ]);
+
+            $styles[] = "background-image: url('{$imageUrl}')";
+            $styles[] = 'background-size: cover';
+            $styles[] = 'background-position: center';
+            $styles[] = 'background-repeat: no-repeat';
+        }
+
+        return implode('; ', $styles);
     }
 }

@@ -3,7 +3,7 @@
     $isSingle = $positions->count() === 1;
 @endphp
 
-<section class="blog__section pt-130 pb-130 overhid mb-50">
+<section class="blog__section pt-130 pb-130 overhid mb-50" style="{{ $section->style }}">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
 

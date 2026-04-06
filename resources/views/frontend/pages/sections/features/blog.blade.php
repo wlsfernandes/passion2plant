@@ -1,7 +1,7 @@
 @php
     use Illuminate\Support\Str;
 @endphp
-<section class="blog__section overhid">
+<section class="blog__section overhid" style="{{ $section->style }}">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
         <div class="row g-4">
