@@ -60,8 +60,7 @@
                             </td>
 
                             <td>
-                                <strong>{!! $event->title_en !!}</strong><br>
-                                <small class="text-muted">{!! $event->slug !!}</small>
+                                <strong>{{ strip_tags($event->title_en) }}</strong><br>
                             </td>
 
                             <td>
