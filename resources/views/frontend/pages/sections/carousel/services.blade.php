@@ -3,7 +3,7 @@
 @endphp
 
 <!-- Service Section Here -->
-<section class="service__section section__bg pt-130 pb-130 overhid">
+<section class="service__section section__bg pt-130 pb-130 overhid" style="{{ $section->style }}">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
         <div class="row g-4">

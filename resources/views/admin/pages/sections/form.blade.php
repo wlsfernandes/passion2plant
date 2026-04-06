@@ -70,47 +70,42 @@
                     <div class="card-body">
 
                         {{-- SPACING --}}
+
+                        {{-- COLORS FIRST --}}
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label class="form-label">Background Color</label>
+                                <input type="color" name="background_color" class="form-control form-control-color"
+                                    value="{{ old('background_color', $section->background_color ?? '#ffffff') }}">
+                            </div>
+                        </div>
+
+                        {{-- SPACING (ONE LINE) --}}
                         <div class="row mb-3">
                             <div class="col-md-3">
-                                <label class="form-label">Margin Top (px)</label>
+                                <label class="form-label">Margin Top</label>
                                 <input type="number" name="margin_top" class="form-control"
                                     value="{{ old('margin_top', $section->margin_top ?? 0) }}">
                             </div>
 
                             <div class="col-md-3">
-                                <label class="form-label">Margin Bottom (px)</label>
+                                <label class="form-label">Margin Bottom</label>
                                 <input type="number" name="margin_bottom" class="form-control"
                                     value="{{ old('margin_bottom', $section->margin_bottom ?? 0) }}">
                             </div>
 
                             <div class="col-md-3">
-                                <label class="form-label">Padding Top (px)</label>
+                                <label class="form-label">Padding Top</label>
                                 <input type="number" name="padding_top" class="form-control"
                                     value="{{ old('padding_top', $section->padding_top ?? 0) }}">
                             </div>
 
                             <div class="col-md-3">
-                                <label class="form-label">Padding Bottom (px)</label>
+                                <label class="form-label">Padding Bottom</label>
                                 <input type="number" name="padding_bottom" class="form-control"
                                     value="{{ old('padding_bottom', $section->padding_bottom ?? 0) }}">
                             </div>
                         </div>
-
-                        {{-- COLORS --}}
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Background Color</label>
-                                <input type="color" name="background_color" class="form-control form-control-color"
-                                    value="{{ old('background_color', $section->background_color ?? '#ffffff') }}">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Text Color</label>
-                                <input type="color" name="text_color" class="form-control form-control-color"
-                                    value="{{ old('text_color', $section->text_color ?? '#000000') }}">
-                            </div>
-                        </div>
-
                         {{-- BACKGROUND IMAGE --}}
                         <div class="mb-3">
                             <label class="form-label fw-bold">Background Image</label>

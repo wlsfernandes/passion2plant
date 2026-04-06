@@ -3,7 +3,7 @@
     $locale = app()->getLocale();
 @endphp
 <!--Testimonial Section Here-->
-<section class="testimonial__section overhid pt-130 pb-130">
+<section class="testimonial__section overhid pt-130 pb-130" style="{{ $section->style }}">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
         <div class="swiper testimonial__wrapper">
