@@ -3,13 +3,22 @@
     $locale = app()->getLocale();
 @endphp
 <!--Testimonial Section Here-->
-<section class="testimonial__section overhid pt-130 pb-130" style="{{ $section->style }}">
+<section class="testimonial__section overhid pt-130 pb-130"
+    style="{{ $section->background_image ? '' : $section->style }}">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
         <div class="swiper testimonial__wrapper">
             <div class="swiper-wrapper">
                 @foreach ($featuredTestimonials as $testimonial)
-                    <div class="swiper-slide">
+                    <div class="swiper-slide"
+                        @if ($section->background_image) style="
+                        background-image: url('{{ $section->background_image_url }}');
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        border-radius: 12px;
+                        padding: 40px;
+                    " @endif>
                         <div class="testi__items">
                             <!-- Image -->
                             <div class="testi__thumb text-center mb-3">
