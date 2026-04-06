@@ -16,22 +16,22 @@
 
                                     {{-- Full Card Click --}}
                                     <a href="{{ route('team.profile', $team->slug) }}" class="stretched-link"
-                                        aria-label="{{ $team->name }}">
+                                        aria-label="{!! $team->name !!}">
                                     </a>
 
                                     {{-- Image --}}
                                     <div class="team__thumb">
                                         <img src="{{ route('admin.images.preview', ['model' => 'teams', 'id' => $team->id]) }}"
-                                            alt="{{ $team->name }}" class="img-fluid w-100" loading="lazy">
+                                            alt="{!! $team->name !!}" class="img-fluid w-100" loading="lazy">
                                     </div>
 
                                     {{-- Content --}}
                                     <div class="team__content text-center p-3">
-                                        <h6 class="mb-1">{{ $team->name }}</h6>
+                                        <h6 class="mb-1">{!! $team->name !!}</h6>
 
                                         @if ($team->role)
                                             <span class="team-role-badge">
-                                                {{ $team->role }}
+                                                {!! $team->role !!}
                                             </span>
                                         @endif
                                     </div>
