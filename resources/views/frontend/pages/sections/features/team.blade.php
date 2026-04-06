@@ -1,4 +1,4 @@
-    <section class="team__section pt-130 pb-130 overhid" style="{{ $section->style }}">
+    <section class="team__section overhid" style="{{ $section->style }}">
         <div class="container">
             @include('frontend.pages.sections.partials.content')
             @foreach ($sectors as $sector)
