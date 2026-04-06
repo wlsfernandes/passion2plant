@@ -1344,3 +1344,45 @@ section {
 .footer__social li:hover i {
     color: var(--white-color);
 }
+/* ================================
+   Testimonial Background Extension
+   (Non-destructive)
+================================ */
+
+.testimonial-slide-bg {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Overlay ONLY for this feature */
+.testimonial-slide-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+/* Keep content above overlay */
+.testimonial-slide-bg .testi__items {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    max-width: 800px;
+}
+
+/* Force readable text only inside this component */
+.testimonial-slide-bg .cms-html,
+.testimonial-slide-bg .cms-html * {
+    color: #fff;
+}
+/* ================================
+   Remove default testimonial bg
+================================ */
+.testimonial-item-clean {
+    background: none !important;
+}

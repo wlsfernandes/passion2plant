@@ -10,12 +10,17 @@
         <div class="swiper testimonial__wrapper">
             <div class="swiper-wrapper">
                 @foreach ($featuredTestimonials as $testimonial)
-                    {{ dd($section) }}
-                    <div class="swiper-slide"
-                        style="background-image: url('{{ route('admin.images.preview', ['model' => 'sections', 'id' => $section->id]) }}');background-size: cover;background-position: center;
-                    background-repeat: no-repeat;padding: 40px;border-radius: 12px;"
-                        @endif>
-                        <div class="testi__items">
+                    <div class="swiper-slide">
+
+                        <div class="testi__items"
+                            @if ($section->background_image_url) style="
+                                background-image: url('{{ route('admin.images.previewField', ['model' => 'sections', 'id' => $section->id, 'field' => 'background_image_url']) }}');
+                                background-size: cover;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                padding: 40px;
+                                border-radius: 12px;
+                            " @endif>
                             <!-- Image -->
                             <div class="testi__thumb text-center mb-3">
                                 <img src="{{ route('admin.images.preview', ['model' => 'testimonials', 'id' => $testimonial->id]) }}"
