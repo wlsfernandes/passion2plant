@@ -8,7 +8,6 @@ use Aws\S3\S3Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class ImageUploadController extends BaseController
@@ -188,10 +187,6 @@ class ImageUploadController extends BaseController
         abort_unless(isset($this->models[$model]), 404, "Model key [$model] not registered.");
 
         $class = $this->models[$model];
-
-        Log::info('Model class resolved', [
-            'class' => $class,
-        ]);
 
         $record = $class::find($id);
 
