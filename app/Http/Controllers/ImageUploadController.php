@@ -166,13 +166,8 @@ class ImageUploadController extends BaseController
 
             DB::transaction(function () use ($request, $instance, $model, $preset) {
 
-                // Delete old image if exists
-                if (! empty($instance->image_url)) {
-                    S3::delete($instance->image_url);
-                }
-
-                // Upload new image (WebP + correct size)
-                $path = S3::uploadImageAsWebpPreset(
+                // 1. Upload first
+                $newPath = S3::uploadImageAsWebpPreset(
                     file: $request->file('image'),
                     directory: "{$model}/images",
                     mode: $preset['mode'],
@@ -182,9 +177,26 @@ class ImageUploadController extends BaseController
                     disk: 's3'
                 );
 
+                if (! $newPath) {
+                    throw new \Exception('Upload failed');
+                }
+
+                $oldPath = $instance->image_url;
+
+                // 2. Update DB
                 $instance->update([
-                    'image_url' => $path,
+                    'image_url' => $newPath,
                 ]);
+                SystemLogger::log(
+                    'Deleting old image',
+                    'info',
+                    'images.delete.old',
+                    ['path' => $oldPath]
+                );
+                // 3. Delete old AFTER success
+                if (! empty($oldPath)) {
+                    S3::delete($oldPath);
+                }
             });
             if ($model === 'banners') {
                 return redirect()
