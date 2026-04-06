@@ -1,13 +1,11 @@
-<section class="banner__section overhid mb-50 cms-hero"
-    style="{{ $section->style }}>
+<section class="banner__section overhid mb-50 cms-hero" style="{{ $section->style }}">
 
-@if ($section->image_url)
-<img 
-        src="{{ route('admin.images.preview', [
+    @if ($section->image_url)
+        <img src="{{ route('admin.images.preview', [
             'model' => 'sections',
             'id' => $section->id,
         ]) }}"
-    class="img-fluid w-100 cms-hero-bg">
+            class="img-fluid w-100 cms-hero-bg">
     @endif
 
     <div class="cms-hero-content hero-align-{{ $section->button_position ?? 'center' }}">
