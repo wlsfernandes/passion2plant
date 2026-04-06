@@ -10,15 +10,11 @@
         <div class="swiper testimonial__wrapper">
             <div class="swiper-wrapper">
                 @foreach ($featuredTestimonials as $testimonial)
+                    {{ dd($section) }}
                     <div class="swiper-slide"
-                        @if ($section->background_image_url) style="
-                        background-image: url('{{ $section->background_image_url }}');
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        border-radius: 12px;
-                        padding: 40px;
-                    " @endif>
+                        style="background-image: url('{{ route('admin.images.preview', ['model' => 'sections', 'id' => $section->id]) }}');background-size: cover;background-position: center;
+                    background-repeat: no-repeat;padding: 40px;border-radius: 12px;"
+                        @endif>
                         <div class="testi__items">
                             <!-- Image -->
                             <div class="testi__thumb text-center mb-3">
