@@ -124,10 +124,10 @@ class ImageUploadController extends BaseController
         try {
             $instance = $this->resolveModel($model, $id);
 
-            // Presets (simple + predictable)
+            // 🎯 Presets
             $preset = match ($request->input('image_type')) {
                 'banner' => [
-                    'mode' => 'cover', // crop to fit
+                    'mode' => 'cover',
                     'width' => 1920,
                     'height' => 600,
                     'quality' => 85,
@@ -156,48 +156,48 @@ class ImageUploadController extends BaseController
                     'height' => 800,
                     'quality' => 85,
                 ],
-                default => [ // original_fit
-                    'mode' => 'contain', // no crop (keeps full image)
+                default => [
+                    'mode' => 'contain',
                     'width' => 1600,
                     'height' => 1600,
                     'quality' => 85,
                 ],
             };
 
-            DB::transaction(function () use ($request, $instance, $model, $preset) {
-
-                // 1. Upload first
-                $newPath = S3::uploadImageAsWebpPreset(
-                    file: $request->file('image'),
-                    directory: "{$model}/images",
-                    mode: $preset['mode'],
-                    width: $preset['width'],
-                    height: $preset['height'],
-                    quality: $preset['quality'],
-                    disk: 's3'
-                );
-
-                if (! $newPath) {
-                    throw new \Exception('Upload failed');
-                }
-
-                $oldPath = $instance->image_url;
-
-                // 2. Update DB
+            $oldPath = $instance->image_url;
+            // 🚀 STEP 1 — Upload FIRST (no DB yet)
+            $newPath = S3::uploadImageAsWebpPreset(
+                file: $request->file('image'),
+                directory: "{$model}/images",
+                mode: $preset['mode'],
+                width: $preset['width'],
+                height: $preset['height'],
+                quality: $preset['quality'],
+                disk: 's3'
+            );
+            if (! $newPath) {
+                throw new \Exception('Upload failed - no path returned');
+            }
+            DB::transaction(function () use ($instance, $newPath) {
                 $instance->update([
                     'image_url' => $newPath,
                 ]);
-                SystemLogger::log(
-                    'Deleting old image',
-                    'info',
-                    'images.delete.old',
-                    ['path' => $oldPath]
-                );
-                // 3. Delete old AFTER success
-                if (! empty($oldPath)) {
-                    S3::delete($oldPath);
-                }
             });
+            // 🛡️ STEP 3 — DO NOT DELETE (safe mode)
+            if (! empty($oldPath)) {
+                SystemLogger::log(
+                    'Old image retained (safe mode - no delete)',
+                    'info',
+                    'images.keep.old',
+                    [
+                        'old_path' => $oldPath,
+                        'new_path' => $newPath,
+                        'model' => $model,
+                        'model_id' => $instance->id,
+                    ]
+                );
+            }
+            // ✅ SUCCESS RESPONSE
             if ($model === 'banners') {
                 return redirect()
                     ->route('pages.index', $instance->page_id)
@@ -209,13 +209,13 @@ class ImageUploadController extends BaseController
                 ->with('success', 'Image uploaded successfully.');
 
         } catch (Throwable $e) {
-
             SystemLogger::log(
                 'Image upload failed',
                 'error',
                 'images.update.failed',
                 [
                     'model' => $model,
+                    'model_id' => $id,
                     'exception' => $e->getMessage(),
                 ]
             );
