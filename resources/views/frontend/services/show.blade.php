@@ -16,7 +16,7 @@
                             <ul class="service__list">
 
                                 <li class="mb-3">
-                                    <a href="{{ route('services.index.public') }}">
+                                    <a href="{{ url('/our-services') }}">
                                         <span>@lang('pages.all_services')</span>
                                         <i class="fa fa-chevron-right"></i>
                                     </a>
