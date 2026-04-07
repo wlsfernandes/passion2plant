@@ -3,7 +3,7 @@
 @section('title', $blog->getTitle() . ' | Passion2Plant')
 
 @section('content')
-    <section class="details__section pt-130 pb-130 overhid">
+    <section class="details__section pt-130 pb-130 overhid" style="{{ $section->style }}">
         <div class="container">
             <div class="row justify-content-center">
 

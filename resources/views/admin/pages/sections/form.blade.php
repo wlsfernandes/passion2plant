@@ -110,30 +110,24 @@
                         <div class="mb-3">
                             <label class="form-label fw-bold">Background Image</label>
 
-                            {{-- Preview --}}
                             @if (!empty($section->background_image_url))
-                                <div class="mb-2">
+                                <div class="mb-2" id="bg-image-container">
                                     <img src="{{ route('admin.images.previewField', [
                                         'model' => 'sections',
                                         'id' => $section->id,
                                         'field' => 'background_image_url',
                                     ]) }}"
-                                        alt="Background Image" class="img-fluid rounded" style="max-height: 200px;">
+                                        class="img-fluid rounded mb-2" style="max-height: 200px;">
+
+                                    <button type="button" class="btn btn-sm btn-danger"
+                                        onclick="deleteBackgroundImage({{ $section->id }})">
+                                        Delete Image
+                                    </button>
                                 </div>
                             @endif
 
-                            {{-- File Upload --}}
                             <input type="file" name="background_image" class="form-control">
-
-                            {{-- Keep existing value --}}
-                            <input type="hidden" name="background_image"
-                                value="{{ old('background_image_url', $section->background_image_url ?? '') }}">
-
-                            <small class="text-muted">
-                                Upload a new image to replace the current one.
-                            </small>
                         </div>
-
                         {{-- LAYOUT --}}
                         <div class="row mb-3">
                             <div class="col-md-12">
@@ -253,5 +247,32 @@
             });
 
         });
+
+        function deleteBackgroundImage(sectionId) {
+            if (!confirm('Are you sure you want to delete this image?')) return;
+
+            fetch(`/sections/${sectionId}/delete-background-image`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // remove image from UI
+                        document.getElementById('bg-image-container').remove();
+
+                        alert('Image deleted successfully');
+                    } else {
+                        alert(data.message || 'Error deleting image');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Something went wrong');
+                });
+        }
     </script>
 @endsection

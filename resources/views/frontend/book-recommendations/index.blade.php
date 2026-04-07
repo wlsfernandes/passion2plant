@@ -27,7 +27,7 @@
             </div>
         </div>
     </section>
-    <section class="service__section section__bg pt-130 pb-130 overhid">
+    <section class="service__section section__bg pt-130 pb-130 overhid" style="{{ $section->style }}">
 
 
 

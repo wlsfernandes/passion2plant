@@ -2,7 +2,7 @@
         use Illuminate\Support\Str;
     @endphp
 
-    <section class="service__section section__bg pt-130 pb-130 overhid">
+    <section class="service__section section__bg pt-130 pb-130 overhid" style="{{ $section->style }}">
         <div class="container">
             <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
       <h6>@lang('pages.donate_now')</h6>

@@ -4,7 +4,7 @@
 @endphp
 
 <!--Testimonial Section Here-->
-<section class="testimonial__section overhid pt-130 pb-130">
+<section class="testimonial__section overhid pt-130 pb-130" style="{{ $section->style }}">
     <div class="container">
 
         <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">
@@ -51,11 +51,11 @@
                         </div>
                     </div>
                 @endforeach
-               
+
             </div>
-             <div class="swiper-dot text-center">
-                    <div class="dot"></div>
-                </div>
+            <div class="swiper-dot text-center">
+                <div class="dot"></div>
+            </div>
         </div>
     </div>
 </section>

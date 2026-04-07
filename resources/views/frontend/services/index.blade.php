@@ -28,7 +28,7 @@
 
     @php use Illuminate\Support\Str; @endphp
 
-    <section class="details__section pt-130 pb-130 overhid">
+    <section class="details__section pt-130 pb-130 overhid" style="{{ $section->style }}">
         <div class="container">
             <div class="row justify-content-center g-4">
 

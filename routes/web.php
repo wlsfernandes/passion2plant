@@ -96,7 +96,7 @@ Route::get('/images/{model}/{id}/preview', [ImageUploadController::class, 'previ
 Route::get('/images/{model}/{id}/preview-field/{field}', [ImageUploadController::class, 'previewField'])->name('admin.images.previewField');
 Route::get('/files/{model}/{id}/{lang}/download', [FileUploadController::class, 'download'])->name('admin.files.download');
 Route::delete('/images/{model}/{id}', [ImageUploadController::class, 'destroy'])->name('admin.images.destroy');
-
+Route::delete('/sections/{section}/delete-background-image', [SectionController::class, 'deleteBackgroundImage'])->name('sections.deleteBackgroundImage');
 /* Projects */
 Route::get('/our-projects/{slug}', [ProjectController::class, 'display'])->name('projects.display');
 

@@ -1,5 +1,5 @@
 <!--About Section Here-->
-<section class="about__section pt-130 pb-130 overhid">
+<section class="about__section pt-130 pb-130 overhid" style="{{ $section->style }}">
     <div class="container">
         <div class="row g-4 align-items-center justify-content-between">
             <div class="col-xxl-6 col-xl-6 col-lg-6 wow fadeInLeft" data-wow-duration="3s">

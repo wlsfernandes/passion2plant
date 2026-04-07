@@ -1,5 +1,5 @@
 <!-- Partners / Clients Section -->
-<section class="partners__section pt-130 pb-130">
+<section class="partners__section pt-130 pb-130" style="{{ $section->style }}">
     <div class="container">
 
         <div class="title__content center">
@@ -9,22 +9,17 @@
 
         <div class="partners__grid">
 
-            @foreach($partnerLogos as $partner)
+            @foreach ($partnerLogos as $partner)
                 <div class="partner__item">
 
-                    @if($partner->external_link)
-                        <a href="{{ $partner->external_link }}"
-                           target="_blank"
-                           rel="noopener noreferrer">
+                    @if ($partner->external_link)
+                        <a href="{{ $partner->external_link }}" target="_blank" rel="noopener noreferrer">
                     @endif
 
-                        <img
-                            src="{{ route('admin.images.preview', ['model' => 'partners', 'id' => $partner->id]) }}"
-                            alt="{{ $partner->name }}"
-                            loading="lazy"
-                        >
+                    <img src="{{ route('admin.images.preview', ['model' => 'partners', 'id' => $partner->id]) }}"
+                        alt="{{ $partner->name }}" loading="lazy">
 
-                    @if($partner->external_link)
+                    @if ($partner->external_link)
                         </a>
                     @endif
 

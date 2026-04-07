@@ -3,7 +3,7 @@
 
 <head>
     @include('admin.layouts.title-meta')
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"
         integrity="sha512-/1cUFB..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('/assets/admin/css/bootstrap.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />

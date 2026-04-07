@@ -1,5 +1,5 @@
  <!--Contact Info Section Here-->
- <div class="contact__info__section pt-130 pb-130 section__bg overhid">
+ <div class="contact__info__section pt-130 pb-130 section__bg overhid" style="{{ $section->style }}">
      @if (session('success'))
          <div class="alert alert-success">
              {{ session('success') }}
@@ -65,7 +65,7 @@
                              @lang('pages.contact_information_description')
                          </p>
                      </div>
-                     
+
                      <div class="info__wrap d-flex align-items-center mt-4">
                          <div class="icon">
                              <i class="fa-solid fa-location-dot"></i>
@@ -75,7 +75,7 @@
                                  @lang('pages.office_address')
                              </h6>
                              <p>
-                                  P.O. Box 580527, Kissimmee, FL 34758
+                                 P.O. Box 580527, Kissimmee, FL 34758
                              </p>
                          </div>
                      </div>

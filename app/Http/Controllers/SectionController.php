@@ -369,4 +369,28 @@ class SectionController extends BaseController
             }
         }
     }
+
+    public function deleteBackgroundImage(Section $section)
+    {
+        try {
+            if (! empty($section->background_image_url)) {
+                S3::delete($section->background_image_url);
+            }
+
+            $section->update([
+                'background_image_url' => null,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Image deleted successfully',
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to delete image',
+            ], 500);
+        }
+    }
 }

@@ -8,16 +8,14 @@
 
     @if ($layout === 'full')
 
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-lg-12">
                 <div class="cms-html mb-3">
                     <div class="cta-content text-{{ $section->button_position ?? 'start' }}">
-
                         @include('frontend.pages.sections.partials.content')
                         @include('frontend.pages.sections.partials.button')
                     </div>
                 </div>
-
             </div>
         </div>
     @else

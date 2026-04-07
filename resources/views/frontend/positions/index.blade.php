@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Breadcrumb -->
-<section class="breadcumd__banner overhid">
+<section class="breadcumd__banner overhid" style="{{ $section->style }}">
     <div class="container">
         <div class="breadcumd__wrapper">
             <h2 class="left__content">
