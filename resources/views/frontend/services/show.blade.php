@@ -44,7 +44,7 @@
                                     <h4>@lang('pages.need_help')</h4>
                                     <p>@lang('pages.contact_us_description')</p>
 
-                                    <a href="{{ route('contact') }}" class="cmn--btn mt-4">
+                                    <a href="{{ url('/contact') }}" class="cmn--btn mt-4">
                                         @lang('pages.contact_us')
                                     </a>
                                 </div>
