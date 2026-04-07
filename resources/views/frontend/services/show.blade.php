@@ -69,7 +69,7 @@
                             <h3>{{ $service->getTitle() }}</h3>
 
                             <div class="cms-html" id="cms-html">
-                                {!! $service->getDescription() !!}
+                                {!! $service->getContent() !!}
                             </div>
                         </div>
                         {{-- External link (optional) --}}
