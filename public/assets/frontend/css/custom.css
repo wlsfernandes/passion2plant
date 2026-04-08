@@ -472,7 +472,20 @@ section {
     height: auto !important;
     display: flex;
 }
+.donate__thumb {
+    width: 100%;
+    height: 218px; /* 👈 fixed height */
+    overflow: hidden;
+    border-radius: 12px;
+}
 
+.donate__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 👈 keeps image nice */
+    object-position: center;
+    display: block;
+}
 /* =====================================================
    RESPONSIVE
    ===================================================== */
