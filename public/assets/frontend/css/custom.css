@@ -460,18 +460,7 @@ section {
 }
 
 /* DONATE BUTTON */
-.donate__wrapper {
-    height: auto !important;
-    max-height: 380px; /* 👈 adjust if needed (380–450 sweet range) */
-}
-.donate__wrapper .swiper-wrapper {
-    align-items: flex-start !important;
-}
 
-.donate__wrapper .swiper-slide {
-    height: auto !important;
-    display: flex;
-}
 .donate__thumb {
     width: 100%;
     height: 218px; /* 👈 fixed height */
@@ -482,6 +471,7 @@ section {
 .donate__thumb img {
     width: 100%;
     height: 100%;
+    object-position: top;
     object-fit: cover; /* 👈 keeps image nice */
     object-position: center;
     display: block;
