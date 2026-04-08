@@ -95,6 +95,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('educators.index') }}">
+                                            <i class="uil uil-graduation-cap"></i> Educators
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('positions.index') }}">
                                             <i class="uil uil-briefcase"></i> Positions
                                         </a>

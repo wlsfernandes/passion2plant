@@ -8,6 +8,7 @@
         /* partials */
         'testimonial' => 'frontend.pages.sections.carousel.testimonial',
         'partners' => 'frontend.pages.sections.carousel.partners',
+        'educators' => 'frontend.pages.sections.carousel.educators',
         default => null,
     };
 @endphp

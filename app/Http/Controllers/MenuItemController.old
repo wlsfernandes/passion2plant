@@ -8,7 +8,7 @@ use App\Services\SystemLogger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MenuController extends BaseController
+class MenuItemController extends BaseController
 {
     /**
      * Validation rules for menu items.

@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\BookRecommendation;
 use App\Models\Collaborator;
 use App\Models\Donation;
+use App\Models\Educator;
 use App\Models\Event;
 use App\Models\Footer;
 use App\Models\MenuItem;
@@ -50,6 +51,8 @@ class ViewServiceProvider extends ServiceProvider
                 ->get();
 
             $partnerLogos = Partner::visible()->get();
+
+            $educatorLogos = Educator::visible()->get();
 
             $featuredServices = Service::visible()
                 ->latest()
@@ -130,6 +133,7 @@ class ViewServiceProvider extends ServiceProvider
                 'books' => $books,
                 'donations' => $donations,
                 'footerMenu' => $footerMenu,
+                'educatorLogos' => $educatorLogos,
 
             ]);
         });

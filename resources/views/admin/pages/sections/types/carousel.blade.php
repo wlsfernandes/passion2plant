@@ -19,7 +19,9 @@
                 <option value="partners"
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'partners' ? 'selected' : '' }}>Partners
                 </option>
-
+                <option value="educators"
+                    {{ old('carousel_type', $section->carousel_type ?? '') == 'educators' ? 'selected' : '' }}>Educators
+                </option>
                 <option value="testimonial"
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'testimonial' ? 'selected' : '' }}>
                     Testimonial</option>

@@ -11,6 +11,7 @@ use App\Http\Controllers\CollaboratorController;
 use App\Http\Controllers\CollaboratorImageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\EducatorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\FooterController;
@@ -253,6 +254,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('pages.sections', SectionController::class)->scoped();
     Route::resource('pages.sections.cards', SectionCardController::class)->scoped();
     Route::resource('partners', PartnerController::class);
+    Route::resource('educators', EducatorController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('projects', ProjectController::class);
     Route::resource('collaborators', CollaboratorController::class);
