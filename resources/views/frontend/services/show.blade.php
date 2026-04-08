@@ -3,7 +3,7 @@
 @section('title', $service->getTitle() . ' | Passion2Plant')
 
 @section('content')
-    <section class="details__section overhid pt-130 pb-130" style="{{ $section->style }}">
+    <section class="details__section overhid pt-130 pb-130" style="{{ $section->style ?? '' }}">
         <div class="container">
             <div class="row g-4">
 

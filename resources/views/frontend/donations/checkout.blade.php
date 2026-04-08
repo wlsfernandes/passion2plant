@@ -3,7 +3,7 @@
 @section('title', 'Checkout' . ' | Passion2Plant')
 
 @section('content')
-    <section class="signup__section pt-130 pb-130" style="{{ $section->style }}">
+    <section class="signup__section pt-130 pb-130" style="{{ $section->style ?? '' }}">
         <div class="container">
             <div class="row justify-content-center align-items-center g-5">
 
