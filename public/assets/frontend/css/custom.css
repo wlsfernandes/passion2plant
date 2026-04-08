@@ -473,7 +473,7 @@ section {
     height: 100%;
     object-position: top;
     object-fit: cover; /* 👈 keeps image nice */
-    object-position: center;
+    object-position: top;
     display: block;
 }
 /* =====================================================
