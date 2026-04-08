@@ -360,7 +360,7 @@ section {
 
 .team__wrapper {
     height: auto !important;
-    max-height: 350px;
+    max-height: 300px;
 }
 
 .team__wrapper .swiper-wrapper {
