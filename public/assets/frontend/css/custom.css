@@ -463,7 +463,7 @@ section {
 
 .donate__thumb {
     width: 100%;
-    height: 218px; /* 👈 fixed height */
+    height: 290px; /* 👈 fixed height */
     overflow: hidden;
     border-radius: 12px;
 }
