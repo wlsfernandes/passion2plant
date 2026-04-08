@@ -32,6 +32,11 @@
 
                     </div>
                 @endforeach
+
+            </div>
+
+            <div class="swiper-dot text-center pt-5">
+                <div class="dot"></div>
             </div>
         </div>
 
