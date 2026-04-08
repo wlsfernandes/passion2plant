@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <section class="team__details pt-130 overhid" style="{{ $section->style ?? '' }}">
+    <section class="team__details pt-130 overhid" style="margin-bottom: 130px; {{ $section->style ?? '' }}">
         <div class="container">
             <div class="row g-5">
 
