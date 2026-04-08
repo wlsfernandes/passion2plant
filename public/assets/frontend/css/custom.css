@@ -469,22 +469,10 @@ section {
 }
 
 .donate__wrapper .swiper-slide {
-    width: 100% !important;
+    height: auto !important;
     display: flex;
-    justify-content: center;
 }
-.donate__items {
-    width: 100%;
-    max-width: 290px; /* 👈 THIS enforces uniform width */
-    margin: 0 auto;
-}
-.donate__thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top; /* 👈 NOW it works */
-    display: block;
-}
+
 /* =====================================================
    RESPONSIVE
    ===================================================== */
