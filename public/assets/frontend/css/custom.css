@@ -390,18 +390,19 @@ section {
 .team__thumb {
     width: 220px;
     height: 220px;
-    margin: 0 auto -35px; /* overlap card nicely */
+    margin: 0 auto -45px; /* overlap card nicely */
     overflow: hidden;
     border-radius: 50%;
     position: relative;
     z-index: 2;
     flex-shrink: 0;
+    border: 6px solid #fff; /* optional but improves separation */
 }
 
 .team__thumb {
     width: 220px;
     height: 220px;
-    margin: 0 auto -50px; /* 👈 stronger overlap */
+    margin: 0 auto -40px; /* 👈 stronger overlap */
     overflow: hidden;
     border-radius: 50%;
     position: relative;
@@ -412,7 +413,7 @@ section {
 .team__content {
     background: #fff;
     border-radius: 16px;
-    padding: 70px 20px 25px; /* 👈 more top padding */
+    padding: 60px 20px 25px; /* 👈 more top padding */
     text-align: center;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     position: relative;
