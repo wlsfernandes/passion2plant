@@ -469,21 +469,20 @@ section {
 }
 
 .donate__wrapper .swiper-slide {
-    height: auto !important;
+    width: 100% !important;
     display: flex;
+    justify-content: center;
 }
-.donate__thumb {
+.donate__items {
     width: 100%;
-    height: 218px; /* 👈 fixed height */
-    overflow: hidden;
-    border-radius: 12px;
+    max-width: 290px; /* 👈 THIS enforces uniform width */
+    margin: 0 auto;
 }
-
 .donate__thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 👈 keeps image nice */
-    object-position: center;
+    object-fit: cover;
+    object-position: top; /* 👈 NOW it works */
     display: block;
 }
 /* =====================================================
