@@ -460,7 +460,18 @@ section {
 }
 
 /* DONATE BUTTON */
-
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+    height: auto !important;
+}
+.donate__wrapper .swiper-wrapper {
+    align-items: flex-start !important;
+}
+.donate__wrapper .swiper-slide {
+    height: auto !important;
+    display: block; /* 👈 remove flex */
+}
 .donate__thumb {
     width: 100%;
     height: 290px; /* 👈 fixed height */
