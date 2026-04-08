@@ -43,9 +43,6 @@ class ViewServiceProvider extends ServiceProvider
             $featuredTestimonials = Testimonial::visible()->get();
 
             $featuredTeams = Team::visible()
-                ->whereHas('sectors', function ($q) {
-                    $q->where('key', 'staff');
-                })
                 ->with('sectors')
                 ->orderBy('name') // alphabetical
                 ->get();
