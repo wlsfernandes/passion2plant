@@ -7,7 +7,8 @@
         ]) }}"
             class="img-fluid w-100 cms-hero-bg">
     @endif
-    <div class="cms-hero-content hero-align-{{ $section->button_position ?? 'center' }}">
+
+    <div class="cms-hero-content hero-align-center">
 
         <div class="hero-inner">
 
