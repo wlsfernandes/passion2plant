@@ -12,8 +12,8 @@
 
                         <div class="thumb">
                             <a href="{{ route('events.display', $event->slug) }}">
-                                <img src="{{ route('admin.images.preview', ['model' => 'events', 'id' => $event->id]) }}"
-                                    alt="{!! $event->getTitle() !!}">
+                                <img
+                                    src="{{ route('admin.images.preview', ['model' => 'events', 'id' => $event->id]) }}">
                             </a>
                         </div>
 

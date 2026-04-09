@@ -8,9 +8,11 @@
 
             <ul class="info d-flex align-items-center">
                 @if (!empty($settings->address))
-                    <li>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>{{ $settings->address }}</span>
+                    <li class="info-item d-flex align-items-start">
+                        <i class="fa-solid fa-location-dot me-2"></i>
+                        <span class="info-text">
+                            {{ $settings->address }}
+                        </span>
                     </li>
                 @endif
 
@@ -24,9 +26,9 @@
                 @endif
 
                 @if (!empty($settings->contact_email))
-                    <li>
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <a href="mailto:{{ $settings->contact_email }}">
+                    <li class="info-item d-flex align-items-start">
+                        <i class="fa-solid fa-paper-plane me-2"></i>
+                        <a href="mailto:{{ $settings->contact_email }}" class="info-text email-link">
                             {{ $settings->contact_email }}
                         </a>
                     </li>

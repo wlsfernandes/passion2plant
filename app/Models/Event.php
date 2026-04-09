@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Concerns\HasTextLimits;
 use App\Traits\Auditable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Event extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Auditable, HasTextLimits;
+    use Auditable, HasFactory, HasTextLimits;
 
     protected $fillable = [
         'title_en',
@@ -49,6 +49,7 @@ class Event extends Model
             ? ($this->content_es ?: $this->content_en)
             : $this->content_en;
     }
+
     /**
      * Boot method to handle slug generation.
      */
@@ -69,9 +70,10 @@ class Event extends Model
             }
         });
     }
+
     protected static function booted()
     {
-        static::updated(fn() => \Log::info('EVENT updated fired'));
+        static::updated(fn () => \Log::info('EVENT updated fired'));
     }
 
     /**
@@ -79,13 +81,26 @@ class Event extends Model
      */
     protected static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
     {
-        $slug = Str::slug($title);
+        // 🔥 Remove HTML tags first
+        $cleanTitle = trim(strip_tags($title));
+
+        // Optional: decode HTML entities (&nbsp;, etc.)
+        $cleanTitle = html_entity_decode($cleanTitle, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        // Generate slug
+        $slug = Str::slug($cleanTitle);
+
+        // Fallback if empty (important!)
+        if (empty($slug)) {
+            $slug = 'item';
+        }
+
         $original = $slug;
         $counter = 1;
 
         while (
             static::where('slug', $slug)
-                ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
+                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
                 ->exists()
         ) {
             $slug = "{$original}-{$counter}";
@@ -114,7 +129,7 @@ class Event extends Model
 
     public function hasDownloadFile(): bool
     {
-        return !empty($this->getFileUrl());
+        return ! empty($this->getFileUrl());
     }
 
     public function getFileUrl(): ?string
