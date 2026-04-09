@@ -24,9 +24,9 @@
                                 </a>
                             </h5>
 
-                            <small class="text-muted d-block mb-2">
+                            {{--    <small class="text-muted d-block mb-2">
                                 {{ $event->event_date?->format('F d, Y') }}
-                            </small>
+                            </small> --}}
 
                             <p>
                                 {!! $event->limitText($event->getContent(), 120) !!}

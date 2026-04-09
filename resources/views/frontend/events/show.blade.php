@@ -18,9 +18,9 @@
                         <div class="details__content">
                             <h2>{!! $event->getTitle() !!}</h2>
 
-                            <p class="text-muted mb-4">
+                            {{--   <p class="text-muted mb-4">
                                 {{ $event->event_date?->format('F d, Y') }}
-                            </p>
+                            </p> --}}
                             <div class="cms-html" id="cms-html">{!! $event->getContent() !!}</div>
                         </div>
                         @if ($event->hasDownloadFile())
