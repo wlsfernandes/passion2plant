@@ -184,7 +184,7 @@
                 @if ($type === 'video')
                     @include('admin.pages.sections.partials.button')
                     @include('admin.pages.sections.types.content')
-                    @include('admin.pages.sections.partials.image')
+                    @include('admin.pages.sections.partials.video')
                     @include('admin.pages.sections.partials.image-layout')
                 @endif
 
