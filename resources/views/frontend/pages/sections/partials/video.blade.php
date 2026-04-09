@@ -39,7 +39,7 @@
 
                 <div class="modal-body p-0">
                     <div class="ratio ratio-16x9">
-                        <iframe id="videoIframe" src="{{ $section->link_image }}" allow="autoplay; fullscreen"
+                        <iframe id="videoIframe" src="{{ $section->embed_url }}" allow="autoplay; fullscreen"
                             allowfullscreen>
                         </iframe>
                     </div>
