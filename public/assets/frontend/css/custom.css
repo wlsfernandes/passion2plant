@@ -1468,3 +1468,70 @@ section {
         font-size: 12px;
     }
 }
+/* =========================================
+   GALLERY CAROUSEL ONLY (SAFE SCOPE)
+========================================= */
+
+.gallery-carousel .gallery-main {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f8f9fa;
+}
+
+.gallery-carousel .gallery-main img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* 🔥 no stretch */
+}
+
+/* =========================================
+   THUMBNAILS
+========================================= */
+
+.gallery-carousel .gallery-thumbs {
+    gap: 10px;
+}
+
+.gallery-carousel .gallery-thumbs button {
+    border: none;
+    padding: 0;
+    background: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.gallery-carousel .gallery-thumbs button.active,
+.gallery-carousel .gallery-thumbs button:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    border: 2px solid #23ad75;
+}
+
+.gallery-carousel .gallery-thumbs img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover; /* thumbs can crop 👍 */
+    display: block;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+    .gallery-carousel .gallery-main {
+        height: 300px;
+    }
+
+    .gallery-carousel .gallery-thumbs img {
+        width: 60px;
+        height: 45px;
+    }
+}
