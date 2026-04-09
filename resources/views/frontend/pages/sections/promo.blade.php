@@ -7,7 +7,6 @@
         ]) }}"
             class="img-fluid w-100 cms-hero-bg">
     @endif
-    {{ dd($section) }}
     <div class="cms-hero-content hero-align-center">
 
         <div class="hero-inner">
