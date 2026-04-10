@@ -250,7 +250,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::patch('/collaborators/{collaborator}/images/{image}/link', [CollaboratorImageController::class, 'updateLink'])->name('collaborators.images.updateLink');
     Route::delete('pages/{page}/sections/{section}/images/{image}', [SectionController::class, 'destroyImage'])->name('pages.sections.images.destroy');
     Route::delete('pages/{page}/sections/{section}/image', [SectionController::class, 'destroySectionImage'])->name('pages.sections.image.destroy');
-
+    Route::post('/admin/section-images/{image}/link', [SectionController::class, 'updateLink'])->name('section-images.update-link');
     Route::get('footer', [FooterController::class, 'index'])->name('footer.index');
     Route::post('footer/save', [FooterController::class, 'save'])->name('footer.save');
 

@@ -342,6 +342,21 @@ class SectionController extends BaseController
         }
     }
 
+    public function updateLink(Request $request, SectionImage $image)
+    {
+        $request->validate([
+            'external_link' => 'nullable|url|max:1000',
+        ]);
+
+        $image->update([
+            'external_link' => $request->external_link,
+        ]);
+
+        return response()->json([
+            'success' => true,
+        ]);
+    }
+
     private function handleImageUpload(Request $request, Section $section, array &$data): void
     {
         if ($request->hasFile('image_url') && ! is_array($request->file('image_url'))) {

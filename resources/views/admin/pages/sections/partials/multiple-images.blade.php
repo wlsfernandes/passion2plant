@@ -27,7 +27,20 @@
                                     @endif
 
                                 </div>
+                                <div class="card-body p-2">
 
+                                    <button type="button"
+                                        class="btn btn-sm w-100 mb-1 edit-link-btn 
+                                        {{ $image->external_link ? 'btn-success' : 'btn-outline-primary' }}"
+                                        data-id="{{ $image->id }}" data-link="{{ $image->external_link }}">
+
+                                        <i class="uil {{ $image->external_link ? 'uil-check-circle' : 'uil-link' }}"></i>
+
+                                        {{ $image->external_link ? 'Link Added' : 'Add Link' }}
+
+                                    </button>
+
+                                </div>
                                 <div class="card-body p-2">
 
                                     <button type="button" class="btn btn-sm btn-danger w-100 delete-image"
@@ -94,4 +107,30 @@
 
     </div>
 
+</div>
+<!-- Link Modal -->
+<div class="modal fade" id="linkModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Image Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" id="image_id">
+
+                <label class="form-label">External Link</label>
+                <input type="text" id="external_link" class="form-control" placeholder="https://example.com">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="saveLinkBtn">
+                    Save
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>

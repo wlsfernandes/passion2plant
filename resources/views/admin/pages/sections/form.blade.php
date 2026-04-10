@@ -274,5 +274,46 @@
                     alert('Something went wrong');
                 });
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // Open modal
+            document.querySelectorAll('.edit-link-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+
+                    document.getElementById('image_id').value = this.dataset.id;
+                    document.getElementById('external_link').value = this.dataset.link || '';
+
+                    let modal = new bootstrap.Modal(document.getElementById('linkModal'));
+                    modal.show();
+                });
+            });
+
+            // Save link
+            document.getElementById('saveLinkBtn').addEventListener('click', function() {
+
+                let id = document.getElementById('image_id').value;
+                let link = document.getElementById('external_link').value;
+
+                fetch(`/admin/section-images/${id}/link`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            external_link: link
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            location.reload(); // simple & safe
+                        }
+                    });
+
+            });
+
+        });
     </script>
 @endsection
