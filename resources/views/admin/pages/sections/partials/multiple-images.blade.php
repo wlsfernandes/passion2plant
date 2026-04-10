@@ -128,9 +128,11 @@
                     <option value="external">External URL</option>
                     <option value="internal">Internal Page</option>
                 </select>
+                <small class="text-muted d-block mb-3">Choose whether to link to an external website or an internal
+                    page.</small>
 
                 {{-- SINGLE INPUT --}}
-                <label class="form-label" id="link_label">External Link</label>
+                <label class="form-label" id="link_label">Link</label>
                 <input type="text" id="link_input" class="form-control" placeholder="https://example.com">
 
             </div>

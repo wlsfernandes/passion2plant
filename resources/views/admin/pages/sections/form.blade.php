@@ -342,11 +342,6 @@
                 console.log('TYPE:', type);
                 console.log('INPUT:', value);
 
-                if (!value) {
-                    alert('Please enter a link');
-                    return;
-                }
-
                 let link = '';
 
                 if (type === 'internal') {
