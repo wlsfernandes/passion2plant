@@ -38,10 +38,6 @@
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'donate' ? 'selected' : '' }}>Donate
                     Carousel</option>
 
-                <option value="donate"
-                    {{ old('carousel_type', $section->carousel_type ?? '') == 'donate' ? 'selected' : '' }}>Donate
-                    Carousel</option>
-
                 <option value="membership"
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'membership' ? 'selected' : '' }}>
                     Membership
