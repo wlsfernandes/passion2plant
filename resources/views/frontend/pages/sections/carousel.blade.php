@@ -4,6 +4,7 @@
         'services' => 'frontend.pages.sections.carousel.services',
         'blog' => 'frontend.pages.sections.carousel.blog',
         'donate' => 'frontend.pages.sections.carousel.donate',
+        'membership' => 'frontend.pages.sections.carousel.membership',
         'event' => 'frontend.pages.sections.carousel.event',
         /* partials */
         'testimonial' => 'frontend.pages.sections.carousel.testimonial',
