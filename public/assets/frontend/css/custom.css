@@ -1475,3 +1475,12 @@ section {
         height: 45px;
     }
 }
+.sector-title {
+    width: 100%;
+    display: block;
+}
+
+.sector-title * {
+    width: 100% !important;
+    text-align: center !important;
+}

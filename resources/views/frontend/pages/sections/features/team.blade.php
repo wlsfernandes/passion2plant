@@ -13,12 +13,13 @@
             @foreach ($sectors as $sector)
                 @if ($sector->teams->count())
                     {{-- Sector Title --}}
-                    <div class="col-12">
-                        <div style="{{ $cleanStyle }}" class="mb-3">
-                            <h4 class="fw-bold mb-0">{{ $sector->name }}</h4>
+                    <div class="col-12 sector-title">
+                        <div class="text-center mb-3 wow fadeInUp" data-wow-duration="2s">
+                            <div class="fw-bold fs-4">
+                                {{ $sector->name }}
+                            </div>
                         </div>
                     </div>
-
                     @foreach ($sector->teams as $team)
                         <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 wow fadeInUp"
                             data-wow-duration="{{ 3 + ($loop->index % 3) * 2 }}s">
