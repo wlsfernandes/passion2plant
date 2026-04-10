@@ -21,7 +21,7 @@
                     <tr>
                         <th></th>
                         <th>Title</th>
-                        <th>Suggested Amount</th>
+                        <th>Amount</th>
                         <th>Published</th>
                         <th width="140">Actions</th>
                     </tr>
@@ -58,8 +58,8 @@
 
                             {{-- Suggested Amount --}}
                             <td>
-                                @if ($membership->suggested_amount)
-                                    {{ number_format($membership->suggested_amount, 2) }}
+                                @if ($membership->amount)
+                                    {{ number_format($membership->amount, 2) }}
                                     <small class="text-muted">{{ $membership->currency }}</small>
                                 @else
                                     <span class="text-muted">—</span>
