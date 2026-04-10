@@ -342,17 +342,20 @@
                 console.log('TYPE:', type);
                 console.log('INPUT:', value);
 
-                let link = '';
+                let link = null; // 🔥 default = remove link
 
-                if (type === 'internal') {
+                if (value !== '') {
 
-                    value = value.replace(window.location.origin, '');
-                    value = value.replace(/^\/+/, '');
+                    if (type === 'internal') {
 
-                    link = window.location.origin + '/' + value;
+                        value = value.replace(window.location.origin, '');
+                        value = value.replace(/^\/+/, '');
 
-                } else {
-                    link = value;
+                        link = window.location.origin + '/' + value;
+
+                    } else {
+                        link = value;
+                    }
                 }
 
                 console.log('FINAL LINK:', link);
@@ -364,7 +367,7 @@
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
                         body: JSON.stringify({
-                            external_link: link,
+                            external_link: link, // 🔥 can be null now
                             link_type: type
                         })
                     })

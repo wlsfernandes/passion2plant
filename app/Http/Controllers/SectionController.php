@@ -346,31 +346,10 @@ class SectionController extends BaseController
     {
         $request->validate([
             'external_link' => 'nullable|string|max:1000',
-            'link_type' => 'required|in:internal,external',
         ]);
 
-        $link = trim($request->external_link);
-
-        if ($link) {
-
-            if ($request->link_type === 'internal') {
-
-                // 🔥 Always force internal normalization
-                $link = ltrim(parse_url($link, PHP_URL_PATH), '/');
-
-                $link = url($link);
-
-            } else {
-
-                // External → validate properly
-                validator(['link' => $link], [
-                    'link' => 'url',
-                ])->validate();
-            }
-        }
-
         $image->update([
-            'external_link' => $link,
+            'external_link' => $request->external_link ?: null, // 🔥 force null
         ]);
 
         return response()->json([
