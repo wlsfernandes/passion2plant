@@ -119,10 +119,20 @@
             </div>
 
             <div class="modal-body">
+
                 <input type="hidden" id="image_id">
 
-                <label class="form-label">External Link</label>
-                <input type="text" id="external_link" class="form-control" placeholder="https://example.com">
+                {{-- Link Type --}}
+                <label class="form-label">Link Type</label>
+                <select id="link_type" class="form-select mb-3">
+                    <option value="external">External URL</option>
+                    <option value="internal">Internal Page</option>
+                </select>
+
+                {{-- SINGLE INPUT --}}
+                <label class="form-label" id="link_label">External Link</label>
+                <input type="text" id="link_input" class="form-control" placeholder="https://example.com">
+
             </div>
 
             <div class="modal-footer">

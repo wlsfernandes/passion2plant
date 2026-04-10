@@ -274,26 +274,93 @@
                     alert('Something went wrong');
                 });
         }
-
+        /* save link to multiple images */
         document.addEventListener("DOMContentLoaded", function() {
 
             // Open modal
             document.querySelectorAll('.edit-link-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
 
+                    let link = this.dataset.link || '';
+
                     document.getElementById('image_id').value = this.dataset.id;
-                    document.getElementById('external_link').value = this.dataset.link || '';
+
+                    let typeSelect = document.getElementById('link_type');
+                    let input = document.getElementById('link_input');
+                    let label = document.getElementById('link_label');
+
+                    // 🔥 Detect type
+                    if (link.includes(window.location.origin)) {
+
+                        typeSelect.value = 'internal';
+
+                        let path = link.replace(window.location.origin + '/', '');
+
+                        input.value = '/' + path;
+
+                        label.innerText = 'Internal Link';
+                        input.placeholder = '/about-us';
+
+                    } else {
+
+                        typeSelect.value = 'external';
+
+                        input.value = link;
+
+                        label.innerText = 'External Link';
+                        input.placeholder = 'https://example.com';
+                    }
 
                     let modal = new bootstrap.Modal(document.getElementById('linkModal'));
                     modal.show();
                 });
             });
+            document.getElementById('link_type').addEventListener('change', function() {
 
+                let isInternal = this.value === 'internal';
+
+                let input = document.getElementById('link_input');
+                let label = document.getElementById('link_label');
+
+                if (isInternal) {
+                    label.innerText = 'Internal Link';
+                    input.placeholder = '/about-us';
+                } else {
+                    label.innerText = 'External Link';
+                    input.placeholder = 'https://example.com';
+                }
+
+            });
             // Save link
             document.getElementById('saveLinkBtn').addEventListener('click', function() {
 
                 let id = document.getElementById('image_id').value;
-                let link = document.getElementById('external_link').value;
+                let type = document.getElementById('link_type').value;
+
+                let value = document.getElementById('link_input').value.trim();
+
+                console.log('TYPE:', type);
+                console.log('INPUT:', value);
+
+                if (!value) {
+                    alert('Please enter a link');
+                    return;
+                }
+
+                let link = '';
+
+                if (type === 'internal') {
+
+                    value = value.replace(window.location.origin, '');
+                    value = value.replace(/^\/+/, '');
+
+                    link = window.location.origin + '/' + value;
+
+                } else {
+                    link = value;
+                }
+
+                console.log('FINAL LINK:', link);
 
                 fetch(`/admin/section-images/${id}/link`, {
                         method: 'POST',
@@ -302,14 +369,13 @@
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
                         body: JSON.stringify({
-                            external_link: link
+                            external_link: link,
+                            link_type: type
                         })
                     })
                     .then(res => res.json())
                     .then(data => {
-                        if (data.success) {
-                            location.reload(); // simple & safe
-                        }
+                        if (data.success) location.reload();
                     });
 
             });

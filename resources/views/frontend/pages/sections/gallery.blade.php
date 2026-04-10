@@ -24,11 +24,19 @@
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                         <div class="gallery-main">
 
+                            @if ($image->external_link)
+                                <a href="{{ $image->external_link }}" target="_blank">
+                            @endif
+
                             <img src="{{ route('admin.images.preview', [
                                 'model' => 'section_images',
                                 'id' => $image->id,
                             ]) }}"
                                 alt="Gallery Image">
+
+                            @if ($image->external_link)
+                                </a>
+                            @endif
 
                         </div>
                     </div>

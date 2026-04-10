@@ -345,11 +345,32 @@ class SectionController extends BaseController
     public function updateLink(Request $request, SectionImage $image)
     {
         $request->validate([
-            'external_link' => 'nullable|url|max:1000',
+            'external_link' => 'nullable|string|max:1000',
+            'link_type' => 'required|in:internal,external',
         ]);
 
+        $link = trim($request->external_link);
+
+        if ($link) {
+
+            if ($request->link_type === 'internal') {
+
+                // 🔥 Always force internal normalization
+                $link = ltrim(parse_url($link, PHP_URL_PATH), '/');
+
+                $link = url($link);
+
+            } else {
+
+                // External → validate properly
+                validator(['link' => $link], [
+                    'link' => 'url',
+                ])->validate();
+            }
+        }
+
         $image->update([
-            'external_link' => $request->external_link,
+            'external_link' => $link,
         ]);
 
         return response()->json([
