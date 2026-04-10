@@ -28,6 +28,9 @@
                 <option value="event"
                     {{ old('feature_type', $section->feature_type ?? '') == 'event' ? 'selected' : '' }}>Event
                 </option>
+                <option value="membership"
+                    {{ old('feature_type', $section->feature_type ?? '') == 'membership' ? 'selected' : '' }}>Membership
+                </option>
                 <option value="resource"
                     {{ old('feature_type', $section->feature_type ?? '') == 'resource' ? 'selected' : '' }}>Resource
                 </option>

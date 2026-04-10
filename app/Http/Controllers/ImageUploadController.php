@@ -21,6 +21,7 @@ class ImageUploadController extends BaseController
         'donations' => \App\Models\Donation::class,
         'educators' => \App\Models\Educator::class,
         'media-types' => \App\Models\MediaType::class,
+        'memberships' => \App\Models\Membership::class,
         'gallery-images' => \App\Models\GalleryImage::class,
         'collaborators' => \App\Models\Collaborator::class,
         'collaborator-images' => \App\Models\CollaboratorImage::class,

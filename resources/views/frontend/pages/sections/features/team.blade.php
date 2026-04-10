@@ -31,7 +31,8 @@
                                 {{-- Image --}}
                                 <div class="thumb">
                                     <img src="{{ route('admin.images.preview', ['model' => 'teams', 'id' => $team->id]) }}"
-                                        alt="{{ $team->name }}" class="img-fluid w-100" loading="lazy">
+                                        alt="{{ $team->name }}" class="img-fluid w-100" loading="lazy"
+                                        style="object-position: top;">
                                 </div>
 
                                 {{-- Content --}}

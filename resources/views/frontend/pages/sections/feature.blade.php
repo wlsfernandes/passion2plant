@@ -5,6 +5,7 @@
         'contact' => 'frontend.pages.sections.features.contact',
         'donate' => 'frontend.pages.sections.features.donate',
         'event' => 'frontend.pages.sections.features.event',
+        'membership' => 'frontend.pages.sections.features.membership',
         'position' => 'frontend.pages.sections.features.position',
         'resource' => 'frontend.pages.sections.features.resource',
         'service' => 'frontend.pages.sections.features.service',

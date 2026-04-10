@@ -10,6 +10,7 @@ use App\Models\Donation;
 use App\Models\Educator;
 use App\Models\Event;
 use App\Models\Footer;
+use App\Models\Membership;
 use App\Models\MenuItem;
 use App\Models\Page;
 use App\Models\Partner;
@@ -85,6 +86,9 @@ class ViewServiceProvider extends ServiceProvider
             $featuredDonations = Donation::inRandomOrder()
                 ->limit(3)
                 ->get();
+            $featuredMemberships = Membership::inRandomOrder()
+                ->limit(3)
+                ->get();
             $menu = MenuItem::query()
                 ->main()
                 ->with('children')
@@ -103,6 +107,7 @@ class ViewServiceProvider extends ServiceProvider
             $resources = Resource::visible()->latest()->get();
             $books = BookRecommendation::latest()->get();
             $donations = Donation::latest()->get();
+            $memberships = Membership::latest()->get();
 
             $view->with([
                 'settings' => $settings,
@@ -131,6 +136,8 @@ class ViewServiceProvider extends ServiceProvider
                 'donations' => $donations,
                 'footerMenu' => $footerMenu,
                 'educatorLogos' => $educatorLogos,
+                'featuredMemberships' => $featuredMemberships,
+                'memberships' => $memberships,
 
             ]);
         });

@@ -196,7 +196,11 @@
                                     <i class="uil uil-heart"></i> Donations
                                 </a>
                             </li>
-
+                            <li>
+                                <a href="{{ route('memberships.index') }}">
+                                    <i class="uil uil-user"></i> Memberships
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{ route('products.index') }}">
                                     <i class="uil uil-box"></i> Products
@@ -204,7 +208,11 @@
                             </li>
 
                             <li class="menu-title">Sales</li>
-
+                            <li>
+                                <a href="{{ route('members.index') }}">
+                                    <i class="uil uil-users-alt"></i> Members
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{ route('orders.index') }}">
                                     <i class="uil uil-box"></i> Orders

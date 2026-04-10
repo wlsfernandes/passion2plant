@@ -20,6 +20,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaTypeController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
@@ -121,6 +123,18 @@ Route::get('/donate-success', function () {
     return view('frontend.donations.success');
 })->name('donations.success');
 
+/* Memberships */
+Route::get('/membership/{membership}', [MembershipController::class, 'checkout'])->name('memberships.checkout');
+// Step 1 → Information page
+Route::get('/membership/{membership}/information', [MembershipController::class, 'information'])->name('memberships.information');
+Route::post('/membership/{membership}/checkout', [MembershipController::class, 'startCheckout'])->name('memberships.startCheckout');
+
+Route::get('/membership-success', function () {
+    return view('frontend.memberships.success');
+})->name('memberships.success');
+
+Route::get('/welcome-member', [MembershipController::class, 'welcomeMember'])->name('welcome-member');
+
 /* Store */
 Route::get('/store', [StoreController::class, 'indexPublic'])->name('stores.index.public');
 Route::get('/store/{slug}', [StoreController::class, 'show'])->name('store.products.show');
@@ -189,6 +203,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('products', ProductController::class);
     Route::resource('stores', StoreController::class);
     Route::resource('wikipedias', WikipediaController::class);
+    Route::resource('members', MemberController::class);
 
 });
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -245,6 +260,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::resource('blogs', BlogController::class);
     Route::resource('book-recommendations', BookRecommendationController::class);
     Route::resource('donations', DonationController::class);
+    Route::resource('memberships', MembershipController::class);
     Route::resource('events', EventController::class);
     Route::resource('gallery-images', GalleryImageController::class);
     Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
