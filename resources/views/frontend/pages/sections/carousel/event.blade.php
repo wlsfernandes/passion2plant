@@ -1,5 +1,6 @@
 @php
     use Illuminate\Support\Str;
+    $isSingle = $donations->count() === 1;
 @endphp
 
 <section class="event__section pt-130 pb-130 overhid" style="{{ $section->style }}">
@@ -7,7 +8,8 @@
         @include('frontend.pages.sections.partials.content')
         <div class="row g-4">
             @foreach ($featuredEvents as $event)
-                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 wow fadeInUp">
+                <div class="{{ $isSingle ? 'col-md-6 col-lg-4 mx-auto' : 'col-xxl-4 col-xl-4 col-lg-4 col-md-6' }} wow fadeInUp"
+                    data-wow-duration="{{ 3 + ($loop->index % 3) * 2 }}s">
                     <div class="blog__items">
 
                         <div class="thumb">
