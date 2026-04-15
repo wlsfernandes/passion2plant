@@ -253,6 +253,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::post('/admin/section-images/{image}/link', [SectionController::class, 'updateLink'])->name('section-images.update-link');
     Route::get('footer', [FooterController::class, 'index'])->name('footer.index');
     Route::post('footer/save', [FooterController::class, 'save'])->name('footer.save');
+    Route::get('/footer/{footer}/edit', [FooterController::class, 'edit'])->name('footer.edit');
 
     // Content
     Route::resource('abouts', AboutController::class);

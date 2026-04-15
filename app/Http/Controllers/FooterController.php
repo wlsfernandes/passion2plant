@@ -28,6 +28,11 @@ class FooterController extends BaseController
     {
         $footer = Footer::first();
 
+        return view('admin.footer.index', compact('footer'));
+    }
+
+    public function edit(Footer $footer)
+    {
         return view('admin.footer.form', compact('footer'));
     }
 

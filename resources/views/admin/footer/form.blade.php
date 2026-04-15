@@ -23,7 +23,17 @@
                         @csrf
 
                         <div class="row">
-
+                            {{-- IMAGE --}}
+                            <div class="col-md-12 mb-4">
+                                {{-- Preview --}}
+                                @if (isset($footer) && $footer->image_url)
+                                    <div class="mb-4 text-center">
+                                        <div class="mb-2 fw-semibold">Current image</div>
+                                        <img src="{{ route('admin.images.preview', ['model' => 'footer', 'id' => $footer->id]) }}"
+                                            class="img-thumbnail mb-3" style="max-height: 220px;" alt="Current image">
+                                    </div>
+                                @endif
+                            </div>
                             {{-- TITLE EN --}}
                             <div class="row g-4">
 
@@ -53,21 +63,7 @@
                                 <textarea name="subtitle_es" class="form-control ckeditor" rows="3">{{ old('subtitle_es', $footer->subtitle_es ?? '') }}</textarea>
                             </div>
 
-                            {{-- IMAGE --}}
-                            <div class="col-md-12 mb-4">
-                                <label class="form-label">Footer Image</label>
 
-                                <input type="file" name="image_url" class="form-control">
-
-                                {{-- Preview --}}
-                                @if (isset($footer) && $footer->image_url)
-                                    <div class="mb-4 text-center">
-                                        <div class="mb-2 fw-semibold">Current image</div>
-                                        <img src="{{ route('admin.images.preview', ['model' => 'footer', 'id' => $footer->id]) }}"
-                                            class="img-thumbnail mb-3" style="max-height: 220px;" alt="Current image">
-                                    </div>
-                                @endif
-                            </div>
 
                         </div>
 
