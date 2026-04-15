@@ -3,60 +3,65 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Auditable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Media extends Model
 {
-  use Auditable;
+    protected $table = 'media';
 
-  protected $fillable = [
-    'media_type_id',
-    'title_en',
-    'title_es',
-    'description_en',
-    'description_es',
-    'external_link',
-    'published_at',
-    'is_published',
-  ];
+    /**
+     * Mass assignable fields
+     */
+    protected $fillable = [
+        'disk',
+        'path',
+        'folder',
+        'filename',
+        'original_name',
+        'mime_type',
+        'extension',
+        'size',
+        'title',
+        'alt_text',
+        'uploaded_by',
+    ];
 
-  protected $casts = [
-    'is_published' => 'boolean',
-    'published_at' => 'date',
-  ];
+    /**
+     * Default attributes
+     */
+    protected $attributes = [
+        'disk' => 's3',
+    ];
 
-  /* ============================
-   | Relationships
-   ============================ */
-  public function type()
-  {
-    return $this->belongsTo(MediaType::class, 'media_type_id');
-  }
+    /**
+     * Relationships
+     */
 
-  /* ============================
-   | Localization Accessors
-   ============================ */
-  public function getTitleAttribute(): string
-  {
-    $locale = app()->getLocale();
+    public function uploader(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'uploaded_by');
+    }
 
-    return $this->{'title_' . $locale}
-      ?? $this->title_en;
-  }
+    /**
+     * Helpers
+     */
 
-  public function getDescriptionAttribute(): ?string
-  {
-    $locale = app()->getLocale();
+    /**
+     * Get full URL (optional helper)
+     */
+    public function getUrlAttribute(): string
+    {
+        return \Storage::disk($this->disk)->url($this->path);
+    }
 
-    return $this->{'description_' . $locale}
-      ?? $this->description_en;
-  }
-
-  /* ============================
-   | Scopes
-   ============================ */
-  public function scopeVisible($query)
-  {
-    return $query->where('is_published', true);
-  }
+    /**
+     * Get file name nicely
+     */
+    public function getDisplayNameAttribute(): string
+    {
+        return $this->title
+            ?? $this->original_name
+            ?? $this->filename
+            ?? 'file';
+    }
 }
