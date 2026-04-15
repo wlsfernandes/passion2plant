@@ -148,10 +148,9 @@
                     </div>
                 @endif
                 <div class="mb-3">
-                    <input type="file" name="image_url" class="form-control mt-3" accept="image/*">
-                    <small class="text-muted">
-                        Recommended: 1920x720px (or similar ratio)
-                    </small>
+                    <p class="text-muted">
+                        Create the banner details first, then add the banner image.
+                    </p>
                 </div>
                 {{-- =======================
                 Actions

@@ -34,7 +34,7 @@
             </div>
 
             {{-- Current image preview --}}
-            @if ($image)
+            @if (isset($image) && $image)
                 <div class="mb-4 text-center">
                     <div class="mb-2 fw-semibold">Current image</div>
 
@@ -66,6 +66,10 @@
 
                     <select name="image_type" class="form-select" required>
                         {{-- Smart defaults based on modelKey --}}
+                        <option value="section" {{ old('image_type', $defaultType) === 'section' ? 'selected' : '' }}>
+                            Section (Crop) — 800 × 800
+                        </option>
+
                         <option value="banner" {{ old('image_type', $defaultType) === 'banner' ? 'selected' : '' }}>
                             Banner (Crop) — 1920 × 600
                         </option>
@@ -170,4 +174,59 @@
             </form>
         </div>
     </div>
+    {{-- MEDIA LIBRARY --}}
+    @if (isset($media) && $media->count())
+        <div class="mt-5">
+            <h5 class="mb-3">
+                <i class="uil uil-images"></i>
+                Media Library
+            </h5>
+
+            <div class="row">
+                @foreach ($media as $item)
+                    <div class="col-md-2 mb-3">
+                        <div class="card h-100 text-center p-2">
+
+                            <img src="{{ Storage::disk($item->disk)->url($item->path) }}" class="img-fluid mb-2"
+                                style="height:100px; object-fit:cover; cursor:pointer;"
+                                onclick="selectImage('{{ $item->path }}')">
+
+                            <button type="button" class="btn btn-sm btn-outline-primary"
+                                onclick="selectImage('{{ $item->path }}')">
+                                Use
+                            </button>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+@endsection
+@section('scripts')
+    <script>
+        function selectImage(path) {
+
+            if (!confirm('Use this image?')) return;
+
+            let form = document.createElement('form');
+            form.method = 'POST';
+            form.action = "{{ route('admin.images.update', ['model' => $modelKey, 'id' => $model->id]) }}";
+
+            let csrf = document.createElement('input');
+            csrf.type = 'hidden';
+            csrf.name = '_token';
+            csrf.value = "{{ csrf_token() }}";
+
+            let imagePath = document.createElement('input');
+            imagePath.type = 'hidden';
+            imagePath.name = 'existing_image';
+            imagePath.value = path;
+
+            form.appendChild(csrf);
+            form.appendChild(imagePath);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
 @endsection

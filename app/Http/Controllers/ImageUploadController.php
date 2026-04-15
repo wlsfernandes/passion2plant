@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\S3;
+use App\Models\Media;
 use App\Services\SystemLogger;
 use Aws\S3\S3Client;
 use Illuminate\Database\Eloquent\Model;
@@ -110,32 +111,40 @@ class ImageUploadController extends BaseController
         $instance = $this->resolveModel($model, $id);
 
         $defaultType = match ($model) {
-            // 🔵 Hero / top sections
             'banners', 'pages' => 'banner',
-            // 🟣 Content & sharing
             'blogs', 'posts', 'news' => 'blog_social',
-            // 🟠 Events
             'event', 'events' => 'event_header',
-            // 🟢 Cards / UI blocks
             'cards', 'services', 'features' => 'card',
-            // 🟡 People / profiles
             'users', 'team', 'speakers', 'authors' => 'square',
-            // 🔷 Branding
             'logos', 'partners', 'sponsors', 'institutions', 'educators' => 'logo',
-            // ⚪ Fallback
             default => 'original_fit',
         };
+
+        // ✅ Load media (latest first)
+        $media = Media::latest()->limit(50)->get();
 
         return view('admin.images.edit', [
             'modelKey' => $model,
             'model' => $instance,
             'image' => $instance->image_url,
-            'defaultType' => $defaultType, // 👈 pass it to Blade
+            'defaultType' => $defaultType,
+            'media' => $media, // 👈 NEW
         ]);
     }
 
     public function update(Request $request, string $model, int $id)
     {
+        // Upload from Media Library
+        if ($request->filled('existing_image')) {
+
+            $instance = $this->resolveModel($model, $id);
+
+            $instance->update([
+                'image_url' => $request->input('existing_image'),
+            ]);
+
+            return back()->with('success', 'Image selected successfully.');
+        }
         $request->validate([
             'image' => 'required|image|max:5120',
             'image_type' => 'required|in:banner,blog_social,event_header,card,square,logo,original_fit',

@@ -7,7 +7,7 @@
     <div class="card-body">
 
         <div class="mb-3">
-            <label class="form-label">carousel Type</label>
+            <label class="form-label">Carousel</label>
 
             <select name="carousel_type" class="form-control" required>
                 <option value="">Select carousel</option>

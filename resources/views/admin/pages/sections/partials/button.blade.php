@@ -9,7 +9,7 @@
         <div class="row g-4">
 
             <div class="col-md-6">
-                <label class="form-label">Button Text</label>
+                <label class="form-label">Describe Button Text:</label>
 
                 <input type="text" name="button_text" class="form-control"
                     value="{{ old('button_text', $section->button_text ?? '') }}">
@@ -20,7 +20,7 @@
             </div>
 
             <div class="col-md-6">
-                <label class="form-label">Button Link</label>
+                <label class="form-label">Insert Button External Link:</label>
 
                 <input type="url" name="external_link" class="form-control"
                     value="{{ old('external_link', $section->external_link ?? '') }}">
@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-md-6">
-                <label class="form-label">Button Position</label>
+                <label class="form-label">Select Button Position:</label>
 
                 <select name="button_position" class="form-select">
 
@@ -57,7 +57,7 @@
             </div>
 
             <div class="col-md-6">
-                <label class="form-label">Button Color</label>
+                <label class="form-label">Select Button Color:</label>
 
                 <select name="button_color" class="form-select">
 

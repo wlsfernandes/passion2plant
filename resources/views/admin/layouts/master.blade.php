@@ -58,7 +58,7 @@
     <script src="{{ asset('assets/admin/js/ckeditor-init.js') }}"></script>
 
 
-    @yield('script')
+    @yield('scripts')
     @yield('script-bottom')
 
 </body>

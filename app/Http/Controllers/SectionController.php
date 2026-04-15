@@ -65,6 +65,7 @@ class SectionController extends BaseController
      */
     public function create(Page $page): View
     {
+
         return view('admin.pages.sections.form', compact('page'));
     }
 
