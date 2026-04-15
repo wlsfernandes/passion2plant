@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SocialLink;
 use App\Enums\SocialPlatform;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Enum;
+use App\Models\SocialLink;
 use App\Services\SystemLogger;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Enum;
+
 
 class SocialLinkController extends BaseController
 {
@@ -29,7 +30,7 @@ class SocialLinkController extends BaseController
                     if ($query->exists()) {
                         $fail('This social platform already exists.');
                     }
-                }
+                },
             ],
 
             'url' => ['required', 'url'],

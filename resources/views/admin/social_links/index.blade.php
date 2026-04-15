@@ -31,12 +31,12 @@
                 </thead>
 
                 <tbody>
-                    @foreach($socialLinks as $link)
+                    @foreach ($socialLinks as $link)
                         <tr>
                             {{-- Platform --}}
                             <td>
-                                <i class="{{ $link->icon() }} me-1"></i>
-                                {{ $link->label() }}
+                                <i class="{{ $link->icon }} me-1"></i>
+                                {{ $link->label }}
                             </td>
 
                             {{-- URL --}}

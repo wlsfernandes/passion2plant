@@ -127,25 +127,6 @@
 
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#" class="has-arrow waves-effect">
-                                    <i class="uil uil-channel"></i>
-                                    <span>Engagement</span>
-                                </a>
-
-                                <ul class="sub-menu">
-
-                                    <li>
-                                        <a href="{{ route('media.index') }}">
-                                            <i class="uil uil-play-circle"></i> Media
-                                        </a>
-                                    </li>
-
-
-
-
-                                </ul>
-                            </li>
 
                             {{-- Configuration --}}
                             <li>
