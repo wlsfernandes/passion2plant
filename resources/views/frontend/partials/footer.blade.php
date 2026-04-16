@@ -7,7 +7,6 @@
                 {{-- COLUMN 1: LOGO + TEXT + SOCIAL --}}
                 <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="footer__widget">
-
                         {{-- LOGO (FROM SETTINGS) --}}
                         <div class="widget__head mb-4">
                             <a href="{{ url('/') }}" class="logo site-logo">
@@ -15,19 +14,17 @@
                                     alt="{{ $settings->site_name ?? config('app.name') }}" style="max-height:80px;">
                             </a>
                         </div>
-
                         {{-- SUBTITLE --}}
-                        <p class="mb-4">
-                        <div class="cms-html mb-3">
-                            {!! app()->getLocale() === 'es' ? $footer->title_es ?? '' : $footer->title_en ?? '' !!}
+                        <p>
+                        <div class="cms-html">
+                            {!! $footer->title_es ?? '' !!}
                         </div>
                         </p>
-                        <p class="mb-4">
-                        <div class="cms-html mb-3">
-                            {!! app()->getLocale() === 'es' ? $footer->subtitle_es ?? '' : $footer->subtitle_en ?? '' !!}
+                        <p>
+                        <div class="cms-html">
+                            {!! $footer->subtitle_es ?? '' !!}
                         </div>
                         </p>
-
                         {{-- SOCIAL --}}
                         <ul class="social__icon footer__social  mb-3">
                             @foreach ($socialLinks as $social)

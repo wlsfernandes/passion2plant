@@ -45,6 +45,25 @@
 }
 
 /* ------------------------------------- */
+/* ALIGN default left */
+.cms-html {
+    text-align: left;
+}
+
+/* Respect CKEditor inline styles */
+.cms-html *[style*="text-align:center"] {
+    text-align: center !important;
+}
+
+.cms-html *[style*="text-align:right"] {
+    text-align: right !important;
+}
+
+.cms-html *[style*="text-align:justify"] {
+    text-align: justify !important;
+}
+
+/* ------------------------------------- */
 /* Blockquote cleanup */
 /* ------------------------------------- */
 

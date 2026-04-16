@@ -45,7 +45,8 @@ class ViewServiceProvider extends ServiceProvider
 
             $featuredTeams = Team::visible()
                 ->with('sectors')
-                ->orderBy('name') // alphabetical
+                ->orderBy('last_name')
+                ->orderBy('first_name')
                 ->get();
 
             $partnerLogos = Partner::visible()->get();

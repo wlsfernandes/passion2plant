@@ -79,11 +79,17 @@
                 </div>
                 <div class="row g-4">
 
-                    <div class="col-md-12">
-                        <label class="form-label">Name</label>
-                        <textarea name="name" class="form-control ckeditor-title" rows="3">{{ old('name', $team->name ?? '') }}</textarea>
+                    <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <textarea name="first_name" class="form-control ckeditor-title" rows="3">{{ old('first_name', $team->first_name ?? '') }}</textarea>
                     </div>
-                    @error('name')
+
+                    <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <textarea name="last_name" class="form-control ckeditor-title" rows="3">{{ old('last_name', $team->last_name ?? '') }}</textarea>
+                    </div>
+
+                    @error('last_name')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

@@ -15,4 +15,14 @@ class Footer extends Model
         'subtitle_es',
         'image_url',
     ];
+
+    public function getTitleAttribute()
+    {
+        return app()->getLocale() === 'es' ? $this->title_es : $this->title_en;
+    }
+
+    public function getSubtitleAttribute()
+    {
+        return app()->getLocale() === 'es' ? $this->subtitle_es : $this->subtitle_en;
+    }
 }

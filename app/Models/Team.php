@@ -14,6 +14,8 @@ class Team extends Model
 
     protected $fillable = [
         'name',
+        'first_name',
+        'last_name',
         'slug',
         'role',
         'content_en',
@@ -74,5 +76,14 @@ class Team extends Model
     public function scopeVisible($query)
     {
         return $query->where('is_published', true);
+    }
+
+    public function getDisplayNameAttribute()
+    {
+        if ($this->first_name || $this->last_name) {
+            return trim($this->first_name.' '.$this->last_name);
+        }
+
+        return $this->name;
     }
 }

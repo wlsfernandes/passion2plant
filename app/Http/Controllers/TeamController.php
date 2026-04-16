@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Helpers\S3;
@@ -17,14 +18,16 @@ class TeamController extends BaseController
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'name'         => ['required', 'string', 'max:255'],
-            'role'         => ['nullable', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['nullable', 'string', 'max:255'],
+            'role' => ['nullable', 'string', 'max:255'],
             // ✅ NEW multi-sector validation
-            'sectors'      => ['required', 'array', 'min:1'],
-            'sectors.*'    => ['integer', 'exists:sectors,id'],
-            'content_en'   => ['nullable', 'string'],
-            'content_es'   => ['nullable', 'string'],
-            'image_url'    => ['nullable', 'string'],
+            'sectors' => ['required', 'array', 'min:1'],
+            'sectors.*' => ['integer', 'exists:sectors,id'],
+            'content_en' => ['nullable', 'string'],
+            'content_es' => ['nullable', 'string'],
+            'image_url' => ['nullable', 'string'],
             'is_published' => ['nullable', 'boolean'],
         ]);
     }
@@ -66,6 +69,7 @@ class TeamController extends BaseController
     public function create()
     {
         $sectors = Sector::all();
+
         return view('admin.teams.form', compact('sectors'));
     }
 
@@ -86,11 +90,12 @@ class TeamController extends BaseController
                 'teams.store',
                 [
                     'team_id' => $team->id,
-                    'slug'    => $team->slug,
-                    'email'   => $request->email,
+                    'slug' => $team->slug,
+                    'email' => $request->email,
                 ]
             );
             $team->sectors()->sync($request->input('sectors', []));
+
             return redirect()
                 ->route('teams.index')
                 ->with('success', 'Team member created successfully.');
@@ -102,7 +107,7 @@ class TeamController extends BaseController
                 'teams.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email'     => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -118,6 +123,7 @@ class TeamController extends BaseController
     public function edit(Team $team)
     {
         $sectors = Sector::all();
+
         return view('admin.teams.form', compact('team', 'sectors'));
     }
 
@@ -138,8 +144,8 @@ class TeamController extends BaseController
                 'teams.update',
                 [
                     'team_id' => $team->id,
-                    'slug'    => $team->slug,
-                    'email'   => $request->email,
+                    'slug' => $team->slug,
+                    'email' => $request->email,
                 ]
             );
 
@@ -153,9 +159,9 @@ class TeamController extends BaseController
                 'error',
                 'teams.update',
                 [
-                    'team_id'   => $team->id,
+                    'team_id' => $team->id,
                     'exception' => $e->getMessage(),
-                    'email'     => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -184,7 +190,7 @@ class TeamController extends BaseController
                 'teams.delete',
                 [
                     'team_id' => $team->id,
-                    'email'   => request()->email,
+                    'email' => request()->email,
                 ]
             );
 
@@ -198,9 +204,9 @@ class TeamController extends BaseController
                 'error',
                 'teams.delete',
                 [
-                    'team_id'   => $team->id,
+                    'team_id' => $team->id,
                     'exception' => $e->getMessage(),
-                    'email'     => request()->email,
+                    'email' => request()->email,
                 ]
             );
 
