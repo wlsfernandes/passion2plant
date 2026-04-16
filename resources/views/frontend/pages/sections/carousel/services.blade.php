@@ -23,14 +23,18 @@
 
                         {{-- Content --}}
                         <div class="content">
-                            <h5>
+                            <p>
+                            <div class=cms-content>
                                 <a href="{{ route('services.display', $service->slug) }}">
-                                    {{ $service->getTitle() }}
+                                    {!! $service->getTitle() !!}
                                 </a>
-                            </h5>
+                            </div>
+                            </p>
 
                             <p>
-                                {{ Str::limit(strip_tags($service->getContent()), 120) }}
+                            <div class=cms-content>
+                                {!! Str::limit(strip_tags($service->getContent()), 120) !!}
+                            </div>
                             </p>
 
                             <a href="{{ route('services.display', $service->slug) }}"
