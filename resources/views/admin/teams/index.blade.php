@@ -60,7 +60,7 @@
 
                             {{-- Name --}}
                             <td>
-                                <strong>{{ strip_tags($team->name) }}</strong>
+                                <strong>{{ strip_tags($team->display_name) }}</strong>
                             </td>
 
                             {{-- Role --}}

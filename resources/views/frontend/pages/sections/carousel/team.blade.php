@@ -21,7 +21,7 @@
 
                                 <h5 class="mb-2">
                                     <a href="{{ route('team.profile', strip_tags($team->slug)) }}">
-                                        {!! $team->name !!}
+                                        {!! $team->display_name !!}
                                     </a>
                                 </h5>
 

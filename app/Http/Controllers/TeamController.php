@@ -18,9 +18,8 @@ class TeamController extends BaseController
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'name' => ['required', 'string', 'max:255'],
             'first_name' => ['nullable', 'string', 'max:255'],
-            'last_name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'role' => ['nullable', 'string', 'max:255'],
             // ✅ NEW multi-sector validation
             'sectors' => ['required', 'array', 'min:1'],

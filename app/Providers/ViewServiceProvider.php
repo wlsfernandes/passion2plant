@@ -68,9 +68,7 @@ class ViewServiceProvider extends ServiceProvider
             $events = Event::visible()
                 ->orderByDesc('created_at')
                 ->get();
-            $teams = Team::visible()
-                ->orderByDesc('created_at')
-                ->get();
+            $teams = Team::visible()->get();
             $services = Service::visible()
                 ->orderByDesc('created_at')
                 ->get();
@@ -102,7 +100,7 @@ class ViewServiceProvider extends ServiceProvider
             $sectors = Sector::orderBy('id')
                 ->with(['teams' => function ($query) {
                     $query->visible()
-                        ->orderBy('name');
+                        ->orderBy('last_name')->orderBy('first_name');
                 }])
                 ->get();
             $resources = Resource::visible()->latest()->get();

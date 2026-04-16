@@ -81,12 +81,14 @@
 
                     <div class="col-md-6">
                         <label class="form-label">First Name</label>
-                        <textarea name="first_name" class="form-control ckeditor-title" rows="3">{{ old('first_name', $team->first_name ?? '') }}</textarea>
+                        <input type="text" name="first_name" class="form-control"
+                            value="{{ old('first_name', $team->first_name ?? '') }}">
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label">Last Name</label>
-                        <textarea name="last_name" class="form-control ckeditor-title" rows="3">{{ old('last_name', $team->last_name ?? '') }}</textarea>
+                        <input type="text" name="last_name" class="form-control"
+                            value="{{ old('last_name', $team->last_name ?? '') }}">
                     </div>
 
                     @error('last_name')

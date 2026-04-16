@@ -50,7 +50,7 @@
 
                                     {{-- Name (clean, no HTML) --}}
                                     <h6 class="mb-1">
-                                        {{ Str::limit(strip_tags($team->name), 60) }}
+                                        {{ Str::limit(strip_tags($team->display_name), 60) }}
                                     </h6>
 
                                     {{-- Role (optional, clean) --}}
