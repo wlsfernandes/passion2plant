@@ -19,21 +19,25 @@
                         <div class="thumb">
                             <a href="{{ route('services.display', $service->slug) }}">
                                 <img src="{{ route('admin.images.preview', ['model' => 'services', 'id' => $service->id]) }}"
-                                    alt="{{ $service->getTitle() }}" loading="lazy">
+                                    loading="lazy">
                             </a>
                         </div>
 
                         {{-- Content --}}
                         <div class="content">
 
-                            <h5>
+                            <p>
+                            <div class=cms-content>
                                 <a href="{{ route('services.display', $service->slug) }}">
-                                    {{ $service->getTitle() }}
+                                    {!! $service->getTitle() !!}
                                 </a>
-                            </h5>
+                            </div>
+                            </p>
 
                             <p>
-                                {{ Str::limit(strip_tags($service->getContent()), 120) }}
+                            <div class=cms-content>
+                                {!! Str::limit(strip_tags($service->getContent()), 120) !!}
+                            </div>
                             </p>
 
                             <a href="{{ route('services.display', $service->slug) }}"

@@ -67,8 +67,8 @@
 
                 {{-- Description EN --}}
                 <div class="mb-3">
-                    <textarea class="form-control ckeditor" id="description_en" name="description_en" rows="6"
-                        placeholder="Describe the service in English...">{{ old('description_en', $service->description_en ?? '') }}</textarea>
+                    <textarea class="form-control ckeditor" id="content_en" name="content_en" rows="6"
+                        placeholder="Describe the service in English...">{{ old('content_en', $service->content_en ?? '') }}</textarea>
 
                     <small class="text-muted">
                         Short description shown on the website.
@@ -77,8 +77,8 @@
 
                 {{-- Description ES --}}
                 <div class="mb-3">
-                    <textarea class="form-control ckeditor" id="description_es" name="description_es" rows="6"
-                        placeholder="Describa el servicio en español...">{{ old('description_es', $service->description_es ?? '') }}</textarea>
+                    <textarea class="form-control ckeditor" id="content_es" name="content_es" rows="6"
+                        placeholder="Describa el servicio en español...">{{ old('content_es', $service->content_es ?? '') }}</textarea>
                 </div>
 
                 <hr>
