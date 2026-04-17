@@ -31,17 +31,37 @@ class ViewServiceProvider extends ServiceProvider
     {
         view()->composer('frontend.*', function ($view) {
 
-            $settings = Setting::query()->first();
+            $aboutSections = About::visible()->get()->keyBy('section');
 
-            $footer = Footer::query()->first();
-
-            $socialLinks = SocialLink::query()
-                ->where('is_published', true)
-                ->ordered()
+            $blogs = Blog::visible()
+                ->orderByDesc('created_at')
                 ->get();
 
-            $aboutSections = About::visible()->get()->keyBy('section');
-            $featuredTestimonials = Testimonial::visible()->get();
+            $books = BookRecommendation::latest()->get();
+
+            $collaborators = Collaborator::visible()
+                ->orderBy('order')
+                ->get();
+
+            $donations = Donation::latest()->get();
+
+            $educatorLogos = Educator::visible()->get();
+
+            $events = Event::visible()
+                ->orderByDesc('created_at')
+                ->get();
+
+            $featuredBlogs = Blog::visible()
+                ->latest()
+                ->limit(3)
+                ->get();
+
+            $featuredEvents = Event::visible()
+                ->latest()
+                ->limit(3)
+                ->get();
+
+            $featuredMemberships = Membership::all();
 
             $featuredTeams = Team::visible()
                 ->with('sectors')
@@ -49,62 +69,57 @@ class ViewServiceProvider extends ServiceProvider
                 ->orderBy('first_name')
                 ->get();
 
-            $partnerLogos = Partner::visible()->get();
+            $featuredTestimonials = Testimonial::visible()->get();
 
-            $educatorLogos = Educator::visible()->get();
+            $footer = Footer::query()->first();
 
-            $featuredServices = Service::visible()
-                ->latest()
-                ->limit(3)
-                ->get();
-
-            $featuredBlogs = Blog::visible()
-                ->latest()
-                ->limit(3)
-                ->get();
-            $blogs = Blog::visible()
-                ->orderByDesc('created_at')
-                ->get();
-            $events = Event::visible()
-                ->orderByDesc('created_at')
-                ->get();
-            $teams = Team::visible()->get();
-            $services = Service::visible()
-                ->orderByDesc('created_at')
+            $footerMenu = MenuItem::query()
+                ->main()
+                ->orderBy('order')
                 ->get();
 
-            $featuredEvents = Event::visible()
-                ->latest()
-                ->limit(3)
-                ->get();
-            $pages = Page::visible()->get();
-            $positions = Position::visible()->get();
-            $projects = Project::visible()->orderBy('order')->get();
+            $memberships = Membership::latest()->get();
 
-            $collaborators = Collaborator::visible()->orderBy('order')->get();
-            $featuredDonations = Donation::inRandomOrder()
-                ->limit(3)
-                ->get();
-            $featuredMemberships = Membership::all();
             $menu = MenuItem::query()
                 ->main()
                 ->with('children')
                 ->orderBy('order')
                 ->get();
-            $footerMenu = MenuItem::query()
-                ->main()
+
+            $pages = Page::visible()->get();
+
+            $partnerLogos = Partner::visible()->get();
+
+            $positions = Position::visible()->get();
+
+            $projects = Project::visible()
                 ->orderBy('order')
                 ->get();
+
+            $resources = Resource::visible()
+                ->latest()
+                ->get();
+
             $sectors = Sector::orderBy('id')
                 ->with(['teams' => function ($query) {
                     $query->visible()
-                        ->orderBy('last_name')->orderBy('first_name');
+                        ->orderBy('last_name')
+                        ->orderBy('first_name');
                 }])
                 ->get();
-            $resources = Resource::visible()->latest()->get();
-            $books = BookRecommendation::latest()->get();
-            $donations = Donation::latest()->get();
-            $memberships = Membership::latest()->get();
+
+            $services = Service::visible()
+                ->orderByDesc('created_at')
+                ->get();
+
+            $settings = Setting::query()->first();
+
+            $socialLinks = SocialLink::query()
+                ->where('is_published', true)
+                ->ordered()
+                ->get();
+
+            $teams = Team::visible()->get();
 
             $view->with([
                 'settings' => $settings,
@@ -113,7 +128,6 @@ class ViewServiceProvider extends ServiceProvider
                 'featuredTeams' => $featuredTeams,
                 'featuredTestimonials' => $featuredTestimonials,
                 'partnerLogos' => $partnerLogos,
-                'featuredServices' => $featuredServices,
                 'featuredBlogs' => $featuredBlogs,
                 'footer' => $footer,
                 'blogs' => $blogs,
@@ -124,7 +138,6 @@ class ViewServiceProvider extends ServiceProvider
                 'pages' => $pages,
                 'projects' => $projects,
                 'collaborators' => $collaborators,
-                'featuredDonations' => $featuredDonations,
                 'menu' => $menu,
                 'sectors' => $sectors,
                 'positions' => $positions,

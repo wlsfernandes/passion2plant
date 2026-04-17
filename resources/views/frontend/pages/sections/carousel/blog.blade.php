@@ -1,7 +1,7 @@
 @php
     use Illuminate\Support\Str;
 
-    $count = $featuredDonations->count();
+    $count = $featuredBlogs->count();
     $isCentered = $count <= 2;
 @endphp
 
