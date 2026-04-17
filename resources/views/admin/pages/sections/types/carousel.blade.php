@@ -18,13 +18,15 @@
 
                 <option value="partners"
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'partners' ? 'selected' : '' }}>Partners
+                    Carousel
                 </option>
                 <option value="educators"
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'educators' ? 'selected' : '' }}>Educators
+                    Carousel
                 </option>
                 <option value="testimonial"
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'testimonial' ? 'selected' : '' }}>
-                    Testimonial</option>
+                    Testimonial Carousel</option>
 
                 <option value="services"
                     {{ old('carousel_type', $section->carousel_type ?? '') == 'services' ? 'selected' : '' }}>Services
