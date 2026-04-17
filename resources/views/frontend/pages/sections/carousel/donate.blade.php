@@ -39,7 +39,7 @@
             ========================== --}}
             <div class="row g-4 justify-content-center">
 
-                @forelse($featuredDonations as $donation)
+                @forelse($donations as $donation)
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp"
                         data-wow-duration="{{ 3 + ($loop->index % 3) * 2 }}s">
 
