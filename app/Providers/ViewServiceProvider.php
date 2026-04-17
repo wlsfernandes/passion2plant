@@ -85,9 +85,7 @@ class ViewServiceProvider extends ServiceProvider
             $featuredDonations = Donation::inRandomOrder()
                 ->limit(3)
                 ->get();
-            $featuredMemberships = Membership::inRandomOrder()
-                ->limit(3)
-                ->get();
+            $featuredMemberships = Membership::visible()->get();
             $menu = MenuItem::query()
                 ->main()
                 ->with('children')
