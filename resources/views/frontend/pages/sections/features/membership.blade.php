@@ -24,11 +24,13 @@
                         {{-- Content --}}
                         <div class="content d-flex flex-column flex-grow-1">
 
-                            <h5>
+                            <p>
+                            <div class="cms-html">
                                 <a href="{{ route('memberships.information', $membership) }}">
                                     {{ html_entity_decode(strip_tags($membership->title)) }}
                                 </a>
-                            </h5>
+                            </div>
+                            </p>
 
                             @if ($membership->amount)
                                 <span class="badge bg-soft-success text-success mb-2">
@@ -37,7 +39,9 @@
                             @endif
 
                             <p>
-                                {{ Str::limit(strip_tags($membership->description), 120) }}
+                            <div class="cms-html">
+                                {!! $membership->description !!}
+                            </div>
                             </p>
 
                             {{-- Button --}}
