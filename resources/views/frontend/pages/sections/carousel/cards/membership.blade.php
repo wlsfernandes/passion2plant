@@ -11,9 +11,9 @@
     {{-- Content --}}
     <div class="content d-flex flex-column flex-grow-1">
 
-        <div class="cms_content mb-2">
+        <div class="cms_content">
             <a href="{{ route('memberships.information', $membership) }}">
-                {!! strip_tags($membership->title) !!}
+                {!! $membership->title !!}
             </a>
         </div>
 
@@ -23,8 +23,8 @@
             </span>
         @endif
 
-        <div class="cms_content mb-3">
-            {!! \Illuminate\Support\Str::limit(strip_tags($membership->description), 120) !!}
+        <div class="cms_content">
+            {!! $membership->description !!}
         </div>
 
         <div class="mt-auto">
