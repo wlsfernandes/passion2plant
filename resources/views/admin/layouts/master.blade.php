@@ -54,6 +54,10 @@
     <script src="{{ asset('/assets/admin/libs/jquery-counterup/jquery-counterup.min.js') }}"></script>
     <script src="{{ asset('/assets/admin/js/editor.js') }}"></script>
     <script src="{{ asset('/assets/admin/js/app.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('/assets/admin/js/pages/datatables.init.js') }}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/super-build/ckeditor.js"></script>
     <script src="{{ asset('assets/admin/js/ckeditor-init.js') }}"></script>
 

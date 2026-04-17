@@ -906,21 +906,53 @@ section {
    FIX: DOT POSITION ONLY
 ========================= */
 
+/* Base (Mobile First) */
 .swiper.testimonial__wrapper {
-    position: relative; /* required */
-    padding-bottom: 40px; /* space for dots */
+    position: relative;
+    padding-bottom: 60px; /* more space for small screens */
 }
 
 .testimonial__wrapper .swiper-pagination {
     position: absolute;
-    bottom: 10px; /* adjust if needed */
+    bottom: 15px;
     left: 0;
     width: 100%;
 }
+
 .swiper-dot {
     position: relative;
-    margin-top: -40px; /* pulls it UP */
+    margin-top: -30px;
     z-index: 5;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .swiper.testimonial__wrapper {
+        padding-bottom: 50px;
+    }
+
+    .testimonial__wrapper .swiper-pagination {
+        bottom: 12px;
+    }
+
+    .swiper-dot {
+        margin-top: -35px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+    .swiper.testimonial__wrapper {
+        padding-bottom: 40px;
+    }
+
+    .testimonial__wrapper .swiper-pagination {
+        bottom: 10px;
+    }
+
+    .swiper-dot {
+        margin-top: -40px;
+    }
 }
 /* ========================= */
 

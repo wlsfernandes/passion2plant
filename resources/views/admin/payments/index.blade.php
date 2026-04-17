@@ -107,10 +107,3 @@
         </div>
     </div>
 @endsection
-
-@section('script')
-    <script src="{{ asset('/assets/admin/libs/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('/assets/admin/libs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('/assets/admin/libs/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('/assets/admin/js/pages/datatables.init.js') }}"></script>
-@endsection
