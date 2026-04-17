@@ -11,7 +11,7 @@
     {{-- Content --}}
     <div class="content d-flex flex-column flex-grow-1">
 
-        <div class="cms_content">
+        <div class="cms-html">
             <a href="{{ route('memberships.information', $membership) }}">
                 {!! $membership->title !!}
             </a>
@@ -23,7 +23,7 @@
             </span>
         @endif
 
-        <div class="cms_content">
+        <div class="cms-html">
             {!! $membership->description !!}
         </div>
 
