@@ -1,14 +1,19 @@
 @php
     use Illuminate\Support\Str;
-    $isSingle = $donations->count() === 1;
+
+    $count = $featuredDonations->count();
+    $isCentered = $count <= 2;
 @endphp
 
 <section class="blog__section section__bg pt-130 pb-130 overhid" style="{{ $section->style }}">
     <div class="container">
+
         @include('frontend.pages.sections.partials.content')
-        <div class="row g-4">
+
+        <div class="row g-4 {{ $isCentered ? 'justify-content-center' : '' }}">
+
             @forelse($featuredDonations as $donation)
-                <div class="{{ $isSingle ? 'col-md-6 col-lg-4 mx-auto' : 'col-xxl-4 col-xl-4 col-lg-4 col-md-6' }} wow fadeInUp"
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp"
                     data-wow-duration="{{ 3 + ($loop->index % 3) * 2 }}s">
 
                     <div class="blog__items h-100 d-flex flex-column">
@@ -17,18 +22,20 @@
                         <div class="thumb">
                             <a href="{{ route('donations.checkout', $donation) }}">
                                 <img src="{{ route('admin.images.preview', ['model' => 'donations', 'id' => $donation->id]) }}"
-                                    alt="{{ $donation->title }}" loading="lazy">
+                                    alt="{{ $donation->title }}" loading="lazy" style="object-position: top">
                             </a>
                         </div>
 
                         {{-- Content --}}
                         <div class="content d-flex flex-column flex-grow-1">
 
-                            <h5>
+                            <p>
+                            <div class="cms_content">
                                 <a href="{{ route('donations.checkout', $donation) }}">
-                                    {{ html_entity_decode(strip_tags($donation->title)) }}
+                                    {!! strip_tags($donation->title) !!}
                                 </a>
-                            </h5>
+                            </div>
+                            </p>
 
                             @if ($donation->suggested_amount)
                                 <span class="badge bg-soft-success text-success mb-2">
@@ -37,7 +44,9 @@
                             @endif
 
                             <p>
-                                {{ Str::limit(strip_tags($donation->description), 120) }}
+                            <div class="cms_content">
+                                {!! Str::limit(strip_tags($donation->description), 120) !!}
+                            </div>
                             </p>
 
                             {{-- Button --}}

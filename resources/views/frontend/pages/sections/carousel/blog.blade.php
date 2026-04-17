@@ -1,16 +1,18 @@
 @php
-    $isSingle = $featuredBlogs->count() === 1;
+    use Illuminate\Support\Str;
+
+    $count = $featuredDonations->count();
+    $isCentered = $count <= 2;
 @endphp
 
 <section class="blog__section pt-130 pb-130 overhid mb-50" style="{{ $section->style }}">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
 
-        <div class="row g-4">
-
+        <div class="row g-4 {{ $isCentered ? 'justify-content-center' : '' }}">
             @foreach ($featuredBlogs as $blog)
-                <div
-                    class="{{ $isSingle ? 'col-md-6 col-lg-4 mx-auto' : 'col-xxl-4 col-xl-4 col-lg-4 col-md-6' }} wow fadeInUp">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 wow fadeInUp"
+                    data-wow-duration="{{ 3 + ($loop->index % 3) * 2 }}s">
 
                     <div class="blog__items">
 
@@ -22,14 +24,17 @@
                         </div>
 
                         <div class="content">
-                            <h5>
-                                <a href="{{ route('blogs.display', $blog->slug) }}">
-                                    {{ $blog->getTitle() }}
-                                </a>
-                            </h5>
-
                             <p>
-                                {{ $blog->limitText($blog->getContent(), 120) }}
+                            <div class="cms_content">
+                                <a href="{{ route('blogs.display', $blog->slug) }}">
+                                    {!! $blog->getTitle() !!}
+                                </a>
+                            </div>
+                            </p>
+                            <p>
+                            <div class="cms_content">
+                                {!! $blog->limitText($blog->getContent(), 120) !!}
+                            </div>
                             </p>
 
                             <a href="{{ route('blogs.display', $blog->slug) }}"
