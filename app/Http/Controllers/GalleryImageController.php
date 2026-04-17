@@ -42,9 +42,6 @@ class GalleryImageController extends BaseController
 
   public function destroy(GalleryImage $galleryImage)
   {
-    if ($galleryImage->image_url) {
-      S3::delete($galleryImage->image_url);
-    }
 
     $galleryImage->delete();
 

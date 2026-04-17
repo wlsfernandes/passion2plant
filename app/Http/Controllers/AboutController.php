@@ -140,10 +140,6 @@ class AboutController extends BaseController
   public function destroy(About $about)
   {
 
-    if (!empty($about->image_url)) {
-      S3::delete($about->image_url);
-    }
-
     $about->delete();
 
     SystemLogger::log(

@@ -171,11 +171,6 @@ class CollaboratorController extends BaseController
             $collaborator->load('images');
 
             // Delete all Collaborator images from S3
-            foreach ($collaborator->images as $image) {
-                if (! empty($image->image_url)) {
-                    S3::delete($image->image_url);
-                }
-            }
 
             // Delete Collaborator (will cascade delete collaborators_images rows)
             $collaborator->delete();

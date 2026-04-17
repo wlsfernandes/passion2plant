@@ -292,9 +292,7 @@ class MembershipController extends BaseController
     {
         try {
             // Cleanup image if exists
-            if (! empty($membership->image_url)) {
-                S3::delete($membership->image_url);
-            }
+            
 
             $membership->delete();
 

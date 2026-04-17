@@ -278,7 +278,6 @@ class ImageUploadController extends BaseController
             $instance = $this->resolveModel($model, $id);
 
             if (! empty($instance->image_url)) {
-                S3::delete($instance->image_url);
 
                 $instance->update([
                     'image_url' => null,

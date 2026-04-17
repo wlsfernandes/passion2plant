@@ -177,9 +177,6 @@ class TeamController extends BaseController
     {
         try {
             // Cleanup image if exists
-            if (! empty($team->image_url)) {
-                S3::delete($team->image_url);
-            }
 
             $team->delete();
 

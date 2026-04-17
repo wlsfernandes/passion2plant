@@ -167,9 +167,7 @@ class PageController extends BaseController
     {
         try {
             // Cleanup banner image if exists
-            if (! empty($page->image_url)) {
-                S3::delete($page->image_url);
-            }
+          
 
             $page->delete();
 

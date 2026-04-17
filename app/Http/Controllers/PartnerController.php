@@ -136,9 +136,7 @@ class PartnerController extends BaseController
     public function destroy(Partner $partner)
     {
         try {
-            if (!empty($partner->image_url)) {
-                S3::delete($partner->image_url);
-            }
+            
 
             $partner->delete();
 

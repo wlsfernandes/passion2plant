@@ -259,7 +259,6 @@ class SectionController extends BaseController
         try {
             // delete image from section->image
             if ($section->image_url) {
-                S3::delete($section->image_url);
 
                 $section->update([
                     'image_url' => null,
@@ -267,9 +266,7 @@ class SectionController extends BaseController
             }
 
             // delete multiple images from section_images
-            if ($image->image_url) {
-                S3::delete($image->image_url);
-            }
+           
 
             $image->delete();
 
@@ -312,9 +309,6 @@ class SectionController extends BaseController
     {
         try {
 
-            if ($section->image_url) {
-                S3::delete($section->image_url);
-            }
 
             $section->update([
                 'image_url' => null,
@@ -389,9 +383,6 @@ class SectionController extends BaseController
     public function deleteBackgroundImage(Section $section)
     {
         try {
-            if (! empty($section->background_image_url)) {
-                S3::delete($section->background_image_url);
-            }
 
             $section->update([
                 'background_image_url' => null,

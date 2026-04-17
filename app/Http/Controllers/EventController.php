@@ -205,9 +205,6 @@ class EventController extends BaseController
     public function destroy(Event $event)
     {
         try {
-            if (!empty($event->image_url)) {
-                S3::delete($event->image_url);
-            }
 
             // 🔥 Delete English file if exists
             if (!empty($event->file_url_en)) {

@@ -78,9 +78,7 @@ class ProjectImageController extends BaseController
     abort_unless($image->project_id === $project->id, 403);
 
     try {
-      if ($image->image_url) {
-        S3::delete($image->image_url);
-      }
+      
 
       $image->delete();
 

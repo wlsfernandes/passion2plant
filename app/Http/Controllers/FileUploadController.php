@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\S3;
 use Aws\S3\S3Client;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class FileUploadController extends BaseController
 {
@@ -22,13 +19,12 @@ class FileUploadController extends BaseController
         'resources' => \App\Models\Resource::class,
     ];
 
-
     public function download(string $model, int $id, string $lang)
     {
         $instance = $this->resolveModel($model, $id);
         $column = $this->resolveColumn($lang);
 
-        abort_if(!$instance->$column, 404);
+        abort_if(! $instance->$column, 404);
 
         $client = new S3Client([
             'version' => 'latest',
@@ -73,11 +69,6 @@ class FileUploadController extends BaseController
             'file' => 'required|file|max:10240',
         ]);
 
-        // Delete old file if exists
-        if (!empty($instance->$column)) {
-            S3::delete($instance->$column);
-        }
-
         // Upload new file
         $path = S3::uploadFile(
             $request->file('file'),
@@ -92,7 +83,6 @@ class FileUploadController extends BaseController
             ->route("{$model}.index")
             ->with('success', 'File uploaded successfully.');
     }
-
 
     /**
      * Resolve model safely

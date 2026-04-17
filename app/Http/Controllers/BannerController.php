@@ -171,11 +171,7 @@ class BannerController extends BaseController
     public function destroy(Banner $banner)
     {
         try {
-            // 🔥 Delete image from storage if exists
-            if (! empty($banner->image_url)) {
-                S3::delete($banner->image_url);
-            }
-
+            
             $banner->delete();
 
             SystemLogger::log(

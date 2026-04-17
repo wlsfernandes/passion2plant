@@ -78,9 +78,7 @@ class CollaboratorImageController extends BaseController
         abort_unless($image->collaborator_id === $collaborator->id, 403);
 
         try {
-            if ($image->image_url) {
-                S3::delete($image->image_url);
-            }
+           
 
             $image->delete();
 

@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\S3;
 use App\Models\Blog;
+use App\Services\SystemLogger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Services\SystemLogger;
 use Throwable;
-use App\Helpers\S3;
-
 
 class BlogController extends BaseController
 {
-
     /**
      * Public: list all published blogs
      * URL: /our-blogs
@@ -99,6 +97,7 @@ class BlogController extends BaseController
                     'roles' => $request->roles ?? [],
                 ]
             );
+
             return redirect()
                 ->route('blogs.index')
                 ->with('success', 'Blog created successfully.');
@@ -174,6 +173,7 @@ class BlogController extends BaseController
                     'roles' => $request->roles ?? [],
                 ]
             );
+
             return redirect()
                 ->route('blogs.index')
                 ->with('success', 'Blog updated successfully.');
@@ -188,6 +188,7 @@ class BlogController extends BaseController
                     'email' => $request->email,
                 ]
             );
+
             return back()
                 ->with('error', 'Failed to update blog.');
         }
@@ -196,22 +197,17 @@ class BlogController extends BaseController
     /**
      * Delete blog.
      */
-
     public function destroy(Blog $blog)
     {
         try {
-            // 🔥 Delete image if exists
-            if (!empty($blog->image_url)) {
-                S3::delete($blog->image_url);
-            }
 
             // 🔥 Delete English file if exists
-            if (!empty($blog->file_url_en)) {
+            if (! empty($blog->file_url_en)) {
                 S3::delete($blog->file_url_en);
             }
 
             // 🔥 Delete Spanish file if exists
-            if (!empty($blog->file_url_es)) {
+            if (! empty($blog->file_url_es)) {
                 S3::delete($blog->file_url_es);
             }
 
@@ -245,5 +241,4 @@ class BlogController extends BaseController
             return back()->with('error', 'Failed to delete blog.');
         }
     }
-
 }

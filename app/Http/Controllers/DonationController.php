@@ -239,9 +239,7 @@ class DonationController extends BaseController
     {
         try {
             // Cleanup image if exists
-            if (! empty($donation->image_url)) {
-                S3::delete($donation->image_url);
-            }
+           
 
             $donation->delete();
 

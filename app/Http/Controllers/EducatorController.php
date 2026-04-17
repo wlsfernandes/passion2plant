@@ -135,9 +135,7 @@ class EducatorController extends BaseController
     public function destroy(Educator $educator)
     {
         try {
-            if (! empty($educator->image_url)) {
-                S3::delete($educator->image_url);
-            }
+           
 
             $educator->delete();
 

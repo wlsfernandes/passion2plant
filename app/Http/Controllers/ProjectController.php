@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Helpers\S3;
 use App\Models\Project;
 use App\Services\SystemLogger;
 use Exception;
@@ -16,17 +16,17 @@ class ProjectController extends BaseController
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'title_en'       => ['required', 'string', 'max:255'],
-            'title_es'       => ['required', 'string', 'max:255'],
+            'title_en' => ['required', 'string', 'max:255'],
+            'title_es' => ['required', 'string', 'max:255'],
 
             'description_en' => ['nullable', 'string'],
             'description_es' => ['nullable', 'string'],
-            'external_link'  => ['nullable', 'url', 'max:255'],
+            'external_link' => ['nullable', 'url', 'max:255'],
 
-            'start_date'     => ['nullable', 'date'],
-            'end_date'       => ['nullable', 'date', 'after_or_equal:start_date'],
-            'is_published'   => ['required', 'boolean'],
-            'order'          => ['nullable', 'integer'],
+            'start_date' => ['nullable', 'date'],
+            'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
+            'is_published' => ['required', 'boolean'],
+            'order' => ['nullable', 'integer'],
         ]);
     }
 
@@ -40,6 +40,7 @@ class ProjectController extends BaseController
             ->where('slug', $slug)
             ->firstOrFail();
         $bannerImage = $project->banner_url; // Get the first image URL for the banner
+
         return view('frontend.projects.display', compact('project', 'bannerImage'));
     }
 
@@ -77,8 +78,8 @@ class ProjectController extends BaseController
                 'projects.store',
                 [
                     'project_id' => $project->id,
-                    'title_en'   => $project->title_en,
-                    'email'      => $request->email,
+                    'title_en' => $project->title_en,
+                    'email' => $request->email,
                 ]
             );
 
@@ -93,7 +94,7 @@ class ProjectController extends BaseController
                 'projects.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email'     => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -129,7 +130,7 @@ class ProjectController extends BaseController
                 'projects.update',
                 [
                     'project_id' => $project->id,
-                    'email'      => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -144,8 +145,8 @@ class ProjectController extends BaseController
                 'projects.update',
                 [
                     'project_id' => $project->id,
-                    'exception'  => $e->getMessage(),
-                    'email'      => $request->email,
+                    'exception' => $e->getMessage(),
+                    'email' => $request->email,
                 ]
             );
 
@@ -164,13 +165,6 @@ class ProjectController extends BaseController
             // Load images before deleting project
             $project->load('images');
 
-            // Delete all project images from S3
-            foreach ($project->images as $image) {
-                if (! empty($image->image_url)) {
-                    S3::delete($image->image_url);
-                }
-            }
-
             // Delete project (will cascade delete project_images rows)
             $project->delete();
 
@@ -179,9 +173,9 @@ class ProjectController extends BaseController
                 'warning',
                 'projects.delete',
                 [
-                    'project_id'     => $project->id,
+                    'project_id' => $project->id,
                     'images_deleted' => $project->images->count(),
-                    'email'          => request()->email,
+                    'email' => request()->email,
                 ]
             );
 
@@ -196,13 +190,12 @@ class ProjectController extends BaseController
                 'projects.delete',
                 [
                     'project_id' => $project->id,
-                    'exception'  => $e->getMessage(),
-                    'email'      => request()->email,
+                    'exception' => $e->getMessage(),
+                    'email' => request()->email,
                 ]
             );
 
             return back()->with('error', 'Failed to delete project.');
         }
     }
-
 }

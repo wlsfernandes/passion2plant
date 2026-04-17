@@ -167,9 +167,6 @@ class StoreController extends BaseController
     {
         try {
             // Cleanup image if exists
-            if (! empty($store->image_url)) {
-                S3::delete($store->image_url);
-            }
 
             $store->delete();
 

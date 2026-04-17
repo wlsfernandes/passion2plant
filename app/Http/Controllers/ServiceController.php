@@ -192,9 +192,6 @@ class ServiceController extends BaseController
     {
         try {
             // 🔥 Delete image if exists
-            if (! empty($service->image_url)) {
-                S3::delete($service->image_url);
-            }
 
             $service->delete();
 

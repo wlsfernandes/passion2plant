@@ -184,9 +184,7 @@ class PositionController extends BaseController
     {
         try {
             // Cleanup associated S3 assets
-            if (! empty($position->image_url)) {
-                S3::delete($position->image_url);
-            }
+           
 
             if (! empty($position->file_url_en)) {
                 S3::delete($position->file_url_en);

@@ -153,9 +153,7 @@ class BookRecommendationController extends BaseController
   {
     try {
       // Cleanup image if exists
-      if (!empty($bookRecommendation->image_url)) {
-        S3::delete($bookRecommendation->image_url);
-      }
+     
 
       $bookRecommendation->delete();
 

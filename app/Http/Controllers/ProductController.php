@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Store;
-use Illuminate\Http\Request;
 use App\Services\SystemLogger;
-use App\Helpers\S3;
 use Exception;
+use Illuminate\Http\Request;
 
 class ProductController extends BaseController
 {
@@ -168,15 +167,6 @@ class ProductController extends BaseController
     public function destroy(Product $product)
     {
         try {
-            // Cleanup digital file if exists
-            if (!empty($product->file_url)) {
-                S3::delete($product->file_url);
-            }
-
-            // Cleanup image if exists
-            if (!empty($product->image_url)) {
-                S3::delete($product->image_url);
-            }
 
             $product->delete();
 
