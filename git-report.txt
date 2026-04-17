@@ -1,0 +1,1687 @@
+commit 44f70315b13c29687a776cbf9366d77db80cb300
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 14:25:53 2026 -0400
+
+    centralize educators content
+
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+commit 58040c2d5e72c6477026b0bc89b1ea2064e195e0
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 14:21:29 2026 -0400
+
+    educators logo
+
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+commit b0b8f48576e3d1ae68e245fd7862a01425112289
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 13:33:37 2026 -0400
+
+    membership details caroulse
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit d844a99293397f2e12c647dbab9708090675400f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 13:32:53 2026 -0400
+
+    fix membership card donations
+
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 5ee82e199c77c708816be440e6f74683bf05e525
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 13:24:52 2026 -0400
+
+    fix bullet point
+
+ 1 file changed, 16 insertions(+)
+
+commit b680f777880fbf659c91abbd18f4e59edaceee20
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 12:26:56 2026 -0400
+
+    feature hmtl membership
+
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+commit 9e7af62cc71a147676226ddf45315bbccff4fe48
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 11:58:10 2026 -0400
+
+    remove delete images to keep media full
+
+ 24 files changed, 41 insertions(+), 133 deletions(-)
+
+commit 18a057bc240fc12a4d92f7e33b02a68e317ac42c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 10:39:27 2026 -0400
+
+    fix donation carousel behavior
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 20d0a001b2fbc1fe4c392ac011f09a8e4c293ecb
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 10:37:43 2026 -0400
+
+    fix carousel items
+
+ 8 files changed, 272 insertions(+), 182 deletions(-)
+
+commit d3bbc5f407815fc95b9cc79063fb9cd2b482cf5b
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 09:59:19 2026 -0400
+
+    fix membership section
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 27bb289c13222483f9e22ecfe20992f29109caa0
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 09:58:26 2026 -0400
+
+    memberships fix
+
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit d60c7e565ea7a41fef35115978c3699c8e155776
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 09:50:20 2026 -0400
+
+    Casrousel Centralizatiob
+
+ 7 files changed, 284 insertions(+), 229 deletions(-)
+
+commit 29a58e71e93592b3d1c45b01ff1bb14046a5f84f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 17 09:03:13 2026 -0400
+
+    add count search tables
+
+ 17 files changed, 40 insertions(+), 99 deletions(-)
+
+commit 0322792f4f9f747a39eb1dccc969391ff1f67448
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 16 08:48:57 2026 -0400
+
+    Yvonne requirements
+
+ 4 files changed, 48 insertions(+), 129 deletions(-)
+
+commit 0110fe3d4a00b15bbf4126f56a83bc650c80e6f4
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 16 08:26:24 2026 -0400
+
+    fix service
+
+ 2 files changed, 13 insertions(+), 9 deletions(-)
+
+commit 689cad0bd41ef066d85eba0f04c9e03c6a034a1f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 16 08:17:22 2026 -0400
+
+    team last name
+
+ 6 files changed, 10 insertions(+), 11 deletions(-)
+
+commit 9b8a68514c7441e41db6fab1b9f4047d05c32aec
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 16 07:52:53 2026 -0400
+
+    team order by last name
+
+ 9 files changed, 113 insertions(+), 36 deletions(-)
+
+commit 7699ff370123bd79cd0dbbab1ed92eecaf77e30f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 15 09:57:11 2026 -0400
+
+    update footer
+
+ 4 files changed, 86 insertions(+), 15 deletions(-)
+
+commit 86542068a892d8ec889d6adc57adc63a077a139b
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 15 09:46:51 2026 -0400
+
+    Fix image uplaoders
+
+ 4 files changed, 10 insertions(+), 27 deletions(-)
+
+commit 0e05105f2edc38e28eaabd35d24ad235d3671198
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 15 09:39:21 2026 -0400
+
+    include media library upload
+
+ 12 files changed, 447 insertions(+), 140 deletions(-)
+
+commit bf2d80bed989b93bf8defff87009632070c36713
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 15 07:49:14 2026 -0400
+
+    save media inside the app name folder
+
+ 3 files changed, 222 insertions(+), 71 deletions(-)
+
+commit 72f6e2682c5f8778767dd243269148213c5bff63
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 13 15:05:30 2026 -0400
+
+    update events centralized
+
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 64a5243d411933353363f7ad3eb8a6453eccd644
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 12:13:05 2026 -0400
+
+    fix client link images
+
+ 2 files changed, 12 insertions(+), 30 deletions(-)
+
+commit 0ee967fafbbf3d04038277384b9d5fdbf9dabfa5
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 12:03:14 2026 -0400
+
+    add empty string
+
+ 2 files changed, 3 insertions(+), 6 deletions(-)
+
+commit 49c513858711b479680d73ef2fcdf761ee515232
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 11:55:13 2026 -0400
+
+    gallery with images links
+
+ 4 files changed, 116 insertions(+), 11 deletions(-)
+
+commit e1c06b8c0a8f83406222ca705210cf58976f3d15
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 11:09:33 2026 -0400
+
+    Link Added to Multiple Images
+
+ 4 files changed, 96 insertions(+), 1 deletion(-)
+
+commit fe6bc97c6fb816f979502c3f152959201bb4a563
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 10:40:16 2026 -0400
+
+    team page
+
+ 1 file changed, 25 insertions(+), 10 deletions(-)
+
+commit 6c884775a662a5a0d6a6450f57efe7eca8e704e8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 10:31:53 2026 -0400
+
+    fix team page
+
+ 2 files changed, 14 insertions(+), 4 deletions(-)
+
+commit 38af452bcebd42a4ca1e93406e800a3245cb4af6
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 10:02:30 2026 -0400
+
+    membership carousel
+
+ 1 file changed, 1 insertion(+)
+
+commit dcd6cf26377b48ac8cbc4d50565f112a07d112bb
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 09:59:10 2026 -0400
+
+    fix carousel
+
+ 1 file changed, 4 deletions(-)
+
+commit 63d28230b41da0e666fddd3a4974b3f7f0327b46
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 09:50:59 2026 -0400
+
+    fix members amount
+
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit a12b2ab4ea95858cb100931aa8d951e82d0d8c3d
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 09:42:27 2026 -0400
+
+    Memberships
+
+ 33 files changed, 1935 insertions(+), 276 deletions(-)
+
+commit 6ebb5d99e46f60b7ff87e8010fd21e5e3c16e9a9
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 06:10:35 2026 -0400
+
+    fix banner size
+
+ 1 file changed, 60 deletions(-)
+
+commit 91610702aec4f4c26532d4fd0b70ad757fabfa75
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 10 05:52:44 2026 -0400
+
+    tem blade fixed
+
+ 1 file changed, 22 insertions(+), 20 deletions(-)
+
+commit acef901cc940eea70c12fe9f98b7efe053ca77ea
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 19:53:54 2026 -0400
+
+    video upload info
+
+ 2 files changed, 96 insertions(+), 1 deletion(-)
+
+commit a66343293319a836238772eba1678c2aaeff5a66
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 19:47:06 2026 -0400
+
+    video frame
+
+ 2 files changed, 54 insertions(+), 1 deletion(-)
+
+commit 5fb63bc04a46e5eced493462f35920de103975ea
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 19:41:00 2026 -0400
+
+    video player
+
+ 2 files changed, 79 insertions(+), 34 deletions(-)
+
+commit f6f66743bbf8c90f2f390ef12db04d721ec89eed
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 18:44:23 2026 -0400
+
+    new gallery carousel featuers
+
+ 2 files changed, 100 insertions(+), 37 deletions(-)
+
+commit 76aade362f5fed565b1e8b5794a199740e3db5b0
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 18:33:44 2026 -0400
+
+    banner section bg
+
+ 1 file changed, 8 insertions(+), 11 deletions(-)
+
+commit 61d5802b4236dfa7bd228921f3e70c4c706cc473
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 18:25:52 2026 -0400
+
+    fix promo banner
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit cfd01f4bc5db4607e0ef086a7d84e46981750f18
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 18:24:20 2026 -0400
+
+    promo banner
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 95b74cfb2322ce604265b043bc5d030b6d86ce26
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 18:20:08 2026 -0400
+
+    fix home page
+
+ 1 file changed, 1 deletion(-)
+
+commit c6361e7b529572b7554ae89340c50bc837d8abf6
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 18:19:42 2026 -0400
+
+    centralize message
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 7ce41e9983a4492b84dee90fc26c47684548252a
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 18:09:52 2026 -0400
+
+    remove date from eventsd
+
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+commit f28a3765814ba6053c183538f7a476e72186e509
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Thu Apr 9 18:02:45 2026 -0400
+
+    passion2plant events
+
+ 4 files changed, 96 insertions(+), 15 deletions(-)
+
+commit ab3a86d25fe830e33324c23629339286d435a868
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 09:03:27 2026 -0400
+
+    fix profile section
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 31f566bdea851ca5791e3e1a71d56ecf551e8061
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:58:50 2026 -0400
+
+    fix styles errors
+
+ 4 files changed, 29 insertions(+), 29 deletions(-)
+
+commit b7b40ebed77624fbc035f0d37f0d8822a234d1e1
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:56:37 2026 -0400
+
+    fix error team preofile
+
+ 1 file changed, 23 insertions(+), 23 deletions(-)
+
+commit db1c2e1107b923e63781f0f65af569e200c8f765
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:23:02 2026 -0400
+
+    custom css
+
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+commit ae2e5504fce51a9777b822ae569fa1a83e0d16f7
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:20:33 2026 -0400
+
+    fix image size
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a0e88a5f0bf07679d611bd4c7f369288716bb408
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:19:48 2026 -0400
+
+    fix team images
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 01e63b6cea7f5c4a7458ce19aa6f99248707688f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:18:55 2026 -0400
+
+    custom admin
+
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+commit dd61e1b22e5a4286efa6c9c71ac431a1f073575f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:16:38 2026 -0400
+
+    fix image donation
+
+ 1 file changed, 13 insertions(+)
+
+commit 215623a81d49af8ad2da39249a493ec07e39133f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:16:01 2026 -0400
+
+    admin
+
+ 1 file changed, 2 insertions(+), 14 deletions(-)
+
+commit 57f63a5374c3c3cf9de7cccee4c8beb007a0ad46
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:15:14 2026 -0400
+
+    admin custom
+
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+commit 350edc1e8ae8af3cebed386d8f6995a3fbbb5384
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:12:03 2026 -0400
+
+    donation
+
+ 1 file changed, 13 insertions(+)
+
+commit a48b232033d196fa3ad9b9216a822f127ef46178
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:08:04 2026 -0400
+
+    custom donate
+
+ 1 file changed, 14 insertions(+), 69 deletions(-)
+
+commit 5840109351d675c143ce671822cd3b6b36c58676
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:04:03 2026 -0400
+
+    donation team
+
+ 1 file changed, 23 insertions(+), 46 deletions(-)
+
+commit 14a3fb1c62d9958f6c5d86cd4ccbbaf478fcb29d
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 08:01:30 2026 -0400
+
+    custom team
+
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+commit 51f1e10b2387c4ac38624447aed1e390a17fc5d9
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:59:01 2026 -0400
+
+    custom team
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d561fcd9c1ece39f22bb89ef53a7273e4c767d26
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:58:23 2026 -0400
+
+    custom team
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 92e119f640c9eca7ccf15b624df46a284e6cbb04
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:57:31 2026 -0400
+
+    custom team
+
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+commit 2a12ecf8c1eba04ee8bb2a7c5bf62bed05ba2501
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:53:10 2026 -0400
+
+    custom
+
+ 1 file changed, 4 deletions(-)
+
+commit 08d113c95bf74a6e092f7e245b924ebf76e3b3bb
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:52:29 2026 -0400
+
+    team tumbnail carousel
+
+ 2 files changed, 14 insertions(+), 9 deletions(-)
+
+commit 6300e39d3e217e38c4b8ab04872d61a45959f359
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:50:25 2026 -0400
+
+    fix cariousel team
+
+ 1 file changed, 37 insertions(+), 48 deletions(-)
+
+commit 8aeb56b09a8299c9af5d6375763e261854836ffd
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:48:31 2026 -0400
+
+    fix team carousel
+
+ 1 file changed, 77 insertions(+), 10 deletions(-)
+
+commit 7e666a1504602797ce62c0d08c512224de092dcc
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:43:07 2026 -0400
+
+    team carousel
+
+ 1 file changed, 5 deletions(-)
+
+commit 4960cbd5e84e9cff8a211612d6ed026927eba3f4
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:39:33 2026 -0400
+
+    team carousel
+
+ 2 files changed, 64 insertions(+), 25 deletions(-)
+
+commit 02a7b5f7dddca3c8184a251434e46726475663d3
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 8 07:22:24 2026 -0400
+
+    New Educator Carousel
+
+ 16 files changed, 680 insertions(+), 165 deletions(-)
+
+commit 88225ac43e662056c9486bfceaa4757bcafd63ab
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Apr 7 18:18:38 2026 -0400
+
+    fix cta
+
+ 1 file changed, 25 insertions(+), 25 deletions(-)
+
+commit 21a0a7f5472a42b2f75d6a61e1a44ade37804330
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Apr 7 18:17:16 2026 -0400
+
+    Yvonne requirements
+
+ 21 files changed, 219 insertions(+), 186 deletions(-)
+
+commit 3821662060b8b734950e64dee1419ca74e459f4c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Apr 7 15:08:56 2026 -0400
+
+    fix service pages
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a19b4a696c9710820f78ec8d4bf7594dcc1aa158
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Apr 7 15:07:40 2026 -0400
+
+    fix service page
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 2a7be7980d76545de1bac730b01d1c5d0836c348
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Apr 7 15:06:13 2026 -0400
+
+    fix bug servies
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4ed3a74e0b806a15a02108ae52da96699cc915b8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 15:57:03 2026 -0400
+
+    hide 3 bars icon desktop
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d85f7f29eb29b09bc0e436e4e576c2fe492cb70b
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:53:47 2026 -0400
+
+    S3::delete
+
+ 1 file changed, 33 insertions(+), 33 deletions(-)
+
+commit 6b5e0e10bb9ff1e72a582f033f25b3ccda0b81d8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:43:24 2026 -0400
+
+    event remove tags
+
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 5356f44552a6963f7700afa1fd3d1ffd09f87e75
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:41:56 2026 -0400
+
+    fix event
+
+ 1 file changed, 130 insertions(+), 126 deletions(-)
+
+commit 286a197b4bdb062e396f402e2ae909cb54eced1d
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:13:58 2026 -0400
+
+    tem balde
+
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+commit c07a4b513fab67e1a7586ff7d16a3511d075adf2
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:11:55 2026 -0400
+
+    carousel back
+
+ 1 file changed, 20 insertions(+), 31 deletions(-)
+
+commit a7287ec920f38c3d4312ca0b620dc7488f8ca8bd
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:11:16 2026 -0400
+
+    team carousel
+
+ 1 file changed, 19 insertions(+), 25 deletions(-)
+
+commit e0cc1a651b448299f254ba35dc57b8b3b4c464ff
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:09:51 2026 -0400
+
+    team carousel
+
+ 1 file changed, 25 insertions(+), 22 deletions(-)
+
+commit 82e3d7fc18b0f1e8613a6458e9bc52bff3f6b129
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:07:24 2026 -0400
+
+    TEM ACAROUSEL IMPROVEMENT
+
+ 2 files changed, 34 insertions(+), 21 deletions(-)
+
+commit 333e8f9eaaf7b67018a0624078003a56183e43c2
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:05:32 2026 -0400
+
+    team carousel
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4da166ae9bf4031c05bcce9a695e4cad85bb1186
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:04:08 2026 -0400
+
+    carousel team
+
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit 67c6270a2df7da2c6a185687a5fd560dd31041d5
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:01:57 2026 -0400
+
+    fix promo 2
+
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+commit 0b304778e92f4be43a10550e3e5243e21d993dde
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 13:00:50 2026 -0400
+
+    fix promo
+
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+commit fc08e71c3713633e746c3cf7f79016f8bed5bfe4
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 12:36:29 2026 -0400
+
+    fix upl;oad problem
+
+ 1 file changed, 20 insertions(+), 8 deletions(-)
+
+commit a84bd30e6bfe231ef749eb4c70193c0ecbcc64a2
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 11:58:39 2026 -0400
+
+    update testimonial images
+
+ 2 files changed, 53 insertions(+), 6 deletions(-)
+
+commit d143f364cb6483c6a935ac15b0b379bc096835f6
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 11:46:00 2026 -0400
+
+    testimonial balde
+
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+commit dcaf62a401019d04fb67bfb52b068092bc2b02d7
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 11:39:17 2026 -0400
+
+    testimonial fixed
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit a05ab9fbe5e93b2d7e301e7976482955de87c94b
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 11:38:13 2026 -0400
+
+    testimonial bg image
+
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+commit 9235ee2f2cc1c8e267f2a79ba86bf3a6520b23e8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 10:43:21 2026 -0400
+
+    section styles
+
+ 8 files changed, 22 insertions(+), 27 deletions(-)
+
+commit 8fa627090a6ea596487e8951494f832fba517b71
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 10:33:29 2026 -0400
+
+    test section
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 0b0467f3aa031a534719b6207af5e14591fe0fd3
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 10:27:24 2026 -0400
+
+    add section stylles
+
+ 20 files changed, 477 insertions(+), 189 deletions(-)
+
+commit 9c056bb812260c337079d0e4bebaa4949cc2d8ec
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 09:50:54 2026 -0400
+
+    fix events page
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 34e88a129bfa44aeb5189228cb9cbb8103371c2c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 09:50:21 2026 -0400
+
+    fix events
+
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+commit 64b55032644f2858ec42abe19ed87d736ba00787
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 09:40:36 2026 -0400
+
+    fix image position teams
+
+ 2 files changed, 1 insertion(+), 5 deletions(-)
+
+commit bd13dc94fe3489e8c899d14724f63b86357cb217
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Mon Apr 6 09:09:16 2026 -0400
+
+    fix tem info
+
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 02f3559597a533d270e8da364f844c6b86809f46
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 17:53:08 2026 -0400
+
+    fix teams testimonials edition
+
+ 11 files changed, 351 insertions(+), 291 deletions(-)
+
+commit eb9abd2f7325391a631d97ee0bfb0cad1bc1aea1
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 17:11:55 2026 -0400
+
+    remove 3 bars icons
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4db56c04f61bdbaccdec14d05d3409d98794c8ca
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:58:02 2026 -0400
+
+    add resouces to features
+
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+commit 6d042584b25e7595a0a721174a88d7de17a3ac22
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:51:42 2026 -0400
+
+    no link removed from links
+
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+commit b008ee21b52863f18f0897210b385828637b419c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:49:14 2026 -0400
+
+    top links on footer
+
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit e02bbe312e8e7bd1873375f082cc289255d2a61a
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:47:10 2026 -0400
+
+    fix again12
+
+ 1 file changed, 1 insertion(+)
+
+commit 0e05ee503379ba613f31100f426be2cee2e0befc
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:43:25 2026 -0400
+
+    fix again agian
+
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+commit d5270a70627a07425aef0d5cce69b9b7e0abdc02
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:40:21 2026 -0400
+
+    fix menu again
+
+ 3 files changed, 27 insertions(+), 1 deletion(-)
+
+commit f06dc0a98ee4e341e4cc2593e9358ae00bdf333d
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:36:50 2026 -0400
+
+    menu footer
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 375b1e17fcc378053efe144648241cdbf9142326
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:35:44 2026 -0400
+
+    fix menu
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 74f225ddbaf3332c4e8b206259ed8a468590b2a0
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:34:07 2026 -0400
+
+    menu footer fix
+
+ 1 file changed, 1 insertion(+)
+
+commit d2c10d4f6698d65f174e832c318f9cb848246030
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:30:29 2026 -0400
+
+    fix menu footer
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 6c21ae6ba144cb651222a304ca436806bf624c24
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:26:57 2026 -0400
+
+    fix footer error
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 471837a3e4f51aad72f3d1205a6d14b64224a080
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:24:25 2026 -0400
+
+    footer
+
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+commit f818df4cc62a1cdb216f41132c065e482db1543c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 16:21:10 2026 -0400
+
+    footer
+
+ 14 files changed, 356 insertions(+), 124 deletions(-)
+
+commit af5939e8d548282bd31dee8b50744b39a554f076
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 09:55:33 2026 -0400
+
+    fix blog position
+
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 5bd427ec10451891f2869335dd0ec799c38d5f5e
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 09:53:34 2026 -0400
+
+    blog sp[ace
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1a9c4ec64f171491cce3c25e3758044b813472f2
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 09:50:14 2026 -0400
+
+    fix services error
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 2ba0a55a8bddd759508caaf56d1e3d30344b6d8e
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 09:45:18 2026 -0400
+
+    fix dot testimonials
+
+ 2 files changed, 29 insertions(+), 8 deletions(-)
+
+commit c598747f0b43af70680ee7c57133d2b13d6e4a73
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 08:56:56 2026 -0400
+
+    remove contact from static page
+
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+commit 0ec92e834601bed2c8cd7b63619e9255b07f26b9
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 08:53:15 2026 -0400
+
+    puerto rico flag
+
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit a21ad5eef9a20a4c07218fd6f60f10695a47b528
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 08:48:43 2026 -0400
+
+    update buttons colors
+
+ 5 files changed, 12143 insertions(+), 8 deletions(-)
+
+commit cca64873672743cb712e8ff6ae6eca5e5a00495d
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 08:47:07 2026 -0400
+
+    fix event carousel blade
+
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 5928249cb029b29556a01b3c735ffded55fe1b63
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 08:43:36 2026 -0400
+
+    fix event message
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit f83b600ff2f9e009d70842fedbcb6ed9e1e9bc4d
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Apr 3 08:41:37 2026 -0400
+
+    change brand colors
+
+ 4 files changed, 10 insertions(+), 10 deletions(-)
+
+commit 09b33bb8c0e0011eadf57ab67445d156f2832022
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 1 12:12:57 2026 -0400
+
+    form banner
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 9990cef8afca8c00eacaada7e8ef84b51a313a9e
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Apr 1 12:10:09 2026 -0400
+
+    custom css admin
+
+ 1 file changed, 5 insertions(+)
+
+commit 4c320dd920e8e087dd207854b09baaa89550635b
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:51:10 2026 -0400
+
+    remove breadcumb from store
+
+ 1 file changed, 27 deletions(-)
+
+commit 50f1d985a10c73fb1b70e6a80b09f29ebe2a940a
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:49:36 2026 -0400
+
+    fix donations errors
+
+ 1 file changed, 1 insertion(+)
+
+commit 0683194908a018215064b2d7696ed983e718d4b5
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:47:52 2026 -0400
+
+    donations
+
+ 6 files changed, 85 insertions(+), 102 deletions(-)
+
+commit a89a9f0dced43c31a8a02058524e49c0d57a4950
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:37:33 2026 -0400
+
+    remove page donate now
+
+ 1 file changed, 1 deletion(-)
+
+commit c79eb4a7450901a4a0e02b489133f6a916575c58
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:33:18 2026 -0400
+
+    remove book rec
+
+ 1 file changed, 1 deletion(-)
+
+commit b3f2d4f1f0d6b8bc7541b4a7f4f2aab01884de78
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:32:30 2026 -0400
+
+    book reccomendations
+
+ 6 files changed, 73 insertions(+), 2 deletions(-)
+
+commit 3b3a35868a116003112287bebbeba7ed4896fe2f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:19:03 2026 -0400
+
+    resources
+
+ 1 file changed, 4 insertions(+)
+
+commit 2c99b3b5fe07f7633f722dba85537d17d1bfb765
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:14:54 2026 -0400
+
+    remove web resources
+
+ 1 file changed, 3 deletions(-)
+
+commit 4c34b6066cd02a32851739fd5fb09650e1a576a6
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:14:12 2026 -0400
+
+    resources updates
+
+ 8 files changed, 259 insertions(+), 259 deletions(-)
+
+commit 14bd04572ef92a66be09ff4242046601ac58e9c8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:03:10 2026 -0400
+
+    service blade
+
+ 1 file changed, 47 insertions(+), 33 deletions(-)
+
+commit 05caef95c9e2d212f8e447829d3834c7473f97ad
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:02:02 2026 -0400
+
+    fix service 2
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 01680d199254163b8f1376477da29a4d92ce524b
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 07:01:08 2026 -0400
+
+    fix service error
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit c087ae342914237ccaa2ca3ae5261b68021eb351
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:56:02 2026 -0400
+
+    remove our services
+
+ 1 file changed, 1 deletion(-)
+
+commit 6a80c68e9c0add5a1c577b678a201a8e9756aca3
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:53:20 2026 -0400
+
+    contact feature
+
+ 2 files changed, 56 insertions(+), 62 deletions(-)
+
+commit 116483514365053dc423bc20a384aa2d5288af2c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:46:16 2026 -0400
+
+    feature contact
+
+ 2 files changed, 85 insertions(+)
+
+commit 5be5b2069dac699e3898a5d154d86da1fa0d5a93
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:41:01 2026 -0400
+
+    fix video
+
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+commit df828722a0b304c67a8006e17e6b08875de92428
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:39:31 2026 -0400
+
+    fix video
+
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit facca487611318bc7ff79632789f47702ae1be9c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:37:39 2026 -0400
+
+    debug error
+
+ 1 file changed, 1 insertion(+)
+
+commit 008cdc05a8cffffb81677defe95f7e66c657961d
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:34:15 2026 -0400
+
+    fix video error
+
+ 2 files changed, 1 insertion(+), 49 deletions(-)
+
+commit d537fc8e3c56b0b808068deb7f7d30fe341e7086
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:08:15 2026 -0400
+
+    fix error positions
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d1ce62ed725517e49421e4008baf8362ffcdb694
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:07:47 2026 -0400
+
+    fix position title
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 695f2e9aaf787e8475cb12317ed9b0ff59511b62
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:06:07 2026 -0400
+
+    fix positins
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 35ad4f793009c956315e3e941d84ad5541b284fa
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:03:23 2026 -0400
+
+    remove strip tags
+
+ 1 file changed, 150 insertions(+), 147 deletions(-)
+
+commit 5ac092ab4687107325a7a2de8f34925a51b6499e
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 06:01:56 2026 -0400
+
+    fix poisition
+
+ 1 file changed, 19 insertions(+), 18 deletions(-)
+
+commit 4062e91b17cce6d670349a667664c27a3f09a666
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:59:13 2026 -0400
+
+    positions
+
+ 9 files changed, 128 insertions(+), 40 deletions(-)
+
+commit f1faf442600bc3a7d35ece8bfe94980c409c82e8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:40:30 2026 -0400
+
+    positions
+
+ 1 file changed, 1 deletion(-)
+
+commit 144d027befcc9e64200aada75dc346afc1984756
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:32:16 2026 -0400
+
+    ad color pallete
+
+ 1 file changed, 38 insertions(+)
+
+commit 5e44c0d02beb00a3c2a59d71bf897286986364fa
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:19:16 2026 -0400
+
+    replace buttons
+
+ 5 files changed, 2727 insertions(+), 2027 deletions(-)
+
+commit d0542a3da674a033a52668c31f46be3773909ed9
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:17:31 2026 -0400
+
+    fix blogs
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 0b97729eec60867585fadf5fbd0e34c2d88880fa
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:14:09 2026 -0400
+
+    sidebar
+
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+commit 2fb9f82d1b1a89c251f4be3bd9ec78dbe80d88c6
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:12:55 2026 -0400
+
+    sidebar fixed
+
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+commit 6771d2dc20abf0a34b62db8b0f7cb7facdbd9aff
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:07:53 2026 -0400
+
+    fix blog center
+
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+commit ab54dcbf2f0f7b3255ee8993cc822c90f7976fb1
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:03:52 2026 -0400
+
+    fix blog model
+
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 2ea3ccd2db5f59429a5a795377066dc01ae8164b
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 05:01:07 2026 -0400
+
+    donation block
+
+ 1 file changed, 14 insertions(+), 13 deletions(-)
+
+commit 5e4ce406e97cfe4f7194cbf1080791e9b69a38f2
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:58:10 2026 -0400
+
+    donation
+
+ 1 file changed, 61 insertions(+)
+
+commit f54f7f1bfe02fb8da7ef762ba1ca010fa0cb46b9
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:54:08 2026 -0400
+
+    fix error
+
+ 1 file changed, 1 deletion(-)
+
+commit 0ef3ac28abdcb9e848e011f593ca03e7a984fcdc
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:53:12 2026 -0400
+
+    fix service error
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit ffa2b74fa9dc931ae9ded3e054d3eaa043518528
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:50:21 2026 -0400
+
+    add header
+
+ 4 files changed, 83 insertions(+), 6 deletions(-)
+
+commit 28b4c082477244dd44799fd65f76b23c227dd944
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:39:10 2026 -0400
+
+    colors id
+
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+commit 260ae540c0131d17aa8e1cba98e11fbe124c1c94
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:35:37 2026 -0400
+
+    display info carousel
+
+ 1 file changed, 2 insertions(+)
+
+commit 21ccb94be6c69404b38b814ebbf2b34ab38a6b98
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:34:22 2026 -0400
+
+    display feature type
+
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit 2b0910290dec8a3dea0044a3e74401cabe8e3ce8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:26:49 2026 -0400
+
+    fix service error
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a951d0ffd5a845e9797a29c5887de12b037040a6
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 27 04:25:17 2026 -0400
+
+    new tools to edit features
+
+ 31 files changed, 592 insertions(+), 242 deletions(-)
+
+commit 311c501770da2aa0e8e8be17024e4a2c9f829715
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 20 14:31:23 2026 -0400
+
+    fix footer
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 362ee52e8cecb842142ba2132d68e4ccc8544ff6
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Fri Mar 20 14:20:35 2026 -0400
+
+    remove update slug onm page
+
+ 1 file changed, 6 insertions(+), 12 deletions(-)
+
+commit b40b32fe876382ccee4257b36377ec8e88ebbe88
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 13:49:35 2026 -0400
+
+    side bar changes
+
+ 1 file changed, 15 insertions(+), 41 deletions(-)
+
+commit 944ed59bfbd0ef4db04857a35226ef92a9951a4f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 11:38:34 2026 -0400
+
+    helper pages
+
+ 13 files changed, 161 insertions(+), 21 deletions(-)
+
+commit 08d646516540e9d137c9b4e18652ac0f068eb489
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 11:21:23 2026 -0400
+
+    fix index error
+
+ 6 files changed, 94 insertions(+), 95 deletions(-)
+
+commit 99ab5f03cd7ffc00a98c572989f8213e64b53c0e
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 11:20:20 2026 -0400
+
+    wikipedia
+
+ 8 files changed, 414 insertions(+), 1 deletion(-)
+
+commit 36eb5c80aca442f3eb13105040d2d1bc126af28a
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 10:00:47 2026 -0400
+
+    fix css
+
+ 1 file changed, 12 deletions(-)
+
+commit 189fd234b6251d5440ef2030c99203cbf6ada0e2
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:59:40 2026 -0400
+
+    fix css
+
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+commit 54c5a2fecc2a3131c94f771ab213500db6c8f5b8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:55:58 2026 -0400
+
+    remove css thumb
+
+ 2 files changed, 21 insertions(+), 5 deletions(-)
+
+commit eded558b92378578b549131f7918570e3eff1457
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:50:53 2026 -0400
+
+    fix area
+
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+commit 5ca486d2613650f122589fb3a61c948cf8c8297f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:49:14 2026 -0400
+
+    fix image
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit ae2199cdaf5046c2ca70edb3cbbaf62268f23121
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:47:45 2026 -0400
+
+    fix css
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8438ba3eef2a94982bfc9524810bbdd9f90f9770
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:46:04 2026 -0400
+
+    fix css image
+
+ 1 file changed, 4 insertions(+), 19 deletions(-)
+
+commit 43cccb1d27aaea0f74efbebc40c6218796441415
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:43:38 2026 -0400
+
+    fix image cards
+
+ 1 file changed, 118 insertions(+)
+
+commit 34340356600da6a1faa392d55db8b17eca4c8b52
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:41:08 2026 -0400
+
+    fix thumb card
+
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit f35ecd4bed4b273353cda5c9c45a93110ba1bf3f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:39:26 2026 -0400
+
+    card fit image
+
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+
+commit 895138ff04558f6c52cff4cd278f3dad50ad4346
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:21:45 2026 -0400
+
+    fix save page control
+
+ 1 file changed, 14 insertions(+)
+
+commit 3e6d7f6f3ed50a477ffdd2f1bb5ce54e74ecd655
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Wed Mar 18 09:13:43 2026 -0400
+
+    SEO pages
+
+ 4 files changed, 235 insertions(+), 1 deletion(-)
+
+commit 614e9c53e281f03d7819dfb8a6905503263deb0c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 17:18:57 2026 -0400
+
+    add contact features
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit d298dbc28cd4fd02341604387ec124464ee085ce
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 17:17:45 2026 -0400
+
+    add contact feature
+
+ 3 files changed, 11 insertions(+), 6 deletions(-)
+
+commit 958a635a79fea957d0ac6f3f9f2cd8d11d996417
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 17:12:03 2026 -0400
+
+    fix cta
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 1f04a7ba127204546fbcaa8363629184b9b30fb4
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 17:09:52 2026 -0400
+
+    fix cta text
+
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit b3560ee5cdc633f293c7d55c4bfd9d87b494faec
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 17:05:54 2026 -0400
+
+    fix cohortte page
+
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+commit 78e269e4dacea5324065b46db4c34f681bf75eb8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 16:59:29 2026 -0400
+
+    fix content
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit e42b036444e487b5c3d5619e5188e7aa3bf042bf
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 16:55:32 2026 -0400
+
+    fix full content
+
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+commit 19f17640ed71eeb73385721600acc6e831e4bd13
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 16:34:11 2026 -0400
+
+    slug table pages
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1df4583416f734d93e536008b91193f223fb4544
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 16:33:30 2026 -0400
+
+    put slug at pages table
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4e8f30090e2fccfa59c01320c42a6947a3261426
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 16:24:35 2026 -0400
+
+    fix menu error
+
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 0df6ed351e521bf5c1da5f98dfbeb027aee26bb8
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 16:23:01 2026 -0400
+
+    fix page error
+
+ 1 file changed, 1 deletion(-)
+
+commit e2aeccfe12ff8208631bf2960e89614b00a28d0f
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 16:21:09 2026 -0400
+
+    fix page homes
+
+ 5 files changed, 43 insertions(+), 139 deletions(-)
+
+commit 3adb9fd435ff284e18a6af8800fdc5494e806663
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 16:12:42 2026 -0400
+
+    redirect to home
+
+ 1 file changed, 21 insertions(+), 15 deletions(-)
+
+commit 7d8b90af8f170abd6428c4748fb4c9a3716c961b
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 14:32:08 2026 -0400
+
+    add link to images
+
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+commit 0d129ace90d2793ec4f6a7ec5e701d916703cf81
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 14:28:36 2026 -0400
+
+    add link to images
+
+ 4 files changed, 36 insertions(+), 1 deletion(-)
+
+commit c7741b44098092c6d44204313a3e70f70c298207
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 14:16:56 2026 -0400
+
+    fix delete button
+
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+commit 61ca463918334e94c7f198d9f89df2cbd0ec5a63
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 13:54:33 2026 -0400
+
+    css adjust
+
+ 1 file changed, 2 insertions(+)
+
+commit eb1edfc0eedaf9c3285e177f83dcad8f44fa9b0a
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 11:20:07 2026 -0400
+
+    fix old home page
+
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+commit c35a9211b29b848e73daa5d1f6f567769c820847
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 11:13:18 2026 -0400
+
+    fix banners
+
+ 1 file changed, 15 insertions(+), 29 deletions(-)
+
+commit 7b68fa790bb6c7d60925a44f4e6fbc6fe02b44c0
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 11:02:34 2026 -0400
+
+    fix banner display
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit e296490ba64976a27a0982ae08ddb9fb9a4d29cb
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 10:35:41 2026 -0400
+
+    add centrailied text
+
+ 1 file changed, 2 insertions(+)
+
+commit bfde89f49fee0069a06129e83c8fae894d06229c
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 08:22:35 2026 -0400
+
+    sidebar fixed
+
+ 1 file changed, 26 insertions(+), 28 deletions(-)
+
+commit 2d2e5413cc42e6c738e7029935596526d77055d0
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Tue Mar 17 08:16:14 2026 -0400
+
+    banners and features
+
+ 23 files changed, 621 insertions(+), 374 deletions(-)
+
+commit 2b503675ea7abda7616b8693ecae0e6d367a2ab0
+Author: wlsfernandes <wlsfernandes@gmail.com>
+Date:   Sat Mar 14 19:32:06 2026 -0400
+
+    New Admin Pages
+
+ 77 files changed, 3550 insertions(+), 1087 deletions(-)
