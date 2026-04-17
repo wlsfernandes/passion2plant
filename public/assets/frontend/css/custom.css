@@ -343,10 +343,12 @@ section {
 }
 
 .partners__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 🔥 centers all logos */
     align-items: center;
+    gap: 40px; /* space between logos */
+    text-align: center;
 }
 
 /* Small tablets */
