@@ -8,19 +8,7 @@
 
         <div class="container">
 
-            {{-- Success Message --}}
-            @if (session('success'))
-                <div class="row justify-content-center mb-4">
-                    <div class="col-lg-6">
-                        <div class="alert alert-success text-center">
-                            {{ session('success') }}
-                        </div>
-                    </div>
-                </div>
-            @endif
-
-            {{-- Optional CMS Content --}}
-
+            <x-alert />
             <div class="row justify-content-center">
                 <div class="col-lg-8">
 
@@ -42,15 +30,37 @@
                             <div class="row g-4">
 
                                 {{-- Amount (readonly) --}}
-                                <div class="col-6">
-                                    <input type="text" class="form-control form-control-lg"
-                                        value="${{ number_format($membership->amount, 2) }}" readonly>
-                                    <input type="hidden" name="amount" value="{{ $membership->amount }}">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <div class="alert alert-info text-center p-4" style="max-width: 420px; width: 100%;">
+
+                                        <div class="mb-3">
+                                            <i class="fa-solid fa-info-circle me-2"></i>
+                                            <strong>Annual Billing</strong>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            You will be charged <strong>once per year</strong>.<br>
+                                            <span class="text-muted">No monthly charges.</span>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <input type="text" class="form-control form-control-lg text-center fw-bold"
+                                                value="${{ number_format($membership->amount, 2) }} / year" readonly>
+                                        </div>
+
+                                        <small class="text-muted">
+                                            <i class="fa-solid fa-lock me-2"></i> Secure payment
+                                        </small>
+
+                                        <input type="hidden" name="amount" value="{{ $membership->amount }}">
+                                        <input type="hidden" name="interval" value="annual">
+
+                                    </div>
                                 </div>
-                                {{-- Billing Type --}}
+                                {{-- Interval Monthly and Annual Billing Type - This section is commented out as the interval is now normalized to 'annual' by default in the NormalizerData service. If you want to allow users to choose between monthly and annual billing, you can uncomment this section and ensure that the 'interval' field is properly handled in the backend. --}}
+                                {{--
                                 <div class="col-6">
                                     <div class="d-flex gap-3">
-                                        {{-- Monthly --}}
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="interval" id="monthly"
                                                 value="monthly"
@@ -59,7 +69,6 @@
                                                 Monthly
                                             </label>
                                         </div>
-                                        {{-- Annual --}}
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="interval" id="annual"
                                                 value="annual" {{ old('interval') === 'annual' ? 'checked' : '' }}>
@@ -69,7 +78,7 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 {{-- First Name --}}
                                 <div class="col-md-6">

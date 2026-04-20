@@ -43,7 +43,7 @@
                                 <p class="mb-1">
                                     <strong>Contribution:</strong>
                                     ${{ number_format($application->amount, 2) }}
-                                    / {{ $application->interval === 'annual' ? 'year' : 'month' }}
+                                    / {{ $application->interval === 'year' ? 'year' : 'month' }}
                                 </p>
                             @endif
 

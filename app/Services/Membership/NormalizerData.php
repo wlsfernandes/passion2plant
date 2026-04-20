@@ -18,8 +18,7 @@ class NormalizerData
     {
         return [
             'amount' => trim($request->input('amount')) ?: null,
-            'interval' => trim($request->input('interval')) ?: null,
-
+            'interval' => trim($request->input('interval')) === 'annual' ? 'year' : 'month',
             'email' => trim($request->input('email')) ?: null,
             'first_name' => trim($request->input('first_name')) ?: 'Member',
             'last_name' => trim($request->input('last_name')) ?: '—',

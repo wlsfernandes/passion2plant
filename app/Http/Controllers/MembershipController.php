@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\S3;
 use App\Models\Membership;
 use App\Models\MembershipApplication;
 use App\Services\Membership\MembershipApplicationUpdater;
@@ -49,11 +48,12 @@ class MembershipController extends BaseController
     public function startCheckout(Request $request, Membership $membership)
     {
         $validated = $request->validate([
-            'amount' => 'required|numeric|min:1',
-            'interval' => 'required|in:monthly,annual',
             'email' => 'required|email',
+            'amount' => 'required|numeric|min:0',
+            'interval' => 'required|in:monthly,annual',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
+            'interval' => 'required|in:monthly,annual',
         ]);
 
         $data = NormalizerData::normalizeMembershipInput($request);
@@ -63,57 +63,40 @@ class MembershipController extends BaseController
         Stripe::setApiKey(config('services.stripe.secret'));
 
         try {
-
-            // 1️⃣ Create product (or reuse one static product if you want cleaner Stripe dashboard)
             $product = Product::create([
-                'name' => 'Membership Subscription',
+                'name' => 'Annual Membership',
+                'description' => 'This is a yearly payment. You will not be charged monthly.',
             ]);
 
-            // 2️⃣ Convert interval
-            $interval = $data['interval'] === 'annual' ? 'year' : 'month';
-
-            // 3️⃣ Create dynamic price
             $price = Price::create([
-                'unit_amount' => $data['amount'] * 100, // cents
+                'unit_amount' => (int) round($data['amount'] * 100),
                 'currency' => 'usd',
                 'recurring' => [
-                    'interval' => $interval,
+                    'interval' => $data['interval'],
                 ],
                 'product' => $product->id,
             ]);
 
-            // 4️⃣ Checkout session
             $session = CheckoutSession::create([
                 'mode' => 'subscription',
-
                 'line_items' => [
                     [
                         'price' => $price->id,
                         'quantity' => 1,
                     ],
                 ],
-
                 'customer_email' => $data['email'],
-
                 'subscription_data' => [
                     'metadata' => [
                         'type' => 'membership',
                         'application_id' => $application->id,
-                        'interval' => $data['interval'],
+                        'interval' => 'annual',
                     ],
                 ],
-
                 'success_url' => route('welcome-member').'?session_id={CHECKOUT_SESSION_ID}',
                 'cancel_url' => url()->previous(),
-
-                'metadata' => [
-                    'type' => 'membership',
-                    'application_id' => $application->id,
-                ],
             ]);
-
         } catch (\Exception $e) {
-
             SystemLogger::log(
                 'membership checkout failed',
                 'error',
@@ -292,7 +275,6 @@ class MembershipController extends BaseController
     {
         try {
             // Cleanup image if exists
-            
 
             $membership->delete();
 
