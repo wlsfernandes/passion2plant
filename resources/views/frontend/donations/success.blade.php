@@ -35,11 +35,6 @@
                         </p>
 
                         <div class="d-flex justify-content-center gap-3">
-                            <a href="{{ route('donation.index.public') }}" class="cmn--btn">
-                                <span>
-                                    Continue Exploring
-                                </span>
-                            </a>
 
                             <a href="{{ url('/') }}" class="cmn--btn border-btn">
                                 <span>
