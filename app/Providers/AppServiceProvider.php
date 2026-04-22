@@ -21,6 +21,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        /*
+        |--------------------------------------------------------------------------
+        | Force HTTPS in production
+        |--------------------------------------------------------------------------
+        */
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
 
         Gate::define('access-admin', function ($user) {
             return $user->roles()->where('name', 'Admin')->exists();
