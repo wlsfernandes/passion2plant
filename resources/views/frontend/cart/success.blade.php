@@ -34,12 +34,6 @@
                         </p>
 
                         <div class="d-flex justify-content-center gap-3">
-                            <a href="{{ route('stores.index.public') }}" class="cmn--btn">
-                                <span>
-                                    Continue Shopping
-                                </span>
-                            </a>
-
                             <a href="{{ url('/') }}" class="cmn--btn border-btn">
                                 <span>
                                     Back to Home
