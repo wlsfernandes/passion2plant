@@ -1,7 +1,108 @@
 @extends('admin.layouts.master')
-@section('title') Dashboard @endsection
+@section('title')
+    Dashboard
+@endsection
 @section('content')
+    <div class="row">
 
+        {{-- Logged User --}}
+        <div class="col-md-6 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-end mt-2">
+                        <i class="mdi mdi-account-circle text-primary" style="font-size: 38px;"></i>
+                    </div>
+                    <div>
+                        <h4 class="mb-1 mt-1">
+                            {{ auth()->user()->name ?? 'User' }}
+                        </h4>
+                        <p class="text-muted mb-0">Logged User</p>
+                    </div>
+                    <p class="text-muted mt-3 mb-0">
+                        <span class="text-primary me-1">
+                            <i class="mdi mdi-email-outline me-1"></i>
+                        </span>
+                        {{ auth()->user()->email ?? '-' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{-- end col --}}
+
+        {{-- User Role --}}
+        <div class="col-md-6 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-end mt-2">
+                        <i class="mdi mdi-shield-account text-success" style="font-size: 38px;"></i>
+                    </div>
+                    <div>
+                        <h4 class="mb-1 mt-1">
+                            {{ auth()->user()->roles->pluck('name')->implode(', ') ?: 'No Role' }}
+                        </h4>
+                        <p class="text-muted mb-0">User Role</p>
+                    </div>
+                    <p class="text-muted mt-3 mb-0">
+                        <span class="text-success me-1">
+                            <i class="mdi mdi-check-circle me-1"></i>
+                        </span>
+                        Access Granted
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{-- end col --}}
+
+        {{-- IP Address --}}
+        <div class="col-md-6 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-end mt-2">
+                        <i class="mdi mdi-ip-network text-warning" style="font-size: 38px;"></i>
+                    </div>
+                    <div>
+                        <h4 class="mb-1 mt-1">
+                            {{ request()->ip() }}
+                        </h4>
+                        <p class="text-muted mb-0">Current IP Address</p>
+                    </div>
+                    <p class="text-muted mt-3 mb-0">
+                        <span class="text-warning me-1">
+                            <i class="mdi mdi-earth me-1"></i>
+                        </span>
+                        Active Session
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{-- end col --}}
+
+        {{-- Login Time --}}
+        <div class="col-md-6 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-end mt-2">
+                        <i class="mdi mdi-clock-outline text-info" style="font-size: 38px;"></i>
+                    </div>
+                    <div>
+                        <h4 class="mb-1 mt-1">
+                            {{ now()->format('h:i A') }}
+                        </h4>
+                        <p class="text-muted mb-0">Current Server Time</p>
+                    </div>
+                    <p class="text-muted mt-3 mb-0">
+                        <span class="text-info me-1">
+                            <i class="mdi mdi-calendar-clock me-1"></i>
+                        </span>
+                        {{ now()->format('M d, Y') }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{-- end col --}}
+
+    </div>
+    {{-- }}
     <div class="row">
         <div class="col-md-6 col-xl-3">
             <div class="card">
@@ -721,7 +822,7 @@
         </div>
     </div>
     <!-- end row -->
-
+--}}
 @endsection
 @section('script')
     <!-- apexcharts -->
