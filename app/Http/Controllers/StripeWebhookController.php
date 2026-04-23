@@ -194,7 +194,19 @@ class StripeWebhookController extends BaseController
                     'currency' => strtoupper($session->currency ?? 'USD'),
                 ];
 
-                event(new PaymentCompleted('donation', $payload));
+                try {
+                    event(new PaymentCompleted('donation', $payload));
+                } catch (\Throwable $e) {
+                    SystemLogger::log(
+                        'Failed to dispatch PaymentCompleted event',
+                        'error',
+                        'events.payment_completed.failed',
+                        [
+                            'exception' => $e->getMessage(),
+                            'payment_id' => $payment->id,
+                        ]
+                    );
+                }
 
             } catch (\Throwable $e) {
                 SystemLogger::log(
