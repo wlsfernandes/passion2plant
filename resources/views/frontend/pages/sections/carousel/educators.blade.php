@@ -7,7 +7,8 @@
                 <div class="partner__item">
 
                     @if ($educator->external_link)
-                        <a href="{{ $educator->external_link }}" target="_blank" rel="noopener noreferrer">
+                        <a href="{{ $educator->external_link }}" target="_blank" rel="noopener noreferrer"
+                            class="partner-link">
                     @endif
 
                     <img src="{{ route('admin.images.preview', ['model' => 'educators', 'id' => $educator->id]) }}"
