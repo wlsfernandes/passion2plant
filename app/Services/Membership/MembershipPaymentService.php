@@ -2,10 +2,11 @@
 
 namespace App\Services\Membership;
 
+use App\Mail\SendMembershipWelcome;
 use App\Models\MembershipApplication;
-use App\Models\Payment;
-use App\Services\Payments\RegisterPaymentMembership;
+use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class MembershipPaymentService
 {
@@ -40,10 +41,32 @@ class MembershipPaymentService
             );
 
             // -----------------------------------------
-            // 3️⃣ Payment Record
+            // 3️⃣ Send email notification
             // -----------------------------------------
-        //    $payment = new RegisterPaymentMembership;
-        //    $payment->handle($application, $data);
+            try {
+                Mail::to($application->email)
+                    ->bcc([
+                        'wlsfernandes@gmail.com',
+                        'passion2plant@gmail.com',
+                        'drlizrios@gmail.com',
+                    ])
+                    ->send(new SendMembershipWelcome([
+                        'first_name' => $application->first_name,
+                        'last_name' => $application->last_name,
+                        'email' => $application->email,
+                    ]));
+            
+            } catch (\Exception $e) {
+                SystemLogger::log(
+                    'Failed to send membership welcome email',
+                    'error',
+                    'mail.membership_welcome.failed',
+                    [
+                        'exception' => $e->getMessage(),
+                        'email' => $application->email,
+                    ]
+                );
+            }
 
             return $member;
         });

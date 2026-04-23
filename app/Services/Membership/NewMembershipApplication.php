@@ -13,7 +13,7 @@ class NewMembershipApplication
 
             $payload = [
 
-                'amount' => $data['amount'] ?? null,
+                'amount' => $data['amount'] ?? 0,
                 'interval' => $data['interval'] ?? null,
                 'email' => $data['email'] ?? null,
                 'first_name' => $data['first_name'] ?? 'Member',

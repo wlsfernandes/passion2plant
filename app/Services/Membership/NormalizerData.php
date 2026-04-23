@@ -17,7 +17,7 @@ class NormalizerData
     public static function normalizeMembershipInput(Request $request): array
     {
         return [
-            'amount' => trim($request->input('amount')) ?: null,
+            'amount' => trim($request->input('amount')) ?: 0,
             'interval' => trim($request->input('interval')) === 'annual' ? 'year' : 'month',
             'email' => trim($request->input('email')) ?: null,
             'first_name' => trim($request->input('first_name')) ?: 'Member',
