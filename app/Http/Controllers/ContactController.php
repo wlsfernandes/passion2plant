@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\Services\AntispamService;
 use App\Services\SystemLogger;
 use Exception;
 use Illuminate\Http\Request;
@@ -8,40 +10,58 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends BaseController
 {
-
     public function contact()
     {
         return view('frontend.contact.index');
     }
 
-    public function send(Request $request)
+    public function send(Request $request, AntispamService $antispamService)
     {
-        // Honeypot check
-        if ($request->filled('website')) {
-            abort(403, 'Spam detected.');
-        }
+        /*
+        |--------------------------------------------------------------------------
+        | Anti-spam validation
+        |--------------------------------------------------------------------------
+        */
+        $antispamService->validate($request);
 
-        // Validation
+        /*
+        |--------------------------------------------------------------------------
+        | Form validation
+        |--------------------------------------------------------------------------
+        */
         $validated = $request->validate([
-            'name'    => 'required|string|max:120',
-            'email'   => 'required|email|max:150',
-            'number'  => 'nullable|string|max:30',
+            'name' => 'required|string|max:120',
+            'email' => 'required|email|max:150',
+            'number' => 'nullable|string|max:30',
+            'message' => 'required|string|min:10|max:2000',
+        ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Form validation
+        |--------------------------------------------------------------------------
+        */
+        $validated = $request->validate([
+            'name' => 'required|string|max:120',
+            'email' => 'required|email|max:150',
+            'number' => 'nullable|string|max:30',
             'message' => 'required|string|min:10|max:2000',
         ]);
 
         // Send email
-        try {Mail::raw(
-            "Name: {$validated['name']}\n" .
-            "Email: {$validated['email']}\n" .
-            "Phone: {$validated['number']}\n\n" .
-            "Message:\n{$validated['message']}",
-            function ($mail) use ($validated) {
-                $mail->to('drlizrios@gmail.com')
-                    ->to('wlsfernandes@gmail.com')
-                    ->subject('New Contact Message from Passion2Plant Website')
-                    ->replyTo($validated['email']);
-            }
-        );
+        try {
+            Mail::raw(
+                "Name: {$validated['name']}\n".
+                "Email: {$validated['email']}\n".
+                "Phone: {$validated['number']}\n\n".
+                "Message:\n{$validated['message']}",
+                function ($mail) use ($validated) {
+                    $mail->to('drlizrios@gmail.com')
+                        ->to('wlsfernandes@gmail.com')
+                        ->subject('New Contact Message from Passion2Plant Website')
+                        ->replyTo($validated['email']);
+                }
+            );
 
             SystemLogger::log(
                 'Starting email contact form submission',
@@ -49,9 +69,10 @@ class ContactController extends BaseController
                 'contact.email.start',
                 [
                     'email' => $validated['email'],
-                    'name'  => $validated['name'],
+                    'name' => $validated['name'],
                 ]
-            );} catch (Exception $e) {
+            );
+        } catch (Exception $e) {
 
             SystemLogger::log(
                 'Error sending contact form email',
@@ -59,14 +80,14 @@ class ContactController extends BaseController
                 'contact.email.error',
                 [
                     'email' => $validated['email'],
-                    'name'  => $validated['name'],
+                    'name' => $validated['name'],
                     'error' => $e->getMessage(),
                 ]
             );
+
             return back()->with('error', 'There was an error sending your message. Please try again later.');
         }
 
         return back()->with('success', 'Message sent successfully.');
     }
-
 }
