@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sector extends Model
 {
-  protected $fillable = ['key', 'name'];
+    protected $fillable = ['key', 'name'];
 
-  public function teams()
-  {
-    return $this->belongsToMany(Team::class)->withTimestamps();
-  }
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class)->withTimestamps();
+    }
 }

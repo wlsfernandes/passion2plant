@@ -18,7 +18,7 @@ abstract class BaseController extends Controller
         ], $code);
     }
 
-    protected function error(string $message, \Throwable $e = null, int $code = 500): JsonResponse
+    protected function error(string $message, ?\Throwable $e = null, int $code = 500): JsonResponse
     {
         SystemLogger::log(
             $message,

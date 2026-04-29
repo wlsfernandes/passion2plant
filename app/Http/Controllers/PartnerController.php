@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partner;
-use Illuminate\Http\Request;
 use App\Services\SystemLogger;
-use App\Helpers\S3;
 use Exception;
+use Illuminate\Http\Request;
 
 class PartnerController extends BaseController
 {
@@ -97,7 +96,6 @@ class PartnerController extends BaseController
         $data = $this->validatedData($request);
         try {
 
-
             $partner->update($data);
 
             SystemLogger::log(
@@ -136,7 +134,6 @@ class PartnerController extends BaseController
     public function destroy(Partner $partner)
     {
         try {
-            
 
             $partner->delete();
 

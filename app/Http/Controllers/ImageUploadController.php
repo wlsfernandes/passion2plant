@@ -145,11 +145,21 @@ class ImageUploadController extends BaseController
 
             return back()->with('success', 'Image selected successfully.');
         }
-        $request->validate([
-            'image' => 'required|image|max:5120',
-            'image_type' => 'required|in:banner,blog_social,event_header,card,square,logo,original_fit',
-        ]);
-
+        try {
+            $request->validate([
+                'image' => 'required|image|max:5120',
+                'image_type' => 'required|in:banner,blog_social,event_header,card,square,logo,original_fit',
+            ]);
+        } catch (ValidationException $e) {
+            SystemLogger::log(
+                'Validation failed during upload',
+                'warning',
+                'upload.validation_failed',
+                [
+                    'errors' => $e->errors(),
+                ]
+            );
+        }
         try {
             $instance = $this->resolveModel($model, $id);
 

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Services\SystemLogger;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PublishController extends BaseController
 {
@@ -16,18 +16,18 @@ class PublishController extends BaseController
 
         $column = $request->get('column', 'is_published');
 
-        if (!isset($instance->{$column})) {
+        if (! isset($instance->{$column})) {
             abort(400, "Publish column '{$column}' does not exist.");
         }
 
         $instance->update([
-            $column => !(bool) $instance->{$column},
+            $column => ! (bool) $instance->{$column},
         ]);
 
         SystemLogger::log(
-            class_basename($instance) . ' publish toggled',
+            class_basename($instance).' publish toggled',
             'info',
-            Str::snake(class_basename($instance)) . '.publish.toggle',
+            Str::snake(class_basename($instance)).'.publish.toggle',
             [
                 'id' => $instance->id,
                 'column' => $column,
@@ -43,9 +43,9 @@ class PublishController extends BaseController
 
     protected function resolveModel(string $model, int $id)
     {
-        $class = 'App\\Models\\' . Str::studly(Str::singular($model));
+        $class = 'App\\Models\\'.Str::studly(Str::singular($model));
 
-        if (!class_exists($class)) {
+        if (! class_exists($class)) {
             throw new NotFoundHttpException("Model '{$model}' not found.");
         }
 
@@ -61,7 +61,6 @@ class PublishController extends BaseController
          *   model: about_us
          *   route: about.index
          */
-
         $resource = Str::replaceLast('_us', '', $model); // about_us → about
         $route = "{$resource}.index";
 

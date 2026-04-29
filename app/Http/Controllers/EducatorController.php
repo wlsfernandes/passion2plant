@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\S3;
 use App\Models\Educator;
 use App\Services\SystemLogger;
 use Exception;
@@ -135,7 +134,6 @@ class EducatorController extends BaseController
     public function destroy(Educator $educator)
     {
         try {
-           
 
             $educator->delete();
 

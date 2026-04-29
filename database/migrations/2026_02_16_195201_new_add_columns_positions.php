@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::table('positions', function (Blueprint $table) {
-        $table->string('slug')->unique()->after('title_en');
-    });
+        Schema::table('positions', function (Blueprint $table) {
+            $table->string('slug')->unique()->after('title_en');
+        });
     }
 
     /**

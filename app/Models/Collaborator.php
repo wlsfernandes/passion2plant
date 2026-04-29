@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Models;
 
-use App\Models\CollaboratorImage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -22,8 +22,8 @@ class Collaborator extends Model
     ];
 
     protected $casts = [
-        'start_date'   => 'date',
-        'end_date'     => 'date',
+        'start_date' => 'date',
+        'end_date' => 'date',
         'is_published' => 'boolean',
     ];
 
@@ -64,14 +64,14 @@ class Collaborator extends Model
 
     protected static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
     {
-        $slug     = Str::slug($title);
+        $slug = Str::slug($title);
         $original = $slug;
-        $counter  = 1;
+        $counter = 1;
 
         while (
             static::where('slug', $slug)
-            ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
-            ->exists()
+                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
+                ->exists()
         ) {
             $slug = "{$original}-{$counter}";
             $counter++;
@@ -90,14 +90,14 @@ class Collaborator extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{'title_' . $locale} ?? $this->title_en;
+        return $this->{'title_'.$locale} ?? $this->title_en;
     }
 
     public function getDescriptionAttribute(): ?string
     {
         $locale = app()->getLocale();
 
-        return $this->{'description_' . $locale} ?? $this->description_en;
+        return $this->{'description_'.$locale} ?? $this->description_en;
     }
 
     /*
@@ -118,9 +118,9 @@ class Collaborator extends Model
     {
         return $this->image_url
             ? route('admin.images.preview', [
-            'model' => 'collaborators',
-            'id'    => $this->id,
-        ])
+                'model' => 'collaborators',
+                'id' => $this->id,
+            ])
             : asset('assets/frontend/img/banner/breadcumd-bg.jpg');
     }
 }

@@ -9,7 +9,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Enum;
 
-
 class SocialLinkController extends BaseController
 {
     /**

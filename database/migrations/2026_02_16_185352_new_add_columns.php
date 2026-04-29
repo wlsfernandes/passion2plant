@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-            Schema::table('collaborators', function (Blueprint $table) {
-                $table->integer('order')->default(0);
-            });
+        Schema::table('collaborators', function (Blueprint $table) {
+            $table->integer('order')->default(0);
+        });
 
-            Schema::table('projects', function (Blueprint $table) {
-                $table->integer('order')->default(0);
-            });
+        Schema::table('projects', function (Blueprint $table) {
+            $table->integer('order')->default(0);
+        });
     }
 
     /**
@@ -26,11 +26,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('collaborators', function (Blueprint $table) {
-           $table->dropColumn('order');
+            $table->dropColumn('order');
         });
 
         Schema::table('projects', function (Blueprint $table) {
-           $table->dropColumn('order');
+            $table->dropColumn('order');
         });
     }
 };

@@ -21,22 +21,22 @@ class Page extends Model
         'content_es',
         'is_published',
         // ✅ SEO Core
-    'seo_title_en',
-    'seo_title_es',
-    'seo_description_en',
-    'seo_description_es',
-    'seo_keywords', // JSON or comma string
+        'seo_title_en',
+        'seo_title_es',
+        'seo_description_en',
+        'seo_description_es',
+        'seo_keywords', // JSON or comma string
 
-    // ✅ Social / Open Graph
-    'og_title_en',
-    'og_title_es',
-    'og_description_en',
-    'og_description_es',
-    'og_image_url',
+        // ✅ Social / Open Graph
+        'og_title_en',
+        'og_title_es',
+        'og_description_en',
+        'og_description_es',
+        'og_image_url',
 
-    // ✅ Indexing control
-    'is_published',
-    'no_index',
+        // ✅ Indexing control
+        'is_published',
+        'no_index',
     ];
 
     protected $casts = [
@@ -62,11 +62,11 @@ class Page extends Model
     {
         parent::boot();
 
-       static::creating(function (Page $page) {
-    if (empty($page->slug)) {
-        $page->slug = static::generateUniqueSlug($page->title_en);
-    }
-});
+        static::creating(function (Page $page) {
+            if (empty($page->slug)) {
+                $page->slug = static::generateUniqueSlug($page->title_en);
+            }
+        });
 
     }
 
@@ -134,14 +134,14 @@ class Page extends Model
     }
 
     public function getSeoTitleAttribute()
-{
-    return $this->{'seo_title_' . app()->getLocale()} 
-        ?? $this->title;
-}
+    {
+        return $this->{'seo_title_'.app()->getLocale()}
+            ?? $this->title;
+    }
 
-public function getSeoDescriptionAttribute()
-{
-    return $this->{'seo_description_' . app()->getLocale()} 
-        ?? \Str::limit(strip_tags($this->{'content_' . app()->getLocale()}), 160);
-}
+    public function getSeoDescriptionAttribute()
+    {
+        return $this->{'seo_description_'.app()->getLocale()}
+            ?? \Str::limit(strip_tags($this->{'content_'.app()->getLocale()}), 160);
+    }
 }

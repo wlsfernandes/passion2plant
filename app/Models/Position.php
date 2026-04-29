@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use App\Traits\Auditable;
 
 class Position extends Model
 {
-    use HasFactory, Auditable;
+    use Auditable, HasFactory;
 
     protected $fillable = [
         'title_en',
@@ -28,8 +28,8 @@ class Position extends Model
 
     protected $casts = [
         'publish_start_at' => 'datetime',
-        'publish_end_at'   => 'datetime',
-        'is_published'     => 'boolean',
+        'publish_end_at' => 'datetime',
+        'is_published' => 'boolean',
     ];
 
     /*
@@ -44,11 +44,11 @@ class Position extends Model
             ->where('is_published', true)
             ->where(function ($q) {
                 $q->whereNull('publish_start_at')
-                  ->orWhere('publish_start_at', '<=', now());
+                    ->orWhere('publish_start_at', '<=', now());
             })
             ->where(function ($q) {
                 $q->whereNull('publish_end_at')
-                  ->orWhere('publish_end_at', '>=', now());
+                    ->orWhere('publish_end_at', '>=', now());
             });
     }
 
@@ -78,7 +78,7 @@ class Position extends Model
         $counter = 1;
 
         while (self::where('slug', $slug)->exists()) {
-            $slug = $originalSlug . '-' . $counter;
+            $slug = $originalSlug.'-'.$counter;
             $counter++;
         }
 
@@ -94,13 +94,15 @@ class Position extends Model
     public function getTitle()
     {
         $locale = app()->getLocale();
-        return $this->{'title_' . $locale} ?? $this->title_en;
+
+        return $this->{'title_'.$locale} ?? $this->title_en;
     }
 
     public function getDescription()
     {
         $locale = app()->getLocale();
-        return $this->{'content_' . $locale} ?? $this->content_en;
+
+        return $this->{'content_'.$locale} ?? $this->content_en;
     }
 
     public function getFileUrl(): ?string

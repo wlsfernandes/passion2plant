@@ -11,6 +11,7 @@ class PaymentCompleted
     use Dispatchable, SerializesModels;
 
     public string $type; // donation | cart
+
     public array $data;
 
     public function __construct(string $type, array $data)

@@ -2,7 +2,6 @@
 
 namespace App\Enums;
 
-
 enum SocialPlatform: string
 {
     case Facebook = 'facebook';

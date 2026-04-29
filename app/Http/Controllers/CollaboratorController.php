@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Helpers\S3;
@@ -16,18 +17,18 @@ class CollaboratorController extends BaseController
     protected function validatedData(Request $request): array
     {
         return $request->validate([
-            'title_en'       => ['required', 'string', 'max:255'],
-            'title_es'       => ['required', 'string', 'max:255'],
+            'title_en' => ['required', 'string', 'max:255'],
+            'title_es' => ['required', 'string', 'max:255'],
 
             'description_en' => ['nullable', 'string'],
             'description_es' => ['nullable', 'string'],
-            'external_link'  => ['nullable', 'url', 'max:255'],
+            'external_link' => ['nullable', 'url', 'max:255'],
 
-            'start_date'     => ['nullable', 'date'],
-            'end_date'       => ['nullable', 'date', 'after_or_equal:start_date'],
+            'start_date' => ['nullable', 'date'],
+            'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
 
-            'is_published'   => ['required', 'boolean'],
-            'order'          => ['nullable', 'integer'],
+            'is_published' => ['required', 'boolean'],
+            'order' => ['nullable', 'integer'],
         ]);
     }
 
@@ -83,8 +84,8 @@ class CollaboratorController extends BaseController
                 'collaborators.store',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'title_en'        => $collaborator->title_en,
-                    'email'           => $request->email,
+                    'title_en' => $collaborator->title_en,
+                    'email' => $request->email,
                 ]
             );
 
@@ -99,7 +100,7 @@ class CollaboratorController extends BaseController
                 'collaborators.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email'     => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -135,7 +136,7 @@ class CollaboratorController extends BaseController
                 'collaborators.update',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'email'           => $request->email,
+                    'email' => $request->email,
                 ]
             );
 
@@ -150,8 +151,8 @@ class CollaboratorController extends BaseController
                 'collaborators.update',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'exception'       => $e->getMessage(),
-                    'email'           => $request->email,
+                    'exception' => $e->getMessage(),
+                    'email' => $request->email,
                 ]
             );
 
@@ -181,8 +182,8 @@ class CollaboratorController extends BaseController
                 'collaborators.delete',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'images_deleted'  => $collaborator->images->count(),
-                    'email'           => request()->email,
+                    'images_deleted' => $collaborator->images->count(),
+                    'email' => request()->email,
                 ]
             );
 
@@ -197,13 +198,12 @@ class CollaboratorController extends BaseController
                 'collaborators.delete',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'exception'       => $e->getMessage(),
-                    'email'           => request()->email,
+                    'exception' => $e->getMessage(),
+                    'email' => request()->email,
                 ]
             );
 
             return back()->with('error', 'Failed to delete Collaborator.');
         }
     }
-
 }

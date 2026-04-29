@@ -1,4 +1,5 @@
 <?php
+
 namespace App\View\Components;
 
 use Illuminate\View\Component;
@@ -6,6 +7,7 @@ use Illuminate\View\Component;
 class PublishBadge extends Component
 {
     public mixed $model;
+
     public string $column;
 
     public function __construct($model, string $column = 'is_published')

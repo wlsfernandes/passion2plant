@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\S3;
 use App\Models\Event;
+use App\Services\SystemLogger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Services\SystemLogger;
-use App\Helpers\S3;
 use Throwable;
 
 class EventController extends BaseController
 {
-
     /**
      * Public: list all published events
      * URL: /our-events
@@ -35,7 +34,6 @@ class EventController extends BaseController
 
         return view('frontend.events.show', compact('event'));
     }
-
 
     /**
      * List all events (published + drafts).
@@ -103,6 +101,7 @@ class EventController extends BaseController
                     'roles' => $request->roles ?? [],
                 ]
             );
+
             return redirect()
                 ->route('events.index')
                 ->with('success', 'Event created successfully.');
@@ -118,6 +117,7 @@ class EventController extends BaseController
                     'email' => $request->email,
                 ]
             );
+
             return back()
                 ->withInput()
                 ->with('error', 'Failed to create event.');
@@ -178,6 +178,7 @@ class EventController extends BaseController
                     'roles' => $request->roles ?? [],
                 ]
             );
+
             return redirect()
                 ->route('events.index')
                 ->with('success', 'Event updated successfully.');
@@ -207,12 +208,12 @@ class EventController extends BaseController
         try {
 
             // 🔥 Delete English file if exists
-            if (!empty($event->file_url_en)) {
+            if (! empty($event->file_url_en)) {
                 S3::delete($event->file_url_en);
             }
 
             // 🔥 Delete Spanish file if exists
-            if (!empty($event->file_url_es)) {
+            if (! empty($event->file_url_es)) {
                 S3::delete($event->file_url_es);
             }
             $event->delete();
@@ -225,6 +226,7 @@ class EventController extends BaseController
                     'roles' => $request->roles ?? [],
                 ]
             );
+
             return redirect()
                 ->route('events.index')
                 ->with('success', 'Event deleted successfully.');
@@ -239,6 +241,7 @@ class EventController extends BaseController
                     'exception' => $e->getMessage(),
                 ]
             );
+
             return back()->with('error', 'Failed to delete event.');
         }
     }

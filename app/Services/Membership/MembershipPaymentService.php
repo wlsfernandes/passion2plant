@@ -4,7 +4,6 @@ namespace App\Services\Membership;
 
 use App\Mail\SendMembershipWelcome;
 use App\Models\MembershipApplication;
-use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -55,7 +54,7 @@ class MembershipPaymentService
                         'last_name' => $application->last_name,
                         'email' => $application->email,
                     ]));
-            
+
             } catch (\Exception $e) {
                 SystemLogger::log(
                     'Failed to send membership welcome email',

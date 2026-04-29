@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Helpers\S3;
@@ -26,7 +27,7 @@ class CollaboratorImageController extends BaseController
     public function store(Request $request, Collaborator $collaborator)
     {
         $request->validate([
-            'image'         => ['required', 'image', 'max:5120'], // 5MB
+            'image' => ['required', 'image', 'max:5120'], // 5MB
             'external_link' => ['nullable', 'url', 'max:255'],
         ]);
 
@@ -40,7 +41,7 @@ class CollaboratorImageController extends BaseController
 
             $image = $collaborator->images()->create([
                 'image_url' => $path,
-                'position'  => $position,
+                'position' => $position,
             ]);
 
             SystemLogger::log(
@@ -49,7 +50,7 @@ class CollaboratorImageController extends BaseController
                 'collaborators.images.store',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'image_id'        => $image->id,
+                    'image_id' => $image->id,
                 ]
             );
 
@@ -62,7 +63,7 @@ class CollaboratorImageController extends BaseController
                 'collaborators.images.store',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'exception'       => $e->getMessage(),
+                    'exception' => $e->getMessage(),
                 ]
             );
 
@@ -78,7 +79,6 @@ class CollaboratorImageController extends BaseController
         abort_unless($image->collaborator_id === $collaborator->id, 403);
 
         try {
-           
 
             $image->delete();
 
@@ -88,7 +88,7 @@ class CollaboratorImageController extends BaseController
                 'collaborators.images.delete',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'image_id'        => $image->id,
+                    'image_id' => $image->id,
                 ]
             );
 
@@ -101,13 +101,15 @@ class CollaboratorImageController extends BaseController
                 'collaborators.images.delete',
                 [
                     'collaborator_id' => $collaborator->id,
-                    'exception'       => $e->getMessage(),
+                    'exception' => $e->getMessage(),
                 ]
             );
 
             return back()->with('error', 'Failed to delete image.');
         }
-    }public function updateLink(Request $request, $collaboratorId, $imageId)
+    }
+
+    public function updateLink(Request $request, $collaboratorId, $imageId)
     {
         $request->validate([
             'external_link' => 'nullable|url',
@@ -129,7 +131,7 @@ class CollaboratorImageController extends BaseController
                 'error',
                 'collaborator.image.link.failed',
                 [
-                    'image_id'  => $imageId,
+                    'image_id' => $imageId,
                     'exception' => $e->getMessage(),
                 ]
             );
@@ -137,5 +139,4 @@ class CollaboratorImageController extends BaseController
             return back()->with('error', 'Failed to update link.');
         }
     }
-
 }

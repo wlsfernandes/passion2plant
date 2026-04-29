@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\S3;
 use App\Models\Service;
 use App\Services\SystemLogger;
 use Illuminate\Http\Request;

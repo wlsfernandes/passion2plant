@@ -1,4 +1,5 @@
 <?php
+
 return [
     'explore' => 'Explorar',
     'quick_links' => 'Enlaces Rápidos',

@@ -1,8 +1,7 @@
 <?php
+
 namespace App\Models;
 
-use App\Models\OrderItem;
-use App\Models\Payment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
@@ -54,6 +53,6 @@ class Order extends Model
     protected static function generateOrderNumber(): string
     {
         // Example: ORD-20260126-9F3A2C
-        return 'P2P-' . now()->format('Ymd') . '-' . strtoupper(Str::random(6));
+        return 'P2P-'.now()->format('Ymd').'-'.strtoupper(Str::random(6));
     }
 }

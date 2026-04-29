@@ -266,7 +266,6 @@ class SectionController extends BaseController
             }
 
             // delete multiple images from section_images
-           
 
             $image->delete();
 
@@ -308,7 +307,6 @@ class SectionController extends BaseController
     public function destroySectionImage(Page $page, Section $section)
     {
         try {
-
 
             $section->update([
                 'image_url' => null,

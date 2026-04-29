@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,9 +11,9 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
 
-                                            // ----------------------------------
-                                            // Polymorphic "what is this payment for"
-                                            // ----------------------------------
+            // ----------------------------------
+            // Polymorphic "what is this payment for"
+            // ----------------------------------
             $table->string('payable_type'); // Donation, Orderrder, Subscription, etc.
             $table->unsignedBigInteger('payable_id');
 

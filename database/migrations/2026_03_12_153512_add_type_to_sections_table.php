@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::table('sections', function (Blueprint $table) {
-    $table->string('type')->default('text')->after('page_id');
-});
+        Schema::table('sections', function (Blueprint $table) {
+            $table->string('type')->default('text')->after('page_id');
+        });
     }
 
     /**

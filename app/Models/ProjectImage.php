@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -35,6 +36,6 @@ class ProjectImage extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{'caption_' . $locale} ?? $this->caption_en;
+        return $this->{'caption_'.$locale} ?? $this->caption_en;
     }
 }

@@ -14,13 +14,15 @@ class RuntimeConfigService
     public static function applyS3Config(): void
     {
         try {
-            if (!Schema::hasTable('developer_settings'))
+            if (! Schema::hasTable('developer_settings')) {
                 return;
+            }
 
             $s = DeveloperSetting::current();
 
-            if (!$s->aws_enabled)
+            if (! $s->aws_enabled) {
                 return;
+            }
 
             Config::set('filesystems.disks.s3.key', $s->aws_access_key_id);
             Config::set('filesystems.disks.s3.secret', $s->aws_secret_access_key);
@@ -38,7 +40,7 @@ class RuntimeConfigService
     public static function applyStripeConfig(): void
     {
         try {
-            if (!Schema::hasTable('developer_settings')) {
+            if (! Schema::hasTable('developer_settings')) {
                 return;
             }
 
@@ -64,13 +66,15 @@ class RuntimeConfigService
     public static function applyPaypalConfig(): void
     {
         try {
-            if (!Schema::hasTable('developer_settings'))
+            if (! Schema::hasTable('developer_settings')) {
                 return;
+            }
 
             $s = DeveloperSetting::current();
 
-            if (!$s->paypal_enabled)
+            if (! $s->paypal_enabled) {
                 return;
+            }
 
             Config::set('services.paypal.client_id', $s->paypal_live_client_id);
             Config::set('services.paypal.secret', $s->paypal_live_client_secret);
@@ -86,13 +90,15 @@ class RuntimeConfigService
     public static function applyMailConfig(): void
     {
         try {
-            if (!Schema::hasTable('developer_settings'))
+            if (! Schema::hasTable('developer_settings')) {
                 return;
+            }
 
             $s = DeveloperSetting::current();
 
-            if (!$s->mail_enabled)
+            if (! $s->mail_enabled) {
                 return;
+            }
 
             Config::set('mail.default', $s->mail_mailer);
             Config::set('mail.mailers.smtp.host', $s->mail_host);
@@ -114,13 +120,15 @@ class RuntimeConfigService
     public static function applyQueueConfig(): void
     {
         try {
-            if (!Schema::hasTable('developer_settings'))
+            if (! Schema::hasTable('developer_settings')) {
                 return;
+            }
 
             $s = DeveloperSetting::current();
 
-            if (!$s->queue_enabled)
+            if (! $s->queue_enabled) {
                 return;
+            }
 
             Config::set('queue.default', $s->queue_connection);
 

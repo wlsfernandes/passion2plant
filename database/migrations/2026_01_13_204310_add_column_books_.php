@@ -4,23 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
-  /**
-   * Run the migrations.
-   */
-  public function up(): void
-  {
-    Schema::table('book_recommendations', function (Blueprint $table) {
-      $table->string('external_link')->nullable()->after('slug');
-    });
-  }
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('book_recommendations', function (Blueprint $table) {
+            $table->string('external_link')->nullable()->after('slug');
+        });
+    }
 
-  public function down(): void
-  {
-    Schema::table('book_recommendations', function (Blueprint $table) {
-      $table->dropColumn([
-        'external_link',
-      ]);
-    });
-  }
+    public function down(): void
+    {
+        Schema::table('book_recommendations', function (Blueprint $table) {
+            $table->dropColumn([
+                'external_link',
+            ]);
+        });
+    }
 };

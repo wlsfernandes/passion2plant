@@ -4,32 +4,33 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
-  public function up(): void
-  {
-    Schema::create('projects', function (Blueprint $table) {
-      $table->id();
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('projects', function (Blueprint $table) {
+            $table->id();
 
-      // Bilingual content
-      $table->string('title_en');
-      $table->string('title_es');
+            // Bilingual content
+            $table->string('title_en');
+            $table->string('title_es');
 
-      $table->text('description_en')->nullable();
-      $table->text('description_es')->nullable();
+            $table->text('description_en')->nullable();
+            $table->text('description_es')->nullable();
 
-      // Timeline
-      $table->date('start_date')->nullable();
-      $table->date('end_date')->nullable();
+            // Timeline
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
 
-      // Publish toggle
-      $table->boolean('is_published')->default(false);
+            // Publish toggle
+            $table->boolean('is_published')->default(false);
 
-      $table->timestamps();
-    });
-  }
+            $table->timestamps();
+        });
+    }
 
-  public function down(): void
-  {
-    Schema::dropIfExists('projects');
-  }
+    public function down(): void
+    {
+        Schema::dropIfExists('projects');
+    }
 };

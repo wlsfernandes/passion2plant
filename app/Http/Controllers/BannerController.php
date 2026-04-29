@@ -171,7 +171,7 @@ class BannerController extends BaseController
     public function destroy(Banner $banner)
     {
         try {
-            
+
             $banner->delete();
 
             SystemLogger::log(

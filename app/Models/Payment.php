@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,7 +27,7 @@ class Payment extends Model
         'stripe_subscription_id',
         'stripe_customer_id',
 
-                        // Payment info
+        // Payment info
         'payment_type', // one_time | subscription
         'status',       // pending | completed | failed | refunded | canceled
         'amount',       // stored in cents
@@ -53,7 +54,7 @@ class Payment extends Model
      */
     protected $casts = [
         'metadata' => 'array',
-        'paid_at'  => 'datetime',
+        'paid_at' => 'datetime',
     ];
 
     /**
@@ -71,7 +72,6 @@ class Payment extends Model
      * Helpers / Accessors
      * ----------------------------------
      */
-
     public function isCompleted(): bool
     {
         return $this->status === 'completed';
@@ -84,12 +84,12 @@ class Payment extends Model
 
     public function getAmountFormattedAttribute(): string
     {
-        return strtoupper($this->currency) . ' ' . number_format($this->amount / 100, 2);
+        return strtoupper($this->currency).' '.number_format($this->amount / 100, 2);
     }
 
     public function getCustomerNameAttribute(): string
     {
-        return trim(($this->first_name ?? '') . ' ' . ($this->last_name ?? ''));
+        return trim(($this->first_name ?? '').' '.($this->last_name ?? ''));
     }
 
     // 🔑 THIS IS THE IMPORTANT ONE

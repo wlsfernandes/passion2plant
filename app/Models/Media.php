@@ -36,7 +36,6 @@ class Media extends Model
     /**
      * Relationships
      */
-
     public function uploader(): BelongsTo
     {
         return $this->belongsTo(User::class, 'uploaded_by');

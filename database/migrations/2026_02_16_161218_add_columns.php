@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('collaborator_images', function (Blueprint $table) {
-           $table->string('external_link')->nullable();
+            $table->string('external_link')->nullable();
         });
 
         Schema::table('project_images', function (Blueprint $table) {
-           $table->string('external_link')->nullable();
+            $table->string('external_link')->nullable();
         });
     }
 

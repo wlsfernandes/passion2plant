@@ -24,7 +24,7 @@ class Donation extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{'title_' . $locale}
+        return $this->{'title_'.$locale}
             ?? $this->title_en;
     }
 
@@ -35,7 +35,7 @@ class Donation extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{'description_' . $locale}
+        return $this->{'description_'.$locale}
             ?? $this->description_en;
     }
 

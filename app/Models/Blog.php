@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Concerns\HasTextLimits;
-use Illuminate\Database\Eloquent\Model;
 use App\Traits\Auditable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Blog extends Model
 {
-    use HasTextLimits, HasFactory, Auditable;
+    use Auditable, HasFactory, HasTextLimits;
 
     protected $fillable = [
         'title_en',
@@ -70,7 +70,7 @@ class Blog extends Model
 
     protected static function booted()
     {
-        static::updated(fn() => \Log::info('BLOG updated fired'));
+        static::updated(fn () => \Log::info('BLOG updated fired'));
     }
 
     /**
@@ -84,7 +84,7 @@ class Blog extends Model
 
         while (
             static::where('slug', $slug)
-                ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
+                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
                 ->exists()
         ) {
             $slug = "{$original}-{$counter}";
@@ -113,7 +113,7 @@ class Blog extends Model
 
     public function hasDownloadFile(): bool
     {
-        return !empty($this->getFileUrl());
+        return ! empty($this->getFileUrl());
     }
 
     public function getFileUrl(): ?string

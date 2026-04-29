@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Role;
 use App\Models\User;
 use App\Services\SystemLogger;
@@ -25,22 +24,25 @@ class UserController extends BaseController
 
     /**
      * Summary of create
+     *
      * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
         $roles = Role::orderBy('name')->get();
+
         return view('admin.users.form', compact('roles'));
     }
 
     /**
      * Summary of edit
-     * @param User $user
+     *
      * @return \Illuminate\Contracts\View\View
      */
     public function edit(User $user)
     {
         $roles = Role::orderBy('name')->get();
+
         return view('admin.users.form', compact('user', 'roles'));
     }
 
@@ -104,7 +106,6 @@ class UserController extends BaseController
         }
     }
 
-
     /**
      * Update user.
      */
@@ -112,7 +113,7 @@ class UserController extends BaseController
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'email' => 'required|email|unique:users,email,'.$user->id,
             'password' => 'nullable|min:8',
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
@@ -168,7 +169,6 @@ class UserController extends BaseController
                 ->with('error', 'An error occurred while updating the user.');
         }
     }
-
 
     /**
      * Delete user.

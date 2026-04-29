@@ -94,11 +94,11 @@ class MembershipController extends BaseController
                     ],
                 ],
                 'metadata' => [
-                        'type' => 'membership',
-                        'application_id' => $application->id,
-                        'interval' => 'annual',
-                    ],
-                    
+                    'type' => 'membership',
+                    'application_id' => $application->id,
+                    'interval' => 'annual',
+                ],
+
                 'success_url' => route('welcome-member').'?session_id={CHECKOUT_SESSION_ID}',
                 'cancel_url' => url()->previous(),
             ]);

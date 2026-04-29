@@ -12,6 +12,7 @@ class RoleController extends BaseController
     public function index()
     {
         $roles = Role::withCount('users')->orderBy('name')->get();
+
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -52,7 +53,7 @@ class RoleController extends BaseController
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'name' => 'required|string|max:100|unique:roles,name,' . $role->id,
+            'name' => 'required|string|max:100|unique:roles,name,'.$role->id,
         ]);
 
         // ❌ Protect Admin role

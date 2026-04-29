@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\S3;
 use App\Models\Page;
 use App\Services\SystemLogger;
 use Exception;
@@ -167,7 +166,6 @@ class PageController extends BaseController
     {
         try {
             // Cleanup banner image if exists
-          
 
             $page->delete();
 

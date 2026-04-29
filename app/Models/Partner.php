@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Auditable;
 
 class Partner extends Model
 {
-    use HasFactory, Auditable;
+    use Auditable, HasFactory;
 
     protected $fillable = [
         'name',
@@ -34,6 +34,6 @@ class Partner extends Model
      */
     protected static function booted()
     {
-        static::updated(fn() => \Log::info('PARTNER updated fired'));
+        static::updated(fn () => \Log::info('PARTNER updated fired'));
     }
 }

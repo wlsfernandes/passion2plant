@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Product;
@@ -8,11 +9,10 @@ use Stripe\Stripe;
 
 class CartController extends Controller
 {
-
     public function show()
     {
-        $cart      = session()->get('cart', []);
-        $cartTotal = collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']);
+        $cart = session()->get('cart', []);
+        $cartTotal = collect($cart)->sum(fn ($item) => $item['price'] * $item['quantity']);
 
         return view('payment.cart', compact('cart', 'cartTotal'));
     }
@@ -23,7 +23,7 @@ class CartController extends Controller
 
         $subtotal = $this->calculateSubtotal($cart);
         $shipping = $this->calculateShipping($cart);
-        $total    = $subtotal + $shipping;
+        $total = $subtotal + $shipping;
 
         return view('frontend.cart.index', compact(
             'cart',
@@ -46,13 +46,13 @@ class CartController extends Controller
         } else {
             $cart[$product->id] = [
                 'product_id' => $product->id,
-                'name'       => $product->name,
-                'price'      => (float) $product->price,
-                'currency'   => $product->currency,
-                'quantity'   => (int) $validated['quantity'],
-                'image'      => route('admin.images.preview', [
+                'name' => $product->name,
+                'price' => (float) $product->price,
+                'currency' => $product->currency,
+                'quantity' => (int) $validated['quantity'],
+                'image' => route('admin.images.preview', [
                     'model' => 'products',
-                    'id'    => $product->id,
+                    'id' => $product->id,
                 ]),
                 'is_digital' => (bool) $product->is_digital,
             ];
@@ -97,7 +97,7 @@ class CartController extends Controller
 
         return collect($cart)
             ->where('is_digital', false)
-            ->sum(fn($item) => $shippingPerItem * (int) $item['quantity']);
+            ->sum(fn ($item) => $shippingPerItem * (int) $item['quantity']);
     }
 
     /* -------------------------------------------------
@@ -122,11 +122,11 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
         $validated = $request->validate([
-            'email'      => 'required|email',
+            'email' => 'required|email',
             'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'country'    => 'nullable|string|max:255',
-            'address'    => 'nullable|string|max:500',
+            'last_name' => 'required|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:500',
         ]);
 
         $cart = session()->get('cart', []);
@@ -141,13 +141,13 @@ class CartController extends Controller
         foreach ($cart as $item) {
             $lineItems[] = [
                 'price_data' => [
-                    'currency'     => 'usd',
+                    'currency' => 'usd',
                     'product_data' => [
                         'name' => $item['name'],
                     ],
-                    'unit_amount'  => (int) ((float) $item['price'] * 100),
+                    'unit_amount' => (int) ((float) $item['price'] * 100),
                 ],
-                'quantity'   => (int) $item['quantity'],
+                'quantity' => (int) $item['quantity'],
             ];
         }
 
@@ -156,18 +156,18 @@ class CartController extends Controller
         // ---------------------------------------
         $shipping = collect($cart)
             ->where('is_digital', false)
-            ->sum(fn($item) => 3.99 * (int) $item['quantity']);
+            ->sum(fn ($item) => 3.99 * (int) $item['quantity']);
 
         if ($shipping > 0) {
             $lineItems[] = [
                 'price_data' => [
-                    'currency'     => 'usd',
+                    'currency' => 'usd',
                     'product_data' => [
                         'name' => 'Shipping',
                     ],
-                    'unit_amount'  => (int) ($shipping * 100),
+                    'unit_amount' => (int) ($shipping * 100),
                 ],
-                'quantity'   => 1,
+                'quantity' => 1,
             ];
         }
 
@@ -177,32 +177,31 @@ class CartController extends Controller
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $session = CheckoutSession::create([
-            'mode'                 => 'payment',
+            'mode' => 'payment',
             'payment_method_types' => ['card'],
 
-            'line_items'           => $lineItems,
+            'line_items' => $lineItems,
 
-            'customer_email'       => $validated['email'],
+            'customer_email' => $validated['email'],
 
-            'success_url'          => route('cart.success') . '?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url'           => route('cart.index'),
+            'success_url' => route('cart.success').'?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('cart.index'),
 
             // ---------------------------------------
             // Metadata snapshot for webhook
             // ---------------------------------------
-            'metadata'             => [
-                'type'       => 'cart',
-                'email'      => $validated['email'],
+            'metadata' => [
+                'type' => 'cart',
+                'email' => $validated['email'],
                 'first_name' => $validated['first_name'],
-                'last_name'  => $validated['last_name'],
-                'country'    => $validated['country'] ?? '',
-                'address'    => $validated['address'] ?? '',
-                'cart'       => json_encode($cart),
-                'shipping'   => (string) $shipping,
+                'last_name' => $validated['last_name'],
+                'country' => $validated['country'] ?? '',
+                'address' => $validated['address'] ?? '',
+                'cart' => json_encode($cart),
+                'shipping' => (string) $shipping,
             ],
         ]);
 
         return redirect()->away($session->url);
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\S3;
 use App\Models\Sector;
 use App\Models\Team;
 use App\Services\SystemLogger;

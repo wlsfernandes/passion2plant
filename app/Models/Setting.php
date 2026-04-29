@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Auditable;
 
 class Setting extends Model
 {
-    use HasFactory, Auditable;
+    use Auditable, HasFactory;
 
     protected $fillable = [
         'site_name',
@@ -46,6 +46,6 @@ class Setting extends Model
             }
         });
 
-        static::updated(fn() => \Log::info('SETTINGS updated fired'));
+        static::updated(fn () => \Log::info('SETTINGS updated fired'));
     }
 }
