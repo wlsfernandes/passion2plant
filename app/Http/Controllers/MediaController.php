@@ -7,6 +7,7 @@ use App\Models\MediaType;
 use App\Services\SystemLogger;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class MediaController extends BaseController
@@ -67,14 +68,33 @@ class MediaController extends BaseController
     /**
      * Display a listing of media.
      */
+    /**
+     * Display a listing of media.
+     */
     public function index()
     {
-        $media = Media::with('type')
-            ->orderByDesc('published_at')
-            ->orderByDesc('created_at')
-            ->get();
+        $media = Media::latest()->paginate(18);
 
         return view('admin.media.index', compact('media'));
+    }
+
+    /**
+     * Download media file.
+     *
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    /**
+     * Download media file.
+     */
+    public function download(Media $media)
+    {
+        $disk = Storage::disk($media->disk);
+
+        $stream = $disk->readStream($media->path);
+
+        return response()->streamDownload(function () use ($stream) {
+            fpassthru($stream);
+        }, basename($media->path));
     }
 
     /**

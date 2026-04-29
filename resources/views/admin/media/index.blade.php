@@ -3,115 +3,52 @@
 @section('title', 'Media')
 
 @section('content')
-  <div class="card border border-primary">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">
-        <i class="uil uil-play-circle"></i> Media
-      </h5>
+    <div class="card border border-primary">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="uil uil-play-circle"></i> Media Library
+            </h5>
+        </div>
 
-      <a href="{{ route('media.create') }}" class="btn btn-success">
-        <i class="uil uil-plus"></i> Add Media
-      </a>
-    </div>
+        <div class="card-body">
+            <x-alert />
 
-    <div class="card-body">
-      <x-alert />
+            @if (isset($media) && $media->count())
+                <div class="mt-5">
+                    <div class="row">
+                        @foreach ($media as $item)
+                            <div class="col-md-2 mb-3">
+                                <div class="card h-100 text-center p-2">
 
-      <table class="table table-bordered datatable-buttons">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Title</th>
-            <th>External Link</th>
-            <th>Published At</th>
-            <th>Published</th>
-            <th width="140">Actions</th>
-          </tr>
-        </thead>
+                                    <img src="{{ Storage::disk($item->disk)->url($item->path) }}" class="img-fluid mb-2"
+                                        style="height:100px; object-fit:cover; cursor:pointer;"
+                                        onclick="selectImage('{{ $item->path }}')">
 
-        <tbody>
-          @foreach ($media as $item)
-            <tr>
+                                    <div class="d-grid gap-2">
+                                        {{-- }}  <button type="button" class="btn btn-sm btn-outline-primary"
+                                            onclick="selectImage('{{ $item->path }}')">
+                                            Use
+                                        </button> --}}
 
-              {{-- Type --}}
-              <td>
-                <span class="badge bg-primary">
-                  {{ $item->type->name ?? '—' }}
-                </span>
-              </td>
+                                        <a href="{{ route('admin.media.download', $item->id) }}"
+                                            class="btn btn-sm btn-outline-success">
+                                            Download
+                                        </a>
+                                    </div>
 
-              {{-- Title (localized) --}}
-              <td>
-                <strong>{{ $item->title }}</strong>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
 
-                <div class="small text-muted mt-1">
-                  EN: {{ $item->title_en }}<br>
-                  ES: {{ $item->title_es }}
+                    {{-- Pagination --}}
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $media->links() }}
+                    </div>
                 </div>
-              </td>
-
-              {{-- External link --}}
-              <td>
-                @if ($item->external_link)
-                  <a href="{{ $item->external_link }}" target="_blank" rel="noopener noreferrer"
-                    class="text-decoration-none">
-                    <i class="uil uil-external-link-alt"></i>
-                    {{ Str::limit($item->external_link, 40) }}
-                  </a>
-                @else
-                  <span class="text-muted">—</span>
-                @endif
-              </td>
-
-              {{-- Published at --}}
-              <td>
-                {{ $item->published_at ? $item->published_at->format('M d, Y') : '—' }}
-              </td>
-
-              {{-- Publish toggle --}}
-              <td class="text-center">
-                <form method="POST"
-                  action="{{ route('admin.publish.toggle', [
-                      'model' => 'medias',
-                      'id' => $item->id,
-                  ]) }}">
-                  @csrf
-                  @method('PATCH')
-
-                  <button type="submit" class="badge border-0 {{ $item->is_published ? 'bg-success' : 'bg-secondary' }}">
-                    {{ $item->is_published ? __('Yes') : __('No') }}
-                  </button>
-                </form>
-              </td>
-
-              {{-- Actions --}}
-              <td>
-                <a href="{{ route('media.edit', $item) }}" class="btn btn-sm btn-warning">
-                  <i class="uil uil-pen"></i>
-                </a>
-
-                <form action="{{ route('media.destroy', $item) }}" method="POST" class="d-inline"
-                  onsubmit="return confirm('Delete this media item?')">
-                  @csrf
-                  @method('DELETE')
-
-                  <button class="btn btn-sm btn-danger">
-                    <i class="uil uil-trash"></i>
-                  </button>
-                </form>
-              </td>
-
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
+            @else
+                <p class="text-muted">No media found.</p>
+            @endif
+        </div>
     </div>
-  </div>
-@endsection
-
-@section('script')
-  <script src="{{ asset('/assets/admin/libs/datatables/datatables.min.js') }}"></script>
-  <script src="{{ asset('/assets/admin/libs/jszip/jszip.min.js') }}"></script>
-  <script src="{{ asset('/assets/admin/libs/pdfmake/pdfmake.min.js') }}"></script>
-  <script src="{{ asset('/assets/admin/js/pages/datatables.init.js') }}"></script>
 @endsection

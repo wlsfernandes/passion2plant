@@ -143,6 +143,11 @@
                                 <ul class="sub-menu">
 
                                     <li>
+                                        <a href="{{ route('media.index') }}">
+                                            <i class="uil uil-image"></i> Media Library
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('media-types.index') }}">
                                             <i class="uil uil-layer-group"></i> Media Types
                                         </a>

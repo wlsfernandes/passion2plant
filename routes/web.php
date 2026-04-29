@@ -254,6 +254,7 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::get('footer', [FooterController::class, 'index'])->name('footer.index');
     Route::post('footer/save', [FooterController::class, 'save'])->name('footer.save');
     Route::get('/footer/{footer}/edit', [FooterController::class, 'edit'])->name('footer.edit');
+    Route::get('/admin/media/{media}/download', [MediaController::class, 'download'])->name('admin.media.download');
 
     // Content
     Route::resource('abouts', AboutController::class);
