@@ -71,11 +71,79 @@ class MediaController extends BaseController
     /**
      * Display a listing of media.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $media = Media::latest()->paginate(18);
+        $query = Media::query();
 
-        return view('admin.media.index', compact('media'));
+        /*
+        |--------------------------------------------------------------------------
+        | Search
+        |--------------------------------------------------------------------------
+        */
+        if ($request->filled('search')) {
+            $search = $request->search;
+
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'ILIKE', "%{$search}%")
+                    ->orWhere('filename', 'ILIKE', "%{$search}%")
+                    ->orWhere('original_name', 'ILIKE', "%{$search}%");
+            });
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Folder Filter
+        |--------------------------------------------------------------------------
+        */
+        if ($request->filled('folder')) {
+            $query->where('folder', $request->folder);
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Extension Filter
+        |--------------------------------------------------------------------------
+        */
+        if ($request->filled('extension')) {
+            $query->where('extension', $request->extension);
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Uploaded By Filter
+        |--------------------------------------------------------------------------
+        */
+        if ($request->filled('uploaded_by')) {
+            $query->where('uploaded_by', $request->uploaded_by);
+        }
+
+        $media = $query
+            ->latest()
+            ->paginate(24)
+            ->withQueryString();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Filter Dropdown Data
+        |--------------------------------------------------------------------------
+        */
+        $folders = Media::select('folder')
+            ->whereNotNull('folder')
+            ->distinct()
+            ->orderBy('folder')
+            ->pluck('folder');
+
+        $extensions = Media::select('extension')
+            ->whereNotNull('extension')
+            ->distinct()
+            ->orderBy('extension')
+            ->pluck('extension');
+
+        return view('admin.media.index', compact(
+            'media',
+            'folders',
+            'extensions'
+        ));
     }
 
     /**
