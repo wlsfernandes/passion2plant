@@ -33,7 +33,7 @@
                             {{-- Title --}}
                             <div class="cms_content mb-2">
                                 <a href="{{ route('events.display', $event->slug) }}">
-                                    {!! strip_tags($event->getTitle()) !!}
+                                    {!! $event->getTitle() !!}
                                 </a>
                             </div>
 
@@ -46,7 +46,7 @@
 
                             {{-- Description --}}
                             <div class="cms_content mb-3">
-                                {!! Str::limit(strip_tags($event->getContent()), 120) !!}
+                                {!! $event->getContent() !!}
                             </div>
 
                             {{-- Button --}}
