@@ -5,10 +5,10 @@
 
 <section class="blog__section pt-130 pb-130 overhid mb-50" style="{{ $section->style ?? '' }}">
     <div class="container">
+
         @include('frontend.pages.sections.partials.content')
 
         <div class="row g-4">
-
             @forelse($services as $service)
                 <div
                     class="{{ $isSingle ? 'col-md-6 col-lg-4 mx-auto' : 'col-xxl-4 col-xl-4 col-lg-4 col-md-6' }} wow fadeInUp">
@@ -26,19 +26,17 @@
                         {{-- Content --}}
                         <div class="content">
 
-                            <p>
-                            <div class=cms-html>
+                            {{-- Title (SAFE) --}}
+                            <div class="cms-html">
                                 <a href="{{ route('services.display', $service->slug) }}">
-                                    {!! $service->getTitle() !!}
+                                    {{ $service->getTitle() }}
                                 </a>
                             </div>
-                            </p>
 
-                            <p>
-                            <div class=cms-html>
-                                {!! Str::limit($service->getContent(), 120) !!}
+                            {{-- Content (SAFE TRUNCATION) --}}
+                            <div class="cms-html">
+                                {{ Str::limit(strip_tags($service->getContent()), 120) }}
                             </div>
-                            </p>
 
                             <a href="{{ route('services.display', $service->slug) }}"
                                 class="btn btn-sm btn-outline-success mt-2">
@@ -48,6 +46,7 @@
                         </div>
 
                     </div>
+
                 </div>
 
             @empty
@@ -55,7 +54,7 @@
                     @lang('pages.no_services_available')
                 </div>
             @endforelse
-
         </div>
+
     </div>
 </section>
