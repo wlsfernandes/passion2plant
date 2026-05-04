@@ -25,7 +25,7 @@
                                 @foreach ($services as $item)
                                     <li class="mb-3 {{ $item->id === $service->id ? 'active' : '' }}">
                                         <a href="{{ route('services.display', $item->slug) }}">
-                                            <span>{{ strip_tags($item->getTitle()) }}</span>
+                                            <span>{{ html_entity_decode($item->getTitle()) }}</span>
                                             <i class="fa fa-chevron-right"></i>
                                         </a>
                                     </li>
@@ -61,12 +61,12 @@
                         {{-- Main image --}}
                         <div class="details__thumb">
                             <img src="{{ route('admin.images.preview', ['model' => 'services', 'id' => $service->id]) }}"
-                                alt="{{ strip_tags($service->getTitle()) }}" class="img-fluid w-100" loading="lazy">
+                                alt="{{ html_entity_decode($service->getTitle()) }}" class="img-fluid w-100" loading="lazy">
                         </div>
 
                         {{-- Content --}}
                         <div class="details__content">
-                            <h3>{{ strip_tags($service->getTitle()) }}</h3>
+                            <h3>{{ html_entity_decode($service->getTitle()) }}</h3>
 
                             <div class="cms-html" id="cms-html">
                                 {!! $service->getContent() !!}
