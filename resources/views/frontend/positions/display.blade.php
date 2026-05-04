@@ -5,7 +5,7 @@
 @section('content')
 
     {{-- MAIN CONTENT --}}
-    <section class="details__section overhid pt-130 pb-130" style="{{ $section->style }}">
+    <section class="details__section overhid pt-130 pb-130" style="{{ $section->style ?? '' }}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">

@@ -1,4 +1,4 @@
-<section class="banner__section overhid mb-50 cms-hero" style="{{ $section->style }}">
+<section class="banner__section overhid mb-50 cms-hero" style="{{ $section->style ?? '' }}">
 
     @if ($section->image_url)
         <img src="{{ route('admin.images.preview', [

@@ -5,7 +5,7 @@
     $isCentered = $count <= 2;
 @endphp
 
-<section class="event__section pt-130 pb-130 overhid" style="{{ $section->style }}">
+<section class="event__section pt-130 pb-130 overhid" style="{{ $section->style ?? '' }}">
     <div class="container">
 
         @include('frontend.pages.sections.partials.content')

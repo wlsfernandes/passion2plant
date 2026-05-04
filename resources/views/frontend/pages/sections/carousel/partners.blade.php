@@ -1,5 +1,5 @@
 <!-- Partners / Clients Section -->
-<section class="partners__section pt-130 pb-130" style="{{ $section->style }}">
+<section class="partners__section pt-130 pb-130" style="{{ $section->style ?? '' }}">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
         <div class="partners__grid">

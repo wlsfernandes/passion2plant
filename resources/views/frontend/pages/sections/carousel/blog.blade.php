@@ -5,7 +5,7 @@
     $isCentered = $count <= 2;
 @endphp
 
-<section class="blog__section pt-130 pb-130 overhid mb-50" style="{{ $section->style }}">
+<section class="blog__section pt-130 pb-130 overhid mb-50" style="{{ $section->style ?? '' }}">
     <div class="container">
         @include('frontend.pages.sections.partials.content')
 

@@ -2,7 +2,7 @@
     $layout = $section->layout ?? 'image_left';
 @endphp
 
-<section class="py-5" style="{{ $section->style }}">
+<section class="py-5" style="{{ $section->style ?? '' }}">
 
     <div class="container">
 

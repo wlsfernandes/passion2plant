@@ -1,4 +1,4 @@
-<section class="team__section pt-130 pb-130 overhid" style="{{ $section->style }}">
+<section class="team__section pt-130 pb-130 overhid" style="{{ $section->style ?? '' }}">
     <div class="container">
 
         <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">

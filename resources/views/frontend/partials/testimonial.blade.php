@@ -4,7 +4,7 @@
 @endphp
 
 <!--Testimonial Section Here-->
-<section class="testimonial__section overhid pt-130 pb-130" style="{{ $section->style }}">
+<section class="testimonial__section overhid pt-130 pb-130" style="{{ $section->style ?? '' }}">
     <div class="container">
 
         <div class="title__content center wow fadeInUp" data-wow-duration="1.3s">

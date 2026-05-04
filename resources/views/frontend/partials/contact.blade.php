@@ -1,5 +1,5 @@
  <!--Contact Info Section Here-->
- <div class="contact__info__section pt-130 pb-130 section__bg overhid" style="{{ $section->style }}">
+ <div class="contact__info__section pt-130 pb-130 section__bg overhid" style="{{ $section->style ?? '' }}">
      @if (session('success'))
          <div class="alert alert-success">
              {{ session('success') }}
