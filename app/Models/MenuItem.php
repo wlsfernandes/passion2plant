@@ -50,7 +50,12 @@ class MenuItem extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->{"title_{$locale}"} ?? $this->title_en;
+        return $this->cleanText($this->{"title_{$locale}"} ?? $this->title_en);
+    }
+
+    protected function cleanText(?string $value): string
+    {
+        return html_entity_decode(strip_tags($value ?? ''), ENT_QUOTES, 'UTF-8');
     }
 
     /**

@@ -53,41 +53,49 @@ class Service extends Model
     */
 
     public static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
-{
-    $cleanTitle = html_entity_decode(strip_tags($title), ENT_QUOTES, 'UTF-8');
+    {
+        $cleanTitle = html_entity_decode(strip_tags($title), ENT_QUOTES, 'UTF-8');
 
-    $slug = Str::slug($cleanTitle);
-    $original = $slug ?: 'item';
-    $counter = 1;
+        $slug = Str::slug($cleanTitle);
+        $original = $slug ?: 'item';
+        $counter = 1;
 
-    while (
-        static::where('slug', $slug)
-            ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
-            ->exists()
-    ) {
-        $slug = "{$original}-{$counter}";
-        $counter++;
+        while (
+            static::where('slug', $slug)
+                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
+                ->exists()
+        ) {
+            $slug = "{$original}-{$counter}";
+            $counter++;
+        }
+
+        return $slug;
     }
 
-    return $slug;
-}
-
-    public function getTitle(?string $locale = null): string
+    public function getTitle(): string
     {
-        $locale = $locale ?? app()->getLocale();
-
-        return $locale === 'es'
-            ? $this->title_es
+        $value = app()->getLocale() === 'es'
+            ? ($this->title_es ?: $this->title_en)
             : $this->title_en;
+
+        return $this->cleanText($value);
     }
 
-    public function getContent(?string $locale = null): ?string
+    public function getContent(): string
     {
-        $locale = $locale ?? app()->getLocale();
-
-        return $locale === 'es'
-            ? $this->content_es
+        $value = app()->getLocale() === 'es'
+            ? ($this->content_es ?: $this->content_en)
             : $this->content_en;
+
+        return $this->cleanText($value);
+    }
+
+    /**
+     * Clean HTML tags and decode entities
+     */
+    protected function cleanText(?string $value): string
+    {
+        return html_entity_decode(strip_tags($value ?? ''), ENT_QUOTES, 'UTF-8');
     }
 
     /*
