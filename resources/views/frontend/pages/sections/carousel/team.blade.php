@@ -20,7 +20,7 @@
                             <div class="donate__content text-center">
 
                                 <h5 class="mb-2">
-                                    <a href="{{ route('team.profile', strip_tags($team->slug)) }}">
+                                    <a href="{{ route('team.profile', $team->slug) }}">
                                         {!! $team->display_name !!}
                                     </a>
                                 </h5>

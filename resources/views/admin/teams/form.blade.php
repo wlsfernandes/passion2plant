@@ -109,6 +109,7 @@
                 @endisset
 
                 <div class="mb-3">
+                    <label class="form-label">Role</label>
                     <textarea name="role" class="form-control ckeditor-title" rows="2">{{ old('role', $team->role ?? '') }}</textarea>
                     <small class="text-muted">
                         Example: Executive Director, Program Manager
