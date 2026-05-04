@@ -25,7 +25,7 @@
                                 @foreach ($services as $item)
                                     <li class="mb-3 {{ $item->id === $service->id ? 'active' : '' }}">
                                         <a href="{{ route('services.display', $item->slug) }}">
-                                            <span>{{ html_entity_decode($item->getTitle()) }}</span>
+                                            <span>{{ html_entity_decode(strip_tags($item->getTitle()), ENT_QUOTES, 'UTF-8') }}</span>
                                             <i class="fa fa-chevron-right"></i>
                                         </a>
                                     </li>
@@ -66,7 +66,7 @@
 
                         {{-- Content --}}
                         <div class="details__content">
-                            <h3>{{ html_entity_decode($service->getTitle()) }}</h3>
+                            <h3>{{ html_entity_decode(strip_tags($item->getTitle()), ENT_QUOTES, 'UTF-8') }}</h3>
 
                             <div class="cms-html" id="cms-html">
                                 {!! $service->getContent() !!}
