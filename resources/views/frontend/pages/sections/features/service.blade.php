@@ -29,7 +29,7 @@
                             {{-- Title (SAFE) --}}
                             <div class="cms-html">
                                 <a href="{{ route('services.display', $service->slug) }}">
-                                    {{ $service->getTitle() }}
+                                    {!! $service->getTitle() !!}
                                 </a>
                             </div>
 
