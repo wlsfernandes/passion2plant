@@ -33,6 +33,14 @@
                                 @lang('pages.download_file')
                             </a>
                         @endif
+
+
+                        @if ($event->external_link)
+                            <a href="{{ $event->external_link }}" class="cmn--btn mt-4" target="_blank">
+                                @lang('pages.click_here')
+                            </a>
+                        @endif
+
                     </div>
                 </div>
 

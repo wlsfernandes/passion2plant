@@ -2,7 +2,7 @@
 
 return [
     'memberships' => 'Memberships',
-
+    'click_here' => 'Click Here',
     'all_services' => 'All Services',
     'service_details' => 'Service Details',
     'back_to_services' => 'Back to Services',

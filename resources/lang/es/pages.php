@@ -2,6 +2,7 @@
 
 return [
     'membership' => 'Membresía',
+    'click_here' => 'Haga clic aquí',
     'all_services' => 'Todos los Servicios',
     'service_details' => 'Detalles del Servicio',
     'back_to_services' => 'Volver a los Servicios',
