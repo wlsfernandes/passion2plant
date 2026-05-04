@@ -19,7 +19,7 @@
                                 {!! $position->getTitle() !!}
                             </div>
                             <div class="cms-html" id="cms-html">
-                                {!! $position->getDescription() !!}
+                                {!! $position->getContent() !!}
                             </div>
 
                             {{-- APPLY / EXTERNAL LINK --}}

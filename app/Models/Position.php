@@ -101,11 +101,11 @@ class Position extends Model
         return $value;
     }
 
-    public function getDescription(): string
+    public function getContent(): string
     {
         $value = app()->getLocale() === 'es'
-            ? ($this->description_es ?: $this->description_en)
-            : $this->description_en;
+            ? ($this->content_es ?: $this->content_en)
+            : $this->content_en;
 
         return $value;
     }
