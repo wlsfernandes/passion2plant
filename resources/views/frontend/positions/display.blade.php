@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', $position->getTitle() . ' | Passion2Plant')
+@section('title', strip_tags($position->getTitle()) . ' | Passion2Plant')
 
 @section('content')
 
