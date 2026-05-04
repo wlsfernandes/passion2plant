@@ -25,7 +25,7 @@
                                 @foreach ($services as $item)
                                     <li class="mb-3 {{ $item->id === $service->id ? 'active' : '' }}">
                                         <a href="{{ route('services.display', $item->slug) }}">
-                                            <span>{{ $item->getTitle() }}</span>
+                                            <span>{!! $item->getTitle() !!}</span>
                                             <i class="fa fa-chevron-right"></i>
                                         </a>
                                     </li>
