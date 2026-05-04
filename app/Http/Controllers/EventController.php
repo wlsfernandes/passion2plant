@@ -13,7 +13,6 @@ class EventController extends BaseController
 {
     /**
      * Public: list all published events
-     * URL: /our-events
      */
     public function indexPublic()
     {
@@ -25,8 +24,7 @@ class EventController extends BaseController
     }
 
     /**
-     * Public: display a single event by slug
-     * URL: /event/{slug}
+     * Public: display a single event
      */
     public function display(Event $event)
     {
@@ -36,7 +34,7 @@ class EventController extends BaseController
     }
 
     /**
-     * List all events (published + drafts).
+     * Admin: list all events
      */
     public function index()
     {
@@ -48,7 +46,7 @@ class EventController extends BaseController
     }
 
     /**
-     * Show create form.
+     * Show create form
      */
     public function create()
     {
@@ -56,11 +54,11 @@ class EventController extends BaseController
     }
 
     /**
-     * Store new event.
+     * Validation method (standard)
      */
-    public function store(Request $request)
+    protected function validateRequest(Request $request): array
     {
-        $request->validate([
+        return $request->validate([
             'title_en' => 'required|string|max:255',
             'title_es' => 'nullable|string|max:255',
             'content_en' => 'nullable|string',
@@ -74,33 +72,31 @@ class EventController extends BaseController
             'file_url_es' => 'nullable|string|max:255',
             'external_link' => 'nullable|url|max:255',
         ]);
+    }
+
+    /**
+     * Prepare data (fallback logic)
+     */
+    protected function prepareData(array $data): array
+    {
+        $data['title_es'] = $data['title_es'] ?: $data['title_en'];
+        $data['content_es'] = $data['content_es'] ?: $data['content_en'];
+
+        return $data;
+    }
+
+    /**
+     * Store event
+     */
+    public function store(Request $request)
+    {
+        $data = $this->validateRequest($request);
+        $data = $this->prepareData($data);
 
         try {
-            DB::transaction(function () use ($request) {
-                Event::create([
-                    'title_en' => $request->title_en,
-                    'title_es' => $request->title_es,
-                    'content_en' => $request->content_en,
-                    'content_es' => $request->content_es,
-                    'event_date' => $request->event_date,
-                    'publish_start_at' => $request->publish_start_at,
-                    'publish_end_at' => $request->publish_end_at,
-                    'is_published' => (bool) $request->is_published,
-                    'image_url' => $request->image_url,
-                    'file_url_en' => $request->file_url_en,
-                    'file_url_es' => $request->file_url_es,
-                    'external_link' => $request->external_link,
-                ]);
+            DB::transaction(function () use ($data) {
+                Event::create($data);
             });
-            SystemLogger::log(
-                'Event created',
-                'info',
-                'events.store',
-                [
-                    'email' => $request->email,
-                    'roles' => $request->roles ?? [],
-                ]
-            );
 
             return redirect()
                 ->route('events.index')
@@ -114,7 +110,6 @@ class EventController extends BaseController
                 'events.store',
                 [
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
                 ]
             );
 
@@ -125,7 +120,7 @@ class EventController extends BaseController
     }
 
     /**
-     * Show edit form.
+     * Show edit form
      */
     public function edit(Event $event)
     {
@@ -133,51 +128,17 @@ class EventController extends BaseController
     }
 
     /**
-     * Update event.
+     * Update event
      */
     public function update(Request $request, Event $event)
     {
-        $request->validate([
-            'title_en' => 'required|string|max:255',
-            'title_es' => 'nullable|string|max:255',
-            'content_en' => 'nullable|string',
-            'content_es' => 'nullable|string',
-            'event_date' => 'nullable|date',
-            'publish_start_at' => 'nullable|date',
-            'publish_end_at' => 'nullable|date|after_or_equal:publish_start_at',
-            'is_published' => 'nullable|boolean',
-            'image_url' => 'nullable|string|max:255',
-            'file_url_en' => 'nullable|string|max:255',
-            'file_url_es' => 'nullable|string|max:255',
-            'external_link' => 'nullable|url|max:255',
-        ]);
+        $data = $this->validateRequest($request);
+        $data = $this->prepareData($data);
 
         try {
-            DB::transaction(function () use ($request, $event) {
-                $event->update($request->only([
-                    'title_en',
-                    'title_es',
-                    'content_en',
-                    'content_es',
-                    'event_date',
-                    'publish_start_at',
-                    'publish_end_at',
-                    'is_published',
-                    'image_url',
-                    'file_url_en',
-                    'file_url_es',
-                    'external_link',
-                ]));
+            DB::transaction(function () use ($event, $data) {
+                $event->update($data);
             });
-            SystemLogger::log(
-                'Event created',
-                'info',
-                'events.update',
-                [
-                    'email' => $request->email,
-                    'roles' => $request->roles ?? [],
-                ]
-            );
 
             return redirect()
                 ->route('events.index')
@@ -186,46 +147,38 @@ class EventController extends BaseController
         } catch (Throwable $e) {
 
             SystemLogger::log(
-                'Event creation failed',
+                'Event update failed',
                 'error',
                 'events.update',
                 [
                     'exception' => $e->getMessage(),
-                    'email' => $request->email,
                 ]
             );
 
             return back()
+                ->withInput()
                 ->with('error', 'Failed to update event.');
         }
     }
 
     /**
-     * Delete event.
+     * Delete event
      */
     public function destroy(Event $event)
     {
         try {
+            DB::transaction(function () use ($event) {
 
-            // 🔥 Delete English file if exists
-            if (! empty($event->file_url_en)) {
-                S3::delete($event->file_url_en);
-            }
+                if (! empty($event->file_url_en)) {
+                    S3::delete($event->file_url_en);
+                }
 
-            // 🔥 Delete Spanish file if exists
-            if (! empty($event->file_url_es)) {
-                S3::delete($event->file_url_es);
-            }
-            $event->delete();
+                if (! empty($event->file_url_es)) {
+                    S3::delete($event->file_url_es);
+                }
 
-            SystemLogger::log(
-                'Event deleted',
-                'info',
-                'events.delete',
-                [
-                    'roles' => $request->roles ?? [],
-                ]
-            );
+                $event->delete();
+            });
 
             return redirect()
                 ->route('events.index')
