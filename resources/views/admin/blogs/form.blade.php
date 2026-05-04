@@ -60,11 +60,18 @@
                             Blog is hidden after this date.
                         </small>
                     </div>
-                    <div class="col-md-8 mb-3">
+                    <div class="col-md-5 mb-3">
                         <input type="url" name="external_link" class="form-control" placeholder="https://example.com"
                             value="{{ old('external_link', $blog->external_link ?? '') }}">
                         <small class="text-muted">
                             Optional external page with more information.
+                        </small>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" name="external_link_button_text" class="form-control" placeholder="Apply Now"
+                            value="{{ old('external_link_button_text', $blog->external_link_button_text ?? '') }}">
+                        <small class="text-muted">
+                            Button text for the external link (default: "Apply Now").
                         </small>
                     </div>
                 </div>

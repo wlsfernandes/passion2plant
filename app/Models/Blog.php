@@ -24,7 +24,9 @@ class Blog extends Model
         'image_url',
         'file_url_en',
         'file_url_es',
+
         'external_link',
+        'external_link_button_text',
     ];
 
     protected $casts = [

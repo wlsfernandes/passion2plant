@@ -40,7 +40,7 @@
                                 <a href="{{ $blog->external_link }}" class="cmn--btn cmn--btn-outline" target="_blank"
                                     rel="noopener noreferrer">
                                     <i class="uil uil-external-link-alt"></i>
-                                    @lang('pages.apply_now')
+                                    {{ $blog->external_link_button_text ?? __('pages.apply_now') }}
                                 </a>
                             @endif
 

@@ -71,6 +71,7 @@ class EventController extends BaseController
             'file_url_en' => 'nullable|string|max:255',
             'file_url_es' => 'nullable|string|max:255',
             'external_link' => 'nullable|url|max:255',
+            'external_link_button_text' => 'nullable|string|max:255',
         ]);
     }
 

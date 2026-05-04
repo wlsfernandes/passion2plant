@@ -27,6 +27,7 @@ class Event extends Model
         'file_url_en',
         'file_url_es',
         'external_link',
+        'external_link_button_text',
     ];
 
     protected $casts = [

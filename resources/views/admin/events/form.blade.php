@@ -120,6 +120,13 @@
                         Optional external page with more information or registration.
                     </small>
                 </div>
+                <div class="mb-3">
+                    <input type="text" name="external_link_button_text" class="form-control" placeholder="Apply Now"
+                        value="{{ old('external_link_button_text', $event->external_link_button_text ?? '') }}">
+                    <small class="text-muted">
+                        Button text for the external link (default: "Apply Now").
+                    </small>
+                </div>
 
                 <hr>
 
