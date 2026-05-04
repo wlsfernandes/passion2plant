@@ -61,9 +61,9 @@
 
                             {{-- Title --}}
                             <td>
-                                <strong>{{ strip_tags($position->title_en) }}</strong><br>
+                                <strong>{{ html_entity_decode(strip_tags($position->title_en)) }}</strong><br>
                                 <small class="text-muted">
-                                    {{ strip_tags($position->title_es) ?? '-' }}
+                                    {{ html_entity_decode(strip_tags($position->title_es)) ?? '-' }}
                                 </small>
                             </td>
 
