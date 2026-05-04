@@ -53,22 +53,24 @@ class Service extends Model
     */
 
     public static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
-    {
-        $slug = Str::slug($title);
-        $original = $slug;
-        $counter = 1;
+{
+    $cleanTitle = html_entity_decode(strip_tags($title), ENT_QUOTES, 'UTF-8');
 
-        while (
-            static::where('slug', $slug)
-                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
-                ->exists()
-        ) {
-            $slug = "{$original}-{$counter}";
-            $counter++;
-        }
+    $slug = Str::slug($cleanTitle);
+    $original = $slug ?: 'item';
+    $counter = 1;
 
-        return $slug;
+    while (
+        static::where('slug', $slug)
+            ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
+            ->exists()
+    ) {
+        $slug = "{$original}-{$counter}";
+        $counter++;
     }
+
+    return $slug;
+}
 
     public function getTitle(?string $locale = null): string
     {

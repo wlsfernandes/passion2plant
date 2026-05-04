@@ -53,10 +53,12 @@ class Team extends Model
         });
     }
 
-    protected static function generateUniqueSlug(string $name, ?int $ignoreId = null): string
+    public static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
     {
-        $slug = Str::slug($name);
-        $original = $slug;
+        $cleanTitle = html_entity_decode(strip_tags($title), ENT_QUOTES, 'UTF-8');
+    
+        $slug = Str::slug($cleanTitle);
+        $original = $slug ?: 'item';
         $counter = 1;
 
         while (

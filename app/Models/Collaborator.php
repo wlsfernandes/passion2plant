@@ -64,8 +64,9 @@ class Collaborator extends Model
 
     protected static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
     {
-        $slug = Str::slug($title);
-        $original = $slug;
+        $cleanTitle = html_entity_decode(strip_tags($title), ENT_QUOTES, 'UTF-8');
+        $slug = Str::slug($cleanTitle);
+        $original = $slug ?: 'item';
         $counter = 1;
 
         while (

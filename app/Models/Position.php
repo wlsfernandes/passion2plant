@@ -71,14 +71,15 @@ class Position extends Model
         });
     }
 
-    protected static function generateUniqueSlug($title)
+    protected static function generateUniqueSlug(string $title, ?int $ignoreId = null): string
     {
-        $slug = Str::slug($title);
-        $originalSlug = $slug;
+        $cleanTitle = html_entity_decode(strip_tags($title), ENT_QUOTES, 'UTF-8');
+        $slug = Str::slug($cleanTitle);
+        $original = $slug ?: 'item';
         $counter = 1;
 
         while (self::where('slug', $slug)->exists()) {
-            $slug = $originalSlug.'-'.$counter;
+            $slug = "{$original}-{$counter}";
             $counter++;
         }
 
