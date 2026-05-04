@@ -35,16 +35,28 @@ class Blog extends Model
 
     public function getTitle(): string
     {
-        return app()->getLocale() === 'es'
+        $value = app()->getLocale() === 'es'
             ? ($this->title_es ?: $this->title_en)
             : $this->title_en;
+
+        return $this->cleanText($value);
     }
 
     public function getContent(): string
     {
-        return app()->getLocale() === 'es'
+        $value = app()->getLocale() === 'es'
             ? ($this->content_es ?: $this->content_en)
             : $this->content_en;
+
+        return $this->cleanText($value);
+    }
+
+    /**
+     * Clean HTML tags and decode entities
+     */
+    protected function cleanText(?string $value): string
+    {
+        return html_entity_decode(strip_tags($value ?? ''), ENT_QUOTES, 'UTF-8');
     }
 
     /**
