@@ -66,7 +66,7 @@
 
                         {{-- Content --}}
                         <div class="details__content">
-                            <h3>{{ html_entity_decode(strip_tags($item->getTitle()), ENT_QUOTES, 'UTF-8') }}</h3>
+                            <h3>{{ html_entity_decode(strip_tags($service->getTitle()), ENT_QUOTES, 'UTF-8') }}</h3>
 
                             <div class="cms-html" id="cms-html">
                                 {!! $service->getContent() !!}
