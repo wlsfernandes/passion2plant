@@ -24,7 +24,7 @@ class Membership extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->cleanText($this->{'title_'.$locale} ?? $this->title_en);
+        return $this->{'title_'.$locale} ?? $this->title_en;
     }
 
     /**
@@ -34,7 +34,7 @@ class Membership extends Model
     {
         $locale = app()->getLocale();
 
-        return $this->cleanText($this->{'description_'.$locale} ?? $this->description_en);
+        return $this->{'description_'.$locale} ?? $this->description_en;
     }
 
     protected function cleanText(?string $value): string

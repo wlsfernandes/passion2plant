@@ -39,20 +39,15 @@ class Event extends Model
     public function getTitle(): string
     {
         return app()->getLocale() === 'es'
-            ? ($this->cleanText($this->title_es) ?: $this->cleanText($this->title_en))
-            : $this->cleanText($this->title_en);
+            ? ($this->title_es ?: $this->title_en)
+            : $this->title_en;
     }
 
     public function getContent(): string
     {
         return app()->getLocale() === 'es'
-            ? ($this->cleanText($this->content_es) ?: $this->cleanText($this->content_en))
-            : $this->cleanText($this->content_en);
-    }
-
-    protected function cleanText(?string $value): string
-    {
-        return html_entity_decode(strip_tags($value ?? ''), ENT_QUOTES, 'UTF-8');
+            ? ($this->content_es ?: $this->content_en)
+            : $this->content_en;
     }
 
     /**

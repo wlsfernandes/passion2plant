@@ -18,16 +18,11 @@ class Footer extends Model
 
     public function getTitleAttribute()
     {
-        return app()->getLocale() === 'es' ? $this->cleanText($this->title_es) : $this->cleanText($this->title_en);
+        return app()->getLocale() === 'es' ? $this->title_es : $this->title_en;
     }
 
     public function getSubtitleAttribute()
     {
-        return app()->getLocale() === 'es' ? $this->cleanText($this->subtitle_es) : $this->cleanText($this->subtitle_en);
-    }
-
-    protected function cleanText(?string $value): string
-    {
-        return html_entity_decode(strip_tags($value ?? ''), ENT_QUOTES, 'UTF-8');
+        return app()->getLocale() === 'es' ? $this->subtitle_es : $this->subtitle_en;
     }
 }

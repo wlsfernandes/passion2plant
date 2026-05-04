@@ -78,7 +78,7 @@ class Service extends Model
             ? ($this->title_es ?: $this->title_en)
             : $this->title_en;
 
-        return $this->cleanText($value);
+        return $value;
     }
 
     public function getContent(): string
@@ -87,16 +87,12 @@ class Service extends Model
             ? ($this->content_es ?: $this->content_en)
             : $this->content_en;
 
-        return $this->cleanText($value);
+        return $value;
     }
 
     /**
      * Clean HTML tags and decode entities
      */
-    protected function cleanText(?string $value): string
-    {
-        return html_entity_decode(strip_tags($value ?? ''), ENT_QUOTES, 'UTF-8');
-    }
 
     /*
     |--------------------------------------------------------------------------
