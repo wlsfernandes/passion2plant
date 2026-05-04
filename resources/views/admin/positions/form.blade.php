@@ -71,12 +71,12 @@
 
                     <div class="col-md-6">
                         <label class="form-label">Title (EN)</label>
-                        <textarea name="title_en" class="form-control ckeditor-title" rows="3">{{ old('title_en', $blog->title_en ?? '') }}</textarea>
+                        <textarea name="title_en" class="form-control ckeditor-title" rows="3">{{ old('title_en', $position->title_en ?? '') }}</textarea>
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label">Title (ES)</label>
-                        <textarea name="title_es" class="form-control ckeditor-title" rows="3">{{ old('title_es', $blog->title_es ?? '') }}</textarea>
+                        <textarea name="title_es" class="form-control ckeditor-title" rows="3">{{ old('title_es', $position->title_es ?? '') }}</textarea>
 
                     </div>
 
