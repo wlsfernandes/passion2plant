@@ -44,11 +44,11 @@
                             </small>
                             --}}
 
-                            {{-- Description 
+
                             <div class="cms_content mb-3">
                                 {!! $event->getContent() !!}
                             </div>
-                            --}}
+
                             {{-- Button --}}
                             <div class="mt-auto">
                                 <a href="{{ route('events.display', $event->slug) }}"
