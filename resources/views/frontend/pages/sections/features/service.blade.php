@@ -27,7 +27,7 @@
                         <div class="content">
 
                             <p>
-                            <div class=cms-content>
+                            <div class=cms-html>
                                 <a href="{{ route('services.display', $service->slug) }}">
                                     {!! $service->getTitle() !!}
                                 </a>
@@ -35,8 +35,8 @@
                             </p>
 
                             <p>
-                            <div class=cms-content>
-                                {!! Str::limit(strip_tags($service->getContent()), 120) !!}
+                            <div class=cms-html>
+                                {!! Str::limit($service->getContent(), 120) !!}
                             </div>
                             </p>
 
