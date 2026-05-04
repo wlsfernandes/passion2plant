@@ -35,9 +35,11 @@
                         @endif
 
 
-                        @if ($event->external_link)
-                            <a href="{{ $event->external_link }}" class="cmn--btn mt-4" target="_blank">
-                                @lang('pages.click_here')
+                        @if (!empty($event->external_link))
+                            <a href="{{ $event->external_link }}" class="cmn--btn cmn--btn-outline" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="uil uil-external-link-alt"></i>
+                                @lang('pages.apply_now')
                             </a>
                         @endif
 
