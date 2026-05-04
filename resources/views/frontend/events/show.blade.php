@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', strip_tags($event->getTitle()) . ' | Passion2Plant')
+@section('title', html_entity_decode(strip_tags($event->getTitle())) . ' | Passion2Plant')
 
 @section('content')
     <section class="details__section pt-130 pb-130 overhid" style="{{ $section->style ?? '' }}">
