@@ -25,11 +25,11 @@
                         <div class="content">
 
                             {{-- Title (SAFE) --}}
-                            <h5 class="mb-2">
+                            <div class="cms-html">
                                 <a href="{{ route('events.display', $event->slug) }}">
-                                    {{ $event->getTitle() }}
+                                    {!! $event->getTitle() !!}
                                 </a>
-                            </h5>
+                            </div>
 
                             {{-- Date --}}
                             <small class="text-muted d-block mb-2">

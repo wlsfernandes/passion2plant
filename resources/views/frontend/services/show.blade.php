@@ -53,7 +53,6 @@
 
                     </div>
                 </div>
-
                 {{-- MAIN CONTENT --}}
                 <div class="col-xxl-8 col-xl-8 col-lg-8">
                     <div class="details__items service__details">
@@ -68,7 +67,7 @@
                         <div class="details__content">
                             <h3>{{ html_entity_decode(strip_tags($service->getTitle()), ENT_QUOTES, 'UTF-8') }}</h3>
 
-                            <div class="cms-html" id="cms-html">
+                            <div class="cms-html">
                                 {!! $service->getContent() !!}
                             </div>
                         </div>
