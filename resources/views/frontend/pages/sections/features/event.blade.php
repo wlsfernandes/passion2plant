@@ -38,7 +38,7 @@
 
                             {{-- Content Preview (SAFE) --}}
                             <div class="cms-html mb-2">
-                                {{ Str::limit(strip_tags($event->getContent()), 120) }}
+                                {{ Str::limit(html_entity_decode(strip_tags($event->getContent()), ENT_QUOTES | ENT_HTML5), 120) }}
                             </div>
 
                             {{-- Button --}}
