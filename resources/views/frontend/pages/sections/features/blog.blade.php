@@ -15,19 +15,19 @@
                         <div class="thumb">
                             <a href="{{ route('blogs.display', $blog->slug) }}">
                                 <img src="{{ route('admin.images.preview', ['model' => 'blogs', 'id' => $blog->id]) }}"
-                                    alt="{{ $blog->getTitle() }}" loading="lazy">
+                                    loading="lazy">
                             </a>
                         </div>
 
                         <div class="content">
                             <h5>
                                 <a href="{{ route('blogs.display', $blog->slug) }}">
-                                    {{ $blog->getTitle() }}
+                                    {{ html_entity_decode(strip_tags($blog->getTitle()), ENT_QUOTES | ENT_HTML5) }}
                                 </a>
                             </h5>
 
                             <p>
-                                {{ Str::limit(strip_tags($blog->getContent()), 140) }}
+                                {{ Str::limit(html_entity_decode(strip_tags($blog->getContent()), ENT_QUOTES | ENT_HTML5), 140) }}
                             </p>
 
                             <a href="{{ route('blogs.display', $blog->slug) }}"

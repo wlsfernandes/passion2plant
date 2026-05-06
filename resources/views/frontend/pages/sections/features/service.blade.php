@@ -29,13 +29,13 @@
                             {{-- Title (SAFE) --}}
                             <div class="cms-html">
                                 <a href="{{ route('services.display', $service->slug) }}">
-                                    {!! $service->getTitle() !!}
+                                    {{ html_entity_decode(strip_tags($service->getTitle()), ENT_QUOTES | ENT_HTML5) }}
                                 </a>
                             </div>
 
                             {{-- Content (SAFE TRUNCATION) --}}
                             <div class="cms-html">
-                                {{ Str::limit(strip_tags($service->getContent()), 120) }}
+                                {{ Str::limit(html_entity_decode(strip_tags($service->getContent()), ENT_QUOTES | ENT_HTML5), 120) }}
                             </div>
 
                             <a href="{{ route('services.display', $service->slug) }}"
