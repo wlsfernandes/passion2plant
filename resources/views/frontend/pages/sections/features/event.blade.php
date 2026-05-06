@@ -27,7 +27,7 @@
                             {{-- Title (SAFE) --}}
                             <div class="cms-content">
                                 <a href="{{ route('events.display', $event->slug) }}">
-                                    {{ html_entity_decode(strip_tags($event->getTitle()), ENT_QUOTES | ENT_HTML5) }}
+                                    {!! html_entity_decode(strip_tags($event->getTitle()), ENT_QUOTES | ENT_HTML5) !!}
                                 </a>
                             </div>
 
