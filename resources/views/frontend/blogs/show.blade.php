@@ -14,10 +14,9 @@
                             <img src="{{ route('admin.images.preview', ['model' => 'blogs', 'id' => $blog->id]) }}"
                                 alt="{{ $blog->getTitle() }}">
                         </div>
-
-                        <div class="details__content">
-                            <h2>{{ $blog->getTitle() }}</h2>
-                            <div class="cms-html" id="cms-html">
+                        <div class="cms_html">
+                            {!! $blog->getTitle() !!}
+                            <div class="cms-html">
                                 {!! $blog->getContent() !!}
                             </div>
                         </div>
