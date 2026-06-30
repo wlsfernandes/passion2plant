@@ -23,6 +23,7 @@
                          @csrf
                          {{-- Honeypot Field (hidden bot trap) --}}
                          <input type="text" name="website" style="display:none">
+                         <input type="hidden" name="form_loaded_at" value="{{ now()->timestamp }}">
                          <div class="row g-4">
                              <div class="col-lg-12">
                                  <div class="form__clt">

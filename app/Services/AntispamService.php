@@ -42,7 +42,7 @@ class AntispamService
 
     protected function checkHoneypot(Request $request): void
     {
-        if ($request->filled('company')) {
+      if ($request->filled('company') || $request->filled('website')) {
             abort(403, 'Spam detected.');
         }
     }

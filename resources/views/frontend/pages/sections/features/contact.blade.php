@@ -27,6 +27,7 @@
                         {{-- Honeypot --}}
                         <input type="text" name="website" style="display:none">
                         <input type="text" name="company" style="display:none">
+                        <input type="hidden" name="form_loaded_at" value="{{ now()->timestamp }}">
                         <div class="row g-4">
 
                             {{-- Name --}}
