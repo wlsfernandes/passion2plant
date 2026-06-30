@@ -28,7 +28,8 @@
                             <div class="my-4">
                                 <div class="ratio ratio-16x9">
                                     @if ($event->video_embed_url)
-                                        <iframe src="{{ $event->video_embed_url }}" title="{{ strip_tags($event->getTitle()) }}"
+                                        <iframe src="{{ $event->video_embed_url }}"
+                                            title="{{ strip_tags($event->getTitle()) }}"
                                             allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
                                         </iframe>
                                     @else

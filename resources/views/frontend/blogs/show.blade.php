@@ -25,7 +25,8 @@
                             <div class="my-4">
                                 <div class="ratio ratio-16x9">
                                     @if ($blog->video_embed_url)
-                                        <iframe src="{{ $blog->video_embed_url }}" title="{{ strip_tags($blog->getTitle()) }}"
+                                        <iframe src="{{ $blog->video_embed_url }}"
+                                            title="{{ strip_tags($blog->getTitle()) }}"
                                             allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
                                         </iframe>
                                     @else

@@ -129,7 +129,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <input type="url" name="video_url" class="form-control" placeholder="https://www.youtube.com/watch?v=..."
+                    <input type="url" name="video_url" class="form-control"
+                        placeholder="https://www.youtube.com/watch?v=..."
                         value="{{ old('video_url', $event->video_url ?? '') }}">
                     <small class="text-muted">
                         Optional video URL. Supports YouTube, Vimeo, or direct MP4/WebM/Ogg files.

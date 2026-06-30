@@ -57,7 +57,6 @@ class Blog extends Model
     /**
      * Clean HTML tags and decode entities
      */
-   
 
     /**
      * Boot method to handle slug generation.
