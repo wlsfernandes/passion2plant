@@ -23,6 +23,24 @@
                             </p> --}}
                             <div class="cms-html" id="cms-html">{!! $event->getContent() !!}</div>
                         </div>
+
+                        @if ($event->video_embed_url || $event->hasDirectVideoFile())
+                            <div class="my-4">
+                                <div class="ratio ratio-16x9">
+                                    @if ($event->video_embed_url)
+                                        <iframe src="{{ $event->video_embed_url }}" title="{{ strip_tags($event->getTitle()) }}"
+                                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+                                        </iframe>
+                                    @else
+                                        <video controls preload="metadata">
+                                            <source src="{{ $event->video_url }}">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
+
                         @if ($event->hasDownloadFile())
                             <a href="{{ route('admin.files.download', [
                                 'model' => 'events',

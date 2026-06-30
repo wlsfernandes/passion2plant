@@ -28,6 +28,7 @@ class Event extends Model
         'file_url_es',
         'external_link',
         'external_link_button_text',
+        'video_url',
     ];
 
     protected $casts = [
@@ -138,5 +139,53 @@ class Event extends Model
         return app()->getLocale() === 'es'
             ? ($this->file_url_es ?: $this->file_url_en)
             : ($this->file_url_en ?: $this->file_url_es);
+    }
+
+    public function getVideoEmbedUrlAttribute(): ?string
+    {
+        $url = $this->video_url;
+
+        if (empty($url)) {
+            return null;
+        }
+
+        if (
+            str_contains($url, 'youtube.com/embed') ||
+            str_contains($url, 'player.vimeo.com')
+        ) {
+            return $url;
+        }
+
+        if (str_contains($url, 'youtube.com') || str_contains($url, 'youtu.be')) {
+            preg_match(
+                '/(youtu\.be\/|v=|embed\/|shorts\/)([^\&\?\/]+)/',
+                $url,
+                $matches
+            );
+
+            if (! empty($matches[2])) {
+                return 'https://www.youtube.com/embed/'.$matches[2];
+            }
+
+            return null;
+        }
+
+        if (str_contains($url, 'vimeo.com')) {
+            preg_match('/vimeo\.com\/(\d+)/', $url, $matches);
+
+            if (! empty($matches[1])) {
+                return 'https://player.vimeo.com/video/'.$matches[1];
+            }
+
+            return null;
+        }
+
+        return null;
+    }
+
+    public function hasDirectVideoFile(): bool
+    {
+        return ! empty($this->video_url)
+            && preg_match('/\.(mp4|webm|ogg)$/i', $this->video_url) === 1;
     }
 }

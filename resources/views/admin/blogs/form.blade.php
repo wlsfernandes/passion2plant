@@ -74,6 +74,14 @@
                             Button text for the external link (default: "Apply Now").
                         </small>
                     </div>
+                    <div class="col-md-5 mb-3">
+                        <input type="url" name="video_url" class="form-control"
+                            placeholder="https://www.youtube.com/watch?v=..."
+                            value="{{ old('video_url', $blog->video_url ?? '') }}">
+                        <small class="text-muted">
+                            Optional video URL. Supports YouTube, Vimeo, or direct MP4/WebM/Ogg files.
+                        </small>
+                    </div>
                 </div>
                 <hr>
 

@@ -20,6 +20,24 @@
                                 {!! $blog->getContent() !!}
                             </div>
                         </div>
+
+                        @if ($blog->video_embed_url || $blog->hasDirectVideoFile())
+                            <div class="my-4">
+                                <div class="ratio ratio-16x9">
+                                    @if ($blog->video_embed_url)
+                                        <iframe src="{{ $blog->video_embed_url }}" title="{{ strip_tags($blog->getTitle()) }}"
+                                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+                                        </iframe>
+                                    @else
+                                        <video controls preload="metadata">
+                                            <source src="{{ $blog->video_url }}">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
 
                             {{-- Download file --}}
