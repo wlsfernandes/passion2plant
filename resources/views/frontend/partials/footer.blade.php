@@ -72,9 +72,28 @@
 
         {{-- FOOTER BOTTOM --}}
         <div class="footer__bottom pt-65 pb-65">
-            <p class="center">
-                © {{ date('Y') }} {{ $settings->site_name ?? config('app.name') }}
-            </p>
+            <div class="d-flex flex-wrap justify-content-between align-items-center text-center gap-2">
+
+                <p class="mb-0">
+                    © {{ date('Y') }}
+                    {{ $settings->site_name ?? config('app.name') }}
+                    — All Rights Reserved.
+                </p>
+
+                <p class="mb-0">
+                    Developed by
+                    <a href="https://devpromaster.com" target="_blank" rel="noopener">
+                        DevProMaster
+                    </a>
+
+                    <span class="mx-1">|</span>
+
+                    <a href="mailto:wilson@devpromaster.com" aria-label="Email DevProMaster" title="Email DevProMaster">
+                        <i class="fa-solid fa-envelope"></i> wilson@devpromaster.com
+                    </a>
+                </p>
+
+            </div>
         </div>
 
     </div>
