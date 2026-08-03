@@ -41,6 +41,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialLinkController;
+use App\Http\Controllers\ThemeSettingController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\SystemLogController;
@@ -247,6 +248,11 @@ Route::middleware(['auth', 'verified', 'can:access-website-admin'])->group(funct
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('/settings/edit', [SettingController::class, 'edit'])->name('settings.edit');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+    // Theme Colors
+    Route::get('/theme-settings', [ThemeSettingController::class, 'index'])->name('theme-settings.index');
+    Route::get('/theme-settings/edit', [ThemeSettingController::class, 'edit'])->name('theme-settings.edit');
+    Route::put('/theme-settings', [ThemeSettingController::class, 'update'])->name('theme-settings.update');
+    Route::post('/theme-settings/reset', [ThemeSettingController::class, 'reset'])->name('theme-settings.reset');
     Route::patch('/collaborators/{collaborator}/images/{image}/link', [CollaboratorImageController::class, 'updateLink'])->name('collaborators.images.updateLink');
     Route::delete('pages/{page}/sections/{section}/images/{image}', [SectionController::class, 'destroyImage'])->name('pages.sections.images.destroy');
     Route::delete('pages/{page}/sections/{section}/image', [SectionController::class, 'destroySectionImage'])->name('pages.sections.image.destroy');

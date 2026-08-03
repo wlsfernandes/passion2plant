@@ -168,7 +168,7 @@
 
 /* Primary */
 .cmn--btn.btn-primary {
-    background: #4b8941;
+    background: var(--brand-primary);
     color: #fff;
 }
 
@@ -188,7 +188,7 @@
 
 /* Success */
 .cmn--btn.btn-success {
-    background: #4b8941;
+    background: var(--brand-primary);
     color: #fff;
 }
 

@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/cmscontent.css') }}">
 
+    @include('frontend.partials.theme-styles')
+
     @stack('styles')
 </head>
 

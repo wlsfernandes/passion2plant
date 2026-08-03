@@ -1,4 +1,5 @@
 body {
+	font-family: var(--theme-body-font, var(--bs-body-font-family));
 	color: var(--white);
 	padding: 0;
 	margin: 0;
@@ -14,7 +15,7 @@ h4,
 h5,
 h6 { 
 	color: var(--black-color);
-	@include headfont;
+	font-family: var(--theme-heading-font, "Inter", sans-serif);
 	a{
 		color: var(--title);
 		@include headfont;
@@ -123,7 +124,7 @@ p {
 	font-weight: 400;
 	line-height: 24px;
 	max-width: 570px;
-	@include bodyfont;
+	font-family: var(--theme-body-font, "Montserrat", sans-serif);
 	@include breakpoint(max-xl){
 		font-size: 15px;
 	}
@@ -537,7 +538,7 @@ i{
 //meta iocn choose
 
 .section__bg{
-	background-color: #f8f7f0;
+	background-color: var(--section-color);
 }
 
 

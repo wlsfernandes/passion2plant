@@ -58,7 +58,7 @@
 
     background-color: #ffffff;
     /* white pill */
-    color: #1f9f67;
+    color: var(--brand-primary);
     /* green number (matches header) */
 
     font-size: 11px;
@@ -67,7 +67,7 @@
     text-align: center;
 
     border-radius: 999px;
-    box-shadow: 0 0 0 2px #1f9f67;
+    box-shadow: 0 0 0 2px var(--brand-primary);
     /* subtle green ring */
 }
 
@@ -81,7 +81,7 @@
 .banner__section h4,
 .banner__section h5,
 .banner__section h6 {
-    background: linear-gradient(90deg, #ffffff 0%, #23ad75 100%);
+    background: linear-gradient(90deg, #ffffff 0%, var(--brand-primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -136,7 +136,7 @@
 }
 
 .arry__button button:hover {
-    background: #23ad75;
+    background: var(--brand-primary);
 }
 
 /* =====================================================
@@ -208,7 +208,7 @@ section {
 .banner__section h4,
 .banner__section h5,
 .banner__section h6 {
-    background: linear-gradient(90deg, #ffffff 0%, #23ad75 100%);
+    background: linear-gradient(90deg, #ffffff 0%, var(--brand-primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -263,11 +263,11 @@ section {
 }
 
 .arry__button button:hover {
-    background: #23ad75;
+    background: var(--brand-primary);
 }
 
 .heading-gradient-green-black {
-    background: linear-gradient(90deg, #23ad75 0%, #000000 100%);
+    background: linear-gradient(90deg, var(--brand-primary) 0%, #000000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -328,7 +328,7 @@ section {
 /* Highlight Sign In menu item */
 .nav-signin > a {
     background: #ffffff;
-    color: #23ad75 !important;
+    color: var(--brand-primary) !important;
     padding: 8px 16px;
     border-radius: 999px;
     font-weight: 600;
@@ -337,7 +337,7 @@ section {
 
 /* Hover effect */
 .nav-signin > a:hover {
-    background: #1e8f61;
+    background: var(--brand-secondary);
     color: #ffffff !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -879,7 +879,7 @@ section {
 }
 
 .testimonial-stars li i {
-    color: #28a745;
+    color: var(--ratting-color);
     font-size: 18px;
 }
 
@@ -1386,7 +1386,7 @@ section {
 
 /* Icon */
 .info-item i {
-    color: #28a745; /* or your brand color */
+    color: var(--brand-primary); /* brand color */
     font-size: 14px;
     margin-top: 3px;
 }
@@ -1416,7 +1416,7 @@ section {
 }
 
 .email-link:hover {
-    color: #28a745; /* your brand color */
+    color: var(--brand-primary);
     text-decoration: underline;
 }
 
@@ -1469,7 +1469,7 @@ section {
 .gallery-carousel .gallery-thumbs button:hover {
     opacity: 1;
     transform: scale(1.05);
-    border: 2px solid #23ad75;
+    border: 2px solid var(--brand-primary);
 }
 
 .gallery-carousel .gallery-thumbs img {
@@ -1501,4 +1501,45 @@ section {
 .sector-title * {
     width: 100% !important;
     text-align: center !important;
+}
+
+/* =====================================================
+   BOOTSTRAP OVERRIDES — Brand Color Integration
+   ===================================================== */
+
+.btn-outline-success {
+    --bs-btn-color: var(--brand-primary);
+    --bs-btn-border-color: var(--brand-primary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--brand-primary);
+    --bs-btn-hover-border-color: var(--brand-primary);
+    /* --bs-btn-focus-shadow-rgb requires raw R,G,B values; CSS cannot extract them from a hex variable */
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--brand-primary);
+    --bs-btn-active-border-color: var(--brand-primary);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--brand-primary);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--brand-primary);
+    --bs-gradient: none;
+}
+
+/* =====================================================
+   FONT OVERRIDE HOOKS
+   Active only when --theme-body-font / --theme-heading-font CSS variables
+   are set by the dynamic theme block (theme-styles.blade.php).
+   Fallbacks preserve the current site font stacks when variables are unset.
+   ===================================================== */
+
+body {
+    font-family: var(--theme-body-font, var(--bs-body-font-family));
+}
+
+p {
+    font-family: var(--theme-body-font, "Montserrat", sans-serif);
+}
+
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    font-family: var(--theme-heading-font, "Inter", sans-serif);
 }

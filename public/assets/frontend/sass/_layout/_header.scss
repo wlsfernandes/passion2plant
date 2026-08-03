@@ -107,18 +107,18 @@
 			transition: all 0.6s;
 			position: relative;
 			a {
-				color: var(--white-color);
+				color: var(--header-menu-text-color, var(--white-color));
 				font-weight: 500;
 				font-size: 16px;
 				transition: all 0.3s;
 				text-transform: capitalize;
 				&:hover {
-					color: var(--white-color);
+					color: var(--header-menu-text-color, var(--white-color));
 				}
 				i {
 					margin-left: 2px;
 					font-size: 14px !important;
-					color: var(--white-color);
+					color: var(--header-menu-text-color, var(--white-color));
 				}
 			}
 			.sub-menu {
@@ -260,7 +260,7 @@
 		}
 		.active {
 			a {
-				color: var(--white-color);
+				color: var(--header-menu-text-color, var(--white-color));
 			}
 		}
 	}

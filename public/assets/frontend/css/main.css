@@ -1012,7 +1012,7 @@ i {
 }
 
 .header-wrapper .main-menu li a {
-    color: var(--white-color);
+    color: var(--header-menu-text-color, var(--white-color));
     font-weight: 500;
     font-size: 16px;
     transition: all 0.3s;
@@ -1020,13 +1020,13 @@ i {
 }
 
 .header-wrapper .main-menu li a:hover {
-    color: var(--white-color);
+    color: var(--header-menu-text-color, var(--white-color));
 }
 
 .header-wrapper .main-menu li a i {
     margin-left: 2px;
     font-size: 14px !important;
-    color: var(--white-color);
+    color: var(--header-menu-text-color, var(--white-color));
 }
 
 .header-wrapper .main-menu li .sub-menu {

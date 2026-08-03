@@ -11,6 +11,22 @@
     <link href="{{ asset('/assets/admin/css/app.css') }}" id="app-style" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/assets/admin/css/custom-admin.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    @php
+        $adminTheme = \App\Models\ThemeSetting::query()->first();
+        $adminBodyFont = ($adminTheme?->is_enabled)
+            ? (\App\Models\ThemeSetting::BODY_FONTS[$adminTheme->body_font] ?? null)
+            : null;
+    @endphp
+    @if ($adminBodyFont)
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .ck-editor__editable {
+            font-family: {!! $adminBodyFont !!};
+        }
+    </style>
+    @endif
     @yield('css')
 </head>
 

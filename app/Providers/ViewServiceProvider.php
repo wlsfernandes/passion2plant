@@ -23,6 +23,7 @@ use App\Models\Setting;
 use App\Models\SocialLink;
 use App\Models\Team;
 use App\Models\Testimonial;
+use App\Models\ThemeSetting;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
@@ -114,6 +115,8 @@ class ViewServiceProvider extends ServiceProvider
 
             $settings = Setting::query()->first();
 
+            $themeSettings = ThemeSetting::query()->first();
+
             $socialLinks = SocialLink::query()
                 ->where('is_published', true)
                 ->ordered()
@@ -123,6 +126,7 @@ class ViewServiceProvider extends ServiceProvider
 
             $view->with([
                 'settings' => $settings,
+                'themeSettings' => $themeSettings,
                 'socialLinks' => $socialLinks,
                 'aboutSections' => $aboutSections,
                 'featuredTeams' => $featuredTeams,
