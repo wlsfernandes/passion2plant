@@ -29,16 +29,16 @@ class ThemeSetting extends Model
 
     /** Default values matching the existing SCSS variables. */
     public const DEFAULTS = [
-        'is_enabled'       => false,
-        'primary_color'    => '#4BAF47',
-        'secondary_color'  => '#938A42',
-        'accent_color'     => '#ED8A19',
-        'dark_color'       => '#24231D',
-        'light_color'      => '#F8F7F0',
-        'body_color'       => '#FFFFFF',
+        'is_enabled' => false,
+        'primary_color' => '#4BAF47',
+        'secondary_color' => '#938A42',
+        'accent_color' => '#ED8A19',
+        'dark_color' => '#24231D',
+        'light_color' => '#F8F7F0',
+        'body_color' => '#FFFFFF',
         'header_text_mode' => 'light',
-        'body_font'        => 'default',
-        'heading_font'     => 'default',
+        'body_font' => 'default',
+        'heading_font' => 'default',
     ];
 
     /**
@@ -47,8 +47,8 @@ class ThemeSetting extends Model
      * (null means "use site default — no variable output").
      */
     public const BODY_FONTS = [
-        'default'       => null,
-        'montserrat'    => "'Montserrat', sans-serif",
+        'default' => null,
+        'montserrat' => "'Montserrat', sans-serif",
         'source-sans-3' => "'Source Sans 3', sans-serif",
     ];
 
@@ -58,8 +58,8 @@ class ThemeSetting extends Model
      * (null means "use site default — no variable output").
      */
     public const HEADING_FONTS = [
-        'default'          => null,
-        'montserrat'       => "'Montserrat', sans-serif",
+        'default' => null,
+        'montserrat' => "'Montserrat', sans-serif",
         'dm-serif-display' => "'DM Serif Display', serif",
     ];
 

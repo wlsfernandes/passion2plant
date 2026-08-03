@@ -41,12 +41,12 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialLinkController;
-use App\Http\Controllers\ThemeSettingController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\SystemLogController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\ThemeSettingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WikipediaController;
 /*

@@ -34,16 +34,16 @@ class ThemeSettingTest extends TestCase
     private function validPayload(array $overrides = []): array
     {
         return array_merge([
-            'is_enabled'       => '0',
-            'primary_color'    => '#4BAF47',
-            'secondary_color'  => '#938A42',
-            'accent_color'     => '#ED8A19',
-            'dark_color'       => '#24231D',
-            'light_color'      => '#F8F7F0',
-            'body_color'       => '#FFFFFF',
+            'is_enabled' => '0',
+            'primary_color' => '#4BAF47',
+            'secondary_color' => '#938A42',
+            'accent_color' => '#ED8A19',
+            'dark_color' => '#24231D',
+            'light_color' => '#F8F7F0',
+            'body_color' => '#FFFFFF',
             'header_text_mode' => 'light',
-            'body_font'        => 'default',
-            'heading_font'     => 'default',
+            'body_font' => 'default',
+            'heading_font' => 'default',
         ], $overrides);
     }
 
@@ -100,7 +100,7 @@ class ThemeSettingTest extends TestCase
 
         $response = $this->actingAs($admin)
             ->put('/theme-settings', $this->validPayload([
-                'is_enabled'    => '1',
+                'is_enabled' => '1',
                 'primary_color' => '#E05E4E',
             ]));
 
@@ -109,7 +109,7 @@ class ThemeSettingTest extends TestCase
 
         $this->assertDatabaseHas('theme_settings', [
             'primary_color' => '#E05E4E',
-            'is_enabled'    => true,
+            'is_enabled' => true,
         ]);
     }
 
@@ -204,7 +204,7 @@ class ThemeSettingTest extends TestCase
         $admin = $this->makeWebAdmin();
 
         ThemeSetting::create(array_merge(ThemeSetting::DEFAULTS, [
-            'is_enabled'    => true,
+            'is_enabled' => true,
             'primary_color' => '#E05E4E',
         ]));
 
@@ -324,12 +324,12 @@ class ThemeSettingTest extends TestCase
 
         $this->actingAs($admin)
             ->put('/theme-settings', $this->validPayload([
-                'body_font'    => 'default',
+                'body_font' => 'default',
                 'heading_font' => 'default',
             ]));
 
         $this->assertDatabaseHas('theme_settings', [
-            'body_font'    => 'default',
+            'body_font' => 'default',
             'heading_font' => 'default',
         ]);
     }
@@ -342,8 +342,8 @@ class ThemeSettingTest extends TestCase
     {
         Setting::create([]);
         ThemeSetting::create(array_merge(ThemeSetting::DEFAULTS, [
-            'is_enabled'   => true,
-            'body_font'    => 'default',
+            'is_enabled' => true,
+            'body_font' => 'default',
             'heading_font' => 'default',
         ]));
 
@@ -363,7 +363,7 @@ class ThemeSettingTest extends TestCase
         Setting::create([]);
         ThemeSetting::create(array_merge(ThemeSetting::DEFAULTS, [
             'is_enabled' => true,
-            'body_font'  => 'source-sans-3',
+            'body_font' => 'source-sans-3',
         ]));
 
         $response = $this->get('/donate-success');
@@ -377,7 +377,7 @@ class ThemeSettingTest extends TestCase
     {
         Setting::create([]);
         ThemeSetting::create(array_merge(ThemeSetting::DEFAULTS, [
-            'is_enabled'   => true,
+            'is_enabled' => true,
             'heading_font' => 'dm-serif-display',
         ]));
 
@@ -397,8 +397,8 @@ class ThemeSettingTest extends TestCase
         $admin = $this->makeWebAdmin();
 
         ThemeSetting::create(array_merge(ThemeSetting::DEFAULTS, [
-            'is_enabled'   => true,
-            'body_font'    => 'montserrat',
+            'is_enabled' => true,
+            'body_font' => 'montserrat',
             'heading_font' => 'dm-serif-display',
         ]));
 

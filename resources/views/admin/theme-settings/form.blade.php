@@ -19,7 +19,8 @@
                 When disabled, the website uses its original built-in colors.
                 Enable the custom theme only when you want to apply the colors below.
                 <ul class="mb-0 mt-2">
-                    <li><strong>Primary</strong> — main brand color used throughout the site (buttons, headings, links).</li>
+                    <li><strong>Primary</strong> — main brand color used throughout the site (buttons, headings, links).
+                    </li>
                     <li><strong>Secondary</strong> — stored and available for future components; not yet widely used.</li>
                     <li><strong>Accent</strong> — highlights such as star ratings.</li>
                     <li><strong>Dark</strong> — headings and dark-text areas.</li>
@@ -36,8 +37,8 @@
                 <div class="mb-4">
                     <div class="form-check form-switch">
                         <input type="hidden" name="is_enabled" value="0">
-                        <input class="form-check-input" type="checkbox" name="is_enabled" id="is_enabled"
-                            value="1" {{ old('is_enabled', $themeSetting->is_enabled) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="is_enabled" id="is_enabled" value="1"
+                            {{ old('is_enabled', $themeSetting->is_enabled) ? 'checked' : '' }}>
                         <label class="form-check-label fw-semibold" for="is_enabled">
                             Enable custom theme
                         </label>
@@ -55,12 +56,32 @@
 
                 @php
                     $colors = [
-                        ['field' => 'primary_color',   'label' => 'Primary Color',         'hint' => 'Main brand color — buttons, headings, links.'],
-                        ['field' => 'secondary_color',  'label' => 'Secondary Color',        'hint' => 'Available for selected future components.'],
-                        ['field' => 'accent_color',     'label' => 'Accent Color',           'hint' => 'Highlights such as star ratings.'],
-                        ['field' => 'dark_color',       'label' => 'Dark Color',             'hint' => 'Headings and dark-text areas.'],
-                        ['field' => 'light_color',      'label' => 'Light / Section Color',  'hint' => 'Light background sections.'],
-                        ['field' => 'body_color',       'label' => 'Body / Background Color','hint' => 'Main page background.'],
+                        [
+                            'field' => 'primary_color',
+                            'label' => 'Primary Color',
+                            'hint' => 'Main brand color — buttons, headings, links.',
+                        ],
+                        [
+                            'field' => 'secondary_color',
+                            'label' => 'Secondary Color',
+                            'hint' => 'Available for selected future components.',
+                        ],
+                        [
+                            'field' => 'accent_color',
+                            'label' => 'Accent Color',
+                            'hint' => 'Highlights such as star ratings.',
+                        ],
+                        ['field' => 'dark_color', 'label' => 'Dark Color', 'hint' => 'Headings and dark-text areas.'],
+                        [
+                            'field' => 'light_color',
+                            'label' => 'Light / Section Color',
+                            'hint' => 'Light background sections.',
+                        ],
+                        [
+                            'field' => 'body_color',
+                            'label' => 'Body / Background Color',
+                            'hint' => 'Main page background.',
+                        ],
                     ];
                 @endphp
 
@@ -75,10 +96,8 @@
                                     title="Pick a color"
                                     oninput="document.getElementById('{{ $color['field'] }}').value = this.value.toUpperCase()">
                                 <input type="text" class="form-control font-monospace text-uppercase"
-                                    id="{{ $color['field'] }}"
-                                    name="{{ $color['field'] }}"
-                                    value="{{ old($color['field'], $themeSetting->{$color['field']}) }}"
-                                    maxlength="7"
+                                    id="{{ $color['field'] }}" name="{{ $color['field'] }}"
+                                    value="{{ old($color['field'], $themeSetting->{$color['field']}) }}" maxlength="7"
                                     placeholder="#000000"
                                     oninput="if(/^#[0-9A-Fa-f]{6}$/.test(this.value)) document.getElementById('{{ $color['field'] }}_picker').value = this.value">
                             </div>
@@ -99,10 +118,12 @@
                 <div class="mb-3">
                     <label class="form-label" for="header_text_mode">Header navigation text</label>
                     <select name="header_text_mode" id="header_text_mode" class="form-select" style="max-width: 280px;">
-                        <option value="light" {{ old('header_text_mode', $themeSetting->header_text_mode ?? 'light') === 'light' ? 'selected' : '' }}>
+                        <option value="light"
+                            {{ old('header_text_mode', $themeSetting->header_text_mode ?? 'light') === 'light' ? 'selected' : '' }}>
                             Light text (white)
                         </option>
-                        <option value="dark" {{ old('header_text_mode', $themeSetting->header_text_mode ?? 'light') === 'dark' ? 'selected' : '' }}>
+                        <option value="dark"
+                            {{ old('header_text_mode', $themeSetting->header_text_mode ?? 'light') === 'dark' ? 'selected' : '' }}>
                             Dark text
                         </option>
                     </select>
@@ -130,13 +151,16 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="body_font">Body text font</label>
                         <select name="body_font" id="body_font" class="form-select">
-                            <option value="default" {{ old('body_font', $themeSetting->body_font ?? 'default') === 'default' ? 'selected' : '' }}>
+                            <option value="default"
+                                {{ old('body_font', $themeSetting->body_font ?? 'default') === 'default' ? 'selected' : '' }}>
                                 Default (Montserrat)
                             </option>
-                            <option value="source-sans-3" {{ old('body_font', $themeSetting->body_font ?? 'default') === 'source-sans-3' ? 'selected' : '' }}>
+                            <option value="source-sans-3"
+                                {{ old('body_font', $themeSetting->body_font ?? 'default') === 'source-sans-3' ? 'selected' : '' }}>
                                 Source Sans 3
                             </option>
-                            <option value="dm-serif-display" {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'dm-serif-display' ? 'selected' : '' }}>
+                            <option value="dm-serif-display"
+                                {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'dm-serif-display' ? 'selected' : '' }}>
                                 DM Serif Display
                             </option>
                         </select>
@@ -149,13 +173,16 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="heading_font">Heading font</label>
                         <select name="heading_font" id="heading_font" class="form-select">
-                            <option value="default" {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'default' ? 'selected' : '' }}>
+                            <option value="default"
+                                {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'default' ? 'selected' : '' }}>
                                 Default (Inter)
                             </option>
-                            <option value="montserrat" {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'montserrat' ? 'selected' : '' }}>
+                            <option value="montserrat"
+                                {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'montserrat' ? 'selected' : '' }}>
                                 Montserrat
                             </option>
-                            <option value="dm-serif-display" {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'dm-serif-display' ? 'selected' : '' }}>
+                            <option value="dm-serif-display"
+                                {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'dm-serif-display' ? 'selected' : '' }}>
                                 DM Serif Display
                             </option>
                         </select>
@@ -180,7 +207,8 @@
                 @csrf
                 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
                     <small class="text-muted">
-                        Reset will restore the original default colors and fonts, and <strong>disable</strong> the custom theme.
+                        Reset will restore the original default colors and fonts, and <strong>disable</strong> the custom
+                        theme.
                     </small>
                     <button type="submit" class="btn btn-outline-secondary btn-sm"
                         onclick="return confirm('Reset theme colors and fonts to original defaults and disable custom theme?')">
