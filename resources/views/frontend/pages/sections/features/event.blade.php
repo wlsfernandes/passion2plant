@@ -73,7 +73,7 @@
             @empty
 
                 <div class="col-12 text-center text-muted">
-                    @lang('pages.no_events_available')
+
                 </div>
             @endforelse
 
