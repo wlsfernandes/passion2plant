@@ -153,14 +153,18 @@
                         <select name="body_font" id="body_font" class="form-select">
                             <option value="default"
                                 {{ old('body_font', $themeSetting->body_font ?? 'default') === 'default' ? 'selected' : '' }}>
-                                Default (Montserrat)
+                                Default (Inter)
+                            </option>
+                            <option value="montserrat"
+                                {{ old('body_font', $themeSetting->body_font ?? 'default') === 'montserrat' ? 'selected' : '' }}>
+                                Montserrat
                             </option>
                             <option value="source-sans-3"
                                 {{ old('body_font', $themeSetting->body_font ?? 'default') === 'source-sans-3' ? 'selected' : '' }}>
                                 Source Sans 3
                             </option>
                             <option value="dm-serif-display"
-                                {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'dm-serif-display' ? 'selected' : '' }}>
+                                {{ old('body_font', $themeSetting->body_font ?? 'default') === 'dm-serif-display' ? 'selected' : '' }}>
                                 DM Serif Display
                             </option>
                         </select>
@@ -180,6 +184,10 @@
                             <option value="montserrat"
                                 {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'montserrat' ? 'selected' : '' }}>
                                 Montserrat
+                            </option>
+                            <option value="source-sans-3"
+                                {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'source-sans-3' ? 'selected' : '' }}>
+                                Source Sans 3
                             </option>
                             <option value="dm-serif-display"
                                 {{ old('heading_font', $themeSetting->heading_font ?? 'default') === 'dm-serif-display' ? 'selected' : '' }}>

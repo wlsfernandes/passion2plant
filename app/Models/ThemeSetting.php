@@ -31,7 +31,7 @@ class ThemeSetting extends Model
     public const DEFAULTS = [
         'is_enabled' => false,
         'primary_color' => '#4BAF47',
-        'secondary_color' => '#938A42',
+        'secondary_color' => '#1E8F61',
         'accent_color' => '#ED8A19',
         'dark_color' => '#24231D',
         'light_color' => '#F8F7F0',
@@ -50,6 +50,7 @@ class ThemeSetting extends Model
         'default' => null,
         'montserrat' => "'Montserrat', sans-serif",
         'source-sans-3' => "'Source Sans 3', sans-serif",
+        'dm-serif-display' => "'DM Serif Display', serif",
     ];
 
     /**
@@ -60,6 +61,7 @@ class ThemeSetting extends Model
     public const HEADING_FONTS = [
         'default' => null,
         'montserrat' => "'Montserrat', sans-serif",
+        'source-sans-3' => "'Source Sans 3', sans-serif",
         'dm-serif-display' => "'DM Serif Display', serif",
     ];
 

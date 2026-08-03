@@ -33,35 +33,52 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             fontColor: {
                 colors: [
+                    // Neutral colors
                     { color: "#000000", label: "Black" },
-                    { color: "#ffffff", label: "White" },
-
-                    // 🔥 Your brand / custom colors
-                    { color: "#4b8941", label: "Primary Green" },
-                    { color: "#4b8941", label: "Success Green" },
-                    { color: "#b04f4f", label: "Primary Red" },
-                    { color: "#dc3545", label: "Danger Red" },
-                    { color: "#ffc46b", label: "Warning Yellow" },
-                    { color: "#0d6efd", label: "Primary Blue" },
-                    { color: "#6c757d", label: "Gray" },
-
-                    // Optional extras
-                    { color: "#f59e0b", label: "Accent Orange" },
-                    { color: "#9333ea", label: "Purple" },
+                    { color: "#FFFFFF", label: "White" },
+            
+                    // Passion2Plant brand colors
+                    { color: "#E05E4E", label: "Passion Coral" },
+                    { color: "#EEA53F", label: "Plant Gold" },
+                    { color: "#938A42", label: "Rooted Olive" },
+                    { color: "#6A3C2D", label: "Soil Brown" },
+                    { color: "#0E1911", label: "Canopy Black" },
+                    { color: "#FFF8EE", label: "Sprout Cream" },
+            
+                    // Existing website and utility colors
+                    { color: "#4B8941", label: "Original Green" },
+                    { color: "#198754", label: "Success Green" },
+                    { color: "#B04F4F", label: "Primary Red" },
+                    { color: "#DC3545", label: "Danger Red" },
+                    { color: "#FFC46B", label: "Warning Yellow" },
+                    { color: "#0D6EFD", label: "Primary Blue" },
+                    { color: "#6C757D", label: "Gray" },
+            
+                    // Optional accent colors
+                    { color: "#F59E0B", label: "Accent Orange" },
+                    { color: "#9333EA", label: "Purple" },
                 ],
                 columns: 5,
             },
+            
             fontFamily: {
                 options: [
                     "default",
+            
+                    // Passion2Plant brand fonts
+                    "Montserrat, Arial, Helvetica, sans-serif",
+                    "DM Serif Display, Georgia, serif",
+                    "Source Sans 3, Arial, Helvetica, sans-serif",
+            
+                    // Standard fallback fonts
                     "Arial, Helvetica, sans-serif",
                     "Georgia, serif",
                     "Times New Roman, Times, serif",
-                    "Poppins, sans-serif",
-                    "Roboto, sans-serif",
+                    "Poppins, Arial, sans-serif",
+                    "Roboto, Arial, sans-serif",
                 ],
+                supportAllValues: false,
             },
-
             fontSize: {
                 options: [
                     10,
@@ -125,33 +142,51 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             fontColor: {
                 colors: [
+                    // Neutral colors
                     { color: "#000000", label: "Black" },
-                    { color: "#ffffff", label: "White" },
-
-                    // 🔥 Your brand / custom colors
-                    { color: "#4b8941", label: "Primary Green" },
-                    { color: "#4b8941", label: "Success Green" },
-                    { color: "#b04f4f", label: "Primary Red" },
-                    { color: "#dc3545", label: "Danger Red" },
-                    { color: "#ffc46b", label: "Warning Yellow" },
-                    { color: "#0d6efd", label: "Primary Blue" },
-                    { color: "#6c757d", label: "Gray" },
-
-                    // Optional extras
-                    { color: "#f59e0b", label: "Accent Orange" },
-                    { color: "#9333ea", label: "Purple" },
+                    { color: "#FFFFFF", label: "White" },
+            
+                    // Passion2Plant brand colors
+                    { color: "#E05E4E", label: "Passion Coral" },
+                    { color: "#EEA53F", label: "Plant Gold" },
+                    { color: "#938A42", label: "Rooted Olive" },
+                    { color: "#6A3C2D", label: "Soil Brown" },
+                    { color: "#0E1911", label: "Canopy Black" },
+                    { color: "#FFF8EE", label: "Sprout Cream" },
+            
+                    // Existing website and utility colors
+                    { color: "#4B8941", label: "Original Green" },
+                    { color: "#198754", label: "Success Green" },
+                    { color: "#B04F4F", label: "Primary Red" },
+                    { color: "#DC3545", label: "Danger Red" },
+                    { color: "#FFC46B", label: "Warning Yellow" },
+                    { color: "#0D6EFD", label: "Primary Blue" },
+                    { color: "#6C757D", label: "Gray" },
+            
+                    // Optional accent colors
+                    { color: "#F59E0B", label: "Accent Orange" },
+                    { color: "#9333EA", label: "Purple" },
                 ],
                 columns: 5,
             },
+            
             fontFamily: {
                 options: [
                     "default",
+            
+                    // Passion2Plant brand fonts
+                    "Montserrat, Arial, Helvetica, sans-serif",
+                    "DM Serif Display, Georgia, serif",
+                    "Source Sans 3, Arial, Helvetica, sans-serif",
+            
+                    // Standard fallback fonts
                     "Arial, Helvetica, sans-serif",
                     "Georgia, serif",
                     "Times New Roman, Times, serif",
-                    "Poppins, sans-serif",
-                    "Roboto, sans-serif",
+                    "Poppins, Arial, sans-serif",
+                    "Roboto, Arial, sans-serif",
                 ],
+                supportAllValues: false,
             },
 
             fontSize: {

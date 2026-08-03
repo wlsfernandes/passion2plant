@@ -158,13 +158,13 @@
                                             <i class="fas fa-cog"></i> Site Settings
                                         </a>
                                     </li>
-
+                                    {{-- }}
                                     <li>
                                         <a href="{{ route('theme-settings.edit') }}">
                                             <i class="fas fa-palette"></i> Theme Colors
                                         </a>
                                     </li>
-
+--}}
                                     <li>
                                         <a href="{{ route('social-links.index') }}">
                                             <i class="fas fa-share-alt"></i> Social Media
