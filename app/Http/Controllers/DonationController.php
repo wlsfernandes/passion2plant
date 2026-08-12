@@ -37,10 +37,11 @@ class DonationController extends BaseController
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $session = CheckoutSession::create([
-            'mode' => 'payment',
+            'managed_payments' => [
+                'enabled' => false,
+            ],
 
-            // Stripe Checkout handles PCI for you
-            'payment_method_types' => ['card'],
+            'mode' => 'payment',
 
             'line_items' => [[
                 'price_data' => [

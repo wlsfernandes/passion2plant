@@ -177,8 +177,11 @@ class CartController extends Controller
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $session = CheckoutSession::create([
+            'managed_payments' => [
+                'enabled' => false,
+            ],
+
             'mode' => 'payment',
-            'payment_method_types' => ['card'],
 
             'line_items' => $lineItems,
 
