@@ -13,7 +13,6 @@ class SendPaymentEmail
         Mail::to($event->data['email'])
             ->bcc([
                 'wlsfernandes@gmail.com',
-                'passion2plant@gmail.com',
                 'drlizrios@gmail.com',
             ])
             ->send(new PaymentEmail(
