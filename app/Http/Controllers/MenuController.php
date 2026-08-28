@@ -6,6 +6,7 @@ use App\Models\MenuItem;
 use App\Services\SystemLogger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class MenuController extends BaseController
 {
@@ -14,7 +15,7 @@ class MenuController extends BaseController
      */
     public function index()
     {
-        $menus = MenuItem::with('children')
+        $menus = MenuItem::with('childrenRecursive')
             ->whereNull('parent_id')
             ->orderBy('order')
             ->get();
@@ -27,9 +28,7 @@ class MenuController extends BaseController
      */
     public function create()
     {
-        $parents = MenuItem::whereNull('parent_id')
-            ->orderBy('order')
-            ->pluck('title_en', 'id');
+        $parents = MenuItem::buildParentOptions();
 
         return view('admin.menus.form', [
             'menu' => new MenuItem,
@@ -78,10 +77,7 @@ class MenuController extends BaseController
      */
     public function edit(MenuItem $menu)
     {
-        $parents = MenuItem::whereNull('parent_id')
-            ->where('id', '!=', $menu->id)
-            ->orderBy('order')
-            ->pluck('title_en', 'id');
+        $parents = MenuItem::buildParentOptions($menu);
 
         return view('admin.menus.form', compact('menu', 'parents'));
     }
@@ -91,7 +87,7 @@ class MenuController extends BaseController
      */
     public function update(Request $request, MenuItem $menu)
     {
-        $data = $this->validateMenu($request);
+        $data = $this->validateMenu($request, $menu);
 
         DB::beginTransaction();
 
@@ -125,6 +121,9 @@ class MenuController extends BaseController
 
     /**
      * Remove the specified menu item.
+     *
+     * The menu_items foreign key uses nullOnDelete, so immediate children of
+     * a deleted item are promoted to the top level rather than deleted.
      */
     public function destroy(MenuItem $menu)
     {
@@ -161,14 +160,26 @@ class MenuController extends BaseController
     /**
      * Validation rules for menu items.
      */
-    protected function validateMenu(Request $request)
+    protected function validateMenu(Request $request, ?MenuItem $menu = null): array
     {
-        return $request->validate([
-            'title_en' => 'required|string|max:255',
-            'title_es' => 'nullable|string|max:255',
-            'link' => 'nullable|string|max:255',
-            'order' => 'nullable|integer',
-            'parent_id' => 'nullable|exists:menu_items,id',
-        ]);
+        $parentRules = ['nullable', 'exists:menu_items,id'];
+
+        if ($menu && $request->filled('parent_id')) {
+            $forbidden = array_merge([$menu->id], $menu->getDescendantIds());
+            $parentRules[] = Rule::notIn($forbidden);
+        }
+
+        return $request->validate(
+            [
+                'title_en' => 'required|string|max:255',
+                'title_es' => 'nullable|string|max:255',
+                'link' => 'nullable|string|max:255',
+                'order' => 'nullable|integer',
+                'parent_id' => $parentRules,
+            ],
+            [
+                'parent_id.not_in' => 'The selected parent would create an invalid menu hierarchy.',
+            ]
+        );
     }
 }

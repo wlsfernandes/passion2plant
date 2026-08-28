@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MenuItem extends Model
 {
@@ -23,18 +26,95 @@ class MenuItem extends Model
     /**
      * Parent menu item
      */
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(MenuItem::class, 'parent_id');
     }
 
     /**
-     * Submenu items
+     * Direct submenu items.
      */
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany(MenuItem::class, 'parent_id')
             ->orderBy('order');
+    }
+
+    /**
+     * Submenu items with every descendant eagerly loaded.
+     */
+    public function childrenRecursive(): HasMany
+    {
+        return $this->children()->with('childrenRecursive');
+    }
+
+    /**
+     * Collect IDs of all descendants.
+     */
+    public function getDescendantIds(): array
+    {
+        $this->loadMissing('childrenRecursive');
+
+        return self::collectDescendantIds($this->childrenRecursive);
+    }
+
+    /**
+     * @param  Collection<int, MenuItem>  $items
+     * @return list<int>
+     */
+    private static function collectDescendantIds(Collection $items): array
+    {
+        $ids = [];
+
+        foreach ($items as $child) {
+            $ids[] = $child->id;
+            array_push($ids, ...self::collectDescendantIds($child->childrenRecursive));
+        }
+
+        return $ids;
+    }
+
+    /**
+     * Build a flat ordered array of [id => label] for the parent selector.
+     * Pass $exclude to omit that item and all its descendants.
+     */
+    public static function buildParentOptions(?self $exclude = null): array
+    {
+        $items = self::whereNull('parent_id')
+            ->with('childrenRecursive')
+            ->orderBy('order')
+            ->get();
+
+        $forbidden = $exclude
+            ? array_merge([$exclude->id], $exclude->getDescendantIds())
+            : [];
+
+        return self::flattenParentOptions($items, $forbidden);
+    }
+
+    /**
+     * @param  Collection<int, MenuItem>  $items
+     * @param  list<int>  $forbidden
+     * @return array<int, string>
+     */
+    private static function flattenParentOptions(Collection $items, array $forbidden, int $depth = 0): array
+    {
+        $options = [];
+        $prefix = str_repeat('— ', $depth);
+
+        foreach ($items as $item) {
+            if (in_array($item->id, $forbidden, true)) {
+                continue;
+            }
+
+            $options[$item->id] = $prefix.$item->title_en;
+
+            if ($item->childrenRecursive->isNotEmpty()) {
+                $options += self::flattenParentOptions($item->childrenRecursive, $forbidden, $depth + 1);
+            }
+        }
+
+        return $options;
     }
 
     /*
@@ -74,7 +154,7 @@ class MenuItem extends Model
     public static function footerMenu()
     {
         $menu = self::main()
-            ->with('children')
+            ->with('childrenRecursive')
             ->orderBy('order')
             ->get();
 
@@ -88,8 +168,8 @@ class MenuItem extends Model
         foreach ($items as $item) {
             $flat->push($item);
 
-            if ($item->children->count()) {
-                $flat = $flat->merge(self::flatten($item->children));
+            if ($item->childrenRecursive->isNotEmpty()) {
+                $flat = $flat->merge(self::flatten($item->childrenRecursive));
             }
         }
 

@@ -1077,12 +1077,12 @@ i {
     font-size: 14px !important;
 }
 
-.header-wrapper .main-menu li .sub-menu li:hover a {
+.header-wrapper .main-menu li .sub-menu li:hover > .menu-item-content > a {
     margin-left: 10px;
     color: var(--theme-color);
 }
 
-.header-wrapper .main-menu li:hover .sub-menu {
+.header-wrapper .main-menu li:hover > .sub-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(5px);

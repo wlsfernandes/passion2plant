@@ -99,7 +99,7 @@
                         <select name="parent_id" class="form-select">
 
                             <option value="">
-                                Main Menu
+                                No parent / Top-level menu
                             </option>
 
                             @foreach ($parents as $id => $title)

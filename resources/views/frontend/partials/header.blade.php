@@ -71,7 +71,7 @@
             {{-- Main Menu --}}
             <ul class="main-menu">
                 @foreach ($menu as $item)
-                    @include('frontend.partials.menu-item', ['item' => $item])
+                    @include('frontend.partials.menu-item', ['item' => $item, 'depth' => 0])
                 @endforeach
 
 

@@ -83,7 +83,7 @@ class ViewServiceProvider extends ServiceProvider
 
             $menu = MenuItem::query()
                 ->main()
-                ->with('children')
+                ->with('childrenRecursive')
                 ->orderBy('order')
                 ->get();
 
