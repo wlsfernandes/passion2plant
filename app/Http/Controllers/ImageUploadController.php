@@ -160,7 +160,7 @@ class ImageUploadController extends BaseController
                     'errors' => $e->errors(),
                 ]
             );
-                }        
+        }
         try {
             $instance = $this->resolveModel($model, $id);
 

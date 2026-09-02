@@ -2,19 +2,23 @@
     $videoItems = collect();
 
     if ($section->image_url) {
-        $videoItems->push((object) [
-            'model' => 'sections',
-            'id' => $section->id,
-            'embed' => $section->embed_url,
-        ]);
+        $videoItems->push(
+            (object) [
+                'model' => 'sections',
+                'id' => $section->id,
+                'embed' => $section->embed_url,
+            ],
+        );
     }
 
     foreach ($section->videos as $video) {
-        $videoItems->push((object) [
-            'model' => 'section_videos',
-            'id' => $video->id,
-            'embed' => $video->embed_url,
-        ]);
+        $videoItems->push(
+            (object) [
+                'model' => 'section_videos',
+                'id' => $video->id,
+                'embed' => $video->embed_url,
+            ],
+        );
     }
 
     // Up to 3 per line, wrapping (and centering) any extra videos on the next line.
@@ -28,8 +32,7 @@
             <div class="col-12 col-md-{{ $videoColClass }}">
                 <div class="section-video text-center mb-3">
 
-                    <div class="video-wrapper position-relative"
-                        onclick="playVideo(this, '{{ $item->embed }}')">
+                    <div class="video-wrapper position-relative" onclick="playVideo(this, '{{ $item->embed }}')">
 
                         {{-- Cover Image --}}
                         <img src="{{ route('admin.images.preview', [

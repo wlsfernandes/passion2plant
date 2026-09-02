@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    use HasFactory, ConvertsToEmbedUrl;
+    use ConvertsToEmbedUrl, HasFactory;
 
     protected $fillable = [
         'page_id',
