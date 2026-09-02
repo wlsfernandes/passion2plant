@@ -35,6 +35,7 @@ class ImageUploadController extends BaseController
         'sections' => \App\Models\Section::class,
         'section_cards' => \App\Models\SectionCard::class,
         'section_images' => \App\Models\SectionImage::class,
+        'section_videos' => \App\Models\SectionVideo::class,
         'stores' => \App\Models\Store::class,
         'testimonials' => \App\Models\Testimonial::class,
         'teams' => \App\Models\Team::class,

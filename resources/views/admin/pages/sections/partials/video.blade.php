@@ -90,6 +90,93 @@
             </small>
         </div>
 
+        <hr class="my-4">
+
+        {{-- Additional Videos --}}
+        @isset($section)
+            @if ($section->videos->count())
+                <div class="mb-4">
+                    <label class="form-label d-block">Additional Videos</label>
+                    <div class="d-flex flex-wrap gap-3">
+                        @foreach ($section->videos as $video)
+                            <div class="gallery-card card shadow-sm text-center" style="width:160px;">
+
+                                <div class="p-2">
+                                    <img src="{{ route('admin.images.preview', [
+                                        'model' => 'section_videos',
+                                        'id' => $video->id,
+                                    ]) }}"
+                                        class="img-thumbnail" style="max-width:140px;">
+
+                                    @if ($video->video_url)
+                                        <div class="small text-muted mt-1 text-truncate">
+                                            {{ $video->video_url }}
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="card-body p-2">
+                                    <button type="button" class="btn btn-sm btn-danger w-100 delete-image"
+                                        data-url="{{ route('pages.sections.videos.destroy', [$page, $section, $video]) }}">
+                                        <i class="uil uil-trash"></i> Delete
+                                    </button>
+                                </div>
+
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+        @endisset
+
+        <div class="mb-2">
+            <label class="form-label d-block">Add More Videos</label>
+            <small class="text-muted d-block mb-2">
+                Add a cover image and video URL for each additional video.
+            </small>
+
+            <div id="video-repeater"></div>
+
+            <button type="button" class="btn btn-sm btn-outline-primary" id="add-video-row">
+                <i class="uil uil-plus"></i> Add Another Video
+            </button>
+        </div>
+
     </div>
 
 </div>
+
+<template id="video-row-template">
+    <div class="row g-2 align-items-start mb-2 video-row">
+        <div class="col-md-6">
+            <input type="file" name="video_images[]" class="form-control" accept="image/*">
+        </div>
+        <div class="col-md-5">
+            <input type="url" name="video_links[]" class="form-control" placeholder="https://example.com">
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-outline-danger w-100 remove-video-row" title="Remove">
+                <i class="uil uil-trash"></i>
+            </button>
+        </div>
+    </div>
+</template>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const repeater = document.getElementById('video-repeater');
+        const template = document.getElementById('video-row-template');
+        const addBtn = document.getElementById('add-video-row');
+
+        addBtn.addEventListener('click', function() {
+            repeater.appendChild(template.content.cloneNode(true));
+        });
+
+        repeater.addEventListener('click', function(e) {
+            const removeBtn = e.target.closest('.remove-video-row');
+            if (removeBtn) {
+                removeBtn.closest('.video-row').remove();
+            }
+        });
+    });
+</script>

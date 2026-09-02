@@ -6,6 +6,7 @@ use App\Helpers\S3;
 use App\Models\Page;
 use App\Models\Section;
 use App\Models\SectionImage;
+use App\Models\SectionVideo;
 use App\Services\SystemLogger;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -45,6 +46,10 @@ class SectionController extends BaseController
             'background_image' => 'nullable|image|max:2048',
             'container' => 'nullable|string|in:container,full',
             'custom_class' => 'nullable|string|max:255',
+            'video_images' => 'nullable|array',
+            'video_images.*' => 'nullable|image|max:2048',
+            'video_links' => 'nullable|array',
+            'video_links.*' => 'nullable|string|max:255',
         ]);
     }
 
@@ -335,6 +340,47 @@ class SectionController extends BaseController
         }
     }
 
+    public function destroyVideo(Page $page, Section $section, SectionVideo $video)
+    {
+        try {
+
+            $video->delete();
+
+            SystemLogger::log(
+                'Section video deleted',
+                'warning',
+                'section_videos.delete',
+                [
+                    'page_id' => $page->id,
+                    'section_id' => $section->id,
+                    'video_id' => $video->id,
+                ]
+            );
+
+            return response()->json([
+                'success' => true,
+            ]);
+
+        } catch (Exception $e) {
+
+            SystemLogger::log(
+                'Section video deletion failed',
+                'error',
+                'section_videos.delete',
+                [
+                    'page_id' => $page->id,
+                    'section_id' => $section->id,
+                    'video_id' => $video->id,
+                    'exception' => $e->getMessage(),
+                ]
+            );
+
+            return response()->json([
+                'success' => false,
+            ], 500);
+        }
+    }
+
     public function updateLink(Request $request, SectionImage $image)
     {
         $request->validate([
@@ -373,6 +419,29 @@ class SectionController extends BaseController
                     'image_url' => $path,
                     'external_link' => $request->input('external_link'),
                     'sort_order' => ($section->images()->max('sort_order') ?? 0) + 1,
+                ]);
+            }
+        }
+
+        if ($request->hasFile('video_images')) {
+
+            $links = $request->input('video_links', []);
+
+            foreach ($request->file('video_images') as $index => $image) {
+
+                if (! $image) {
+                    continue;
+                }
+
+                $path = S3::uploadImageAsWebpPreset(
+                    $image,
+                    'pages/sections/videos'
+                );
+
+                $section->videos()->create([
+                    'image_url' => $path,
+                    'video_url' => $links[$index] ?? null,
+                    'sort_order' => ($section->videos()->max('sort_order') ?? 0) + 1,
                 ]);
             }
         }

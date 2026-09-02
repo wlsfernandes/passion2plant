@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\ConvertsToEmbedUrl;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    use HasFactory;
+    use HasFactory, ConvertsToEmbedUrl;
 
     protected $fillable = [
         'page_id',
@@ -92,6 +93,11 @@ class Section extends Model
     public function images()
     {
         return $this->hasMany(SectionImage::class)->orderBy('sort_order');
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(SectionVideo::class)->orderBy('sort_order');
     }
 
     /*
@@ -194,54 +200,6 @@ class Section extends Model
 
     public function getEmbedUrlAttribute()
     {
-        $url = $this->link_image;
-
-        if (empty($url)) {
-            return null;
-        }
-
-        // ✅ Already an embed URL → return as-is
-        if (
-            str_contains($url, 'youtube.com/embed') ||
-            str_contains($url, 'player.vimeo.com')
-        ) {
-            return $url;
-        }
-
-        // 🎥 YOUTUBE
-        if (str_contains($url, 'youtube.com') || str_contains($url, 'youtu.be')) {
-
-            preg_match(
-                '/(youtu\.be\/|v=|embed\/|shorts\/)([^\&\?\/]+)/',
-                $url,
-                $matches
-            );
-
-            if (! empty($matches[2])) {
-                return 'https://www.youtube.com/embed/'.$matches[2];
-            }
-
-            return null; // invalid youtube format
-        }
-
-        // 🎥 VIMEO
-        if (str_contains($url, 'vimeo.com')) {
-
-            preg_match('/vimeo\.com\/(\d+)/', $url, $matches);
-
-            if (! empty($matches[1])) {
-                return 'https://player.vimeo.com/video/'.$matches[1];
-            }
-
-            return null; // invalid vimeo format
-        }
-
-        // 🎬 Direct video file (mp4, webm, etc.)
-        if (preg_match('/\.(mp4|webm|ogg)$/i', $url)) {
-            return $url;
-        }
-
-        // 🔄 Fallback (return original)
-        return $url;
+        return $this->convertToEmbedUrl($this->link_image);
     }
 }

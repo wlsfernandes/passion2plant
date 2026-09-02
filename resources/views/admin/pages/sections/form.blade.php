@@ -102,7 +102,7 @@
     </div>
 
 @endsection
-@section('script')
+@section('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
