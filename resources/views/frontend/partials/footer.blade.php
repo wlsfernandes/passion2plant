@@ -5,7 +5,7 @@
             <div class="row g-5">
 
                 {{-- COLUMN 1: LOGO + TEXT + SOCIAL --}}
-                <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-6 col-sm-12 wow fadeInUp">
+                <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="footer__widget">
                         {{-- LOGO (FROM SETTINGS) --}}
                         <div class="widget__head mb-4">
@@ -41,7 +41,7 @@
                 </div>
 
                 {{-- COLUMN 2: MENU --}}
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="footer__widget">
 
                         <div class="widget__head mb-4">
@@ -64,6 +64,24 @@
                             @endforeach
                         </ul>
 
+                    </div>
+                </div>
+
+                {{-- COLUMN 3: NEWSLETTER SIGNUP (Constant Contact) --}}
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 wow fadeInUp">
+                    <div class="footer__widget">
+
+                        <div class="widget__head mb-4">
+                            <h5>@lang('footer.newsletter')</h5>
+                            <div class="witr_bar_main">
+                                <div class="witr_bar_inner witr_bar_innerc"></div>
+                            </div>
+                        </div>
+
+                        <p>@lang('footer.newsletter_text')</p>
+
+                        {{-- Populated automatically by the Constant Contact Active Forms script --}}
+                        <div class="ctct-inline-form" data-form-id=""></div>
                     </div>
                 </div>
 
@@ -98,3 +116,8 @@
 
     </div>
 </section>
+
+<!-- Begin Constant Contact Active Forms -->
+<script> var _ctct_m = ""; </script>
+<script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+<!-- End Constant Contact Active Forms -->
