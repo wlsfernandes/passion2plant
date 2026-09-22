@@ -125,7 +125,7 @@
     <script>
         var _ctct_m = @json(config('services.constant_contact.account_id'));
     </script>
-    <script id="signupScript" src="https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js"
-        async defer></script>
+    <script id="signupScript" src="https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async
+        defer></script>
     <!-- End Constant Contact Active Forms -->
 @endif
