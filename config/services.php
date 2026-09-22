@@ -18,6 +18,12 @@ return [
         'secret' => env('STRIPE_SECRET'),
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
     ],
+
+    'constant_contact' => [
+        'account_id' => env('CONSTANT_CONTACT_ACCOUNT_ID'),
+        'form_id' => env('CONSTANT_CONTACT_FORM_ID', '289a0514-f137-4183-bf3b-f745278d5163'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

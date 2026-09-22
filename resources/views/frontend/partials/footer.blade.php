@@ -80,8 +80,11 @@
 
                         <p>@lang('footer.newsletter_text')</p>
 
-                        {{-- Populated automatically by the Constant Contact Active Forms script --}}
-                        <div class="ctct-inline-form" data-form-id=""></div>
+                        @if (config('services.constant_contact.account_id') && config('services.constant_contact.form_id'))
+                            {{-- Populated automatically by the Constant Contact Active Forms script --}}
+                            <div class="ctct-inline-form"
+                                data-form-id="{{ config('services.constant_contact.form_id') }}"></div>
+                        @endif
                     </div>
                 </div>
 
@@ -117,10 +120,12 @@
     </div>
 </section>
 
-<!-- Begin Constant Contact Active Forms -->
-<script>
-    var _ctct_m = "";
-</script>
-<script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async
-    defer></script>
-<!-- End Constant Contact Active Forms -->
+@if (config('services.constant_contact.account_id') && config('services.constant_contact.form_id'))
+    <!-- Begin Constant Contact Active Forms -->
+    <script>
+        var _ctct_m = @json(config('services.constant_contact.account_id'));
+    </script>
+    <script id="signupScript" src="https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js"
+        async defer></script>
+    <!-- End Constant Contact Active Forms -->
+@endif
